@@ -1,0 +1,504 @@
+body {
+  padding: 0;
+  margin: 0;
+}
+h1, h2, p, a, ul, li, span{
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* header */
+header {
+  background-color: #66c7d9;
+  color: #ffffff;
+  width: 100%;
+}
+.headerLogo{
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+}
+.headerContainer {
+  padding: 20px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.headerRight {
+  text-align: right;
+}
+.headerRight a {
+  margin-left: 20px;
+  color: #fff;
+  display: inline-block;
+}
+.notLoginNav a{
+  border-bottom: 1px solid #fff;
+}
+.notLoginNav a:hover {
+  font-weight: bold;
+}
+.loginNav {
+  display: flex;
+  padding: 0;
+}
+
+@media screen and (max-width: 720px) {
+  .headerLogo{
+    font-size: 36px;
+    position: relative;
+  }
+  .headerLogo a {
+    position: absolute;
+    top: 0;
+  }
+  .headerContainer {
+    padding: 10px 10px;
+  }
+  .logoSub {
+    display: none;
+  }
+  .headerRight p {
+    font-size: 14px;
+  }
+  .headerRight a {
+    margin-left: 14px;
+    font-size: 14px;
+  }
+  .loginNav {
+    gap: 5px;
+  }
+}
+@media screen and (max-width: 400px) {
+  .UserIcon-Wrapper {
+    display: none;
+  }
+}
+
+
+
+/* footer */
+footer {
+  background-color: #f7f5ec;
+  color: #5a8c68;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+.footerContainer {
+  width: fit-content;
+  padding-top: 20px;
+}
+
+
+/* header, footerを除くbody */
+.mainContainer {
+  padding-top: 20px;
+  padding-bottom: 40px;
+  /* background-color: #C5D3D4; */
+}
+
+
+/* 読み込み中表示 */
+.LoadingContainer{
+  width: 100vw;
+  height: 100vh;
+}
+.LadingContent{
+  width: 250px;
+  height: 200px;
+  background-color: #fff;
+  border: 1px solid #5a8c68;
+  border-radius: 20px;
+  margin: 150px auto;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+}
+.LadingContent img {
+  margin: 20px auto;
+  animation: flowerRotation 3000ms linear infinite
+}
+@keyframes flowerRotation {
+  0% {
+    transform: rotate(0);
+  }
+  100%{
+    transform: rotate(360deg);
+  }
+}
+
+/* 一覧に戻るボタン */
+.backToList {
+  width: fit-content;
+  margin: 20px auto;
+}
+.backToList a {
+  color: #f06543;
+  border-bottom: 1px solid #f06543;
+}
+.backToList a:hover {
+  opacity: 50%;
+}
+
+
+/* like数表示 (/app/page.tsx)*/
+.likePosition {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 8px;
+}
+.hasLiked {
+  color :#f06543;
+  filter: brightness(1.4);
+}
+.hasNotLiked {
+  color: gray;
+}
+
+/* likeボタン (/components/likeCount.tsx) */
+.mahaloBtn {
+  margin: 10px 0 0 auto;
+  background-color: #fff;
+  width: fit-content;
+  border-radius: 10px;
+  padding: 5px 10px;
+  color: #f06543;
+  border: 2px solid #f06543;
+  filter: brightness(1.4);
+  font-weight: 700;
+  position: relative;
+}
+.mahaloBtn:hover{
+  opacity: 50%;
+}
+.mahaloDisBtn {
+  margin: 10px 0 0 auto;
+  background-color: #f06543;
+  filter: brightness(1.4);
+  width: fit-content;
+  border-radius: 10px;
+  padding: 5px 10px;
+  color: #fff;
+  font-weight: 700;
+}
+
+
+/* 一覧画面(/page.tsx) */
+.createdDay {
+  font-size: 14px;
+  margin-top: 10px;
+}
+/* 検索・並び替え・カテゴリ */
+.searchCard {
+  position: fixed;
+  z-index: 1000;
+  right: 10px;
+  bottom: 50px;
+  background-color: #f06543;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+  border-radius: 15px;
+}
+@media screen and (max-width: 720px) {
+  .searchIcon {
+    display: none;
+    color: #fff;
+  }
+}
+
+/* 1投稿表示ページ(/readsingle/[id]/page.tsx)のlikeボタンと更新日のラベル部分 */
+.operationButtons {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+/* 1投稿表示ページ(/readsingle/[id]/page.tsx)の投稿削除ボタン */
+.editDeleteButton {
+  display: flex;
+  width: fit-content;
+  margin: 30px auto;
+  gap: 30px;
+}
+
+/* １投稿表示 */
+.singleItemContainer {
+  position:relative;
+}
+.postContent {
+  position: absolute;
+  top: 40px;
+  max-width: 80vw;
+  font-weight: 700;
+  backdrop-filter: blur(4px);
+  background: linear-gradient(to bottom, rgba(255,255,255,0.9), rgba(255,255,255,0.3));
+  border-radius: 16px;
+  padding: 1.5rem;
+}
+.postContent h2 {
+  font-size: 28px;
+  color: #3a6351;
+  font-weight: bold;
+}
+
+.postContent p:nth-child(2) {
+  color:#3a6351;
+  font-weight: 400;
+}
+.marqueeContainer {
+  overflow: hidden;
+}
+.marquee {
+  display: inline-block;
+  width: 100%;
+  white-space: nowrap;
+  color: black;
+  font-weight: 400;
+  font-size: 20px;
+  animation: scroll-left 10s linear infinite;
+}
+@keyframes scroll-left {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+@media screen and (max-width: 720px) {
+  .postContent {
+    max-width: 80vw;
+  }
+  .marquee {
+    width: fit-content
+  }
+  .postContent h2 {
+    font-size: 24px;
+  }
+}
+.editedDay p{
+  font-size: 14px;
+  color: #5a8c68;
+  margin-bottom: 5px;
+}
+
+
+
+/* ログイン画面(login/pages.tsx) and 新規登録画面(register/pages.tsx)　 */
+.authContainer {
+  min-height: 700px;
+  height: 100vh;
+}
+.authContent {
+  margin: 50px auto;
+  width: 350px;
+  padding-bottom: 30px;
+}
+.authContent h2{
+  width: fit-content;
+  margin: 30px auto;
+}
+.userFormItem {
+  width: 70%;
+  margin: 30px auto;
+}
+.authContent input {
+  width: 100%;
+  height: 40px;
+  padding: 5px;
+  margin-top: 5px;
+  font-size: 18px;
+}
+.userFormInput {
+  width: 100%;
+}
+.userAuthBtn {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+
+/* プロフィール編集画面 (/app/mypage/editmypage.tsx)*/
+.profileContainer {
+  min-height: 700px;
+  height: 100vh;
+}
+.profileContent {
+  margin: 50px auto;
+  min-width: 350px;
+  max-width: 700px;
+  padding-bottom: 30px;
+  padding: 0 20px;
+}
+.profileContent h2{
+  width: fit-content;
+  margin: 30px auto;
+}
+.profileFormItem {
+  margin: 30px auto;
+}
+.selectIcon {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.iconP {
+  margin-top: 30px;
+}
+
+
+
+/* 投稿作成画面 create.tsx */
+.postFormContainer {
+  background-image: url(/backgroundImage/IMG_5672.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  padding: 50px 20px;
+}
+.postFormWrapper {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 32px;
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+}
+.postFormWrapper h1 {
+  margin: 0 0 30px 0;
+}
+.selectCategory {
+  margin: 30px 0;
+}
+.selectCategory p {
+  font-weight: 700;
+}
+.selectImage {
+  margin: 30px 0;
+}
+.selectImage p {
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.selectImageBox {
+  height: 50px;
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  background-color: #f5f5f5;
+  border-radius: 5px;
+  box-shadow: none;
+  border: 1px solid #c1c1c1;
+}
+.selectPlace p {
+  font-weight: 700;
+}
+.viewImage p {
+  margin-top: 50px;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+.imagePreview {
+  display: flex;
+  justify-content: center;
+}
+.imagePreview img {
+  border-radius: 20px;
+  margin-top: 10px;
+}
+
+/* 削除ページ */
+/* /delete/[id]/pages.tsx */
+.deleteConfirmMsg h1 {
+  font-size: 26px;
+  margin-bottom: 5px;
+}
+.deleteConfirmMsg p {
+  font-size: 18px;
+  margin-bottom: 20px;
+  color: red;
+}
+/* /delete/[id]/form.tsx */
+.deleteConfirmItem {
+  margin-bottom: 20px;
+}
+.deleteImage {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.deleteItem {
+  margin: 20px 0;
+}
+
+
+/* マイページ  (/app/user/myPage.tsx)*/
+.myPageContainer {
+  background-image: url(/backgroundImage/blob-scene-haikei.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  padding: 40px 0;
+  margin-bottom: 100px;
+}
+.myPageImgContainer {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 40px auto 20px auto;
+}
+.myPageImgContainer img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.myPageContent {
+  max-width: 600px;
+  min-width: 300px;
+  margin: 0 auto;
+  backdrop-filter: blur(4px);
+  background: rgba(255,255,255,0.5);
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+.myPageTextContainer {
+  max-width: 500px;
+  min-width: 320px;
+  margin: 0 auto;
+}
+.myPageTextContainer p {
+  width: fit-content;
+  margin: 10px auto;
+}
+.myPageTextContainer p:nth-child(1) {
+  font-weight: bold;
+  font-size: 26px;
+}
+.myPageTextContainer p:nth-child(2) {
+  font-size: 20px;
+}
+.editIconContainer{
+  display: flex;
+  justify-content: end;
+  color: #5a8c68;
+  font-size: 20px;
+}
+/* (app/components/postList.tsx) */
+.shareWordShare {
+  font-size: 18px;
+  position: absolute;
+  color: #888;
+  top: 0;
+  left: 0;
+}
+.shareWordPosts {
+  font-size: 18px;
+  position: absolute;
+  bottom: 0;
+  right: -15px;
+  color: #888;
+}
