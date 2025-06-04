@@ -1,5 +1,5 @@
 "use client"
-import { useAuthContext } from "@/app/AuthContext"
+import { useAuthContext } from "@/context/AuthContext"
 import { useState, useEffect } from "react"
 import { TextField, Button } from "@mui/material"
 import {useRouter}from "next/navigation"

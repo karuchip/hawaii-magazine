@@ -1,10 +1,11 @@
 "use client"
 import {useState, useEffect} from "react"
-import { useAuthContext } from "../AuthContext"
+import { useAuthContext } from "../../context/AuthContext"
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import Typography from '@mui/material/Typography'
 import Loading from "./loading";
+import {useRouter} from "next/navigation";
 
 type likeCountProps = {
   likeCount: number
@@ -19,6 +20,7 @@ const LikeCount = ({likeCount, id}:likeCountProps) => {
   const [count, setCount] = useState<number>(likeCount)
   const [hasLiked, setHasLiked] = useState<boolean>(false)
   const [notLikeYet, setNotLikeYet] = useState(false)
+  const router = useRouter()
 
   useEffect (() => {
     setCount(likeCount);

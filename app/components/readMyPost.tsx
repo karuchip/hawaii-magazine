@@ -1,5 +1,5 @@
 "use client"
-import { useAuthContext } from "@/app/AuthContext"
+import { useAuthContext } from "@/context/AuthContext"
 import { useEffect, useState} from "react"
 import PostList from "../components/postList"
 import { AllItemTypes } from "@/utils/types/post"

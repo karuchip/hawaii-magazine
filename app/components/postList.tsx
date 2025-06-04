@@ -39,12 +39,14 @@ const PostList = ({allItems, likePostIds}:Props) => {
                   subheader={`by ${item.author && item.author.name }`}
                   />
 
-                <CardMedia
-                  component="img"
-                  height="250"
-                  image={item.image1}
-                  alt="image"
+                {item.image1 && (
+                  <CardMedia
+                    component="img"
+                    height="250"
+                    image={item.image1}
+                    alt="image"
                   />
+                )}
 
                 <CardContent>
                   <p>📍 {item.googlePlace}</p>

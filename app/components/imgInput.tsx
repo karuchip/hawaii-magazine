@@ -1,34 +1,68 @@
 import { useState } from "react"
+import Loading from "./loading";
+import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
 
-const ImgInput = (props:any ) => {
-  const [imageFile, setImageFile] = useState<File | null>(null)
+type ImageInputProps = {
+  image: string | null;
+  setImage: (value:string | null) => void;
+}
 
-  const handleClick = async() => {
+const ImgInput = ({image, setImage}: ImageInputProps) => {
+
+  const [uploading, setUploading] = useState(false)
+
+  const handleUpload = async(file: File) => {
+    setUploading(true)
     try {
       const data = new FormData()
-      if (!imageFile) return
+      if (!file) return
 
-      data.append("file", imageFile)
+      data.append("file", file)
       data.append("upload_preset", process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET as string)
       data.append("cloud_name", process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME as string)
-      const response = await fetch(`https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME as string}/image/upload`, {method: "POST", body:data})
+      const response = await fetch(`https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME as string}/image/upload`,
+        {
+          method: "POST",
+          body:data
+        }
+      )
       const jsonData = await response.json()
-
-      await props.setImage(jsonData.url)
+      setImage(jsonData.secure_url)
       alert("画像アップロード成功")
     }catch(err) {
       alert("画像アップロード失敗")
+    }finally {
+      setUploading(false)
     }
   }
+
+  if(uploading) {
+    return <Loading />
+  }
+
   return (
-    <div className="img-input">
-      <input type="file" onChange={(e)=> {
-        const file = e.target.files?.[0]
-        if (file) {
-          setImageFile(file)
-        }
-      }} accept="image/png, image/jpg"/>
-      <button type="button" onClick={handleClick} disabled={!imageFile}>画像 Upload</button>
+    <div className="imgInput">
+      <label>
+        <input
+          type="file"
+          onChange={(e)=> {
+            const file = e.target.files?.[0];
+            if (file) {
+              handleUpload(file)
+            }
+          }}
+          accept="image/png, image/jpg"
+          className="hiddenInput"
+        />
+        <div className="selectImageBtn">
+          <div className="previewImageContainer">
+            <p><AddPhotoAlternateIcon sx={{width:"200px", height: "200px", color:"#fff"}}/></p>
+            {image && (
+              <img src={image} alt="プレビュー画像"/>
+            )}
+          </div>
+        </div>
+      </label>
     </div>
   )
 }

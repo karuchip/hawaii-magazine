@@ -8,13 +8,13 @@ type Props = {
 
 export type Category = {
   label: string
-  value: string | null
+  value: string
   color: string
   selectedColor: string
 }
 
 export const categoryList: Category[] = [
-  { label: "🌺 All",       value: null,       color: "#ef9a9a",   selectedColor: "#e57373" },
+  { label: "🌺 All",       value: "",       color: "#ef9a9a",   selectedColor: "#e57373" },
   { label: "🍽️ 食べ物",     value: "food",     color: "#a5d6a7",   selectedColor: "#81c784" },
   { label: "🏄‍♀️ アクティビティ", value: "activity", color: "#66c7d9",   selectedColor: "#26c6da" },
   { label: "🛍️ 買い物",     value: "shopping", color: "#ffd54f",   selectedColor: "#fbc02d" },

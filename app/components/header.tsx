@@ -1,6 +1,6 @@
 "use client"
 import Link from "next/link"
-import { useAuthContext } from "../AuthContext"
+import { useAuthContext } from "../../context/AuthContext"
 import {Typography, Button} from "@mui/material"
 import UserIcon from "./userIcon"
 import CustomizedMenus from "./headerMenu"
@@ -21,12 +21,12 @@ const Header = () => {
           </div>
           <div className="headerRight">
             {!loginUserId ? (
-              <div className="notLoginNav">
-              <Link href="/user/register">新規登録</Link>
-              <Link href="/user/login">ログイン</Link>
-              </div>
+              <nav className="notLoginNav">
+                <Link href="/user/register">新規登録</Link>
+                <Link href="/user/login">ログイン</Link>
+              </nav>
             ):(
-              <div className="loginNav">
+              <nav className="loginNav">
                 {loginUserIcon && (
                   <div className="UserIcon-Wrapper">
                     <UserIcon/>
@@ -35,7 +35,7 @@ const Header = () => {
                 {loginUserName && loginUserId &&(
                   <CustomizedMenus loginUserName={loginUserName} loginUserId={loginUserId}></CustomizedMenus>
                 )}
-              </div>
+              </nav>
             )}
           </div>
         </div>

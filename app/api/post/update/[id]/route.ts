@@ -1,23 +1,13 @@
 import { NextResponse, NextRequest } from "next/server";
 import prisma from "../../../../../utils/prisma"
 
-type Body = {
-  title: string,
-  place: string,
-  lat: number,
-  lon: number,
-  image: string,
-  description: string,
-  category: string,
-  authorId: number,
-}
-
 export async function PUT(request: NextRequest) {
-  const body = await request.json() as Body
+  const body = await request.json()
 
   const url = new URL(request.url)
   const segments = url.pathname.split("/")
   const postId = segments[segments.length - 1]
+  console.log(postId)
 
   if (!postId || isNaN(Number(postId))) {
     return NextResponse.json({message: "idが不正です"}, {status:400})
@@ -38,13 +28,23 @@ export async function PUT(request: NextRequest) {
           where: {id},
           data: {
             title: body.title,
-            place: body.place,
+            image1: body.image1,
+            image2: body.image2,
+            image3: body.image3,
+            image4: body.image4,
+            image5: body.image5,
+            description1: body.description1,
+            description2: body.description2,
+            description3: body.description3,
+            description4: body.description4,
+            description5: body.description5,
+            category: body.category,
+            location: body.location,
+            googlePlace: body.googlePlace,
             lat: body.lat,
             lon: body.lon,
-            image: body.image,
-            description: body.description,
-            category: body.category,
-            authorId: 1,
+            published: body.published,
+            authorId: body.authorId,
           }
         })
         return NextResponse.json({message:"編集が完了しました"})

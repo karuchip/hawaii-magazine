@@ -1,22 +1,16 @@
 "use client"
 
 import {useRouter} from "next/navigation"
-import Image from "next/image"
-import { useAuthContext } from "@/app/AuthContext"
+import { useAuthContext } from "@/context/AuthContext"
 import Link from "next/link"
-import { Button } from "@mui/material"
-
+import SinglePostLayout from "@/app/components/singlePostLayout"
+import GoogleMapComponent from "@/app/components/googleMap"
+import {Suspense} from 'react'
+import { AllItemTypes } from "@/utils/types/post"
 
 type Props = {
-  id:string
-  singleItem: {
-    title: string
-    image: string
-    description: string
-    place: string
-    category: string
-    authorId: number
-  }
+  id:string,
+  singleItem: AllItemTypes
 }
 
 const DeleteItem = ({id, singleItem}:Props) => {
@@ -26,7 +20,7 @@ const DeleteItem = ({id, singleItem}:Props) => {
 
 
   //削除formボタンが押下された時の処理
-  const handleSubmit = async(e:React.FormEvent<HTMLFormElement>) => {
+  const handleClick = async(e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
 
     try{
@@ -56,32 +50,40 @@ const DeleteItem = ({id, singleItem}:Props) => {
   if(Number(loginUserId) ===  singleItem.authorId) {
 
     return(
-      <div>
-        <form onSubmit={handleSubmit}>
-            <div className="deleteImage">
-              <Image alt="画像" src={singleItem.image} width={300} height={300} />
-            </div>
-            <div className="deleteItem">
-              <h2>{singleItem.title}</h2>
-              <p>{singleItem.description}</p>
-            </div>
-              <p>📍 {singleItem.place}</p>
-              <p>🏷️ カテゴリー: {singleItem.category}</p>
+      <>
 
-            <div style={{display:"flex", justifyContent:"center"}}>
-              <Button type="submit" variant="contained" color="primary"
-                sx={{
-                  borderRadius: "30px", padding: "10px 24px", marginTop: "30px",
-                  backgroundColor: "#f06543", '&:hover': { backgroundColor: "#F05143" }
-                }}>
-                削除
-              </Button>
+
+            {/* 記事描写 */}
+            <SinglePostLayout singleItem={singleItem} />
+
+            {/* ロケーション */}
+            <section className="locationContainer">
+              <div className="locationLabel">
+                <h2 className="en">Location</h2>
+                <div className="horizontalLineMedium"><span></span></div>
+              </div>
+              <div className="locationContent">
+                <p className="locationName">{singleItem.location}</p>
+                  {singleItem.lat && singleItem.lon && (
+                    <Suspense fallback={<div>地図を読み込み中...</div>}>
+                      <div className="googleMapContainer">
+                        <GoogleMapComponent lat={Number(singleItem.lat)} lng={Number(singleItem.lon)}/>
+                      </div>
+                    </Suspense>
+                  )}
+                <p className="googleMapName en">{singleItem.googlePlace}</p>
+              </div>
+            </section>
+
+            <div className="toPreviewBtn">
+              <button onClick={(e)=>handleClick(e)}>
+                この記事を削除する
+              </button>
             </div>
-        </form>
-        <div className="backToList">
-          <Link href={"/readsingle/${postId}"}>戻る</Link>
-        </div>
-      </div>
+            <div  className="backButton">
+              <Link href={`/post/readsingle/${id}`}>投稿へ戻る</Link>
+            </div>
+      </>
     )
 
   } else {

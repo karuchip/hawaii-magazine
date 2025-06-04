@@ -1,8 +1,8 @@
 "use client"
 
 import { useState } from "react";
-import { TextField, Button } from "@mui/material";
 import Loading from "./loading";
+import AddIcon from '@mui/icons-material/Add';
 
 type commentType = {
   loginUserId: string,
@@ -52,15 +52,13 @@ const CommentCreate = ({loginUserId, postId, onCommentCreated}:commentType)=>{
   return(
 
       <div style={{display:"flex", justifyContent:"center"}}>
-        <form onSubmit={handleSubmit}>
-            <TextField
-              label="コメントを書く"
-              variant="standard"
+        <form onSubmit={handleSubmit} className="commentCreateForm">
+            <textarea
               value={comment}
               onChange={(e) => setComment(e.target.value)}
-              sx={{width: "60vw"}}
-              />
-          <Button type="submit" variant="contained" sx={{margin:"10px 0 0 10px", backgroundColor:"#f06543"}}>追加</Button>
+              placeholder="＋コメントを追加する"
+            />
+          <button type="submit"><AddIcon sx={{width:"40px", height:"40px", color:"#fff"}} /></button>
         </form>
       </div>
   )

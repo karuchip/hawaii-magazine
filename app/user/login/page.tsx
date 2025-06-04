@@ -1,27 +1,27 @@
 "use client"
-import {useState} from "react"
 import { useRouter } from "next/navigation"
-import { useAuthContext } from "@/app/AuthContext"
+import { useAuthContext } from "@/context/AuthContext"
 import {Card, TextField, Button} from "@mui/material"
+import {useForm} from "react-hook-form"
 
-type SendBodyType = {
-  email: string,
+type FormInput = {
+  email: string
   password: string
 }
 
 const Login = () => {
 
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
   const router = useRouter()
   const {setLoginUserId, setLoginUserName, setLoginUserEmail, setLoginUserIcon} = useAuthContext()
+  const {register, handleSubmit, formState:{errors, isValid}} = useForm<FormInput>({
+    mode: "onChange"
+  })
 
-  const handleSubmit = async(e:React.ChangeEvent<HTMLFormElement>) => {
-    e.preventDefault()
+  const onSubmit = async(data: FormInput) => {
 
-    const body:SendBodyType = {
-      email: email,
-      password: password
+    const body = {
+      email: data.email,
+      password: data.password
     }
 
     try{
@@ -54,34 +54,37 @@ const Login = () => {
     <div className="authContainer">
       <Card variant="outlined" className="authContent">
         <h2>ログイン</h2>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <div className="userFormItem">
 
             <TextField
-              type="email"
-              value={email}
-              onChange={(e)=>setEmail(e.target.value)}
-              name="email"
-              id="standard-basic"
               label="メールアドレス"
               variant="standard"
+              id="standard-basic"
               className="userFormInput"
+              {...register("email", {
+                required: "メールアドレスは必須です",
+              })}
+              error={!!errors.email}
+              helperText={errors.email?.message}
+              sx={{mb:"30px"}}
             />
           </div>
           <div className="userFormItem">
             <TextField
-              type="password"
-              value={password}
-              onChange={(e)=>setPassword(e.target.value)}
-              name="password"
-              id="standard-basic"
               label="パスワード"
               variant="standard"
               className="userFormInput"
+              {...register("password", {required: "パスワードは必須です"})}
+              error={!!errors.password}
+              helperText={errors.password?.message}
+              sx={{mb:"30px"}}
             />
           </div>
           <div className="userAuthBtn">
-            <Button type="submit" variant="contained">ログイン</Button>
+            <Button type="submit" variant="contained" disabled={!isValid}>
+              ログイン
+            </Button>
           </div>
         </form>
       </Card>

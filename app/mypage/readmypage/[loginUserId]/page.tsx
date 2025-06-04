@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react"
 import { Suspense } from "react"
-import { useAuthContext } from "@/app/AuthContext"
+import { useAuthContext } from "@/context/AuthContext"
 import ReadMyPost from "@/app/components/readMyPost"
 import EditDocumentIcon from '@mui/icons-material/EditDocument';
 import Link from "next/link"

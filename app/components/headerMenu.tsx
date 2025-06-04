@@ -7,9 +7,11 @@ import EditIcon from '@mui/icons-material/Edit';
 import Divider from '@mui/material/Divider';
 import ArchiveIcon from '@mui/icons-material/Archive';
 import FileCopyIcon from '@mui/icons-material/FileCopy';
-import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
+import DynamicFeedIcon from '@mui/icons-material/DynamicFeed';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import LogoutIcon from '@mui/icons-material/Logout';
 import Link from 'next/link';
+import MenuIcon from '@mui/icons-material/Menu';
 
 type Props = {
   loginUserName: string,
@@ -79,10 +81,9 @@ export default function CustomizedMenus({loginUserName, loginUserId}:Props) {
         variant="contained"
         disableElevation
         onClick={handleClick}
-        endIcon={<KeyboardArrowDownIcon />}
-        sx={{backgroundColor:"transparent"}}
+        sx={{backgroundColor:"transparent", mt:"10px"}}
       >
-        Menu
+        <MenuIcon />
       </Button>
       <StyledMenu
         id="demo-customized-menu"
@@ -110,11 +111,22 @@ export default function CustomizedMenus({loginUserName, loginUserId}:Props) {
         </MenuItem>
         <MenuItem disableRipple>
           <Link href="/user/logout" className="logoutBtn">
-          <ArchiveIcon />
-          ログアウト
+            <LogoutIcon />
+            ログアウト
           </Link>
         </MenuItem>
+
         <Divider sx={{ my: 0.5 }} />
+
+        <MenuItem disableRipple>
+          <Link href="/">
+            <DynamicFeedIcon />
+            記事一覧
+          </Link>
+        </MenuItem>
+
+        <Divider sx={{ my: 0.5 }} />
+
         <MenuItem onClick={handleClose} disableRipple>
           メニューを閉じる
         </MenuItem>
