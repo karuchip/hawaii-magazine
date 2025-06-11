@@ -1,4 +1,4 @@
-import {Grid, Card, CardContent, Typography, CardActionArea, CardHeader, CardMedia} from "@mui/material"
+import {Grid, Card, CardContent, Typography, CardActionArea, CardHeader, CardMedia, Avatar} from "@mui/material"
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import Link from "next/link"
@@ -35,8 +35,12 @@ const PostList = ({allItems, likePostIds}:Props) => {
             const card = (
               <CardActionArea component={Link} href={`/post/readsingle/${item.id}`}>
                 <CardHeader
-                  title={item.title}
-                  subheader={`by ${item.author && item.author.name }`}
+                  avatar={
+                      <Avatar alt={`${item.author && item.author.name}`} src={`${item.author && item.author.userIcon }`}  />
+                    }
+                    title={item.title}
+                    // subheader={`by ${item.author && item.author.name }`}
+                    subheader={item.category}
                   />
 
                 {item.image1 && (
@@ -68,7 +72,7 @@ const PostList = ({allItems, likePostIds}:Props) => {
             )
 
             return (
-                <Grid sx={{minWidth: 300, maxwidth: 400, margin:2}} key={item.id}>
+                <Grid sx={{width: 300, margin:2}} key={item.id}>
                   <Card variant="outlined">{card}</Card>
                 </Grid>
             )
