@@ -1,7 +1,6 @@
 import Form from "./form"
 import {GetSingleItem} from "@/utils/getSingleItem"
 
-
 const DeleteItem = async(props: any) => {
   const id = props.params?.id
   const singleItem = await GetSingleItem(id)

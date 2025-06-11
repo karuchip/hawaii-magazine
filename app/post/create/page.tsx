@@ -102,7 +102,7 @@ const CreateItem = () => {
       <>
             {/* タイトル部分 */}
         <div className="createContainer">
-          <div className="createTitle createContent">
+          <div className="createTitle">
             <h1>記事を作成する</h1>
           </div>
           <div className="horizontalLineLight create"><span></span></div>
@@ -171,7 +171,7 @@ const CreateItem = () => {
           <div className="horizontalLineLight create"><span></span></div>
 
           {/* 送信ボタン */}
-          <div className="createContent">
+          <div>
             <div className="toPreviewBtn">
               <button type="button" onClick={handlePreview}>プレビューを確認する</button>
             </div>

@@ -51,38 +51,36 @@ const DeleteItem = ({id, singleItem}:Props) => {
 
     return(
       <>
+        {/* 記事描写 */}
+        <SinglePostLayout singleItem={singleItem} />
 
+        {/* ロケーション */}
+        <section className="locationContainer">
+          <div className="locationLabel">
+            <h2 className="en">Location</h2>
+            <div className="horizontalLineMedium"><span></span></div>
+          </div>
+          <div className="locationContent">
+            <p className="locationName">{singleItem.location}</p>
+              {singleItem.lat && singleItem.lon && (
+                <Suspense fallback={<div>地図を読み込み中...</div>}>
+                  <div className="googleMapContainer">
+                    <GoogleMapComponent lat={Number(singleItem.lat)} lng={Number(singleItem.lon)}/>
+                  </div>
+                </Suspense>
+              )}
+            <p className="googleMapName en">{singleItem.googlePlace}</p>
+          </div>
+        </section>
 
-            {/* 記事描写 */}
-            <SinglePostLayout singleItem={singleItem} />
-
-            {/* ロケーション */}
-            <section className="locationContainer">
-              <div className="locationLabel">
-                <h2 className="en">Location</h2>
-                <div className="horizontalLineMedium"><span></span></div>
-              </div>
-              <div className="locationContent">
-                <p className="locationName">{singleItem.location}</p>
-                  {singleItem.lat && singleItem.lon && (
-                    <Suspense fallback={<div>地図を読み込み中...</div>}>
-                      <div className="googleMapContainer">
-                        <GoogleMapComponent lat={Number(singleItem.lat)} lng={Number(singleItem.lon)}/>
-                      </div>
-                    </Suspense>
-                  )}
-                <p className="googleMapName en">{singleItem.googlePlace}</p>
-              </div>
-            </section>
-
-            <div className="toPreviewBtn">
-              <button onClick={(e)=>handleClick(e)}>
-                この記事を削除する
-              </button>
-            </div>
-            <div  className="backButton">
-              <Link href={`/post/readsingle/${id}`}>投稿へ戻る</Link>
-            </div>
+        <div className="toPreviewBtn">
+          <button onClick={(e)=>handleClick(e)}>
+            この記事を削除する
+          </button>
+        </div>
+        <div  className="backButton">
+          <Link href={`/post/readsingle/${id}`}>投稿へ戻る</Link>
+        </div>
       </>
     )
 

@@ -10,8 +10,7 @@ import GoogleMapComponent from "@/app/components/googleMap"
 import Link from "next/link"
 
 
-const PostPreview = (e:React.FormEvent<HTMLFormElement>) => {
-  // e.preventDefault()
+const PostPreview = () => {
 
   const {postData} = usePostContext()
   const {loginUserId, loginUserName, loginUserIcon} = useAuthContext()
@@ -49,7 +48,7 @@ const PostPreview = (e:React.FormEvent<HTMLFormElement>) => {
   }
 
 
-  const handleClick = async() => {
+  const handleClick = async(e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
 
     try {
@@ -118,7 +117,7 @@ const PostPreview = (e:React.FormEvent<HTMLFormElement>) => {
   return(
     <>
       <div className="singlePostContainer">
-        <div className="singlePostContent">
+        <div className="singlePostContent createPreviewLayout">
 
           {/* 記事描写 */}
           <SinglePostLayout singleItem={{...dummyPostData, ...postData}} />

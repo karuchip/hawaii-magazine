@@ -2,28 +2,60 @@ import { NextRequest, NextResponse } from "next/server";
 import prisma from "@/utils/prisma";
 import { Prisma } from "@/app/generated/prisma";
 
-// GET /api/posts?page=2&sort=latest&category=beach
+
 
 export async function GET(req: NextRequest) {
   const {searchParams} = new URL(req.url);
-
+  const pageSize = 12;
   const page = parseInt(searchParams.get("page") || "1");
-  const pageSize = 10;
-  const sort = searchParams.get("sort") || "latest"
 
+  const sort = searchParams.get("sort") || "new";
   const orderBy : Prisma.PostOrderByWithRelationInput =
-    sort === "oldest"
+    sort === "old"
       ? {createdAt: "asc"}
       : sort === "likes"
       ? {likeCount: "desc"}
       : {createdAt: "desc"}
 
-      const posts = await prisma.post.findMany({
-        skip: (page - 1) * pageSize,
-        take: pageSize,
-        orderBy,
-      });
+  const category = searchParams.get("category") || "all"
+  const keyWordRaw = searchParams.get("keyWord")?.trim()
+  const keyWord = keyWordRaw?.trim() ?? ""
 
-      const totalCount = await prisma.post.count();
-      return NextResponse.json({posts, totalCount});
+  const where : Prisma.PostWhereInput | undefined =
+    category === "all" && !keyWord
+      ? undefined
+      : {
+        AND: [
+          ...(category === "all" ? [] : [{category}]),
+          ...(keyWord
+            ? [
+                {
+                  OR: [
+                    {title: {contains: keyWord}},
+                    {description1: {contains: keyWord}},
+                    {description2: {contains: keyWord}},
+                    {description3: {contains: keyWord}},
+                    {description4: {contains: keyWord}},
+                    {description5: {contains: keyWord}},
+                  ],
+                },
+              ]
+          : [])
+        ]
+      }
+
+
+
+  const posts = await prisma.post.findMany({
+    where,
+    orderBy,
+    skip: (page - 1) * pageSize,
+    take: pageSize,
+    include:{
+      author: true
+    },
+  });
+
+  const totalCount = await prisma.post.count({where});
+  return NextResponse.json({posts, totalCount});
 }
