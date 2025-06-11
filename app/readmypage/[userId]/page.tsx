@@ -6,20 +6,13 @@ type Props = {
   }
 }
 
-type myInfTypes = {
-  id: string,
-  name: string,
-  userIcon: string,
-  userProfile: string
-}
-
 const getMyData = async(userId:string) => {
   try{
         const myPageRes = await fetch(`http://localhost:3000/api/mypage/readProfile/${userId}`,{
           cache: "no-store"
         })
         const myPageData = await myPageRes.json()
-        const myPageInf:myInfTypes = myPageData.myInf
+        const myPageInf = myPageData.myInf
         return myPageInf
       }catch(error) {
         console.error(error)
@@ -55,7 +48,7 @@ export default async function ReadMyPage ({params}: Props){
 
   return(
     <>
-      {/* <Form myPageInf={myPageInf} myPagePost={myPagePost}/> */}
+      <Form myPageInf={myPageInf} myPagePost={myPagePost}/>
     </>
   )
 }
