@@ -20,6 +20,9 @@ header {
   background-color: #66c7d9;
   color: #ffffff;
   width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 500;
 }
 .headerLogo{
   color: white;
@@ -30,6 +33,9 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
+}
+.logoSub {
+  font-size: 14px;
 }
 .headerRight {
   text-align: right;
@@ -50,9 +56,9 @@ header {
   padding: 0;
 }
 
-@media screen and (max-width: 720px) {
+@media screen and (max-width: 640px) {
   .headerLogo{
-    font-size: 36px;
+    font-size: 28px;
     position: relative;
   }
   .headerLogo a {
@@ -62,15 +68,15 @@ header {
   .headerContainer {
     padding: 10px 10px;
   }
-  .logoSub {
+  p.logoSub {
     display: none;
   }
   .headerRight p {
-    font-size: 14px;
+    font-size: 12px;
   }
   .headerRight a {
     margin-left: 14px;
-    font-size: 14px;
+    font-size: 12px;
   }
   .loginNav {
     gap: 5px;
@@ -101,9 +107,12 @@ footer {
 
 /* header, footerを除くbody */
 .mainContainer {
-  padding-top: 20px;
-  padding-bottom: 40px;
-  /* background-color: #C5D3D4; */
+  padding-top: 120px;
+}
+@media screen and (max-width: 640px) {
+  .mainContainer {
+    padding-top: 80px;
+  }
 }
 
 
@@ -111,6 +120,7 @@ footer {
 .LoadingContainer{
   width: 100%;
   height: 100%;
+  padding-top: 100px;
 }
 .LadingContent{
   width: 250px;
@@ -201,27 +211,104 @@ footer {
 
 
 /* 一覧画面(/page.tsx) */
-.createdDay {
+.allItemsContainer {
+  background:
+    linear-gradient(to top, rgba(0, 225, 255, 0.099), rgba(246, 192, 255, 0.112)),
+    linear-gradient(to right, rgba(0, 225, 255, 0.099), rgba(246, 192, 255, 0.112));
+  padding-bottom: 40px;
+  min-height: 80vh;
+}
+.supInf p{
   font-size: 14px;
-  margin-top: 10px;
+  color: #606060;
 }
-/* 検索・並び替え・カテゴリ */
-.searchCard {
+.createdDay {
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+.categoryIcon {
+  width: fit-content;
+  margin-bottom: 5px;
+  border: 1px solid #a1a1a1;
+  border-radius: 3px;
+  padding: 0 5px;
+  font-size: 12px;
+}
+  /* ソートボタン */
+.sortBtn {
   position: fixed;
-  z-index: 1000;
-  right: 10px;
-  bottom: 50px;
-  background-color: #f06543;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
-  border-radius: 15px;
+  z-index: 300;
+  top: 130px;
+  left: 10px;
 }
-@media screen and (max-width: 720px) {
-  .searchIcon {
-    display: none;
-    color: #fff;
+@media screen and (max-width: 640) {
+  .sortBtn{
+    top: 90px;
   }
 }
+.sortBtn button {
+  border: none;
+  background-color: rgba(255, 255, 255, 7.5);
+  /* color: rgb(245, 128, 146); */
+  color: #A1A1A1;
+}
+.toolBoxContainer {
+  position: fixed;
+  z-index: 200;
+  max-width: 350px;
+  left:10px;
+}
+.toolBoxContent {
+  padding: 20px;
+}
+.toolBoxContent p{
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.toolBoxClear {
+  display: flex;
+  justify-content: end;
+  margin-bottom: 40px;
+}
+.toolBoxClear button{
+  background-color: rgba(255, 255, 255, 0);
+  border: none;
+  color: #626161;
+}
+.toolBoxClear button:hover{
+  color: #000
+}
+.toolBoxSearch {
+  margin-bottom: 40px;
+}
+.toolBoxSearch input{
+  width: 250px;
+  font-size: 16px;
+}
+.toolBoxSearch button{
+  border: none;
+  background-color: rgba(255, 255, 255, 0);
+  margin-top:10px;
+}
 
+/* 検索結果が1つもない時 */
+.noPost {
+  width: fit-content;
+  height: 80vh;
+}
+.noPost p{
+  margin-top: 40px;
+}
+.noPost button {
+  margin: 30px 40px;
+  background-color: rgba(0,0,0,0);
+  border: none;
+  color: #A1A1A1;
+}
+.noPost button:hover {
+  color: #000;
+}
 
 /* １投稿表示 */
 /* 雑誌風記事(app/post/readsingle/page.tsx) */
@@ -238,7 +325,12 @@ footer {
 .singlePostContent {
   max-width: 600px;
   min-width: 350px;
-  margin: 0 30px;
+  margin: 80px 30px 0 30px;
+}
+@media screen and (max-width: 640px) {
+  .singlePostContent {
+    margin: 60px 30px 0 30px;
+  }
 }
 /* ロケーション */
 .locationContainer {
@@ -264,7 +356,7 @@ footer {
   }
 }
 .googleMapContainer {
-  width: 600px;
+  width: 540px;
   height: 350px;
   background-color: #66c7d9;
 }
@@ -273,14 +365,14 @@ footer {
 }
 /* (app/components/googleMap.tsx) */
 .googleMapContainer {
-  width: 600px;
+  width: 540px;
   height: 350px;
 }
 /* コメント */
 .commentLabel{
   font-size: 32px;
   font-weight: 500;
-  margin-bottom: 60px;
+  margin-bottom: 30px;
 }
 @media screen and (max-width: 640px) {
   .googleMapContainer {
@@ -313,13 +405,8 @@ footer {
   max-width: 600px;
   display: inline-flex;
   gap: 40px;
-  margin-top: 60px;
-  margin-bottom: 80px;
-}
-@media screen and (max-width: 640px) {
-  .commentCreateForm {
-    margin-bottom: 100px;
-  }
+  margin-top: 0px;
+  margin-bottom: 40px;
 }
 .commentCreateForm textarea {
   border: none;
@@ -364,7 +451,7 @@ footer {
 .back {
   display: flex;
   justify-self: center;
-  margin: 60px 0;
+  margin: 140px 0 60px 0;
 }
 .editDeleteContainer {
   display: flex;
@@ -439,7 +526,7 @@ footer {
 }
 /* 画像 */
 .sectionImageContainer{
-  width: 600px;
+  width: 540px;
   height: 350px;
   overflow: hidden;
   background-color: #b1f1fc8b;
@@ -474,10 +561,16 @@ footer {
 .authContainer {
   min-height: 700px;
   height: 100vh;
+  margin-top: 150px;
+}
+@media screen and (max-width:640px) {
+  .authContainer {
+    margin-top: 110px;
+  }
 }
 .authContent {
   margin: 50px auto;
-  width: 350px;
+  max-width: 350px;
   padding-bottom: 30px;
 }
 .authContent h2{
@@ -509,6 +602,7 @@ footer {
 .profileContainer {
   min-height: 700px;
   height: 100vh;
+  margin-top: 170px;
 }
 .profileContent {
   margin: 50px auto;
@@ -538,37 +632,44 @@ footer {
 /* 投稿作成画面 create.tsx */
 .createContainer {
   width: 100%;
-  height: 100%;
-  margin-top: 114px;
+  padding-top: 114px;
 }
 @media screen and (max-width: 640px) {
   .createContainer{
-    padding: 0 15px;
-    margin-top: 60px;
+    padding: 40px 15px 0 15px;
   }
 }
 .createContent {
-  max-width: 600px;
   min-width: 350px;
-  margin: 0 auto;
+  max-width: 600px;
+  margin: 80px auto 0 auto;
 }
 .createContent input:not(.selectImageBox), textarea{
   background-color: #f0664315;
   padding: 10px;
 }
-.createContent h1 {
+.createTitle {
+  min-width: 350px;
+  max-width: 600px;
+  margin: 60px auto 0 auto;
+}
+.createTitle h1 {
   font-size: 32px;
   font-weight: 500;
   margin-bottom: 20px;
 }
 @media screen and (max-width: 640px) {
+  .createTitle {
+    margin: 80px auto 0 auto;
+  }
   .createContent {
-  max-width: 350px;
-  min-width: 300px;
-  margin: 0 auto;
-}
-  .createContent h1{
+    max-width: 350px;
+    min-width: 300px;
+    margin: 60px auto;
+  }
+  .createTitle h1{
     font-size: 20px;
+    margin-bottom:20px;
   }
 }
 .postElement {
@@ -579,7 +680,7 @@ footer {
   .postElement {
   margin-top: 50px;
   margin-bottom: 10px;
-}
+  }
 }
 .title input {
   border: none;
@@ -637,7 +738,7 @@ footer {
   display: none;
 }
 .previewImageContainer {
-  max-width: 600px;
+  max-width: 540px;
   min-width: 300px;
   height: 350px;
   overflow: hidden;
@@ -668,7 +769,6 @@ footer {
     margin: 0 auto;
   }
 }
-
 .selectImageBtn p {
   width: fit-content;
   margin: auto;
@@ -748,8 +848,14 @@ footer {
   background-color: #66c7d9;
 }
 
+/* 投稿プレビューページ */
+/* (/post/createPreview/page.tsx) */
+.createPreviewLayout{
+  padding-top:40px;
+}
+
 /* 削除ページ */
-/* /delete/[id]/pages.tsx */
+/* (/delete/[id]/page.tsx) */
 .deleteConfirmMsg h1 {
   font-size: 26px;
   margin-bottom: 5px;
@@ -757,7 +863,7 @@ footer {
 }
 .deleteConfirmMsg p {
   font-size: 18px;
-  margin-bottom: 20px;
+  margin-bottom: 60px;
   font-weight: 700;
   color: red;
 }
@@ -775,14 +881,21 @@ footer {
 }
 
 
-/* マイページ  (/app/user/myPage.tsx)*/
-.myPageContainer {
+/* マイページ  (/app/myPage/readMyPage.tsx)*/
+/* .myPageContainer {
   background-image: url(/backgroundImage/blob-scene-haikei.png);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
   padding: 40px 0;
   margin-bottom: 100px;
+  margin-top: 100px;
+}
+@media screen and (max-width:640px) {
+  .myPageContainer {
+    margin-top: 70px;
+    padding: 40px 20px;
+  }
 }
 .myPageImgContainer {
   width: 200px;
@@ -807,27 +920,27 @@ footer {
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 .myPageTextContainer {
-  max-width: 500px;
-  min-width: 320px;
+  width: 80%;
   margin: 0 auto;
 }
 .myPageTextContainer p {
   width: fit-content;
   margin: 10px auto;
+  color:#737373;
 }
 .myPageTextContainer p:nth-child(1) {
   font-weight: bold;
-  font-size: 26px;
+  font-size: 20px;
 }
 .myPageTextContainer p:nth-child(2) {
-  font-size: 20px;
+  font-size: 14px;
 }
 .editIconContainer{
   display: flex;
   justify-content: end;
   color: #5a8c68;
   font-size: 20px;
-}
+} */
 /* (app/components/postList.tsx) */
 .shareWordShare {
   font-size: 18px;
