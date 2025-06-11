@@ -12,6 +12,7 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import LogoutIcon from '@mui/icons-material/Logout';
 import Link from 'next/link';
 import MenuIcon from '@mui/icons-material/Menu';
+import WidgetsIcon from '@mui/icons-material/Widgets';
 
 type Props = {
   loginUserName: string,
@@ -83,7 +84,7 @@ export default function CustomizedMenus({loginUserName, loginUserId}:Props) {
         onClick={handleClick}
         sx={{backgroundColor:"transparent", mt:"10px"}}
       >
-        <MenuIcon />
+        <WidgetsIcon />
       </Button>
       <StyledMenu
         id="demo-customized-menu"

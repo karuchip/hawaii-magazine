@@ -117,7 +117,7 @@ const UpdateItem = (props:any) => {
         <>
         {/* タイトル部分 */}
           <div className="createContainer">
-            <div className="createTitle createContent">
+            <div className="createTitle">
               <h1>記事を編集する</h1>
             </div>
             <div className="horizontalLineLight create"><span></span></div>

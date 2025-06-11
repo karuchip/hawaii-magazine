@@ -60,13 +60,22 @@ const Comment = ({postId}:{postId:number}) => {
   return (
     <>
       <>
+        {loginUserId && (
+          <CommentCreate
+            loginUserId={loginUserId}
+            postId={postId}
+            onCommentCreated = {handleCommentCreated}
+          />
+        )}
+      </>
 
+      <>
         {allComments?.map(comment => (
           <div key={comment.createdAt.toString()}>
             <div className="commentContent">
-              <Link href={`/mypage/readmypage/${comment.user.id}`}>
+              {/* <Link href={`/mypage/readmypage/${comment.user.id}`}> */}
                 <Avatar src={comment.user.userIcon} alt={comment.user.name} />
-              </Link>
+              {/* </Link> */}
               <p>{comment.comment}</p>
             </div>
             <div className="horizontalLineLight"><span></span></div>
@@ -78,15 +87,6 @@ const Comment = ({postId}:{postId:number}) => {
             <p>コメントがありません</p>
             <div className="horizontalLineMedium"><span></span></div>
           </div>
-        )}
-      </>
-      <>
-        {loginUserId && (
-          <CommentCreate
-            loginUserId={loginUserId}
-            postId={postId}
-            onCommentCreated = {handleCommentCreated}
-          />
         )}
       </>
     </>

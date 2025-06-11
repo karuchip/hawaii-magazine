@@ -31,11 +31,11 @@ const SinglePostLayout = ({singleItem}:{singleItem: AllItemTypes}) => {
         <div className="horizontalLineLight"><span></span></div>
         <div className="headInf">
           <div className="headInfUser">
-            {/* <Link href={`/mypage/readmypage/${singleItem.author.id}`}> */}
+            <Link href={`/readmypage/${singleItem.author.id}`}>
               {singleItem.author.userIcon && singleItem.author.name &&(
                 <Avatar src={singleItem.author.userIcon} alt={singleItem.author.name} />
               )}
-            {/* </Link> */}
+            </Link>
             <p className="en">by {singleItem.author.name}</p>
           </div>
           <time className="en headInfCreatedAt">{createdAtFormatted}</time>
