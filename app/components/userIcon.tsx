@@ -9,7 +9,7 @@ const UserIcon = () => {
 
   const handleClick = () => {
     if(loginUserId) {
-      router.push(`/mypage/readmypage/${loginUserId}`)
+      router.push(`/readmypage/${loginUserId}`)
 
     } else {
       alert("ログイン情報が取得できませんでした")

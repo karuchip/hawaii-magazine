@@ -41,9 +41,7 @@ export default async function ReadMyPage ({params}: Props){
     return null
   }
   const myPageInf = await getMyData(userId)
-  console.log(myPageInf);
   const myPagePost = await getMyPost(userId)
-  console.log(myPagePost);
 
 
   return(
