@@ -372,7 +372,6 @@ footer {
 .commentLabel{
   font-size: 32px;
   font-weight: 500;
-  margin-bottom: 30px;
 }
 @media screen and (max-width: 640px) {
   .googleMapContainer {
@@ -469,7 +468,7 @@ footer {
 /* 記事整形(app/components/singlePostLayout.tsx) */
 /* 記事ヘッドパート */
 .horizontalLineLight{
-  border-bottom: 1px solid #A3A3A3;
+  border-bottom: 1px solid #A1A1A1;
   width: 100%;
 }
 .headContent {
@@ -538,7 +537,7 @@ footer {
 }
 .sectionImageDescription{
   margin-top: 32px;
-  margin-bottom: 60px;
+  margin-bottom: 100px;
   font-size: 18px;
 }
 @media screen and (max-width: 640px) {
@@ -599,7 +598,7 @@ footer {
 
 
 /* プロフィール編集画面 (/app/mypage/editmypage.tsx)*/
-.profileContainer {
+/* .profileContainer {
   min-height: 700px;
   height: 100vh;
   margin-top: 170px;
@@ -626,7 +625,7 @@ footer {
 .iconP {
   margin-top: 30px;
 }
-
+ */
 
 
 /* 投稿作成画面 create.tsx */
@@ -880,79 +879,114 @@ footer {
   margin: 20px 0;
 }
 
-
-/* マイページ  (/app/myPage/readMyPage.tsx)*/
-/* .myPageContainer {
-  background-image: url(/backgroundImage/blob-scene-haikei.png);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  padding: 40px 0;
-  margin-bottom: 100px;
-  margin-top: 100px;
+/* マイページ (/app/readmypage/form.ts) */
+.myPageContainer {
+  padding: 0 10px;
+  width: 100vw;
 }
-@media screen and (max-width:640px) {
-  .myPageContainer {
-    margin-top: 70px;
-    padding: 40px 20px;
+.myPageContent {
+  width: 600px;
+  margin: 180px auto 60px auto;
+}
+@media screen and (max-width: 640px) {
+  .myPageContent {
+    width: 350px;
+    margin: 120px auto 0 auto;
+  }
+  .myPageContent h1 {
+    font-size: 26px;;
   }
 }
-.myPageImgContainer {
-  width: 200px;
-  height: 200px;
+.profileIconBorder {
+  width: 270px;
+  height: 270px;
+  border: 1px solid #A1A1A1;
+  border-radius: 50%;
+  margin: 60px auto 30px auto;
+}
+.profileIconContainer {
+  width: 250px;
+  height: 250px;
   border-radius: 50%;
   overflow: hidden;
-  margin: 40px auto 20px auto;
+  margin: 9px auto;
 }
-.myPageImgContainer img {
+.profileIconContainer img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: inline-block;
 }
-.myPageContent {
-  max-width: 600px;
-  min-width: 300px;
-  margin: 0 auto;
-  backdrop-filter: blur(4px);
-  background: rgba(255,255,255,0.5);
-  border-radius: 16px;
-  padding: 1.5rem;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+@media screen and (max-width: 640px) {
+  .profileIconBorder {
+    width: 220px;
+    height: 220px;
+  }
+  .profileIconContainer {
+    width: 200px;
+    height: 200px;
+  }
 }
-.myPageTextContainer {
-  width: 80%;
-  margin: 0 auto;
-}
-.myPageTextContainer p {
+.profileName {
   width: fit-content;
-  margin: 10px auto;
-  color:#737373;
-}
-.myPageTextContainer p:nth-child(1) {
-  font-weight: bold;
+  margin: 0 auto;
+  font-weight: 700;
   font-size: 20px;
+  color: #626161;
 }
-.myPageTextContainer p:nth-child(2) {
-  font-size: 14px;
+.profileComment {
+  height: fit-content;
+  width: 500px;
+  margin: 30px auto 100px auto;
+  color: #626161;
+  font-size: 18px;
 }
-.editIconContainer{
+@media screen and (max-width: 640px) {
+  .profileComment {
+    width: 320px;
+    margin: 20px auto 100px auto;
+    font-size: 16px;
+  }
+}
+.myPostContainer {
+  width: 600px;
   display: flex;
-  justify-content: end;
-  color: #5a8c68;
-  font-size: 20px;
-} */
-/* (app/components/postList.tsx) */
-.shareWordShare {
-  font-size: 18px;
-  position: absolute;
-  color: #888;
-  top: 0;
-  left: 0;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding-top: 65px;
 }
-.shareWordPosts {
-  font-size: 18px;
-  position: absolute;
-  bottom: 0;
-  right: -15px;
-  color: #888;
+@media screen and (max-width: 640px) {
+  .myPostContainer {
+    width: 350px;
+    justify-content: center;
+    padding-top: 30px;
+  }
 }
+.myPostContent {
+  width: 280px;
+  height: 280px;
+  border: 0.5px solid #A0A0A0;
+  margin-bottom: 60px;
+  border-radius: 10px;
+  box-shadow: 0 4px 4px rgba(0,0,0,0.25);
+}
+.myPostContent:hover {
+  box-shadow: 0 8px 18px rgba(0,0,0,0.5);
+  opacity: 0.8;
+}
+.myPagePostImg {
+  width: 280px;
+  height: 220px;
+  overflow: hidden;
+  border-radius: 10px 10px 0 0;
+}
+.myPagePostImg img {
+  width: 100%;
+  height: 100%;
+}
+.myPostContent p {
+  font-size: 16px;
+  color: #626161;
+  padding: 10px;
+}
+

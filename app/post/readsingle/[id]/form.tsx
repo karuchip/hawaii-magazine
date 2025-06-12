@@ -60,7 +60,7 @@ const ReadSingleItem = ({singleItem, postId}:Props) => {
       <div>
         <div className="commentContainer">
           <h2 className="commentLabel en">Comments</h2>
-          {/* <div className="horizontalLineMedium"><span></span></div> */}
+          <div className="horizontalLineMedium"><span></span></div>
         </div>
         <Suspense fallback={<div>コメントを読み込み中...</div>}>
           <Comment postId={singleItem.id}/>
