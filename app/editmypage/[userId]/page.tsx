@@ -1,0 +1,32 @@
+import Form from "./form"
+
+type Props = {
+  params: {
+    userId:string
+  }
+}
+
+const fetchProfile = async(userId: string) => {
+  try {
+    const readRes = await fetch(`http://localhost:3000/api/mypage/readProfile/${userId}`)
+    const readData = await readRes.json()
+    const myInf = readData.myInf
+    return myInf
+  }catch(error) {
+    console.error(error)
+    return null
+  }
+}
+
+export default async function readProfile({params}:Props) {
+  const userId = params.userId
+  const myPageInf = await fetchProfile(userId)
+
+    return (
+      <>
+        <p style={{marginTop:"200px"}}>pageは開けています！！</p>
+        <Form myInf={myPageInf} />
+      </>
+    )
+}
+

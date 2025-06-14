@@ -228,9 +228,10 @@ footer {
 }
 .categoryIcon {
   width: fit-content;
+  margin-top: 10px;
   margin-bottom: 5px;
-  border: 1px solid #a1a1a1;
-  border-radius: 3px;
+  border: 0.5px solid #000;
+  border-radius: 0px;
   padding: 0 5px;
   font-size: 12px;
 }
@@ -681,11 +682,11 @@ footer {
   margin-bottom: 10px;
   }
 }
-.title input {
+.title textarea {
   border: none;
   font-size: 32px;
   width: 100%;
-  padding: 20px;
+  padding: 30px;
   outline: none;
   font-weight: 700;
 }
@@ -893,16 +894,32 @@ footer {
     width: 350px;
     margin: 120px auto 0 auto;
   }
-  .myPageContent h1 {
-    font-size: 26px;;
+  .myPageContent h2 {
+    font-size: 26px;
   }
+}
+.toEditBtnContent {
+  width: 100%;
+  display: flex;
+  justify-content: end;
+}
+.profile a {
+  display: inline-flex;
+  margin: 10px
+}
+.toEditProfile {
+  width: fit-content;
+  color: #66C7D9;
+}
+.toEditProfile:hover {
+  color: #4a96a4;
 }
 .profileIconBorder {
   width: 270px;
   height: 270px;
   border: 1px solid #A1A1A1;
   border-radius: 50%;
-  margin: 60px auto 30px auto;
+  margin: 40px auto 30px auto;
 }
 .profileIconContainer {
   width: 250px;
@@ -936,14 +953,16 @@ footer {
 }
 .profileComment {
   height: fit-content;
-  width: 500px;
+  width: fit-content;
+  max-width: 500px;
   margin: 30px auto 100px auto;
   color: #626161;
   font-size: 18px;
 }
 @media screen and (max-width: 640px) {
   .profileComment {
-    width: 320px;
+    width: fit-content;
+    max-width: 320px;
     margin: 20px auto 100px auto;
     font-size: 16px;
   }
@@ -988,5 +1007,10 @@ footer {
   font-size: 16px;
   color: #626161;
   padding: 10px;
+}
+.noMyPost {
+  width: fit-content;
+  margin: 0 auto;
+  color: #626161;
 }
 

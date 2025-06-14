@@ -245,9 +245,9 @@ const ReadAllItems = () => {
 
                   <CardContent>
                     <div className="supInf">
-                      <p className="categoryIcon">{item.category}</p>
                       <p className="createdDay">{createdAtFormatted}</p>
                       <p><PlaceIcon sx={{fontSize:"14px"}}/> {item.googlePlace}</p>
+                      <p className="categoryIcon">{item.category}</p>
                     </div>
 
                     <div className="likePosition">

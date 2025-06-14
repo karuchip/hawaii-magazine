@@ -4,6 +4,7 @@ import EditDocumentIcon from '@mui/icons-material/EditDocument';
 import Link from "next/link"
 import { AllItemTypes } from "@/utils/types/post"
 import { Typography } from '@mui/material';
+import { useAuthContext } from '@/context/AuthContext';
 
 
 type Props = {
@@ -18,16 +19,26 @@ type Props = {
 
 const ReadMypage = ({myPageInf, myPagePost}:Props) => {
 
+  const {loginUserId} = useAuthContext();
+
   return(
     <div className='myPageContainer'>
       <div className='myPageContent'>
         <div className='profileContent'>
-          <Typography variant="h1" sx={{ fontFamily: '"Kaushan Script", cursive', fontSize:32, color:"#626161", mb:2}}>
+          <Typography variant="h2" sx={{ fontFamily: '"Kaushan Script", cursive', fontSize:32, color:"#626161", mb:2}}>
             Profile
           </Typography>
           <div className="horizontalLineLight"><span></span></div>
 
           <div className='profile'>
+            <div className='toEditBtnContent'>
+              {loginUserId && myPageInf.id === loginUserId &&(
+                <Link href={`/editmypage/${myPageInf.id}`}>
+                  <div className='toEditProfile'><EditDocumentIcon /><span>edit</span></div>
+                </Link>
+              )}
+            </div>
+
             <div className='profileIconBorder'>
               <div className='profileIconContainer'>
                 <img src={myPageInf.userIcon} />
@@ -39,23 +50,30 @@ const ReadMypage = ({myPageInf, myPagePost}:Props) => {
         </div>
 
         <div>
-          <Typography variant="h1" sx={{ fontFamily: '"Kaushan Script", cursive', fontSize:32, color:"#626161", mb:2}}>
+          <Typography variant="h2" sx={{ fontFamily: '"Kaushan Script", cursive', fontSize:32, color:"#626161", mb:2}}>
             myArticles
           </Typography>
           <div className="horizontalLineLight"><span></span></div>
           <div className='myPostContainer'>
-            {myPagePost.map((item) => (
-              <div key={item.id} className='myPostContent'>
-                <Link href={`/post/readsingle/${item.id}`}>
-                  {item.image1 && (
-                    <div className='myPagePostImg'>
-                      <img src={item.image1} />
-                    </div>
-                  )}
-                  <p>{item.title}</p>
-                </Link>
-              </div>
-            ))}
+            {myPagePost.length > 0
+              ? (
+                myPagePost.map((item) => (
+                  <div key={item.id} className='myPostContent'>
+                    <Link href={`/post/readsingle/${item.id}`}>
+                      {item.image1 && (
+                        <div className='myPagePostImg'>
+                          <img src={item.image1} />
+                        </div>
+                      )}
+                      <p>{item.title}</p>
+                    </Link>
+                  </div>
+                )
+              ))
+            :(
+              <p className='noMyPost'>投稿がありません</p>
+            )
+          }
           </div>
         </div>
       </div>

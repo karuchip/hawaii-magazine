@@ -27,6 +27,7 @@ export const config = {
     "/api/post/create",
     "/api/post/update/:path",
     "/api/post/delete/:path",
+    "/api/mypage/updateUserProfile/:path",
     // "/api/user/logout/:path",
     // "/api/user/mypage/:path",
     // "/api/user/mypost/:path",
