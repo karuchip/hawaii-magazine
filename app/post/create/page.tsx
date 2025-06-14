@@ -137,8 +137,7 @@ const CreateItem = () => {
               <div className="title">
                 <p className="postElement"># タイトル</p>
 
-                <input
-                  type="text"
+                <textarea
                   placeholder="| ここにタイトルを入力してください"
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}

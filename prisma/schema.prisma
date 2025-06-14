@@ -31,7 +31,7 @@ model Post {
   id        Int        @id @default(autoincrement())
   createdAt  DateTime   @default(now()) @map("createAt")
   updatedAt  DateTime   @updatedAt      @map("updateAt")
-  title     String     @db.VarChar(30)
+  title     String     @db.VarChar(40)
   image1     String?
   description1   String? @map("content")
   image2     String?

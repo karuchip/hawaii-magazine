@@ -10,16 +10,17 @@ type Body = {
 }
 
 export async function PUT(request: NextRequest) {
+  console.log("api発動中")
   const body = await request.json() as Body
 
   const url = new URL(request.url)
   const segments = url.pathname.split("/")
-  const loginUserId = segments[segments.length - 1]
+  const userId = segments[segments.length - 1]
 
-  if (!loginUserId || isNaN(Number(loginUserId))) {
+  if (!userId || isNaN(Number(userId))) {
     return NextResponse.json({message: "idが不正です"}, {status:400})
   }
-  const id = Number(loginUserId)
+  const id = Number(userId)
 
   try{
 

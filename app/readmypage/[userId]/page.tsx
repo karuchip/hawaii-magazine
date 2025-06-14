@@ -6,7 +6,7 @@ type Props = {
   }
 }
 
-const getMyData = async(userId:string) => {
+ const getMyData = async(userId:string) => {
   try{
         const myPageRes = await fetch(`http://localhost:3000/api/mypage/readProfile/${userId}`,{
           cache: "no-store"

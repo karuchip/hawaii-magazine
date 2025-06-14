@@ -105,7 +105,7 @@ export default function CustomizedMenus({loginUserName, loginUserId}:Props) {
           </Link>
         </MenuItem>
         <MenuItem disableRipple>
-          <Link href={`/mypage/readmypage/${loginUserId}`}>
+          <Link href={`/readmypage/${loginUserId}`}>
             <FileCopyIcon />
             マイページ
           </Link>
