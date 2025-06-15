@@ -3,6 +3,7 @@ import { useRouter } from "next/navigation"
 import { useAuthContext } from "@/context/AuthContext"
 import {Card, TextField, Button} from "@mui/material"
 import {useForm} from "react-hook-form"
+import Link from "next/link"
 
 type FormInput = {
   email: string
@@ -64,6 +65,10 @@ const Login = () => {
               className="userFormInput"
               {...register("email", {
                 required: "メールアドレスは必須です",
+                maxLength: {
+                  value: 255,
+                  message: "メールアドレスは255文字以内で入力してください"
+                }
               })}
               error={!!errors.email}
               helperText={errors.email?.message}
@@ -75,7 +80,17 @@ const Login = () => {
               label="パスワード"
               variant="standard"
               className="userFormInput"
-              {...register("password", {required: "パスワードは必須です"})}
+              {...register("password", {
+                required: "パスワードは必須です",
+                minLength: {
+                  value: 8,
+                  message: "パスワードは8文字以上で入力してください"
+                },
+                maxLength: {
+                  value: 100,
+                  message: "パスワードは100文字以内で入力してください"
+                },
+              })}
               error={!!errors.password}
               helperText={errors.password?.message}
               sx={{mb:"30px"}}
@@ -87,6 +102,11 @@ const Login = () => {
             </Button>
           </div>
         </form>
+        <div className="userAuthLink">
+          <Link href={'/user/register'}>
+            ユーザー登録がお済みでない方はこちら
+          </Link>
+        </div>
       </Card>
     </div>
   )

@@ -569,17 +569,17 @@ footer {
   }
 }
 .authContent {
-  margin: 50px auto;
+  margin: 100px auto;
   max-width: 350px;
   padding-bottom: 30px;
 }
 .authContent h2{
   width: fit-content;
-  margin: 30px auto;
+  margin: 30px auto 10px auto;
 }
 .userFormItem {
   width: 70%;
-  margin: 30px auto;
+  margin: 0 auto;
 }
 .authContent input {
   width: 100%;
@@ -594,9 +594,27 @@ footer {
 .userAuthBtn {
   display: flex;
   justify-content: center;
-  margin-top: 40px;
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
-
+.userAuthBtn button{
+  width: 70%;
+}
+.userAuthLink {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+.userAuthLink a {
+  font-size: 12px;
+  color: #4a96a4;
+}
+.userAuthLink a:hover {
+  font-weight: 700;
+}
 
 /* プロフィール編集画面 (/app/mypage/editmypage.tsx)*/
 /* .profileContainer {
