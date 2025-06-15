@@ -57,22 +57,20 @@ const Login = () => {
         <h2>ログイン</h2>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="userFormItem">
-
             <TextField
               label="メールアドレス"
               variant="standard"
               id="standard-basic"
               className="userFormInput"
               {...register("email", {
-                required: "メールアドレスは必須です",
+                required: "必須項目です",
                 maxLength: {
                   value: 255,
-                  message: "メールアドレスは255文字以内で入力してください"
-                }
+                  message: "255文字以内で入力してください"
+                },
               })}
               error={!!errors.email}
               helperText={errors.email?.message}
-              sx={{mb:"30px"}}
             />
           </div>
           <div className="userFormItem">
@@ -81,19 +79,14 @@ const Login = () => {
               variant="standard"
               className="userFormInput"
               {...register("password", {
-                required: "パスワードは必須です",
-                minLength: {
-                  value: 8,
-                  message: "パスワードは8文字以上で入力してください"
-                },
+                required: "必須項目です",
                 maxLength: {
                   value: 100,
-                  message: "パスワードは100文字以内で入力してください"
+                  message: "100文字以内で入力してください"
                 },
               })}
               error={!!errors.password}
               helperText={errors.password?.message}
-              sx={{mb:"30px"}}
             />
           </div>
           <div className="userAuthBtn">
