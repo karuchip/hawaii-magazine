@@ -49,7 +49,7 @@ const PlaceAutocomplete = ({ onSelectPlace, defaultPlace }: Props) => {
         <input
           ref={inputRef}
           type="text"
-          placeholder="場所を検索する"
+          placeholder="場所を検索後、選択してください"
           style={{
             width: "97%",
             height: "50px",

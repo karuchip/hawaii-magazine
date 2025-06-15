@@ -17,11 +17,11 @@ datasource db {
 
 model User {
   id        Int      @id @default(autoincrement())
-  email     String   @unique
-  name      String
-  password  String
+  email     String   @unique @db.VarChar(255)
+  name      String   @db.VarChar(50)
+  password  String   @db.VarChar(100)
   userIcon  String
-  userProfile   String? @db.VarChar(100)
+  userProfile   String? @db.VarChar(300)
   posts     Post[]
   postLikes     PostLikes[]
   postComments  PostComments[]
@@ -33,18 +33,18 @@ model Post {
   updatedAt  DateTime   @updatedAt      @map("updateAt")
   title     String     @db.VarChar(40)
   image1     String?
-  description1   String? @map("content")
+  description1   String? @map("content") @db.VarChar(300)
   image2     String?
-  description2   String?
+  description2   String? @db.VarChar(300)
   image3     String?
-  description3   String?
+  description3   String? @db.VarChar(300)
   image4     String?
-  description4   String?
+  description4   String? @db.VarChar(300)
   image5     String?
-  description5   String?
-  likeCount Int       @default(0)
-  location  String?
-  googlePlace     String?
+  description5   String? @db.VarChar(300)
+  likeCount Int          @default(0)
+  location  String?      @db.VarChar(100)
+  googlePlace    String? @db.VarChar(300)
   lat       Float?
   lon       Float?
   category  String     @default("culture")
