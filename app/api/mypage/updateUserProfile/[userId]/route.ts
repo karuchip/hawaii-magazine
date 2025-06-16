@@ -52,7 +52,7 @@ export async function PUT(request: NextRequest) {
                                 .setExpirationTime("1d")
                                 .sign(secretKey)
 
-        return NextResponse.json({message:"ユーザー編集成功", newToken: token})
+        return NextResponse.json({message:"ユーザー編集成功", newToken: token, updateUser:updateUser})
 
       }else {
         return NextResponse.json({message:"ユーザーが存在しません。"})

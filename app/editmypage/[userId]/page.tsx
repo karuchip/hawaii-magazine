@@ -5,12 +5,19 @@ type Props = {
     userId:string
   }
 }
+type myInfProps = {
+  id: string
+  name: string
+  email: string
+  userIcon: string
+  userProfile?: string
+}
 
 const fetchProfile = async(userId: string) => {
   try {
     const readRes = await fetch(`http://localhost:3000/api/mypage/readProfile/${userId}`)
     const readData = await readRes.json()
-    const myInf = readData.myInf
+    const myInf:myInfProps = readData.myInf
     return myInf
   }catch(error) {
     console.error(error)
@@ -24,7 +31,6 @@ export default async function readProfile({params}:Props) {
 
     return (
       <>
-        <p style={{marginTop:"200px"}}>pageは開けています！！</p>
         <Form myInf={myPageInf} />
       </>
     )
