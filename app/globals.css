@@ -108,6 +108,9 @@ footer {
 /* header, footerを除くbody */
 .mainContainer {
   padding-top: 120px;
+  background:
+    linear-gradient(to top, rgba(0, 225, 255, 0.099), rgba(246, 192, 255, 0.112)),
+    linear-gradient(to right, rgba(0, 225, 255, 0.099), rgba(246, 192, 255, 0.112));
 }
 @media screen and (max-width: 640px) {
   .mainContainer {
@@ -212,9 +215,9 @@ footer {
 
 /* 一覧画面(/page.tsx) */
 .allItemsContainer {
-  background:
+  /* background:
     linear-gradient(to top, rgba(0, 225, 255, 0.099), rgba(246, 192, 255, 0.112)),
-    linear-gradient(to right, rgba(0, 225, 255, 0.099), rgba(246, 192, 255, 0.112));
+    linear-gradient(to right, rgba(0, 225, 255, 0.099), rgba(246, 192, 255, 0.112)); */
   padding-bottom: 40px;
   min-height: 80vh;
 }
@@ -251,7 +254,8 @@ footer {
   border: none;
   background-color: rgba(255, 255, 255, 7.5);
   /* color: rgb(245, 128, 146); */
-  color: #A1A1A1;
+  /* color: #A1A1A1; */
+  color: #ff9dd9;
 }
 .toolBoxContainer {
   position: fixed;
@@ -316,7 +320,7 @@ footer {
 .horizontalLineMedium {
   border-bottom: 1px solid #000000;
   max-width: 600px;
-  min-width: 350px;
+  min-width: 320px;
 }
 .singlePostContainer {
   width: 100%;
@@ -324,12 +328,13 @@ footer {
   justify-content: center;
 }
 .singlePostContent {
-  max-width: 600px;
-  min-width: 350px;
-  margin: 80px 30px 0 30px;
+  width: 600px;
+  margin: 80px 20px 0 20px;
+  padding: 0;
 }
 @media screen and (max-width: 640px) {
   .singlePostContent {
+    width: 320px;
     margin: 60px 30px 0 30px;
   }
 }
@@ -357,7 +362,7 @@ footer {
   }
 }
 .googleMapContainer {
-  width: 540px;
+  width: 600px;
   height: 350px;
   background-color: #66c7d9;
 }
@@ -366,13 +371,16 @@ footer {
 }
 /* (app/components/googleMap.tsx) */
 .googleMapContainer {
-  width: 540px;
+  width: 600px;
   height: 350px;
 }
 /* コメント */
 .commentLabel{
   font-size: 32px;
   font-weight: 500;
+}
+.commentLabel.en {
+  margin: 0;
 }
 @media screen and (max-width: 640px) {
   .googleMapContainer {
@@ -526,7 +534,7 @@ footer {
 }
 /* 画像 */
 .sectionImageContainer{
-  width: 540px;
+  width: 600px;
   height: 350px;
   overflow: hidden;
   background-color: #b1f1fc8b;
@@ -700,7 +708,7 @@ footer {
   border-radius: 20px;
   font-weight: 700;
   font-size: 20px;
-  border: 1px solid #000;
+  border: 1px solid #000000;
 }
 @media screen and (max-width:640px) {
   .profileEditBtn button {
@@ -712,7 +720,11 @@ footer {
   background-color: #A1A1A1;
   color: #fff;
 }
-
+/* エラーメッセージ表示 */
+.inputErrorMsg {
+  font-size: 14px;
+  color: red;
+}
 
 /* 投稿作成画面 create.tsx */
 .createContainer {
@@ -823,7 +835,7 @@ footer {
   display: none;
 }
 .previewImageContainer {
-  max-width: 540px;
+  max-width: 600px;
   min-width: 300px;
   height: 350px;
   overflow: hidden;
