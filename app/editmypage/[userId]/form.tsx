@@ -193,17 +193,18 @@ const EditMyPage: React.FC<Props> = ({myInf}:Props) => {
               <input
                 type="text"
                 {...register("name", {
-                  required:"名前は必須項目です",
+                  required:"入力必須項目です",
                   maxLength: {
                     value: 50,
                     message: "50文字以内で入力してください"
                   },
                   onChange:(e)=>{setNameCount(e.target.value.length)}
                 })}
-                placeholder="名前を入力してください"
+                placeholder="ニックネームを入力してください"
               />
-              {errors.name && errors.name.message}
-
+              {errors.name &&
+                <p className="inputErrorMsg">{errors.name.message}</p>
+              }
               <div className="profileDataCount">
                 <p
                   style={{
@@ -219,15 +220,18 @@ const EditMyPage: React.FC<Props> = ({myInf}:Props) => {
               <p className="profileDataLabel"># 自己紹介</p>
               <textarea
                 {...register("userProfile", {
-                  required: "自己紹介は必須項目です" ,
+                  required: "入力必須項目です" ,
                   maxLength: {
                     value: 300,
                     message: "300文字以内で入力してください"
                   },
                   onChange: (e)=>{setProfileCount(e.target.value.length)}
                 })}
+                placeholder="自己紹介を入力してください"
               />
-              {errors.userProfile && errors.userProfile.message}
+              {errors.userProfile &&
+                <p className="inputErrorMsg">{errors.userProfile.message}</p>
+              }
 
               <div className="profileDataCount">
                 <p
