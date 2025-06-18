@@ -662,7 +662,7 @@ footer {
   margin-top: 40px;
   margin-bottom: 10px;
 }
-.profileDataCount {
+.dataCount {
   font-size: 12px;
   color: #a1a1a1;
   display: flex;
@@ -783,13 +783,14 @@ footer {
   border: none;
   font-size: 32px;
   width: 100%;
-  padding: 30px;
+  padding: 20px;
   outline: none;
   font-weight: 700;
 }
 @media screen and (max-width: 640px) {
-  .title input {
+  .title textarea {
     font-size: 16px;
+    padding: 10px;
   }
 }
 .locationContent input{
@@ -898,10 +899,28 @@ footer {
   font-size: 20px;
   margin-bottom: 20px;
 }
+.imageURLContent {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+}
+.imageURLContent button {
+  background-color: #fff;
+  font-size: 14px;
+  color: #a1a1a1;
+  border: 1px solid #a1a1a1;
+  border-radius: 3px;
+  margin: 5px 0;
+}
+.imageURLContent button:hover {
+  color: #000;
+  border: 1px solid #000;
+}
 .selectImageBox {
-  width: 100%;
+  width: 80%;
   background-color: #fff;
   border: none;
+  font-size: 14px;
 }
 .createSection textarea {
   width: 100%;
@@ -944,6 +963,7 @@ footer {
   color: #fff;
   background-color: #66c7d9;
 }
+
 
 /* 投稿プレビューページ */
 /* (/post/createPreview/page.tsx) */
@@ -1111,3 +1131,20 @@ footer {
   color: #626161;
 }
 
+/* (/components/placeAutocomplete.tsx) */
+.autocompletedPlace {
+  margin-top:20px;
+}
+.autocompletedPlace p:nth-child(1) {
+  font-size: 14px;
+  font-weight: 500;
+  color:#66C7D9;
+}
+.autocompletedPlace p:nth-child(2) {
+  border: 1px solid #66C7D9;
+  border-radius: 10px;
+  min-height: 20px;
+  padding: 20px;
+  margin-top: 5px;
+  color:#66C7D9;
+}

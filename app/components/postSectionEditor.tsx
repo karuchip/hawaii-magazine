@@ -1,6 +1,7 @@
-import {useState} from 'react'
 import ImgInput from "../components/imgInput"
 import { Dispatch, SetStateAction } from 'react'
+import { useEffect } from "react"
+
 
 
 type Section = {
@@ -15,6 +16,8 @@ type Props = {
 
 
 export default function PostSectionEditor({sections, setSections}:Props) {
+
+
 
   const handleAddSection = () => {
     if(sections.length <= 5) {
@@ -35,6 +38,15 @@ export default function PostSectionEditor({sections, setSections}:Props) {
   }
 
 
+  const handleClearPic = (index:number)=> {
+    setSections((prevSections) =>
+      prevSections.map((section, i) =>
+        i === index ? { ...section, image: null} : section
+      )
+    )
+  }
+
+
   return(
     <div>
       {sections.map((section, index) => (
@@ -44,14 +56,17 @@ export default function PostSectionEditor({sections, setSections}:Props) {
             setImage={(value) => handleImageChange(index, value)}
             image={section.image}
           />
-          <input
-            className="selectImageBox"
-            value={sections[index].image ?? ""}
-            onChange={(e) => handleImageChange(index, e.target.files?.[0]?.name ?? null)}
-            type="text"
-            id="createImage"
-            disabled
-          />
+          <div className="imageURLContent">
+            <input
+              className="selectImageBox"
+              value={sections[index].image ?? ""}
+              onChange={(e) => handleImageChange(index, e.target.files?.[0]?.name ?? null)}
+              type="text"
+              id="createImage"
+              disabled
+            />
+            <button onClick={()=>handleClearPic(index)}>画像削除</button>
+          </div>
 
           <textarea
             value={section.description ?? ""}
