@@ -7,33 +7,47 @@ import { useAuthContext } from "@/context/AuthContext"
 //google map auto complete機能
 import PlaceAutocomplete from "../../components/placeAutocomplete"
 //MUI
-import {Button, TextField} from "@mui/material"
+import {Button} from "@mui/material"
 //カテゴリー配列
 import {categoryList, Category} from "../../components/categoryButton"
-//Image
-import Image from "next/image"
 import { usePostContext } from "@/context/PostContext"
 import PostSectionEditor from "../../components/postSectionEditor"
+import { useForm} from "react-hook-form"
 
 type Section = {
   image: string | null;
   description: string;
 }
 
+type FormValues = {
+  category: string;
+  title: string;
+  location: string;
+}
+
 const CreateItem = () => {
 
   const [sections, setSections] = useState<Section[]>([{image:null, description: ''}])
-
-  const [title, setTitle] = useState("")
-  const [location, setLocation] = useState<string|null>(null)
+  const [section1Filled, setSection1Filled]=useState(false)
   const [googlePlace, setGooglePlace] = useState<string|null>(null)
-  const [category, setCategory] = useState("")
   const [lat, setLat] = useState<number | null>(null)
   const [lng, setLng] = useState<number | null>(null)
+
+  //文字数カウント
+  const [titleCount, setTitleCount] = useState(0)
+  const [locationCount, setLocationCount] = useState(0)
 
   const router = useRouter()
   const {postData, setPostData} = usePostContext()
   const {loginUserEmail, loginUserId} = useAuthContext()
+
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    getValues,
+    formState: {errors},
+  } = useForm<FormValues>({})
 
   const handleSelectPlace = (lat: number, lng: number, name:string) => {
     setLat(isNaN(lat) ? null : lat)
@@ -41,7 +55,7 @@ const CreateItem = () => {
     setGooglePlace(name)
 }
 
-  //preview.tsxからの遷移時(「戻る」ボタン押下時)
+  //preview.tsxからの遷移時(プレビュー画面にて「戻る」ボタン押下時)
   useEffect(()=> {
     const imageDescriptions = [];
     if(postData) {
@@ -59,10 +73,10 @@ const CreateItem = () => {
         imageDescriptions.push({ image: null, description: "" });
       }
       setSections(imageDescriptions)
+      setValue("title",postData.title);
+      setValue("category", postData.category)
+      setValue("location", postData.location || "")
 
-      setTitle(postData.title);
-      setCategory(postData.category);
-      setLocation(postData.location);
       setGooglePlace(postData.googlePlace);
       setLat(postData.lat);
       setLng(postData.lon);
@@ -70,10 +84,11 @@ const CreateItem = () => {
   }, [postData])
 
   // プレビューボタン押下時
-  const handlePreview = () => {
+  const onSubmit = (data:FormValues) => {
+
 
     setPostData({
-      title,
+      title: data.title,
       image1: sections[0]?.image ?? null,
       image2: sections[1]?.image ?? null,
       image3: sections[2]?.image ?? null,
@@ -84,8 +99,8 @@ const CreateItem = () => {
       description3: sections[2]?.description ?? "",
       description4: sections[3]?.description ?? "",
       description5: sections[4]?.description ?? "",
-      category,
-      location,
+      category: data.category,
+      location: data.location,
       googlePlace,
       lat,
       lon:lng,
@@ -93,6 +108,10 @@ const CreateItem = () => {
 
     router.push('/post/createPreview')
   }
+
+  useEffect(()=> {
+    register("category", {required: "カテゴリを選択してください"})
+  },[register])
 
 
   //loginUserId にトークン解析から取得したidがある場合にのみreturn
@@ -117,20 +136,21 @@ const CreateItem = () => {
                 <p className="postElement"># カテゴリー選択</p>
                 {categoryList.slice(1).map((cat:Category) => (
                   <Button
-                  key={cat.value}
-                  variant={category === cat.value ? "contained" : "outlined"}
-                  onClick={() => setCategory(cat.value)}
-                  sx={{
-                    backgroundColor: category === cat.value ? cat.color : "transparent",
-                    color: category === cat.value ? "white" : "black",
-                    borderRadius: "20px",
-                    textTransform: "none",
-                    margin: "4px"
-                  }}
+                    key={cat.value}
+                    variant={getValues("category") === cat.value ? "contained" : "outlined"}
+                    onClick={() => setValue("category", cat.value, {shouldValidate: true})}
+                    sx={{
+                      backgroundColor: getValues("category") === cat.value ? cat.color : "transparent",
+                      color: getValues("category") === cat.value ? "white" : "black",
+                      borderRadius: "20px",
+                      textTransform: "none",
+                      margin: "4px"
+                    }}
                   >
-                      {cat.label}
+                    {cat.label}
                   </Button>
                 ))}
+                {errors.category && <p className="inputErrorMsg">カテゴリを選択してください</p>}
               </div>
 
               {/* タイトル入力 */}
@@ -139,9 +159,26 @@ const CreateItem = () => {
 
                 <textarea
                   placeholder="| ここにタイトルを入力してください"
-                  value={title}
-                  onChange={(e) => setTitle(e.target.value)}
+                  {...register("title", {
+                    required: "タイトルは必須です",
+                    maxLength: {
+                      value: 40,
+                      message: "タイトルは40文字以内で入力してください"
+                    },
+                    onChange: (e)=>{setTitleCount(e.target.value.length)}
+                  })}
                 />
+                {errors.title && <p className="inputErrorMsg">{errors.title.message}</p>}
+
+                <div className="dataCount">
+                  <p
+                  style={{
+                    color: titleCount > 40 ? "#FF0000" : "#A1A1A1"
+                  }}
+                  >
+                    {titleCount}/40
+                  </p>
+                </div>
               </div>
 
               {/* 記事セクション作成 */}
@@ -154,7 +191,29 @@ const CreateItem = () => {
               <div>
                 <div className="locationContent">
                   <p className="postElement"># 場所</p>
-                  <input type="text" value={location ?? ""} onChange={(e)=>setLocation(e.target.value)} placeholder="| ここに場所名を入力してください" />
+                  <input
+                    placeholder="| ここに場所名を入力してください"
+                    {...register("location", {
+                      required: "場所は必須です",
+                      maxLength: {
+                        value: 100,
+                        message: "場所は100文字以内で入力してください"
+                      },
+                      onChange: (e)=>{setLocationCount(e.target.value.length)}
+                    })}
+                    style={{fontSize: "16px"}}
+                  />
+                  {errors.location && <p className="inputErrorMsg">{errors.location.message}</p>}
+
+                  <div className="dataCount">
+                    <p
+                    style={{
+                      color: locationCount > 100 ? "#FF0000" : "#A1A1A1"
+                    }}
+                    >
+                      {locationCount}/100
+                    </p>
+                  </div>
                 </div>
 
                 <details open  className="addGoogleMap">
@@ -172,7 +231,7 @@ const CreateItem = () => {
           {/* 送信ボタン */}
           <div>
             <div className="toPreviewBtn">
-              <button type="button" onClick={handlePreview}>プレビューを確認する</button>
+              <button type="button" onClick={handleSubmit(onSubmit)}>プレビューを確認する</button>
             </div>
           </div>
         </div>

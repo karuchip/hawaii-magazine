@@ -13,6 +13,8 @@ type FormInput = {
   password: string;
 }
 
+
+
 const Register = () => {
   const {setLoginUserId, setLoginUserName, setLoginUserEmail, setLoginUserIcon} = useAuthContext()
   const router = useRouter()

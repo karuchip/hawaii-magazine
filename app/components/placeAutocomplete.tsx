@@ -1,7 +1,6 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
-import Script from "next/script" // ← 追加！
 
 type Props = {
   onSelectPlace: (lat: number, lng: number, placeName: string) => void,
@@ -49,20 +48,21 @@ const PlaceAutocomplete = ({ onSelectPlace, defaultPlace }: Props) => {
         <input
           ref={inputRef}
           type="text"
-          placeholder="場所を検索後、選択してください"
+          placeholder="場所を検索後、プルダウンより選択してください"
           style={{
             width: "97%",
             height: "50px",
             marginTop:"10px",
             border: "none",
             borderBottom: "1px solid #A1A1A1",
-            fontSize: "18px",
+            fontSize: "16px",
             outline: "none"
             }}
-          value={place ?? ""}
-          onChange={(e) => setPlace(e.target.value)}
-
         />
+        <div className="autocompletedPlace">
+          <p>選択した住所:</p>
+          <p>{place || "選択していません"}</p>
+        </div>
       </div>
     </>
   )

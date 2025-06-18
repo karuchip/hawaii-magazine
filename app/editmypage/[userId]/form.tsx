@@ -233,7 +233,7 @@ const EditMyPage: React.FC<Props> = ({myInf}:Props) => {
                 <p className="inputErrorMsg">{errors.userProfile.message}</p>
               }
 
-              <div className="profileDataCount">
+              <div className="dataCount">
                 <p
                 style={{
                   color: profileCount > 300 ? "#FF0000" : "#A1A1A1"

@@ -53,10 +53,14 @@ const SinglePostLayout = ({singleItem}:{singleItem: AllItemTypes}) => {
 
         {imageDescriptions.map((item, index) => (
           <div className="sectionImage" key={index}>
-            <div className="sectionImageContainer">
-              <img alt="画像" src={item.image}/>
-            </div>
-            <p className="sectionImageDescription">{item.description}</p>
+            {item.image && (
+              <div className="sectionImageContainer">
+                <img alt="画像" src={item.image}/>
+              </div>
+            )}
+            {item.description && (
+              <p className="sectionImageDescription">{item.description}</p>
+            )}
           </div>
         ))}
       </section>
