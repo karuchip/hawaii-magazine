@@ -28,7 +28,6 @@ type FormValues = {
 const CreateItem = () => {
 
   const [sections, setSections] = useState<Section[]>([{image:null, description: ''}])
-  const [section1Filled, setSection1Filled]=useState(false)
   const [googlePlace, setGooglePlace] = useState<string|null>(null)
   const [lat, setLat] = useState<number | null>(null)
   const [lng, setLng] = useState<number | null>(null)
@@ -86,6 +85,14 @@ const CreateItem = () => {
   // プレビューボタン押下時
   const onSubmit = (data:FormValues) => {
 
+    if(sections[0].image === null){
+      alert("セクション1の画像は入力必須項目です")
+      return;
+    }
+    if(sections[0].description === "" || null){
+      alert("セクション1の記事説明は入力必須項目です")
+      return;
+    }
 
     setPostData({
       title: data.title,
