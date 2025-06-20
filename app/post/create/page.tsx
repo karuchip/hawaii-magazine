@@ -37,7 +37,7 @@ const CreateItem = () => {
   const [locationCount, setLocationCount] = useState(0)
 
   const router = useRouter()
-  const {postData, setPostData} = usePostContext()
+  const {postData, setPostData, resetPostData} = usePostContext()
   const {loginUserEmail, loginUserId} = useAuthContext()
 
   const {
@@ -52,47 +52,56 @@ const CreateItem = () => {
     setLat(isNaN(lat) ? null : lat)
     setLng(isNaN(lng) ? null : lng)
     setGooglePlace(name)
-}
+  }
 
   //preview.tsxからの遷移時(プレビュー画面にて「戻る」ボタン押下時)
   useEffect(()=> {
-    const imageDescriptions = [];
-    if(postData) {
-      for (let i=1; i<=5; i++) {
-        const image = postData[`image${i}` as keyof typeof postData] as string | null;
-        const rawDescription = postData[`description${i}` as keyof typeof postData] as string;
-        const description = rawDescription ?? ""
+    const fromPreview = sessionStorage.getItem("fromPreview")
 
-        if(image || description) {
-          imageDescriptions.push({image, description})
+    //画面開いた時contextを削除(previewからの遷移を除く)
+    if (fromPreview !== "true") {
+      resetPostData()
+
+    }else {
+      const imageDescriptions = [];
+      if(postData) {
+        for (let i=1; i<=5; i++) {
+          const image = postData[`image${i}` as keyof typeof postData] as string | null;
+          const rawDescription = postData[`description${i}` as keyof typeof postData] as string;
+          const description = rawDescription ?? ""
+
+          if(image || description) {
+            imageDescriptions.push({image, description})
+          }
         }
-      }
 
-      if (imageDescriptions.length === 0) {
-        imageDescriptions.push({ image: null, description: "" });
-      }
-      setSections(imageDescriptions)
-      setValue("title",postData.title);
-      setValue("category", postData.category)
-      setValue("location", postData.location || "")
+        if (imageDescriptions.length === 0) {
+          imageDescriptions.push({ image: null, description: "" });
+        }
+        setSections(imageDescriptions)
+        setValue("title",postData.title);
+        setValue("category", postData.category)
+        setValue("location", postData.location || "")
 
-      setGooglePlace(postData.googlePlace);
-      setLat(postData.lat);
-      setLng(postData.lon);
+        setGooglePlace(postData.googlePlace);
+        setLat(postData.lat);
+        setLng(postData.lon);
+      }
     }
-  }, [postData])
+    sessionStorage.removeItem("fromPreview")
+  }, [])
 
   // プレビューボタン押下時
   const onSubmit = (data:FormValues) => {
 
-    if(sections[0].image === null){
-      alert("セクション1の画像は入力必須項目です")
-      return;
-    }
-    if(sections[0].description === "" || null){
-      alert("セクション1の記事説明は入力必須項目です")
-      return;
-    }
+    // if(sections[0].image === null){
+    //   alert("セクション1の画像は入力必須項目です")
+    //   return;
+    // }
+    // if(sections[0].description === "" || null){
+    //   alert("セクション1の記事説明は入力必須項目です")
+    //   return;
+    // }
 
     setPostData({
       title: data.title,

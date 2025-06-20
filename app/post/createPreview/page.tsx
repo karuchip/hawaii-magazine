@@ -3,7 +3,7 @@ import { useAuthContext } from "@/context/AuthContext"
 import { usePostContext } from "@/context/PostContext"
 import {useRouter} from "next/navigation"
 import SinglePostLayout from "@/app/components/singlePostLayout"
-import { Suspense } from "react"
+import { Suspense, useEffect} from "react"
 import { AllItemTypes } from "@/utils/types/post"
 import LikeCount from "@/app/components/likeCount"
 import GoogleMapComponent from "@/app/components/googleMap"
@@ -14,7 +14,7 @@ const PostPreview = () => {
 
   const {postData} = usePostContext()
   const {loginUserId, loginUserName, loginUserIcon} = useAuthContext()
-  const {setPostData} = usePostContext()
+  const {setPostData, resetPostData} = usePostContext()
   const router = useRouter()
 
   const dummyPostData = {
@@ -47,6 +47,9 @@ const PostPreview = () => {
     }
   }
 
+  useEffect(() => {
+    sessionStorage.setItem("fromPreview", "true")
+  }, [])
 
   const handleClick = async(e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
@@ -85,25 +88,7 @@ const PostPreview = () => {
       alert(jsonData.message)
 
       //コンテクストを削除
-      setPostData({
-      title: "",
-      image1: null,
-      image2: null,
-      image3: null,
-      image4: null,
-      image5: null,
-      description1: "",
-      description2: "",
-      description3: "",
-      description4: "",
-      description5: "",
-      category: "",
-      location: null,
-      googlePlace: null,
-      lat: null,
-      lon: null,
-    })
-
+      resetPostData()
 
       router.push("/")
 

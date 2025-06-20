@@ -3,9 +3,7 @@ import { useAuthContext } from "@/context/AuthContext"
 import { usePostContext } from "@/context/PostContext"
 import {useRouter} from "next/navigation"
 import SinglePostLayout from "@/app/components/singlePostLayout"
-import { Suspense } from "react"
-import { AllItemTypes } from "@/utils/types/post"
-import LikeCount from "@/app/components/likeCount"
+import { Suspense, useEffect } from "react"
 import GoogleMapComponent from "@/app/components/googleMap"
 import Link from "next/link"
 import { useParams } from "next/navigation"
@@ -16,7 +14,7 @@ const PostPreview = (Props: any) => {
 
   const {postData} = usePostContext()
   const {loginUserId, loginUserName, loginUserIcon} = useAuthContext()
-  const {setPostData} = usePostContext()
+  const {resetPostData} = usePostContext()
   const router = useRouter()
 
   const dummyPostData = {
@@ -48,6 +46,11 @@ const PostPreview = (Props: any) => {
       userIcon: loginUserIcon
     }
   }
+
+
+  useEffect(() => {
+    sessionStorage.setItem("fromPreview", "true")
+  }, [])
 
 
   //編集formボタンが押下された時の処理
@@ -87,24 +90,7 @@ const PostPreview = (Props: any) => {
       const jsonData = await response.json()
 
       //コンテクストを削除
-      setPostData({
-        title: "",
-        image1: null,
-        image2: null,
-        image3: null,
-        image4: null,
-        image5: null,
-        description1: "",
-        description2: "",
-        description3: "",
-        description4: "",
-        description5: "",
-        category: "",
-        location: null,
-        googlePlace: null,
-        lat: null,
-        lon: null,
-      })
+      resetPostData();
 
       alert(jsonData.message)
       router.push(`/post/readsingle/${params.id}`)
