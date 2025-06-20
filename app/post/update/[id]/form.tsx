@@ -40,7 +40,7 @@ const UpdateItem = ({singleItem} : Props) => {
   //context
   const router = useRouter()
   const {loginUserId} = useAuthContext()
-  const {setPostData} = usePostContext()
+  const {postData, setPostData, resetPostData} = usePostContext()
 
   //文字数カウント
   const [titleCount, setTitleCount] = useState(0)
@@ -56,17 +56,18 @@ const UpdateItem = ({singleItem} : Props) => {
     formState: {errors},
   } = useForm<FormValues>({})
 
+
   // 画面が開いた時にsingleItemのデータを分割してセーブ
   useEffect(() => {
-    const getSectionData = () => {
 
-      if (!singleItem) return
+    const getSectionData = (itemType: AllItemTypes | any) => {
+      if (!itemType) return
 
       // sectionsのセット
       const imageDescriptions = [];
       for (let i=1; i<=5; i++) {
-        const image = singleItem[`image${i}` as keyof AllItemTypes] as string | null;
-        const rawDescription = singleItem[`description${i}` as keyof AllItemTypes] as string;
+        const image = itemType[`image${i}` as keyof AllItemTypes] as string | null;
+        const rawDescription = itemType[`description${i}` as keyof AllItemTypes] as string;
         const description = rawDescription ?? ""
         if(image || description) {
           imageDescriptions.push({image, description})
@@ -78,20 +79,33 @@ const UpdateItem = ({singleItem} : Props) => {
       setSections(imageDescriptions)
 
       //そのほかのセット
-      if (singleItem) {
+      if (itemType) {
         reset({
-          title: singleItem.title || "",
-          category: singleItem.category || "",
-          location: singleItem.location || ""
+          title: itemType.title || "",
+          category: itemType.category || "",
+          location: itemType.location || ""
         })
 
-        setGooglePlace(singleItem.googlePlace || "")
-        setLat(singleItem.lat)
-        setLng(singleItem.lon)
+        setGooglePlace(itemType.googlePlace || "")
+        setLat(itemType.lat)
+        setLng(itemType.lon)
       }
     }
-    getSectionData()
-  }, [singleItem])
+
+    const fromPreview = sessionStorage.getItem("fromPreview")
+
+    //画面開いた時はDBからデータを取得
+    if (fromPreview !== "true") {
+      getSectionData(singleItem)
+    //previewから遷移した場合のみ、contextからデータを取得
+    }else {
+      getSectionData(postData)
+    }
+
+    sessionStorage.removeItem("fromPreview")
+
+  }, [singleItem, postData])
+
 
   //場所autocomplete機能
   const handleSelectPlace = (lat: number, lng: number, name:string) => {

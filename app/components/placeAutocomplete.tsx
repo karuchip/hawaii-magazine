@@ -61,7 +61,7 @@ const PlaceAutocomplete = ({ onSelectPlace, defaultPlace }: Props) => {
         />
         <div className="autocompletedPlace">
           <p>選択した住所:</p>
-          <p>{place || "選択していません"}</p>
+          <p>{place || "選択されていません"}</p>
         </div>
       </div>
     </>
