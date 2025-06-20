@@ -414,7 +414,7 @@ footer {
   display: inline-flex;
   gap: 40px;
   margin-top: 0px;
-  margin-bottom: 40px;
+
 }
 .commentCreateForm textarea {
   border: none;
@@ -433,6 +433,14 @@ footer {
 .commentCreateForm button:hover {
   background-color: #4a96a4;
 }
+.commentValidation {
+  display: flex;
+  width: 500px;
+  gap: 30px;
+}
+/* .commentValidation :nth-child(1) {
+  font-size: 12px;
+} */
 @media screen and (max-width: 640px) {
   .commentCreateForm {
     width: 100%;
@@ -440,6 +448,9 @@ footer {
   }
   .commentCreateForm textarea {
     font-size: 16px;
+    width: 250px;
+  }
+  .commentValidation {
     width: 100%;
   }
 }
