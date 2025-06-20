@@ -8,7 +8,7 @@ type Props = {
 
  const getMyData = async(userId:string) => {
   try{
-        const myPageRes = await fetch(`http://localhost:3000/api/mypage/readProfile/${userId}`,{
+        const myPageRes = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/mypage/readProfile/${userId}`,{
           cache: "no-store"
         })
         const myPageData = await myPageRes.json()
@@ -22,7 +22,7 @@ type Props = {
 
 const getMyPost = async(userId: string) => {
   try{
-      const myPostRes = await fetch(`http://localhost:3000/api/mypage/readMyPost/${userId}`,{
+      const myPostRes = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/mypage/readMyPost/${userId}`,{
         cache: "no-store"
       })
       const myPostData = await myPostRes.json()

@@ -15,7 +15,7 @@ type myInfProps = {
 
 const fetchProfile = async(userId: string) => {
   try {
-    const readRes = await fetch(`http://localhost:3000/api/mypage/readProfile/${userId}`)
+    const readRes = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/mypage/readProfile/${userId}`)
     const readData = await readRes.json()
     const myInf:myInfProps = readData.myInf
     return myInf
