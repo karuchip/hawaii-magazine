@@ -30,7 +30,8 @@ const CommentCreate = ({loginUserId, postId, onCommentCreated}:commentType)=>{
         method: "POST",
         headers:{
           "Accept": "application/json",
-          "Content-type": "application/json"
+          "Content-type": "application/json",
+          "Authorization": `Bearer ${localStorage.getItem("token")}`
         },
         body: JSON.stringify({
           comment: data.comment,

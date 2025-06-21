@@ -14,6 +14,10 @@ h1, h2, p, a, ul, li, span{
 a {
   text-decoration: none;
 }
+/* 改行 */
+.lineBreak {
+  white-space: pre-wrap;
+}
 
 /* header */
 header {
@@ -78,15 +82,12 @@ header {
     margin-left: 14px;
     font-size: 12px;
   }
-  .loginNav {
-    gap: 5px;
-  }
 }
-@media screen and (max-width: 400px) {
+/* @media screen and (max-width: 400px) {
   .UserIcon-Wrapper {
     display: none;
   }
-}
+} */
 
 
 
@@ -107,14 +108,14 @@ footer {
 
 /* header, footerを除くbody */
 .mainContainer {
-  padding-top: 120px;
+  padding-top: 130px;
   background:
     linear-gradient(to top, rgba(0, 225, 255, 0.099), rgba(246, 192, 255, 0.112)),
     linear-gradient(to right, rgba(0, 225, 255, 0.099), rgba(246, 192, 255, 0.112));
 }
 @media screen and (max-width: 640px) {
   .mainContainer {
-    padding-top: 80px;
+    padding-top: 100px;
   }
 }
 
@@ -215,9 +216,6 @@ footer {
 
 /* 一覧画面(/page.tsx) */
 .allItemsContainer {
-  /* background:
-    linear-gradient(to top, rgba(0, 225, 255, 0.099), rgba(246, 192, 255, 0.112)),
-    linear-gradient(to right, rgba(0, 225, 255, 0.099), rgba(246, 192, 255, 0.112)); */
   padding-bottom: 40px;
   min-height: 80vh;
 }
@@ -243,25 +241,30 @@ footer {
   position: fixed;
   z-index: 300;
   top: 130px;
-  left: 10px;
+  right: 20px;
 }
 @media screen and (max-width: 640) {
   .sortBtn{
-    top: 90px;
+    top: 95px;
   }
 }
 .sortBtn button {
+  border-radius: 5px;
   border: none;
-  background-color: rgba(255, 255, 255, 7.5);
-  /* color: rgb(245, 128, 146); */
-  /* color: #A1A1A1; */
-  color: #ff9dd9;
+  background-color: #5a8c68;
+  color: #fff;
 }
 .toolBoxContainer {
   position: fixed;
   z-index: 200;
   max-width: 350px;
-  left:10px;
+  right:10px;
+  top: 125px;
+}
+@media screen and (max-width: 640px) {
+  .toolBoxContainer {
+    top: 85px;
+  }
 }
 .toolBoxContent {
   padding: 20px;
@@ -273,7 +276,7 @@ footer {
 }
 .toolBoxClear {
   display: flex;
-  justify-content: end;
+  justify-content: start;
   margin-bottom: 40px;
 }
 .toolBoxClear button{
@@ -665,7 +668,7 @@ footer {
 }
 @media screen and (max-width:640px) {
   .profileEditContent h2 {
-    font-size: 26px;
+    font-size: 20px;
   }
 }
 .profileDataLabel {
