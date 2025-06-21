@@ -1,6 +1,7 @@
 import { NextResponse, NextRequest } from "next/server"
 import { SignJWT } from "jose"
 import prisma from "../../../../utils/prisma"
+import bcrypt from "bcrypt"
 
 type Body = {
   email: string,
@@ -17,17 +18,22 @@ export async function POST (request:NextRequest){
     })
 
     //メールアドレスが登録されているかどうか
-    if (isSavedUserData) {
-
+    if (!isSavedUserData) {
+      return NextResponse.json({message:"メールアドレスが登録されていません"})
+    }
       //パスワードが正しいかどうか
-      if (isSavedUserData.password === body.password) {
-        const secretKey = new TextEncoder().encode("my-aloha-app-book")
-        const payload = {
-          email: body.email,
-          name: isSavedUserData.name,
-          id: isSavedUserData.id,
-          userIcon: isSavedUserData.userIcon
-        }
+      const isPasswordCorrect = await bcrypt.compare(body.password, isSavedUserData.password)
+
+      if (isPasswordCorrect) {
+        return NextResponse.json({message: "パスワードが違います"})
+      }
+      const secretKey = new TextEncoder().encode("my-aloha-app-book")
+      const payload = {
+        email: body.email,
+        name: isSavedUserData.name,
+        id: isSavedUserData.id,
+        userIcon: isSavedUserData.userIcon
+      }
 
         const token = await new SignJWT(payload)
                                 .setProtectedHeader({alg: "HS256"})
@@ -36,13 +42,6 @@ export async function POST (request:NextRequest){
 
         return NextResponse.json({message:"ログイン成功", token:token, payload})
 
-      } else {
-        return NextResponse.json({message: "パスワードが違います"})
-      }
-
-    }else {
-      return NextResponse.json({message:"メールアドレスが登録されていません"})
-    }
 
   }catch (error) {
     console.error("Prismaエラー:", error)
