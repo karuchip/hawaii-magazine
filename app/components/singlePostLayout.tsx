@@ -59,7 +59,7 @@ const SinglePostLayout = ({singleItem}:{singleItem: AllItemTypes}) => {
               </div>
             )}
             {item.description && (
-              <p className="sectionImageDescription">{item.description}</p>
+              <p className="sectionImageDescription lineBreak">{item.description}</p>
             )}
           </div>
         ))}

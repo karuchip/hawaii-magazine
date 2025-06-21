@@ -205,7 +205,7 @@ const EditMyPage: React.FC<Props> = ({myInf}:Props) => {
               {errors.name &&
                 <p className="inputErrorMsg">{errors.name.message}</p>
               }
-              <div className="profileDataCount">
+              <div className="dataCount">
                 <p
                   style={{
                   color: nameCount > 50 ? "#FF0000" : "#A1A1A1"

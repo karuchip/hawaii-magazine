@@ -45,7 +45,7 @@ const ReadMypage = ({myPageInf, myPagePost}:Props) => {
               </div>
             </div>
             <p className='profileName'>{myPageInf.name}</p>
-            <p className='profileComment'>{myPageInf.userProfile}</p>
+            <p className='profileComment lineBreak'>{myPageInf.userProfile}</p>
           </div>
         </div>
 

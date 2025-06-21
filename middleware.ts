@@ -28,13 +28,7 @@ export const config = {
     "/api/post/update/:path",
     "/api/post/delete/:path",
     "/api/mypage/updateUserProfile/:path",
-    // "/api/user/logout/:path",
-    // "/api/user/mypage/:path",
-    // "/api/user/mypost/:path",
-    // "/api/comment/createComment/:path",
-    // "/api/like/addLikedUser/:path",
-    // "/api/like/likeCountUpdate/:path",
-    // "/api/like/likedCheck/:path",
-    // "/api/like/likePostId/:path"
+    "/api/comment/createComment/:path",
+    "/api/like/addLikedUser/:path",
   ],
 }
