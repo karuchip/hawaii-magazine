@@ -119,10 +119,10 @@ const Register = () => {
                 className="userFormInput"
                 {...register("email", {
                   required: "必須項目です",
-                  pattern: {
-                    value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                    message: "正しい形式で入力してください"
-                  },
+                  // pattern: {
+                  //   value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                  //   message: "正しい形式で入力してください"
+                  // },
                   maxLength: {
                     value: 255,
                     message: "255文字以内で設定してください"
@@ -156,8 +156,8 @@ const Register = () => {
                     message: "8文字以上で設定してください"
                   },
                   maxLength: {
-                    value: 100,
-                    message: "100文字以内で設定してください"
+                    value: 72,
+                    message: "72文字以内で設定してください"
                   },
                   pattern: {
                     value: /^[a-zA-Z0-9]+$/,
@@ -176,7 +176,7 @@ const Register = () => {
                   )
                 }
               />
-              <p>{passwordCount}/100</p>
+              <p>{passwordCount}/72</p>
             </div>
 
           <div className="userAuthBtn">
