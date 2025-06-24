@@ -5,14 +5,13 @@ import Menu, { MenuProps } from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import EditIcon from '@mui/icons-material/Edit';
 import Divider from '@mui/material/Divider';
-import ArchiveIcon from '@mui/icons-material/Archive';
 import FileCopyIcon from '@mui/icons-material/FileCopy';
 import DynamicFeedIcon from '@mui/icons-material/DynamicFeed';
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import LogoutIcon from '@mui/icons-material/Logout';
 import Link from 'next/link';
-import MenuIcon from '@mui/icons-material/Menu';
 import WidgetsIcon from '@mui/icons-material/Widgets';
+import SettingsIcon from '@mui/icons-material/Settings';
+import InfoOutlineIcon from '@mui/icons-material/InfoOutline';
 
 type Props = {
   loginUserName: string,
@@ -111,6 +110,12 @@ export default function CustomizedMenus({loginUserName, loginUserId}:Props) {
           </Link>
         </MenuItem>
         <MenuItem disableRipple>
+          <Link href={`/user/setting/${loginUserId}`} className="logoutBtn">
+            <SettingsIcon />
+            設定
+          </Link>
+        </MenuItem>
+        <MenuItem disableRipple>
           <Link href="/user/logout" className="logoutBtn">
             <LogoutIcon />
             ログアウト
@@ -123,6 +128,13 @@ export default function CustomizedMenus({loginUserName, loginUserId}:Props) {
           <Link href="/">
             <DynamicFeedIcon />
             記事一覧
+          </Link>
+        </MenuItem>
+
+        <MenuItem disableRipple>
+          <Link href="/">
+            <InfoOutlineIcon />
+            このアプリについて
           </Link>
         </MenuItem>
 
