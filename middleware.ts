@@ -30,5 +30,7 @@ export const config = {
     "/api/mypage/updateUserProfile/:path",
     "/api/comment/createComment/:path",
     "/api/like/addLikedUser/:path",
+    "/api/user/deleteAccount/:path",
+    "/api/user/userInf/:path",
   ],
 }

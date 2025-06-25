@@ -4,6 +4,9 @@ import { SignJWT } from "jose";
 
 
 export async function PUT(request:NextRequest) {
+
+  console.log("apiが呼び出されました")
+
   const url = new URL(request.url)
   const segments = url.pathname.split("/")
   const userId = segments[segments.length - 1]
@@ -14,17 +17,19 @@ export async function PUT(request:NextRequest) {
 
   const id = Number(userId)
   const body = await request.json()
+  console.log(`idは&{id}`)
+  console.log(`bodyは&{body}`)
 
   try {
     const user = await prisma.user.findUnique({
       where:{id}
     })
 
+    console.log(user)
+
     if(user) {
 
-      if(user.email === body.loginUserId) {
-
-        //userテーブルからのuser削除
+      if(user.id === body.loginUserId) {
         const updateUserInf = await prisma.user.update({
           where: {id},
           data: {
@@ -47,6 +52,8 @@ export async function PUT(request:NextRequest) {
 
 
         return NextResponse.json({message:"メールアドレスのアップデートが完了しました", newToken:token})
+      } else {
+        return NextResponse.json({message:"ユーザー情報が正しくありません"})
       }
     } else {
       return NextResponse.json({message:"該当のユーザーがデータベースに存在しません"})

@@ -1149,6 +1149,7 @@ footer {
 .autocompletedPlace {
   margin-top:20px;
 }
+
 .autocompletedPlace p:nth-child(1) {
   font-size: 14px;
   font-weight: 500;
@@ -1161,5 +1162,103 @@ footer {
   padding: 20px;
   margin-top: 5px;
   color:#66C7D9;
+  width: 560px;
+}
+@media screen and (max-width: 640px) {
+  .autocompletedPlace p:nth-child(2) {
+    width: 320px;
+  }
+}
+
+.settingContainer {
+  display: flex;
+  justify-content: center;
+
+}
+.settingContent {
+  width: 600px;
+  margin: 180px 0 100px 0;
+}
+@media screen and (max-width:640px) {
+  .settingContent {
+    width: 320px;
+  }
+}
+.settingContent h3 {
+  font-size: 20px;
+  font-weight: 700;
+}
+.settingTitle {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.settingTitle h2, p {
+  width: fit-content;
+}
+.settingTitle h2 {
+  font-size: 26px;
+  font-weight: 500;
+}
+.settingItems {
+  margin: 80px 0;
+}
+.settingItems button {
+  margin-top: 50px;
+  font-size: 16px;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #fff;
+  width: 50%;
+  font-weight: 700;
+}
+@media screen and (max-width:640px) {
+  .settingItems button {
+    width: 100%;
+  }
+}
+.settingButton {
+  display: flex;
+  justify-content: center;
+}
+.changeEmail input {
+  height: 40px;
+  padding: 10px;
+  background-color: #FFEDFE;
+  border: none;
+}
+.changeEmail button {
+  border: 1px solid #5a8c68;
+  color: #fff;
+  background-color: #5a8c68;
+}
+.changeEmail button:hover {
+  border: 1px solid #5a8c68;
+  color: #5a8c68;
+  background-color: #fff;
+}
+.leave {
+  color: red;
+}
+.leave button {
+  border: 1px solid red;
+  color: #fff;
+  background-color: red;
+}
+.leave button:hover {
+  background-color: #fff;
+  color: red;
+}
+.settingBack a {
+  color: #000;
+  border: 1px solid #000;
+  padding: 10px;
+  width: 200px;
+  text-align: center;
+  border-radius: 10px;
+}
+.settingBack a:hover {
+  background-color: #000;
+  color: #fff;
 }
 

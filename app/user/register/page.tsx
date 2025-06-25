@@ -109,7 +109,9 @@ const Register = () => {
                   </span>
                 )}
               />
-              <p>{nameCount}/50</p>
+              <p style={{
+                color: nameCount>50 ? "red" : "#000"
+              }}>{nameCount}/50</p>
             </div>
 
             <div className="userFormItem">
@@ -140,7 +142,9 @@ const Register = () => {
                   )
                 }
               />
-              <p>{emailCount}/255</p>
+              <p style={{
+                color: emailCount>255 ? "red" : "#000"
+              }}>{emailCount}/255</p>
             </div>
 
             <div className="userFormItem">
@@ -170,13 +174,18 @@ const Register = () => {
                 error={!!errors.password}
                 helperText={
                   errors.password?.message && (
-                    <span style={{ marginTop: "50px", display: "block"}}>
+                    <span style={{
+                      marginTop: "50px",
+                      display: "block",
+                    }}>
                       {errors.password.message}
                     </span>
                   )
                 }
               />
-              <p>{passwordCount}/72</p>
+              <p style={{
+                color: passwordCount>72 ? "red" : "#000"
+              }}>{passwordCount}/72</p>
             </div>
 
           <div className="userAuthBtn">
