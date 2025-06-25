@@ -5,6 +5,8 @@ import { useRouter } from "next/navigation"
 import { useForm } from "react-hook-form"
 import { useState } from "react"
 import { useEffect } from "react"
+import Link from "next/link"
+import {logout} from "@/utils/logout"
 
 type Props = {
   userInf: {
@@ -20,7 +22,7 @@ type FormInput = {
 
 const Form = ({userInf}:Props) => {
 
-  const {loginUserName, loginUserId, loginUserEmail, setLoginUserEmail} = useAuthContext()
+  const {loginUserName, loginUserId, loginUserEmail, setLoginUserId, setLoginUserName, setLoginUserEmail, setLoginUserIcon} = useAuthContext()
   const router = useRouter()
   const {register, handleSubmit, setValue, formState:{errors}} = useForm<FormInput>({})
   const [emailCount, setEmailCount] = useState(0)
@@ -44,7 +46,7 @@ const Form = ({userInf}:Props) => {
             "Authorization": `Bearer ${localStorage.getItem("token")}`
           },
           body: JSON.stringify({
-            email: loginUserEmail,
+            email: data.email,
             loginUserId: loginUserId,
           })
         })
@@ -67,7 +69,7 @@ const Form = ({userInf}:Props) => {
   const handleDeleteAccount = async() => {
     try {
       const deleteAccountRes = await fetch(`/api/user/deleteAccount/${loginUserId}`, {
-        method: "POST",
+        method: "DELETE",
         headers: {
           "Accept": "application/json",
           "Content-type": "application/json",
@@ -80,7 +82,8 @@ const Form = ({userInf}:Props) => {
 
       const deleteAccountData = await deleteAccountRes.json()
       alert(deleteAccountData.message)
-      router.push("/")
+
+       logout(router, setLoginUserId, setLoginUserName, setLoginUserEmail, setLoginUserIcon)
 
     } catch(error) {
       console.error(error)
@@ -92,11 +95,14 @@ const Form = ({userInf}:Props) => {
     return (
       <div className="settingContainer">
         <div className="settingContent">
-          <div style={{marginTop:"150px",}}>
+          <div className="settingTitle">
             <h2>設定</h2>
             <p>{loginUserName} さん</p>
           </div>
-          <div>
+
+          <div className="horizontalLineLight"><span></span></div>
+
+          <div className="settingItems changeEmail">
             <h3>メールアドレスの変更</h3>
             <form onSubmit={handleSubmit(onSubmit)}>
               <input
@@ -105,20 +111,39 @@ const Form = ({userInf}:Props) => {
                   required: "メールアドレスは必須です",
                   maxLength: {
                     value: 255,
-                    message: "メールアドレスは255文字以内で入力してください"
+                    message: "メールアドレスは72文字以内で入力してください",
                   },
                 })}
                 onChange= {(e)=>setEmailCount(e.target.value.length)}
               />
               {errors.email && <p className="inputErrorMsg">{errors.email.message}</p>}
-              <p>{emailCount}/255</p>
-              <button>メールアドレスを変更する</button>
+              <div className="dataCount"
+                style ={{
+                  color: emailCount>255 ? "red" : "#000"
+                }}
+              >
+                <p>{emailCount}/255</p>
+              </div>
+              <div className="settingButton">
+                <button>メールアドレスを変更する</button>
+              </div>
             </form>
           </div>
-          <div>
-            <h3>本サービスから退会する</h3>
-            <p>投稿、アカウント情報を含めた全ての情報が削除され、本アカウントには今後一切アクセスできなくなります。</p>
-            <button onClick={handleDeleteAccount}>本アカウントを削除し、サービスから退会する</button>
+
+          <div className="horizontalLineLight"><span></span></div>
+
+          <div className="settingItems  leave">
+            <h3>退会する</h3>
+            <p>下記のボタンをクリックすると退会処理が行われます。<br/>投稿、アカウント情報を含めた全ての情報が削除され、本アカウントには今後一切アクセスできなくなります。</p>
+            <div className="settingButton">
+              <button onClick={handleDeleteAccount}>アカウントを削除して退会する</button>
+            </div>
+          </div>
+
+          <div className="horizontalLineLight"><span></span></div>
+
+          <div className="back settingBack">
+            <Link href="/">戻る</Link>
           </div>
         </div>
       </div>
