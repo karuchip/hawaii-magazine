@@ -102,8 +102,15 @@ const Form = ({userInf}:Props) => {
 
           <div className="horizontalLineLight"><span></span></div>
 
+          <div className="settingItems">
+            <h3>プロフィールを変更する</h3>
+            <Link href={`/editmypage/${loginUserId}`}>＞プロフィール編集画面へ移動</Link>
+          </div>
+
+          <div className="horizontalLineLight"><span></span></div>
+
           <div className="settingItems changeEmail">
-            <h3>メールアドレスの変更</h3>
+            <h3>メールアドレスを変更する</h3>
             <form onSubmit={handleSubmit(onSubmit)}>
               <input
                 className="userFormInput"

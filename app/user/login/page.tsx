@@ -38,6 +38,11 @@ const Login = () => {
       const jsonData = await response.json()
       localStorage.setItem("token", jsonData.token)
 
+
+      if(!jsonData.payload) {
+        alert("ログイン情報の取得に失敗しました")
+        return
+      }
       setLoginUserId(jsonData.payload.id)
       setLoginUserName(jsonData.payload.name)
       setLoginUserEmail(jsonData.payload.email)

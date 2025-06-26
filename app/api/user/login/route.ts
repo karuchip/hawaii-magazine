@@ -24,7 +24,7 @@ export async function POST (request:NextRequest){
       //パスワードが正しいかどうか
       const isPasswordCorrect = await bcrypt.compare(body.password, isSavedUserData.password)
 
-      if (isPasswordCorrect) {
+      if (! isPasswordCorrect) {
         return NextResponse.json({message: "パスワードが違います"})
       }
       const secretKey = new TextEncoder().encode("my-aloha-app-book")
@@ -40,7 +40,7 @@ export async function POST (request:NextRequest){
                                 .setExpirationTime("1d")
                                 .sign(secretKey)
 
-        return NextResponse.json({message:"ログイン成功", token:token, payload})
+        return NextResponse.json({message:"ログイン成功", token:token, payload:payload})
 
 
   }catch (error) {
