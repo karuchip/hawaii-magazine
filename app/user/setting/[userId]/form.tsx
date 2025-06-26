@@ -104,7 +104,7 @@ const Form = ({userInf}:Props) => {
 
           <div className="settingItems">
             <h3>プロフィールを変更する</h3>
-            <Link href={`/editmypage/${loginUserId}`}>＞プロフィール編集画面へ移動</Link>
+            <Link href={`/editmypage/${loginUserId}`}>＞ここをクリックして編集画面へ移動</Link>
           </div>
 
           <div className="horizontalLineLight"><span></span></div>

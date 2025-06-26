@@ -32,10 +32,12 @@ const ReadMypage = ({myPageInf, myPagePost}:Props) => {
 
           <div className='profile'>
             <div className='toEditBtnContent'>
-              {loginUserId && myPageInf.id === loginUserId &&(
+              {loginUserId && myPageInf.id === loginUserId ?(
                 <Link href={`/editmypage/${myPageInf.id}`}>
                   <div className='toEditProfile'><EditDocumentIcon /><span>edit</span></div>
                 </Link>
+              ):(
+                <div style={{height:"40px"}}></div>
               )}
             </div>
 
