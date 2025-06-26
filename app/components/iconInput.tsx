@@ -1,37 +1,45 @@
-import { useState } from "react"
-import Loading from "./loading";
-import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
+import {useState} from "react"
+import Loading from "./loading"
 import resizeImage from '@/app/components/resizeImage'
 
-type ImageInputProps = {
-  image: string | null;
-  setImage: (value:string | null) => void;
+type IconInputProps = {
+  icon: string | null;
+  setIcon: (value:string) => void;
 }
 
-const ImgInput = ({image, setImage}: ImageInputProps) => {
-
+const IconInput = ({icon, setIcon}: IconInputProps) => {
   const [uploading, setUploading] = useState(false)
 
   const handleUpload = async(file: File) => {
     setUploading(true)
-    try {
-      const resizedBlob = await resizeImage(file);
 
+    try {
+      //リサイズ関数の呼び出し
+      const resizedBlob = await resizeImage(file)
       const data = new FormData();
       if (!file) return
 
       data.append("file", resizedBlob, file.name)
       data.append("upload_preset", process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET as string)
-      data.append("cloud_name", process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME as string)
+      data.append("cloud_name", process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET as string)
       const response = await fetch(`https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME as string}/image/upload`,
         {
           method: "POST",
           body:data
         }
       )
+
+      if(!response.ok) {
+        const errorData = await response.json()
+        console.error("Cloudinaryエラー内容:", errorData)
+        throw new Error("Cloudinaryへのアップロードに失敗しました")
+      }
+
       const jsonData = await response.json()
-      setImage(jsonData.secure_url)
-      alert("画像アップロード成功")
+      setIcon(jsonData.secure_url)
+      alert("画像アップロード成功"
+
+      )
     }catch(err) {
       alert("画像アップロード失敗")
     }finally {
@@ -40,11 +48,11 @@ const ImgInput = ({image, setImage}: ImageInputProps) => {
   }
 
   if(uploading) {
-    return <Loading />
+    return <Loading/>
   }
 
   return (
-    <div className="imgInput">
+    <div>
       <label>
         <input
           type="file"
@@ -54,20 +62,23 @@ const ImgInput = ({image, setImage}: ImageInputProps) => {
               handleUpload(file)
             }
           }}
-          accept="image/png, image/jpg"
+          accept="image/png, image/jpeg"
           className="hiddenInput"
         />
-        <div className="selectImageBtn">
-          <div className="previewImageContainer">
-            <p><AddPhotoAlternateIcon sx={{width:"200px", height: "200px", color:"#fff"}}/></p>
-            {image && (
-              <img src={image} alt="プレビュー画像"/>
+        <div className='profileIconBorder'>
+          <div className='profileIconContainer'>
+            {icon && (
+                  <img src={icon} alt="アイコン" style={{width:"300px", height:"300px"}}/>
             )}
           </div>
         </div>
+        <div className="editIcon">
+          <p>写真を編集</p>
+        </div>
+
       </label>
     </div>
   )
 }
 
-export default ImgInput
+export default IconInput

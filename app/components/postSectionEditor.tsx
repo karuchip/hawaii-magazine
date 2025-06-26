@@ -1,6 +1,5 @@
 import ImgInput from "../components/imgInput"
 import { Dispatch, SetStateAction } from 'react'
-import { useEffect } from "react"
 
 
 
