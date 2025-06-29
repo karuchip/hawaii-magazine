@@ -1146,7 +1146,7 @@ footer {
 }
 .noMyPost {
   width: fit-content;
-  margin: 0 auto;
+  margin: 20px auto 100px auto;
   color: #626161;
 }
 
@@ -1267,3 +1267,277 @@ footer {
   color: #fff;
 }
 
+/* 「このアプリについて」　(/app/hawaiiAbout/about/page.tsx) */
+.fvContainer {
+  position: relative;
+}
+.fvContent {
+  position: absolute;
+  bottom: 0;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1.2s ease, transform 1.2s ease;
+  background-color: rgba(0,0,0, 0.5);
+  height: 100%;
+  padding: 300px 0 0 20px;
+}
+.fvContent.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media screen and (max-width:640px) {
+  .fvContent {
+    padding: 30px 0 0 0;
+    height: 40%;
+    right: 0;
+  }
+}
+.fvContent h1{
+  color: #fff;
+  font-size: 40px;
+  text-shadow: 0 8px 16px rgba(0,0,0, 0.6);
+  margin-bottom: 10px;
+}
+.fvContent p{
+  font-family: "Kaushan Script";
+  font-size: 30px;
+  color: #fff;
+  text-shadow: 0 8px 8px rgba(0,0,0, 0.5);
+  margin-bottom: 40px;
+}
+.aboutBtnFV {
+  display: flex;
+  justify-content: left;
+  gap: 20px;
+  padding-left: 30px;
+}
+.aboutBtnFV button{
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+  background-color: #5a8c68;
+  padding: 10px 20px;
+  box-shadow: 0px 4px 4px rgba(0,0,0, 0.5);
+  border: none;
+  border-radius: 10px;
+}
+.aboutBtnFV button:hover{
+  background-color: #6fad81;
+}
+@media screen and (max-width: 640px) {
+  .fvContent {
+    bottom: 0px;
+    left: 20px;
+  }
+  .fvContent h1{
+    font-size: 24px;
+  }
+  .fvContent p{
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  .aboutBtnFV {
+    display: none;
+  }
+}
+.aboutContainer{
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+.aboutContent {
+  width: 770px;
+  margin-top: 100px;
+}
+@media screen and (max-width:850px) {
+  .aboutContent {
+    width: 600px;
+  }
+}
+@media screen and (max-width:640px) {
+  .aboutContent {
+    width: 320px;
+    margin-top: 60px;
+  }
+}
+.aboutContent h2 {
+  font-size: 40px;
+  color: #66C7D9;
+  font-family: "Kaushan Script";
+  font-weight: 500;
+}
+.aboutContent h3 {
+  font-size: 20px;
+  margin-bottom: 40px;
+}
+@media screen and (max-width:640px) {
+  .aboutContent h2 {
+  font-size: 28px;
+  }
+  .aboutContent h3 {
+    font-size: 18px;
+  }
+}
+.aboutMessage h3{
+  margin-bottom: 50px;
+}
+.aboutContent section {
+  text-align: center;
+  margin-bottom: 140px;
+}
+.aboutBtn {
+  display: flex;
+  justify-content: center;
+  gap:20px;
+}
+.aboutBtn button{
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+  background-color: #5a8c68;
+  padding: 10px 20px;
+  box-shadow: 0px 4px 4px rgba(0,0,0, 0.5);
+  border: none;
+  border-radius: 10px;
+}
+.aboutBtn button:hover{
+  background-color: #6fad81;
+}
+.scroll {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+  font-family: "Kaushan Script";
+}
+.scroll p{
+  font-size: 24px;
+  color: #5a8c68;
+}
+.scroll img {
+  margin-top: 10px;
+  height: 20px;
+  width: 100px;
+}
+.sliderContainer{
+  display: flex;
+  overflow-x: auto;
+  gap: 50px;
+  padding: 16px;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+.card {
+  min-width: 350px;
+  scroll-snap-align: center;
+}
+@media screen and (max-width:640px) {
+  .card{
+    min-width: 320px;
+  }
+}
+.featureItemContent{
+  width: 360px;
+  height: fit-content;
+  border: 0.5px solid #A1A1A1;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px rgba(0,0,0, 0.5);
+  padding: 10px;
+}
+.featureItemContent h4 {
+  color: #66C7D9;
+  font-size: 16px;
+  font-weight: 600;
+}
+.featureItemContent p {
+  height: 50px;
+  font-size: 14px;
+}
+.featurePicContainer {
+  width: 330px;
+  height: 280px;
+  border: 0.5px solid #A1A1A1;
+  margin: 30px auto 0 auto;
+}
+@media screen and (max-width: 850px) {
+  .featureItemContent{
+    width: 320px;
+    height: fit-content;
+  }
+  .featurePicContainer {
+    width: 280px;
+  }
+}
+.featurePicContainer {
+  display: flex;
+  justify-content: center;
+}
+.featurePicContent1 {
+  margin-top: 10px;
+  width: 210px;
+  height: 260px;
+  overflow: hidden;
+}
+.featurePicContent2 {
+  margin-top: 30px;
+  width: 250px;
+  height: 250px;
+  overflow: hidden;
+}
+.featurePicContent3 {
+  margin-top: 30px;
+  width: 230px;
+  height: 230px;
+  overflow: hidden;
+}
+.featurePicContent4 {
+  width: 150px;
+  height: 260px;
+  overflow: hidden;
+}
+.featurePicContent1 img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.featurePicContent2 img{
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+}
+.featurePicContent3 img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.featurePicContent4 img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+/* /app/components/hawaiiSlider */
+.hawaiiSlideContainer {
+  height: 624px;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  margin-top: 70px;
+}
+@media screen and (max-width: 640px) {
+  .hawaiiSlideContainer {
+    height: 400px;
+  }
+}
+.hawaiiSlideContainer img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+}
+.sliderImage {
+  transition: opacity 1.5s ease-in-out;
+}

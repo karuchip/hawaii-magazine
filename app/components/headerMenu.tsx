@@ -132,7 +132,7 @@ export default function CustomizedMenus({loginUserName, loginUserId}:Props) {
         </MenuItem>
 
         <MenuItem disableRipple>
-          <Link href="/">
+          <Link href="/hawaiiAbout/about">
             <InfoOutlineIcon />
             このアプリについて
           </Link>
