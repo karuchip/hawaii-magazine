@@ -21,7 +21,7 @@ const UserIcon = () => {
       src={loginUserIcon || "/images/defaultIcon.JPG"}
       alt="アイコン"
       onClick={handleClick}
-      style={{ cursor: "pointer", borderRadius: "50%", width: "50px", height: "50px" }}
+      className="userIcon"
     />
   )
 }

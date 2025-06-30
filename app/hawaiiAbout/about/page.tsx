@@ -8,7 +8,7 @@ const about = () => {
   useEffect(() => {
     const timer = setTimeout(()=> {
       setShowContent(true)
-    }, 500);
+    }, 200);
 
     return() => clearTimeout(timer);
   }, [])
@@ -90,7 +90,7 @@ const about = () => {
 
           <section className="aboutMessage">
             <h2>Let's get started!!!</h2>
-            <h3>さっそくハワイアプリを試してみよう</h3>
+            <h3>さっそくハワイアプリを試してみよう!</h3>
             <div className="aboutBtn">
               <button>写真を見てみる</button>
               <button>ログインする</button>

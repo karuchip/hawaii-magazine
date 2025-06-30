@@ -83,7 +83,7 @@ export default function CustomizedMenus({loginUserName, loginUserId}:Props) {
         onClick={handleClick}
         sx={{backgroundColor:"transparent", mt:"10px"}}
       >
-        <WidgetsIcon />
+        <WidgetsIcon  className='WidgetsIcon'/>
       </Button>
       <StyledMenu
         id="demo-customized-menu"

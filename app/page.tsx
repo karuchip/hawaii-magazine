@@ -150,12 +150,17 @@ const ReadAllItems = () => {
 
   return(
     <div className="mainContainer">
-
+      <div className="aboutLinkContainer">
+        <Link href="/hawaiiAbout/about" className="aboutLinkContent">
+          <img src="about/toAboutPage1.png" />
+          <p>このアプリ<br/>について</p>
+        </Link>
+      </div>
       <div className="sortBtn">
         <button onClick={handleSortBtnChange}>
           {sortBtn
             ? <><ClearIcon sx={{fontSize:"32px"}}/></>
-            : <><FilterListIcon sx={{fontSize:"32px", color: "rgba(255, 255, 255, 1)", backgroundColor: "#5a8c68", borderRadius:"5px"}}/>フィルター</>}
+            : <><FilterListIcon sx={{fontSize:"26px", color: "rgba(255, 255, 255, 1)", backgroundColor: "#5a8c68", borderRadius:"5px"}}/>フィルター</>}
         </button>
       </div>
 
@@ -283,7 +288,6 @@ const ReadAllItems = () => {
             count={totalPageCount}
             page={currentPage}
             onChange={handlePageChange}
-            color="primary"
           />
         </Box>
       )}
