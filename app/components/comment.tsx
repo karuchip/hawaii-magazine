@@ -74,7 +74,7 @@ const Comment = ({postId}:{postId:number}) => {
           <div key={comment.createdAt.toString()}>
             <div className="commentContent">
               <Link href={`/readmypage/${comment.user.id}`}>
-                <Avatar src={comment.user.userIcon} alt={comment.user.name} />
+                <Avatar src={comment.user.userIcon} alt={comment.user.name} className="userIcon"/>
               </Link>
               <p className="lineBreak">{comment.comment}</p>
             </div>

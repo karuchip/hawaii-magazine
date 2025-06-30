@@ -83,13 +83,22 @@ header {
     font-size: 12px;
   }
 }
-/* @media screen and (max-width: 400px) {
-  .UserIcon-Wrapper {
-    display: none;
-  }
-} */
 
+/* (headerMenu.tsx) */
+.WidgetsIcon:hover {
+  color: #e0dfdf;
+}
 
+/* (userIcon.tsx) */
+.userIcon {
+  cursor: pointer;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+}
+.userIcon:hover {
+  opacity: 80%;
+}
 
 /* footer */
 footer {
@@ -109,9 +118,6 @@ footer {
 /* header, footerを除くbody */
 .mainContainer {
   padding-top: 130px;
-  background:
-    linear-gradient(to top, rgba(0, 225, 255, 0.099), rgba(246, 192, 255, 0.112)),
-    linear-gradient(to right, rgba(0, 225, 255, 0.099), rgba(246, 192, 255, 0.112));
 }
 @media screen and (max-width: 640px) {
   .mainContainer {
@@ -253,6 +259,12 @@ footer {
   border: none;
   background-color: #5a8c68;
   color: #fff;
+  margin-top: 15px;
+  font-size: 10px;
+  box-shadow: 0 4px 4px rgba(0,0,0, 0.2);
+}
+.sortBtn button:hover {
+  box-shadow: 0 4px 8px rgba(0,0,0, 0.3);
 }
 .toolBoxContainer {
   position: fixed;
@@ -1277,7 +1289,7 @@ footer {
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 1.2s ease, transform 1.2s ease;
-  background-color: rgba(0,0,0, 0.5);
+  background-color: rgba(0,0,0, 0.3);
   height: 100%;
   padding: 300px 0 0 20px;
 }
@@ -1287,8 +1299,8 @@ footer {
 }
 @media screen and (max-width:640px) {
   .fvContent {
-    padding: 30px 0 0 0;
-    height: 40%;
+    padding: 10px 0 0 0;
+    height: 35%;
     right: 0;
   }
 }
@@ -1378,10 +1390,8 @@ footer {
   }
   .aboutContent h3 {
     font-size: 18px;
+    margin-bottom: 10px;
   }
-}
-.aboutMessage h3{
-  margin-bottom: 50px;
 }
 .aboutContent section {
   text-align: center;
@@ -1391,6 +1401,7 @@ footer {
   display: flex;
   justify-content: center;
   gap:20px;
+  margin-top: 40px;
 }
 .aboutBtn button{
   font-size: 16px;
@@ -1445,6 +1456,9 @@ footer {
   border-radius: 20px;
   box-shadow: 0 4px 8px rgba(0,0,0, 0.5);
   padding: 10px;
+}
+.featureItemContent:hover {
+  box-shadow: 0 8px 18px rgba(0,0,0, 0.5);
 }
 .featureItemContent h4 {
   color: #66C7D9;
@@ -1517,6 +1531,33 @@ footer {
   height: 100%;
   object-fit: cover;
 }
+/* aboutページへのリンク */
+.aboutLinkContainer {
+  height: 30px;
+}
+.aboutLinkContent {
+  position: relative;
+}
+.aboutLinkContent:hover {
+  top: 5px;
+}
+.aboutLinkContent img{
+  position: absolute;
+  left: 10px;
+  width: 90px;
+  height: 65px;
+}
+.aboutLinkContent p {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  font-size: 10px;
+  text-align: center;
+  width: 80px;
+  color: #fff;
+  font-weight: 700;
+}
+
 
 
 /* /app/components/hawaiiSlider */
@@ -1541,3 +1582,5 @@ footer {
 .sliderImage {
   transition: opacity 1.5s ease-in-out;
 }
+
+
