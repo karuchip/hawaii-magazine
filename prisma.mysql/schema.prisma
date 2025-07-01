@@ -1,0 +1,82 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../app/generated/mysql"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL_MYSQL")
+}
+
+
+model User {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique @db.VarChar(255)
+  name      String   @db.VarChar(50)
+  password  String   @db.VarChar(100)
+  userIcon  String
+  userProfile   String? @db.VarChar(300)
+  posts     Post[]
+  postLikes     PostLikes[]
+  postComments  PostComments[]
+}
+
+model Post {
+  id        Int        @id @default(autoincrement())
+  createdAt  DateTime   @default(now())  @map("createAt")
+  updatedAt  DateTime   @updatedAt       @map("updateAt")
+  title     String     @db.VarChar(40)
+  image1     String?
+  description1   String? @map("content") @db.VarChar(300)
+  image2     String?
+  description2   String? @db.VarChar(300)
+  image3     String?
+  description3   String? @db.VarChar(300)
+  image4     String?
+  description4   String? @db.VarChar(300)
+  image5     String?
+  description5   String? @db.VarChar(300)
+  likeCount Int          @default(0)
+  location  String?      @db.VarChar(100)
+  googlePlace    String? @db.VarChar(300)
+  lat       Float?
+  lon       Float?
+  category  String     @default("culture")
+  published Boolean    @default(false)
+  author    User      @relation(fields: [authorId], references: [id])
+  authorId  Int
+  likes     PostLikes[]
+  comments  PostComments[]
+}
+
+model PostLikes {
+  id      Int         @id @default(autoincrement())
+  post    Post        @relation(fields: [postId], references: [id])
+  postId  Int
+  user    User        @relation(fields: [userId], references: [id])
+  userId  Int
+  createdAt DateTime  @default(now())
+
+  @@unique([postId, userId])
+}
+
+model PostComments {
+  commentId   Int     @id @default(autoincrement())
+  comment     String  @db.VarChar(100)
+  post        Post    @relation(fields:[postId], references:[id])
+  postId      Int
+  user        User    @relation(fields:[userId], references:[id])
+  userId      Int
+  createdAt   DateTime  @default(now())
+
+}
+
+
+
+
