@@ -1220,7 +1220,7 @@ footer {
 .settingItems {
   margin: 80px 0;
 }
-.settingItems button {
+.settingItems button, .settingItems a {
   margin-top: 50px;
   font-size: 16px;
   padding: 10px;
@@ -1237,6 +1237,18 @@ footer {
 .settingButton {
   display: flex;
   justify-content: center;
+}
+.changeProfileLink a{
+  border: 1px solid #5a8c68;
+  color: #fff;
+  background-color: #5a8c68;
+  width: 50%;
+  text-align: center;
+}
+.changeProfileLink a:hover {
+  border: 1px solid #5a8c68;
+  color: #5a8c68;
+  background-color: #fff;
 }
 .changeEmail input {
   height: 40px;

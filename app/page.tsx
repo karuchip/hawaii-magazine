@@ -159,7 +159,7 @@ const ReadAllItems = () => {
       <div className="sortBtn">
         <button onClick={handleSortBtnChange}>
           {sortBtn
-            ? <><ClearIcon sx={{fontSize:"32px"}}/></>
+            ? <><ClearIcon sx={{fontSize:"26px"}}/></>
             : <><FilterListIcon sx={{fontSize:"26px", color: "rgba(255, 255, 255, 1)", backgroundColor: "#5a8c68", borderRadius:"5px"}}/>フィルター</>}
         </button>
       </div>
