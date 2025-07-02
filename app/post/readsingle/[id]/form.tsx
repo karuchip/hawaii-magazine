@@ -43,7 +43,7 @@ const ReadSingleItem = ({singleItem, postId}:Props) => {
           <div className="horizontalLineMedium"><span></span></div>
         </div>
         <div className="locationContent">
-          {/* <p className="locationName">{singleItem.location}</p>
+          <p className="locationName">{singleItem.location}</p>
             <Suspense fallback={<div>地図を読み込み中...</div>}>
               <div className="googleMapContainer">
                 {singleItem.lat && singleItem.lon && (
@@ -51,7 +51,7 @@ const ReadSingleItem = ({singleItem, postId}:Props) => {
                 )}
               </div>
             </Suspense>
-          <p className="googleMapName en">{singleItem.googlePlace}</p> */}
+          <p className="googleMapName en">{singleItem.googlePlace}</p>
         </div>
       </section>
 

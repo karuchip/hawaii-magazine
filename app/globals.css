@@ -204,6 +204,7 @@ footer {
   filter: brightness(1.4);
   font-weight: 700;
   position: relative;
+  cursor: pointer;
 }
 .mahaloBtn:hover{
   opacity: 50%;
@@ -248,6 +249,7 @@ footer {
   z-index: 300;
   top: 130px;
   right: 20px;
+  cursor: pointer;
 }
 @media screen and (max-width: 640) {
   .sortBtn{
@@ -262,6 +264,7 @@ footer {
   margin-top: 15px;
   font-size: 10px;
   box-shadow: 0 4px 4px rgba(0,0,0, 0.2);
+  cursor: pointer;
 }
 .sortBtn button:hover {
   box-shadow: 0 4px 8px rgba(0,0,0, 0.3);
@@ -444,6 +447,7 @@ footer {
   background-color: #66c7d9;
   border-radius: 18px;
   border: none;
+  cursor: pointer;
 }
 .commentCreateForm button:hover {
   background-color: #4a96a4;
@@ -453,9 +457,7 @@ footer {
   width: 500px;
   gap: 30px;
 }
-/* .commentValidation :nth-child(1) {
-  font-size: 12px;
-} */
+
 @media screen and (max-width: 640px) {
   .commentCreateForm {
     width: 100%;
@@ -849,6 +851,7 @@ footer {
   font-weight: 700;
   font-size: 20px;
   border: 1px solid #000;
+  cursor: pointer;
 }
 @media screen and (max-width:640) {
   .toPreviewBtn button {
@@ -859,7 +862,7 @@ footer {
 .toPreviewBtn button:hover {
   background-color: #A1A1A1;
   color: #fff;
-  border: none;
+  border: 1px solid #A1A1A1;
 }
 
 /* cloudinary (/app/components/imgInput.tsx) */
@@ -983,6 +986,7 @@ footer {
   border-radius: 20px;
   margin: 0 auto;
   font-weight: 700;
+  cursor: pointer;
 }
 @media screen and (max-width:640) {
   .addSectionBtn button {
@@ -1150,6 +1154,7 @@ footer {
 .myPagePostImg img {
   width: 100%;
   height: 100%;
+  object-fit: cover;
 }
 .myPostContent p {
   font-size: 16px;
@@ -1244,6 +1249,7 @@ footer {
   background-color: #5a8c68;
   width: 50%;
   text-align: center;
+  cursor: pointer;
 }
 .changeProfileLink a:hover {
   border: 1px solid #5a8c68;
@@ -1260,6 +1266,7 @@ footer {
   border: 1px solid #5a8c68;
   color: #fff;
   background-color: #5a8c68;
+  cursor: pointer;
 }
 .changeEmail button:hover {
   border: 1px solid #5a8c68;
@@ -1273,6 +1280,7 @@ footer {
   border: 1px solid red;
   color: #fff;
   background-color: red;
+  cursor: pointer;
 }
 .leave button:hover {
   background-color: #fff;
@@ -1344,6 +1352,7 @@ footer {
   box-shadow: 0px 4px 4px rgba(0,0,0, 0.5);
   border: none;
   border-radius: 10px;
+  cursor: pointer;
 }
 .aboutBtnFV button:hover{
   background-color: #6fad81;
@@ -1424,6 +1433,7 @@ footer {
   box-shadow: 0px 4px 4px rgba(0,0,0, 0.5);
   border: none;
   border-radius: 10px;
+  cursor: pointer;
 }
 .aboutBtn button:hover{
   background-color: #6fad81;

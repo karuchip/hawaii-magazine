@@ -3,11 +3,10 @@ import { useAuthContext } from "@/context/AuthContext"
 import { usePostContext } from "@/context/PostContext"
 import {useRouter} from "next/navigation"
 import SinglePostLayout from "@/app/components/singlePostLayout"
-import { Suspense, useEffect} from "react"
-import { AllItemTypes } from "@/utils/types/post"
-import LikeCount from "@/app/components/likeCount"
+import { Suspense, useEffect, useState} from "react"
 import GoogleMapComponent from "@/app/components/googleMap"
 import Link from "next/link"
+import Loading from "@/app/components/loading"
 
 
 const PostPreview = () => {
@@ -15,6 +14,7 @@ const PostPreview = () => {
   const {postData} = usePostContext()
   const {loginUserId, loginUserName, loginUserIcon} = useAuthContext()
   const {setPostData, resetPostData} = usePostContext()
+  const [loading, setLoading] = useState(false);
   const router = useRouter()
 
   const dummyPostData = {
@@ -54,6 +54,8 @@ const PostPreview = () => {
   const handleClick = async(e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
 
+    setLoading(true);
+
     try {
       const response = await fetch('/api/post/create', {
         method: "POST",
@@ -85,6 +87,7 @@ const PostPreview = () => {
       })
 
       const jsonData = await response.json()
+      setLoading(false);
       alert(jsonData.message)
 
       //コンテクストを削除
@@ -97,7 +100,9 @@ const PostPreview = () => {
     }
   }
 
-
+  if(loading) {
+    return <Loading />
+  }
 
   return(
     <>
@@ -115,11 +120,13 @@ const PostPreview = () => {
             </div>
             <div className="locationContent">
               <p className="locationName">{postData.location}</p>
+              {postData.lat && (
                 <Suspense fallback={<div>地図を読み込み中...</div>}>
                   <div className="googleMapContainer">
                     <GoogleMapComponent lat={Number(postData.lat)} lng={Number(postData.lon)}/>
                   </div>
                 </Suspense>
+              )}
               <p className="googleMapName en">{postData.googlePlace}</p>
             </div>
           </section>

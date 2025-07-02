@@ -58,7 +58,6 @@ const PostPreview = (Props: any) => {
     e.preventDefault()
 
     try{
-      console.log(`/api/post/update/${params.id}`)
       const response = await fetch(`/api/post/update/${params.id}`, {
         method: "PUT",
         headers: {

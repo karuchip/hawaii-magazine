@@ -1,6 +1,7 @@
 "use client"
 import { useEffect, useState } from "react"
 import HawaiiSlider from "@/app/components/hawaiiSlider"
+import Link from "next/link"
 
 const about = () => {
   const [showContent, setShowContent] = useState(false)
@@ -21,8 +22,9 @@ const about = () => {
           <h1>「あなたのハワイ、<br/>　みんなでシェアしよう」</h1>
           <p>　Share Your Aloha memories</p>
           <div className="aboutBtnFV">
-            <button>写真を見てみる</button>
-            <button>ログインする</button>
+            <Link href={"/"}><button>写真を見てみる</button></Link>
+            <Link href={"/user/login"}><button>ログインする</button></Link>
+
           </div>
         </div>
       </div>
@@ -92,8 +94,8 @@ const about = () => {
             <h2>Let's get started!!!</h2>
             <h3>さっそくハワイアプリを試してみよう!</h3>
             <div className="aboutBtn">
-              <button>写真を見てみる</button>
-              <button>ログインする</button>
+              <Link href={"/"}><button>写真を見てみる</button></Link>
+              <Link href={"/user/login"}><button>ログインする</button></Link>
             </div>
           </section>
 

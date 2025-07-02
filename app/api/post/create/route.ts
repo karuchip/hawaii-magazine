@@ -3,8 +3,6 @@ import prisma from '../../../../utils/prisma'
 
 export async function POST(request: NextRequest) {
   const body = await request.json()
-  console.log(body);
-  console.log("apiが呼び出されました")
 
   try {
     const newPost = await prisma.post.create({

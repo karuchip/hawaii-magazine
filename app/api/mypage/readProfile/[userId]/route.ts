@@ -3,11 +3,9 @@ import prisma from "@/utils/prisma"
 
 
 export async function GET(request:NextRequest) {
-  console.log("api発動中")
   const url = new URL(request.url)
   const segments = url.pathname.split("/")
   const id = segments[segments.length - 1]
-  console.log(id)
   if (!id || isNaN(Number(id))) {
     return NextResponse.json({message: "userIdが正しくありません"})
   }

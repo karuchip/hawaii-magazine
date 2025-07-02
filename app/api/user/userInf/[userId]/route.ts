@@ -5,8 +5,6 @@ import { SignJWT } from "jose";
 
 export async function PUT(request:NextRequest) {
 
-  console.log("apiが呼び出されました")
-
   const url = new URL(request.url)
   const segments = url.pathname.split("/")
   const userId = segments[segments.length - 1]
@@ -17,15 +15,11 @@ export async function PUT(request:NextRequest) {
 
   const id = Number(userId)
   const body = await request.json()
-  console.log(`idは&{id}`)
-  console.log(`bodyは&{body}`)
 
   try {
     const user = await prisma.user.findUnique({
       where:{id}
     })
-
-    console.log(user)
 
     if(user) {
 

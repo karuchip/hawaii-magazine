@@ -6,7 +6,6 @@ import Link from "next/link"
 
 
 const SinglePostLayout = ({singleItem}:{singleItem: AllItemTypes}) => {
-  console.log(singleItem.author.id)
 
   const createdAtFormatted = dayjs(new Date(singleItem.createdAt)).format("YYYY/MM/DD")
 

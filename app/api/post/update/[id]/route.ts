@@ -7,7 +7,6 @@ export async function PUT(request: NextRequest) {
   const url = new URL(request.url)
   const segments = url.pathname.split("/")
   const postId = segments[segments.length - 1]
-  console.log(postId)
 
   if (!postId || isNaN(Number(postId))) {
     return NextResponse.json({message: "idが不正です"}, {status:400})
