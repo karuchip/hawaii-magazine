@@ -4,6 +4,7 @@ import { useState, useEffect } from "react"
 import { useRouter }from "next/navigation"
 import { useForm} from "react-hook-form"
 import IconInput from "@/app/components/iconInput"
+import Loading from "@/app/components/loading"
 
 
 type myInfProps = {
@@ -34,6 +35,8 @@ const EditMyPage: React.FC<Props> = ({myInf}:Props) => {
   const [nameCount, setNameCount] = useState(0)
   const [profileCount, setProfileCount] = useState(0)
   const [icon, setIcon] = useState(loginUserIcon)
+  const [loading, setLoading] = useState(false)
+
   // myInfを初期値として設定
   useEffect(() => {
     reset({
@@ -50,8 +53,8 @@ const EditMyPage: React.FC<Props> = ({myInf}:Props) => {
   }, [myInf])
 
 
-
   const onSubmit = async(data: FormInputs) => {
+    setLoading(true)
     try {
       const editRes = await fetch(`/api/mypage/updateUserProfile/${myInf?.id}`, {
         method: "PUT",
@@ -78,6 +81,8 @@ const EditMyPage: React.FC<Props> = ({myInf}:Props) => {
       //useAuthContextにも反映
       setLoginUserIcon(updateUser.userIcon)
       setLoginUserName(updateUser.name)
+
+      setLoading(false)
       router.push(`/readmypage/${loginUserId}`)
 
     }catch(error) {
@@ -86,6 +91,7 @@ const EditMyPage: React.FC<Props> = ({myInf}:Props) => {
     }
   }
 
+  if (loading) return <Loading/>
   if (loginUserEmail !== myInf?.email) return <h1>編集権限がありません</h1>
 
   return (

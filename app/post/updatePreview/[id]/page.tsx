@@ -3,10 +3,11 @@ import { useAuthContext } from "@/context/AuthContext"
 import { usePostContext } from "@/context/PostContext"
 import {useRouter} from "next/navigation"
 import SinglePostLayout from "@/app/components/singlePostLayout"
-import { Suspense, useEffect } from "react"
+import { Suspense, useEffect, useState } from "react"
 import GoogleMapComponent from "@/app/components/googleMap"
 import Link from "next/link"
 import { useParams } from "next/navigation"
+import Loading from "@/app/components/loading"
 
 
 const PostPreview = (Props: any) => {
@@ -16,6 +17,7 @@ const PostPreview = (Props: any) => {
   const {loginUserId, loginUserName, loginUserIcon} = useAuthContext()
   const {resetPostData} = usePostContext()
   const router = useRouter()
+  const [loading, setLoading] = useState(false)
 
   const dummyPostData = {
     title: null,
@@ -57,6 +59,8 @@ const PostPreview = (Props: any) => {
   const handleClick = async(e: React.MouseEvent<HTMLButtonElement>, params:any) => {
     e.preventDefault()
 
+    setLoading(true)
+
     try{
       const response = await fetch(`/api/post/update/${params.id}`, {
         method: "PUT",
@@ -89,7 +93,9 @@ const PostPreview = (Props: any) => {
       const jsonData = await response.json()
 
       //コンテクストを削除
-      resetPostData();
+      resetPostData()
+
+      setLoading(false)
 
       alert(jsonData.message)
       router.push(`/post/readsingle/${params.id}`)
@@ -99,7 +105,9 @@ const PostPreview = (Props: any) => {
     }
   }
 
-
+  if(loading) {
+    return<Loading/>
+  }
 
   return(
     <>
