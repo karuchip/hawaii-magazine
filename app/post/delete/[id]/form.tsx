@@ -36,7 +36,6 @@ const DeleteItem = ({id, singleItem}:Props) => {
         })
       })
       const jsonData = await response.json()
-      console.log(jsonData)
       alert(jsonData.message)
       router.push("/")
 

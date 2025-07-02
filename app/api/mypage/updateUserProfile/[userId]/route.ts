@@ -10,7 +10,6 @@ type Body = {
 }
 
 export async function PUT(request: NextRequest) {
-  console.log("api発動中")
   const body = await request.json() as Body
 
   const url = new URL(request.url)

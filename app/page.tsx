@@ -65,10 +65,6 @@ const ReadAllItems = () => {
         console.error(error)
       }finally{
         setListLoading(false)
-        console.log(totalCount)
-        console.log(allItems.length)
-        console.log(allItems)
-        console.log(totalPageCount)
       }
     }
 
