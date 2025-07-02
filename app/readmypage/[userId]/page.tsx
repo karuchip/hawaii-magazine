@@ -1,11 +1,5 @@
 import Form from "./form"
 
-type Props = {
-  params: {
-    userId: string
-  }
-}
-
  const getMyData = async(userId:string) => {
   try{
         const myPageRes = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/mypage/readProfile/${userId}`,{
@@ -34,7 +28,7 @@ const getMyPost = async(userId: string) => {
   }
 }
 
-export default async function ReadMyPage ({params}: Props){
+export default async function ReadMyPage ({params}: any){
   const userId = params.userId
   if(!params.userId) {
     console.error("userIdが未定義です")

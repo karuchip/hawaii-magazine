@@ -1,27 +1,26 @@
 "use client"
 import * as React from "react"
-import { useEffect, useState} from "react"
+import { Suspense, useEffect, useState} from "react"
 import dayjs from "dayjs"
 import Link from "next/link"
 import useAuth from "@/utils/useAuth"
-import CategoryButtons from "./components/categoryButton"
-import SortPost from "./components/sortPost"
 import Loading from "./components/loading"
+import { AllItemTypes } from "@/utils/types/post"
+import { useRouter, useSearchParams } from "next/navigation"
+import ToolBox from "./components/toolBox"
+
 //MUI
 import { CardActionArea, CardHeader, Avatar, CardMedia, CardContent, CardActions, Collapse, Box, TextField, Typography } from "@mui/material"
 import {Card, Grid, Pagination} from '@mui/material'
 import ClearIcon from '@mui/icons-material/Clear';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import SearchIcon from '@mui/icons-material/Search';
-import { AllItemTypes } from "@/utils/types/post"
-import { useRouter, useSearchParams } from "next/navigation"
 import FilterListIcon from '@mui/icons-material/FilterList';
 import PlaceIcon from '@mui/icons-material/Place';
 
 export const dynamic = "force-dynamic"
 
-const ReadAllItems = () => {
+const ReadAllItemsInner = () => {
   const router = useRouter()
   const searchParams = useSearchParams()
   const {loading, loginUserId} = useAuth(false)
@@ -160,55 +159,20 @@ const ReadAllItems = () => {
         </button>
       </div>
 
+      {/* 検索ツールボックス表示 */}
       {sortBtn && (
-
-        <Card className="toolBoxContainer"
-          sx={{
-            boxShadow: "0px 4px 8px rgba(0,0,0,0.4)",
-            backgroundColor: "rgba(255, 255, 255, 0.85)",
-            backdropFilter: "blur(6px)"
-            }}>
-          <div className="toolBoxContent">
-
-            {/* フィルタークリア */}
-            <div  className="toolBoxClear">
-              <button onClick={handleClearChange}>
-                条件をクリア
-              </button>
-            </div>
-
-            {/* 検索 */}
-            <div className="toolBoxSearch">
-              <p>検索</p>
-              <form onSubmit={handleSearchSubmit}>
-                <TextField
-                  label="キーワードを入力"
-                  variant="standard"
-                  value={keyWord}
-                  onChange={(e) => setKeyWord(e.target.value)}
-                />
-                <button type="submit" className="toolBoxSearchBtn"><SearchIcon/></button>
-              </form>
-            </div>
-
-            <div className="toolBoxSortFilter">
-              {/* 並び替え */}
-              <Box sx={{ width: "fit-content", mb:4}}>
-                <p>並び替え</p>
-                <SortPost sortType={searchParams.get('sort') || "new"} setSortType={handleSortChange} />
-              </Box>
-
-              {/* カテゴリー */}
-              <Box sx={{ width: "fit-content", mb: 4 }}>
-                <p>ソート</p>
-                <CategoryButtons categoryType={searchParams.get('category') || "all"} setCategoryType={handleCategoryChange}/>
-              </Box>
-            </div>
-
-          </div>
-        </Card>
+        <Suspense>
+          <ToolBox
+            keyWord = {keyWord}
+            setKeyWord = {setKeyWord}
+            handleClearChange = {handleClearChange}
+            handleSearchSubmit = {handleSearchSubmit}
+            handleSortChange = {handleSortChange}
+            handleCategoryChange = {handleCategoryChange}
+            searchParams = {searchParams}
+          />
+        </Suspense>
       )}
-
 
       {/* 一覧表示 */}
       <div className="allItemsContainer">
@@ -289,12 +253,14 @@ const ReadAllItems = () => {
       )}
 
       </div>
-
-
-
     </div>
   )
-
 }
 
-export default ReadAllItems
+export default function ReadAllItems(){
+  return (
+    <Suspense fallback={<Loading/>}>
+      <ReadAllItemsInner/>
+    </Suspense>
+  );
+};
