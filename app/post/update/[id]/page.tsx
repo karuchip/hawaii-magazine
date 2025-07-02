@@ -2,11 +2,6 @@ import { AllItemTypes } from "@/utils/types/post";
 import Form from "./form"
 import Loading from "@/app/components/loading";
 
-type Props = {
-  params: {
-    id: string;
-  }
-}
 
 const getSingleItem = async (id: string) => {
 
@@ -24,7 +19,7 @@ const getSingleItem = async (id: string) => {
 }
 
 //ページを開いたときの処理
-export default async function editSingleItem ({params}:Props){
+export default async function editSingleItem ({params}:any){
   const id = params.id
   const singleItem = await getSingleItem(id);
 

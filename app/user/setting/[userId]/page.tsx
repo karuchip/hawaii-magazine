@@ -1,13 +1,7 @@
 import Form from "./form"
 
-type Props ={
-  params: {
-    userId: string,
-  }
-}
 
-
-const getUserInf = async(userId: string) => {
+const getUserInf = async(userId: any) => {
   try{
     console.log(`${process.env.NEXT_PUBLIC_BASE_URL}/api/user/readUser/${userId}`)
     const userInfRes = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/user/readUser/${userId}`)
@@ -20,7 +14,7 @@ const getUserInf = async(userId: string) => {
   }
 }
 
-export default async function Setting({params}: Props) {
+export default async function Setting({params}: any) {
 
   const userId = params.userId
   const userInf = await getUserInf(userId)
