@@ -1,10 +1,5 @@
 import Form from "./form"
 
-type Props = {
-  params: {
-    userId:string
-  }
-}
 type myInfProps = {
   id: string
   name: string
@@ -25,7 +20,7 @@ const fetchProfile = async(userId: string) => {
   }
 }
 
-export default async function readProfile({params}:Props) {
+export default async function readProfile({params}:any) {
   const userId = params.userId
   const myPageInf = await fetchProfile(userId)
 
