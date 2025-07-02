@@ -1,161 +1,257 @@
 "use client"
-import {useState} from "react"
+import {useState, useEffect} from "react"
 // アイテム作成成功後、画面遷移する
 import {useRouter} from "next/navigation"
 //ログイン状態の取得
-import { useAuthContext } from "@/app/AuthContext"
-//画像ダウンロードapi
-import ImgInput from "../../components/imgInput"
+import { useAuthContext } from "@/context/AuthContext"
 //google map auto complete機能
 import PlaceAutocomplete from "../../components/placeAutocomplete"
 //MUI
-import {Button, TextField} from "@mui/material"
+import {Button} from "@mui/material"
 //カテゴリー配列
 import {categoryList, Category} from "../../components/categoryButton"
-//Image
-import Image from "next/image"
+import { usePostContext } from "@/context/PostContext"
+import PostSectionEditor from "../../components/postSectionEditor"
+import { useForm} from "react-hook-form"
+
+type Section = {
+  image: string | null;
+  description: string;
+}
+
+type FormValues = {
+  category: string;
+  title: string;
+  location: string;
+}
 
 const CreateItem = () => {
 
-  const [title, setTitle] = useState("")
-  const [place, setPlace] = useState("")
-  const [image, setImage] = useState("")
-  const [description, setDescription] = useState("")
-  const [category, setCategory] = useState<string | null>(null)
+  const [sections, setSections] = useState<Section[]>([{image:null, description: ''}])
+  const [googlePlace, setGooglePlace] = useState<string|null>(null)
   const [lat, setLat] = useState<number | null>(null)
   const [lng, setLng] = useState<number | null>(null)
 
-  //アイテム作成後、画面遷移する
+  //文字数カウント
+  const [titleCount, setTitleCount] = useState(0)
+  const [locationCount, setLocationCount] = useState(0)
+
   const router = useRouter()
-  //トークン解析後の情報を取得
+  const {postData, setPostData, resetPostData} = usePostContext()
   const {loginUserEmail, loginUserId} = useAuthContext()
 
-  const handleSubmit = async(e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    try {
-
-
-      const response = await fetch('/api/post/create', {
-        method: "POST",
-        headers:{
-          "Accept": "application/json",
-          "Content-Type": "application/json",
-          "Authorization": `Bearer ${localStorage.getItem("token")}`
-        },
-        body: JSON.stringify({
-          title: title,
-          image: image,
-          description: description,
-          category: category,
-          lat: lat,
-          lon: lng,
-          place: place,
-          published: true,
-          authorId: loginUserId
-        })
-      })
-
-      const jsonData = await response.json()
-      alert(jsonData.message)
-      router.push("/")
-
-    } catch(error) {
-      alert("アイテム作成失敗")
-    }
-  }
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    getValues,
+    formState: {errors},
+  } = useForm<FormValues>({})
 
   const handleSelectPlace = (lat: number, lng: number, name:string) => {
     setLat(isNaN(lat) ? null : lat)
     setLng(isNaN(lng) ? null : lng)
-    setPlace(name)
+    setGooglePlace(name)
   }
+
+  //preview.tsxからの遷移時(プレビュー画面にて「戻る」ボタン押下時)
+  useEffect(()=> {
+    const fromPreview = sessionStorage.getItem("fromPreview")
+
+    //画面開いた時contextを削除(previewからの遷移を除く)
+    if (fromPreview !== "true") {
+      resetPostData()
+
+    }else {
+      const imageDescriptions = [];
+      if(postData) {
+        for (let i=1; i<=5; i++) {
+          const image = postData[`image${i}` as keyof typeof postData] as string | null;
+          const rawDescription = postData[`description${i}` as keyof typeof postData] as string;
+          const description = rawDescription ?? ""
+
+          if(image || description) {
+            imageDescriptions.push({image, description})
+          }
+        }
+
+        if (imageDescriptions.length === 0) {
+          imageDescriptions.push({ image: null, description: "" });
+        }
+        setSections(imageDescriptions)
+        setValue("title",postData.title);
+        setValue("category", postData.category)
+        setValue("location", postData.location || "")
+
+        setGooglePlace(postData.googlePlace);
+        setLat(postData.lat);
+        setLng(postData.lon);
+      }
+    }
+    sessionStorage.removeItem("fromPreview")
+  }, [])
+
+  // プレビューボタン押下時
+  const onSubmit = (data:FormValues) => {
+
+    // if(sections[0].image === null){
+    //   alert("セクション1の画像は入力必須項目です")
+    //   return;
+    // }
+    // if(sections[0].description === "" || null){
+    //   alert("セクション1の記事説明は入力必須項目です")
+    //   return;
+    // }
+
+    setPostData({
+      title: data.title,
+      image1: sections[0]?.image ?? null,
+      image2: sections[1]?.image ?? null,
+      image3: sections[2]?.image ?? null,
+      image4: sections[3]?.image ?? null,
+      image5: sections[4]?.image ?? null,
+      description1: sections[0]?.description ?? "",
+      description2: sections[1]?.description ?? "",
+      description3: sections[2]?.description ?? "",
+      description4: sections[3]?.description ?? "",
+      description5: sections[4]?.description ?? "",
+      category: data.category,
+      location: data.location,
+      googlePlace,
+      lat,
+      lon:lng,
+    })
+
+    router.push('/post/createPreview')
+  }
+
+  useEffect(()=> {
+    register("category", {required: "カテゴリを選択してください"})
+  },[register])
+
 
   //loginUserId にトークン解析から取得したidがある場合にのみreturn
   if(loginUserId) {
 
     return (
-      <div className="postFormContainer">
-        <div className="postFormWrapper">
-          <h1>🌺 思い出をシェアしよう！</h1>
-          <form onSubmit={handleSubmit} className="createForm">
-            <div>
-              <TextField
-                label="タイトル"
-                placeholder="例: モアナサンドイッチが最高だった🍍"
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-                fullWidth
-                margin="normal"
-              />
-            </div>
+      <>
+            {/* タイトル部分 */}
+        <div className="createContainer">
+          <div className="createTitle">
+            <h1>記事を作成する</h1>
+          </div>
+          <div className="horizontalLineLight create"><span></span></div>
 
+          <div className="createContent">
 
-            <div>
-              <TextField
-                label="ひとこと"
-                placeholder="例: エビとアボカドのコンビネーションが贅沢🥑🦐🩵"
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-                fullWidth
-                margin="normal"
-              />
-            </div>
+            {/* 入力部分 */}
+            <div className="createForm">
 
-            <div className="selectCategory" >
-              <p>🏷️ 記事カテゴリー</p>
-              {categoryList.slice(1).map((cat:Category) => (
-                <Button
-                key={cat.value}
-                variant={category === cat.value ? "contained" : "outlined"}
-                onClick={() => setCategory(cat.value)}
-                sx={{
-                  backgroundColor: category === cat.value ? cat.color : "transparent",
-                  color: category === cat.value ? "white" : "black",
-                  borderRadius: "20px",
-                  textTransform: "none",
-                  margin: "4px"
-                  }}
+              {/* カテゴリー入力 */}
+              <div>
+                <p className="postElement"># カテゴリー選択</p>
+                {categoryList.slice(1).map((cat:Category) => (
+                  <Button
+                    key={cat.value}
+                    variant={getValues("category") === cat.value ? "contained" : "outlined"}
+                    onClick={() => setValue("category", cat.value, {shouldValidate: true})}
+                    sx={{
+                      backgroundColor: getValues("category") === cat.value ? cat.color : "transparent",
+                      color: getValues("category") === cat.value ? "white" : "black",
+                      borderRadius: "20px",
+                      textTransform: "none",
+                      margin: "4px"
+                    }}
                   >
                     {cat.label}
-                </Button>
-              ))}
-            </div>
+                  </Button>
+                ))}
+                {errors.category && <p className="inputErrorMsg">カテゴリを選択してください</p>}
+              </div>
 
-            <div className="selectImage">
-              <p>📸 画像</p>
-              <ImgInput setImage={setImage}/>
-              <input className="selectImageBox" value={image} onChange={(e)=>setImage(e.target.value)} type="text" name="image" placeholder="「ファイルを選択」ボタンから画像を選択し、「画像 Upload」ボタンを押してください" id="createImage" required disabled/>
-              <div className="imagePreview">
-                {image &&
-                  <Image
-                    src={image}
-                    alt="画像"
-                    width={500}
-                    height={300}
-                    priority
+              {/* タイトル入力 */}
+              <div className="title">
+                <p className="postElement"># タイトル</p>
+
+                <textarea
+                  placeholder="| ここにタイトルを入力してください"
+                  {...register("title", {
+                    required: "タイトルは必須です",
+                    maxLength: {
+                      value: 40,
+                      message: "タイトルは40文字以内で入力してください"
+                    },
+                    onChange: (e)=>{setTitleCount(e.target.value.length)}
+                  })}
+                />
+                {errors.title && <p className="inputErrorMsg">{errors.title.message}</p>}
+
+                <div className="dataCount">
+                  <p
+                  style={{
+                    color: titleCount > 40 ? "#FF0000" : "#A1A1A1"
+                  }}
+                  >
+                    {titleCount}/40
+                  </p>
+                </div>
+              </div>
+
+              {/* 記事セクション作成 */}
+              <div className="section">
+                <p className="postElement"># 記事内容</p>
+                <PostSectionEditor sections={sections} setSections={setSections}/>
+              </div>
+
+              {/* Location */}
+              <div>
+                <div className="locationContent">
+                  <p className="postElement"># 場所</p>
+                  <input
+                    placeholder="| ここに場所名を入力してください"
+                    {...register("location", {
+                      required: "場所は必須です",
+                      maxLength: {
+                        value: 100,
+                        message: "場所は100文字以内で入力してください"
+                      },
+                      onChange: (e)=>{setLocationCount(e.target.value.length)}
+                    })}
+                    style={{fontSize: "16px"}}
                   />
-                }
+                  {errors.location && <p className="inputErrorMsg">{errors.location.message}</p>}
+
+                  <div className="dataCount">
+                    <p
+                    style={{
+                      color: locationCount > 100 ? "#FF0000" : "#A1A1A1"
+                    }}
+                    >
+                      {locationCount}/100
+                    </p>
+                  </div>
+                </div>
+
+                <details open  className="addGoogleMap">
+                  <summary>
+                    記事に地図を追加する
+                  </summary>
+                  <PlaceAutocomplete onSelectPlace={handleSelectPlace} defaultPlace={null} />
+                </details>
               </div>
             </div>
+          </div>
 
-            <div className="selectPlace">
-            <p>📍場所を追加する</p>
-            <PlaceAutocomplete onSelectPlace={handleSelectPlace} defaultPlace={null} />
+          <div className="horizontalLineLight create"><span></span></div>
+
+          {/* 送信ボタン */}
+          <div>
+            <div className="toPreviewBtn">
+              <button type="button" onClick={handleSubmit(onSubmit)}>プレビューを確認する</button>
             </div>
-
-            <div style={{display:"flex", justifyContent:"center"}}>
-              <Button type="submit" variant="contained" color="primary"
-                sx={{
-                  borderRadius: "30px", padding: "10px 24px", marginTop: "50px",
-                  backgroundColor: "#66c7d9", '&:hover': { backgroundColor: "#5ab6c7" }
-                }}>
-                📤 投稿する
-              </Button>
-            </div>
-
-          </form>
+          </div>
         </div>
-      </div>
+      </>
     )
   }
 }

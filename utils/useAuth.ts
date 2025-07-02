@@ -2,7 +2,7 @@
 import {useState, useEffect} from "react"
 import {useRouter} from "next/navigation"
 import {jwtVerify} from "jose"
-import { useAuthContext } from "@/app/AuthContext"
+import { useAuthContext } from "@/context/AuthContext"
 
 
 const useAuth = (shouldRedirect = true) => {

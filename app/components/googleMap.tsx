@@ -20,9 +20,9 @@ const GoogleMapComponent = ({lat, lng}:propsType) => {
   return (
   <APIProvider apiKey={apikey}>
     <Map
-      style={{width: '100vw', height: '40vw'}}
+      className="googleMapContainer"
       defaultCenter={{lat, lng}}
-      defaultZoom={15}
+      defaultZoom={11}
       gestureHandling='greedy'
       disableDefaultUI={true}
     >

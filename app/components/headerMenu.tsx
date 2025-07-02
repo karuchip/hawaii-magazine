@@ -5,11 +5,13 @@ import Menu, { MenuProps } from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import EditIcon from '@mui/icons-material/Edit';
 import Divider from '@mui/material/Divider';
-import ArchiveIcon from '@mui/icons-material/Archive';
 import FileCopyIcon from '@mui/icons-material/FileCopy';
-import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import DynamicFeedIcon from '@mui/icons-material/DynamicFeed';
+import LogoutIcon from '@mui/icons-material/Logout';
 import Link from 'next/link';
+import WidgetsIcon from '@mui/icons-material/Widgets';
+import SettingsIcon from '@mui/icons-material/Settings';
+import InfoOutlineIcon from '@mui/icons-material/InfoOutline';
 
 type Props = {
   loginUserName: string,
@@ -79,10 +81,9 @@ export default function CustomizedMenus({loginUserName, loginUserId}:Props) {
         variant="contained"
         disableElevation
         onClick={handleClick}
-        endIcon={<KeyboardArrowDownIcon />}
-        sx={{backgroundColor:"transparent"}}
+        sx={{backgroundColor:"transparent", mt:"10px"}}
       >
-        Menu
+        <WidgetsIcon  className='WidgetsIcon'/>
       </Button>
       <StyledMenu
         id="demo-customized-menu"
@@ -103,18 +104,42 @@ export default function CustomizedMenus({loginUserName, loginUserId}:Props) {
           </Link>
         </MenuItem>
         <MenuItem disableRipple>
-          <Link href={`/mypage/readmypage/${loginUserId}`}>
+          <Link href={`/readmypage/${loginUserId}`}>
             <FileCopyIcon />
             マイページ
           </Link>
         </MenuItem>
         <MenuItem disableRipple>
-          <Link href="/user/logout" className="logoutBtn">
-          <ArchiveIcon />
-          ログアウト
+          <Link href={`/user/setting/${loginUserId}`} className="logoutBtn">
+            <SettingsIcon />
+            設定
           </Link>
         </MenuItem>
+        <MenuItem disableRipple>
+          <Link href="/user/logout" className="logoutBtn">
+            <LogoutIcon />
+            ログアウト
+          </Link>
+        </MenuItem>
+
         <Divider sx={{ my: 0.5 }} />
+
+        <MenuItem disableRipple>
+          <Link href="/">
+            <DynamicFeedIcon />
+            記事一覧
+          </Link>
+        </MenuItem>
+
+        <MenuItem disableRipple>
+          <Link href="/hawaiiAbout/about">
+            <InfoOutlineIcon />
+            このアプリについて
+          </Link>
+        </MenuItem>
+
+        <Divider sx={{ my: 0.5 }} />
+
         <MenuItem onClick={handleClose} disableRipple>
           メニューを閉じる
         </MenuItem>

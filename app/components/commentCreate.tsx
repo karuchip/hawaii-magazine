@@ -1,8 +1,9 @@
 "use client"
 
+import {useForm} from "react-hook-form"
 import { useState } from "react";
-import { TextField, Button } from "@mui/material";
 import Loading from "./loading";
+import AddIcon from '@mui/icons-material/Add';
 
 type commentType = {
   loginUserId: string,
@@ -10,13 +11,18 @@ type commentType = {
   onCommentCreated: () => void
 }
 
+type FormInput = {
+  comment: string
+}
+
 const CommentCreate = ({loginUserId, postId, onCommentCreated}:commentType)=>{
 
-  const [comment, setComment] = useState("")
+  const [commentCount, setCommentCount] = useState(0);
   const [loading, setLoading] = useState(false)
+  const {register, handleSubmit, formState:{errors}} = useForm<FormInput>()
 
-  const handleSubmit = async(e: React.FormEvent) => {
-    e.preventDefault()
+  const onSubmit = async(data: FormInput) => {
+
     setLoading(true)
 
     try{
@@ -24,20 +30,20 @@ const CommentCreate = ({loginUserId, postId, onCommentCreated}:commentType)=>{
         method: "POST",
         headers:{
           "Accept": "application/json",
-          "Content-type": "application/json"
+          "Content-type": "application/json",
+          "Authorization": `Bearer ${localStorage.getItem("token")}`
         },
         body: JSON.stringify({
-          comment: comment,
+          comment: data.comment,
           postId: postId,
           userId: Number(loginUserId)
         })
       })
 
       const jsonData = await response.json()
-      setComment("")
+
       onCommentCreated()
       setLoading(false)
-
       alert(jsonData.message)
 
     }catch(error) {
@@ -51,16 +57,33 @@ const CommentCreate = ({loginUserId, postId, onCommentCreated}:commentType)=>{
 
   return(
 
-      <div style={{display:"flex", justifyContent:"center"}}>
-        <form onSubmit={handleSubmit}>
-            <TextField
-              label="コメントを書く"
-              variant="standard"
-              value={comment}
-              onChange={(e) => setComment(e.target.value)}
-              sx={{width: "60vw"}}
-              />
-          <Button type="submit" variant="contained" sx={{margin:"10px 0 0 10px", backgroundColor:"#f06543"}}>追加</Button>
+      <div style={{display:"flex", justifyContent:"center", marginBottom:"20px"}}>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <div className="commentCreateForm">
+            <textarea
+              placeholder="＋コメントを追加する"
+              {...register("comment", {
+                required: "コメントを入力してください",
+                maxLength: {
+                  value: 100,
+                  message: "コメントは100文字以内で入力してください"
+                },
+                onChange: (e)=> {setCommentCount(e.target.value.length)}
+              })}
+            />
+          <button type="submit"><AddIcon sx={{width:"40px", height:"40px", color:"#fff"}} /></button>
+          </div>
+          <div className="commentValidation">
+            <p
+              style={{
+                color : commentCount >= 100 ? "red" : "#a1a1a1",
+              }}
+            >{commentCount}/100</p>
+            {errors.comment &&
+              <p className="inputErrorMsg">{errors.comment.message}</p>
+            }
+          </div>
+
         </form>
       </div>
   )

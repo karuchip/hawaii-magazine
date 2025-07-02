@@ -1,15 +1,19 @@
 "use client"
 import dayjs from "dayjs"
 import {useState, useEffect} from "react"
-import { useAuthContext } from "../AuthContext";
-import CommentCreate from "../components/commentCreate"
+import { useAuthContext } from "../../context/AuthContext";
+import CommentCreate from "./commentCreate"
 import Loading from "./loading";
+import Link from "next/link";
+import { Avatar, Zoom } from "@mui/material"
 
 
 type AllCommentType = {
   comment: string,
   user:{
-    name: string
+    id: string,
+    name: string,
+    userIcon: string,
   },
   createdAt: Date
 }
@@ -54,16 +58,8 @@ const Comment = ({postId}:{postId:number}) => {
   }
 
   return (
-    <div>
-      <div>
-        {allComments?.map(comment => (
-          <div key={comment.createdAt.toString()}>
-            <p>{dayjs(new Date(comment.createdAt)).format("YYYY/MM/DD HH:mm")}    <span style={{color:"#5a8c68"}}>by {comment.user.name}</span></p>
-            <p style={{fontSize:"18px", paddingBottom:"15px"}}>{comment.comment}</p>
-          </div>
-        ))}
-      </div>
-      <div>
+    <>
+      <>
         {loginUserId && (
           <CommentCreate
             loginUserId={loginUserId}
@@ -71,8 +67,29 @@ const Comment = ({postId}:{postId:number}) => {
             onCommentCreated = {handleCommentCreated}
           />
         )}
-      </div>
-    </div>
+      </>
+
+      <>
+        {allComments?.map(comment => (
+          <div key={comment.createdAt.toString()}>
+            <div className="commentContent">
+              <Link href={`/readmypage/${comment.user.id}`}>
+                <Avatar src={comment.user.userIcon} alt={comment.user.name} className="userIcon"/>
+              </Link>
+              <p className="lineBreak">{comment.comment}</p>
+            </div>
+            <div className="horizontalLineLight"><span></span></div>
+          </div>
+        ))}
+
+        {allComments.length === 0 && (
+          <div className="noCommentYet">
+            <p>コメントがありません</p>
+            <div className="horizontalLineMedium"><span></span></div>
+          </div>
+        )}
+      </>
+    </>
   )
 }
 

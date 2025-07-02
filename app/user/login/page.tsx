@@ -1,27 +1,28 @@
 "use client"
-import {useState} from "react"
 import { useRouter } from "next/navigation"
-import { useAuthContext } from "@/app/AuthContext"
+import { useAuthContext } from "@/context/AuthContext"
 import {Card, TextField, Button} from "@mui/material"
+import {useForm} from "react-hook-form"
+import Link from "next/link"
 
-type SendBodyType = {
-  email: string,
+type FormInput = {
+  email: string
   password: string
 }
 
 const Login = () => {
 
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
   const router = useRouter()
   const {setLoginUserId, setLoginUserName, setLoginUserEmail, setLoginUserIcon} = useAuthContext()
+  const {register, handleSubmit, formState:{errors, isValid}} = useForm<FormInput>({
+    mode: "onChange"
+  })
 
-  const handleSubmit = async(e:React.ChangeEvent<HTMLFormElement>) => {
-    e.preventDefault()
+  const onSubmit = async(data: FormInput) => {
 
-    const body:SendBodyType = {
-      email: email,
-      password: password
+    const body = {
+      email: data.email,
+      password: data.password
     }
 
     try{
@@ -37,6 +38,11 @@ const Login = () => {
       const jsonData = await response.json()
       localStorage.setItem("token", jsonData.token)
 
+
+      if(!jsonData.payload) {
+        alert("ログイン情報の取得に失敗しました")
+        return
+      }
       setLoginUserId(jsonData.payload.id)
       setLoginUserName(jsonData.payload.name)
       setLoginUserEmail(jsonData.payload.email)
@@ -54,36 +60,51 @@ const Login = () => {
     <div className="authContainer">
       <Card variant="outlined" className="authContent">
         <h2>ログイン</h2>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <div className="userFormItem">
-
             <TextField
-              type="email"
-              value={email}
-              onChange={(e)=>setEmail(e.target.value)}
-              name="email"
-              id="standard-basic"
               label="メールアドレス"
               variant="standard"
+              id="standard-basic"
               className="userFormInput"
+              {...register("email", {
+                required: "必須項目です",
+                maxLength: {
+                  value: 255,
+                  message: "255文字以内で入力してください"
+                },
+              })}
+              error={!!errors.email}
+              helperText={errors.email?.message}
             />
           </div>
           <div className="userFormItem">
             <TextField
-              type="password"
-              value={password}
-              onChange={(e)=>setPassword(e.target.value)}
-              name="password"
-              id="standard-basic"
               label="パスワード"
               variant="standard"
               className="userFormInput"
+              {...register("password", {
+                required: "必須項目です",
+                maxLength: {
+                  value: 100,
+                  message: "100文字以内で入力してください"
+                },
+              })}
+              error={!!errors.password}
+              helperText={errors.password?.message}
             />
           </div>
           <div className="userAuthBtn">
-            <Button type="submit" variant="contained">ログイン</Button>
+            <Button type="submit" variant="contained" disabled={!isValid}>
+              ログイン
+            </Button>
           </div>
         </form>
+        <div className="userAuthLink">
+          <Link href={'/user/register'}>
+            ユーザー登録がお済みでない方はこちら
+          </Link>
+        </div>
       </Card>
     </div>
   )

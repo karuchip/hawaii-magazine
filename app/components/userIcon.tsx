@@ -1,6 +1,6 @@
 "use client"
 import { useRouter } from "next/navigation"
-import { useAuthContext } from "../AuthContext"
+import { useAuthContext } from "../../context/AuthContext"
 
 
 const UserIcon = () => {
@@ -9,7 +9,7 @@ const UserIcon = () => {
 
   const handleClick = () => {
     if(loginUserId) {
-      router.push(`/mypage/readmypage/${loginUserId}`)
+      router.push(`/readmypage/${loginUserId}`)
 
     } else {
       alert("ログイン情報が取得できませんでした")
@@ -21,7 +21,7 @@ const UserIcon = () => {
       src={loginUserIcon || "/images/defaultIcon.JPG"}
       alt="アイコン"
       onClick={handleClick}
-      style={{ cursor: "pointer", borderRadius: "50%", width: "50px", height: "50px" }}
+      className="userIcon"
     />
   )
 }
