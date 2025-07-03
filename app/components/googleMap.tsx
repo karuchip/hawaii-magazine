@@ -22,7 +22,7 @@ const GoogleMapComponent = ({lat, lng}:propsType) => {
     <Map
       className="googleMapContainer"
       defaultCenter={{lat, lng}}
-      defaultZoom={11}
+      defaultZoom={13}
       gestureHandling='greedy'
       disableDefaultUI={true}
     >

@@ -5,6 +5,7 @@ import {useRouter} from "next/navigation"
 import { useAuthContext } from "@/context/AuthContext"
 import { useState } from "react"
 import Link from "next/link"
+import Loading from "@/app/components/loading"
 
 
 type FormInput = {
@@ -12,8 +13,6 @@ type FormInput = {
   email: string;
   password: string;
 }
-
-
 
 const Register = () => {
   const {setLoginUserId, setLoginUserName, setLoginUserEmail, setLoginUserIcon} = useAuthContext()
@@ -24,12 +23,14 @@ const Register = () => {
   const [nameCount, setNameCount] = useState(0)
   const [emailCount, setEmailCount] = useState(0)
   const [passwordCount, setPasswordCount] = useState(0)
+  const [loading, setLoading] = useState(false)
 
   function getRandomInt(max:number) {
     return Math.floor(Math.random()*max) + 1
   }
 
   const onSubmit = async(data: FormInput) => {
+    setLoading(true)
     const iconNum = getRandomInt(6)
     const randomIconPath = `/images/profile${iconNum}.JPG`
 
@@ -57,7 +58,7 @@ const Register = () => {
             "Accept": "application/json",
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({email: data.email, password: data.email}),
+          body: JSON.stringify({email: data.email, password: data.password}),
         })
 
         if(loginRes.ok) {
@@ -69,17 +70,23 @@ const Register = () => {
           setLoginUserEmail(jsonData.payload.email)
           setLoginUserIcon(jsonData.payload.userIcon)
 
+          setLoading(false)
           alert("ユーザー登録が完了し、自動ログインしました。")
           router.push("/")
         } else {
+          setLoading(false)
           console.error("自動ログインに失敗しました")
         }
       }
     }catch(err){
+      setLoading(false)
       alert("ユーザー登録失敗")
     }
   }
 
+  if(loading) {
+    return <Loading/>
+  }
   return(
     <div className="authContainer">
       <Card variant="outlined" className="authContent">

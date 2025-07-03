@@ -87,7 +87,6 @@ const PostPreview = () => {
       })
 
       const jsonData = await response.json()
-      setLoading(false);
       alert(jsonData.message)
 
       //コンテクストを削除
@@ -97,6 +96,8 @@ const PostPreview = () => {
 
     } catch(error) {
       alert("アイテム作成失敗")
+    } finally {
+      setLoading(false);
     }
   }
 

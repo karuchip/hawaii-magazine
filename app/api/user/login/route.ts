@@ -12,19 +12,20 @@ export async function POST (request:NextRequest){
   const body = await request.json() as Body;
 
   try {
-
     const isSavedUserData = await prisma.user.findUnique({
       where: {email: body.email}
     })
 
     //メールアドレスが登録されているかどうか
     if (!isSavedUserData) {
+      console.log("メールアドレスが登録されていません")
       return NextResponse.json({message:"メールアドレスが登録されていません"})
     }
       //パスワードが正しいかどうか
       const isPasswordCorrect = await bcrypt.compare(body.password, isSavedUserData.password)
 
       if (! isPasswordCorrect) {
+        console.log("パスワードが違います")
         return NextResponse.json({message: "パスワードが違います"})
       }
       const secretKey = new TextEncoder().encode("my-aloha-app-book")

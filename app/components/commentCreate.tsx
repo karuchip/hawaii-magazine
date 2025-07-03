@@ -19,7 +19,7 @@ const CommentCreate = ({loginUserId, postId, onCommentCreated}:commentType)=>{
 
   const [commentCount, setCommentCount] = useState(0);
   const [loading, setLoading] = useState(false)
-  const {register, handleSubmit, formState:{errors}} = useForm<FormInput>()
+  const {register, handleSubmit, setValue, formState:{errors}} = useForm<FormInput>()
 
   const onSubmit = async(data: FormInput) => {
 
@@ -44,11 +44,14 @@ const CommentCreate = ({loginUserId, postId, onCommentCreated}:commentType)=>{
 
       onCommentCreated()
       setLoading(false)
+      setValue("comment", "")
       alert(jsonData.message)
 
     }catch(error) {
       console.error(error)
       alert("コメントを追加できませんでした")
+    }finally {
+      setLoading(false)
     }
   }
   if (loading) {
