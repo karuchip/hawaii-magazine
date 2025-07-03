@@ -50,6 +50,8 @@ const CommentCreate = ({loginUserId, postId, onCommentCreated}:commentType)=>{
     }catch(error) {
       console.error(error)
       alert("コメントを追加できませんでした")
+    }finally {
+      setLoading(false)
     }
   }
   if (loading) {

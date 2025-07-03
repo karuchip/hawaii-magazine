@@ -106,16 +106,16 @@ const LikeCount = ({likeCount, id}:likeCountProps) => {
   return(
     <div>
       {hasLiked===false ? (
-          <button onClick={handleSubmit} className="mahaloBtn">
-            <Typography sx={{ fontFamily: '"Kaushan Script", cursive', fontSize:18}}>
-              <FavoriteBorderIcon sx={{width:"30px", height:"30px"}}/><span> </span>
+          <button onClick={handleSubmit} className="mahalo mahaloBtn">
+            <Typography sx={{ fontFamily: '"Kaushan Script", cursive', fontSize:16}}>
+              <FavoriteBorderIcon sx={{width:"20px", height:"20px"}}/><span> </span>
               {count}<span> </span>mahalo!
             </Typography>
           </button>
         ):(
-        <button onClick={handleSubmit} disabled className="mahaloDisBtn">
-            <Typography sx={{ fontFamily: '"Kaushan Script", cursive', fontSize:18}}>
-            <FavoriteIcon sx={{width:"30px", height:"30px"}}/><span>  </span>
+        <button onClick={handleSubmit} disabled className="mahalo mahaloDisBtn">
+            <Typography sx={{ fontFamily: '"Kaushan Script", cursive', fontSize:16}}>
+            <FavoriteIcon sx={{width:"20px", height:"20px"}}/><span>  </span>
             {count}<span> </span>mahalo!
             </Typography>
         </button>

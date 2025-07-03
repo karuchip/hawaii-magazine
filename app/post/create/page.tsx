@@ -13,6 +13,7 @@ import {categoryList, Category} from "../../components/categoryButton"
 import { usePostContext } from "@/context/PostContext"
 import PostSectionEditor from "../../components/postSectionEditor"
 import { useForm} from "react-hook-form"
+import Loading from "@/app/components/loading"
 
 type Section = {
   image: string | null;
@@ -31,6 +32,7 @@ const CreateItem = () => {
   const [googlePlace, setGooglePlace] = useState<string|null>(null)
   const [lat, setLat] = useState<number | null>(null)
   const [lng, setLng] = useState<number | null>(null)
+  const [loading, setLoading] = useState(false)
 
   //文字数カウント
   const [titleCount, setTitleCount] = useState(0)
@@ -56,6 +58,7 @@ const CreateItem = () => {
 
   //preview.tsxからの遷移時(プレビュー画面にて「戻る」ボタン押下時)
   useEffect(()=> {
+    setLoading(true);
     const fromPreview = sessionStorage.getItem("fromPreview")
 
     //画面開いた時contextを削除(previewからの遷移を除く)
@@ -89,19 +92,21 @@ const CreateItem = () => {
       }
     }
     sessionStorage.removeItem("fromPreview")
+    setLoading(false);
   }, [])
 
   // プレビューボタン押下時
   const onSubmit = (data:FormValues) => {
+    setLoading(true);
 
-    // if(sections[0].image === null){
-    //   alert("セクション1の画像は入力必須項目です")
-    //   return;
-    // }
-    // if(sections[0].description === "" || null){
-    //   alert("セクション1の記事説明は入力必須項目です")
-    //   return;
-    // }
+    if(sections[0].image === null){
+      alert("セクション1の画像は入力必須項目です")
+      return;
+    }
+    if(sections[0].description === "" || null){
+      alert("セクション1の記事説明は入力必須項目です")
+      return;
+    }
 
     setPostData({
       title: data.title,
@@ -121,7 +126,7 @@ const CreateItem = () => {
       lat,
       lon:lng,
     })
-
+    setLoading(false);
     router.push('/post/createPreview')
   }
 
@@ -129,6 +134,9 @@ const CreateItem = () => {
     register("category", {required: "カテゴリを選択してください"})
   },[register])
 
+  if(loading) {
+    return(<Loading/>)
+  }
 
   //loginUserId にトークン解析から取得したidがある場合にのみreturn
   if(loginUserId) {

@@ -23,20 +23,20 @@ const SinglePostLayout = ({singleItem}:{singleItem: AllItemTypes}) => {
 
 
   return(
-    <article>
+    <article style={{marginTop: "40px"}}>
       {/* 記事ヘッドパート */}
       <div className="headContent">
         <p className="en headCategory">{singleItem.category}</p>
         <div className="horizontalLineLight"><span></span></div>
         <div className="headInf">
-          <div className="headInfUser">
-            <Link href={`/readmypage/${singleItem.author.id}`}>
+          <Link href={`/readmypage/${singleItem.author.id}`}>
+            <label className="headInfUser">
               {singleItem.author.userIcon && singleItem.author.name &&(
                 <Avatar src={singleItem.author.userIcon} alt={singleItem.author.name} className="userIcon"/>
               )}
-            </Link>
-            <p className="en">by {singleItem.author.name}</p>
-          </div>
+              <p className="en">by {singleItem.author.name}</p>
+            </label>
+          </Link>
           <time className="en headInfCreatedAt">{createdAtFormatted}</time>
         </div>
         <div className="horizontalLineLight"><span></span></div>
