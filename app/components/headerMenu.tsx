@@ -3,15 +3,15 @@ import { styled, alpha } from '@mui/material/styles';
 import Button from '@mui/material/Button';
 import Menu, { MenuProps } from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import EditIcon from '@mui/icons-material/Edit';
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import Divider from '@mui/material/Divider';
-import FileCopyIcon from '@mui/icons-material/FileCopy';
-import DynamicFeedIcon from '@mui/icons-material/DynamicFeed';
+import HomeIcon from '@mui/icons-material/Home';
 import LogoutIcon from '@mui/icons-material/Logout';
 import Link from 'next/link';
-import WidgetsIcon from '@mui/icons-material/Widgets';
+import MenuIcon from '@mui/icons-material/Menu';
 import SettingsIcon from '@mui/icons-material/Settings';
 import InfoOutlineIcon from '@mui/icons-material/InfoOutline';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 type Props = {
   loginUserName: string,
@@ -81,9 +81,12 @@ export default function CustomizedMenus({loginUserName, loginUserId}:Props) {
         variant="contained"
         disableElevation
         onClick={handleClick}
-        sx={{backgroundColor:"transparent", mt:"10px"}}
+        sx={{backgroundColor:"transparent", mt:"10px", ml:"15px", padding:"0"}}
       >
-        <WidgetsIcon  className='WidgetsIcon'/>
+        <label className='WidgetsIcon'>
+          <MenuIcon sx={{fontSize:"30px"}}/>
+          <p>メニュー</p>
+        </label>
       </Button>
       <StyledMenu
         id="demo-customized-menu"
@@ -99,13 +102,13 @@ export default function CustomizedMenus({loginUserName, loginUserId}:Props) {
         </MenuItem>
         <MenuItem disableRipple>
           <Link href="/post/create">
-            <EditIcon />
+            <AddCircleOutlineIcon />
             投稿する
           </Link>
         </MenuItem>
         <MenuItem disableRipple>
           <Link href={`/readmypage/${loginUserId}`}>
-            <FileCopyIcon />
+            <AccountCircleIcon />
             マイページ
           </Link>
         </MenuItem>
@@ -126,7 +129,7 @@ export default function CustomizedMenus({loginUserName, loginUserId}:Props) {
 
         <MenuItem disableRipple>
           <Link href="/">
-            <DynamicFeedIcon />
+            <HomeIcon />
             記事一覧
           </Link>
         </MenuItem>

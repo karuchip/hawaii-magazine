@@ -74,10 +74,12 @@ const Register = () => {
           alert("ユーザー登録が完了し、自動ログインしました。")
           router.push("/")
         } else {
+          setLoading(false)
           console.error("自動ログインに失敗しました")
         }
       }
     }catch(err){
+      setLoading(false)
       alert("ユーザー登録失敗")
     }
   }

@@ -7,6 +7,7 @@ import { useState } from "react"
 import { useEffect } from "react"
 import Link from "next/link"
 import {logout} from "@/utils/logout"
+import BottomMenu from "@/app/components/bottomMenu"
 
 type Props = {
   userInf: {
@@ -22,7 +23,7 @@ type FormInput = {
 
 const Form = ({userInf}:Props) => {
 
-  const {loginUserName, loginUserId, loginUserEmail, setLoginUserId, setLoginUserName, setLoginUserEmail, setLoginUserIcon} = useAuthContext()
+  const {loginUserName, loginUserId, loginUserEmail, setLoginUserId, setLoginUserName, setLoginUserEmail, loginUserIcon, setLoginUserIcon} = useAuthContext()
   const router = useRouter()
   const {register, handleSubmit, setValue, formState:{errors}} = useForm<FormInput>({})
   const [emailCount, setEmailCount] = useState(0)
@@ -93,69 +94,84 @@ const Form = ({userInf}:Props) => {
   if(userInf && userInf.email === loginUserEmail) {
 
     return (
-      <div className="settingContainer">
-        <div className="settingContent">
-          <div className="settingTitle">
-            <h2>設定</h2>
-            <p>{loginUserName} さん</p>
+      <>
+        {/* bottomメニュー */}
+        {loginUserId && loginUserIcon && (
+          <div className="bottomMenuContainer">
+            <BottomMenu loginUserId={loginUserId}/>
           </div>
+        )}
 
-          <div className="horizontalLineLight"><span></span></div>
-
-          <div className="settingItems changeProfileLink">
-            <h3>プロフィールを変更する</h3>
-            <div className="settingButton">
-              <Link href={`/editmypage/${loginUserId}`}>プロフィール編集画面へ移動する</Link>
+        {/* 設定本文 */}
+        <div className="settingContainer">
+          <div className="settingContent">
+            <div className="settingTitle">
+              <h2>設定</h2>
+              <p>{loginUserName} さん</p>
             </div>
-          </div>
 
-          <div className="horizontalLineLight"><span></span></div>
+            <div className="horizontalLineLight"><span></span></div>
 
-          <div className="settingItems changeEmail">
-            <h3>メールアドレスを変更する</h3>
-            <form onSubmit={handleSubmit(onSubmit)}>
-              <input
-                className="userFormInput"
-                {...register("email", {
-                  required: "メールアドレスは必須です",
-                  maxLength: {
-                    value: 255,
-                    message: "メールアドレスは72文字以内で入力してください",
-                  },
-                })}
-                onChange= {(e)=>setEmailCount(e.target.value.length)}
-              />
-              {errors.email && <p className="inputErrorMsg">{errors.email.message}</p>}
-              <div className="dataCount"
-                style ={{
-                  color: emailCount>255 ? "red" : "#000"
-                }}
-              >
-                <p>{emailCount}/255</p>
-              </div>
+            {/* プロフィール変更 */}
+            <div className="settingItems changeProfileLink">
+              <h3>プロフィールを変更する</h3>
               <div className="settingButton">
-                <button>メールアドレスを変更する</button>
+                <Link href={`/editmypage/${loginUserId}`}>プロフィール編集画面へ移動する</Link>
               </div>
-            </form>
-          </div>
-
-          <div className="horizontalLineLight"><span></span></div>
-
-          <div className="settingItems  leave">
-            <h3>退会する</h3>
-            <p>下記のボタンをクリックすると退会処理が行われます。<br/>投稿、アカウント情報を含めた全ての情報が削除され、本アカウントには今後一切アクセスできなくなります。</p>
-            <div className="settingButton">
-              <button onClick={handleDeleteAccount}>アカウントを削除して退会する</button>
             </div>
-          </div>
 
-          <div className="horizontalLineLight"><span></span></div>
+            <div className="horizontalLineLight"><span></span></div>
 
-          <div className="back settingBack">
-            <Link href="/">戻る</Link>
+
+            {/* メールアドレス変更 */}
+            <div className="settingItems changeEmail">
+              <h3>メールアドレスを変更する</h3>
+              <form onSubmit={handleSubmit(onSubmit)}>
+                <input
+                  className="userFormInput"
+                  {...register("email", {
+                    required: "メールアドレスは必須です",
+                    maxLength: {
+                      value: 255,
+                      message: "メールアドレスは72文字以内で入力してください",
+                    },
+                  })}
+                  onChange= {(e)=>setEmailCount(e.target.value.length)}
+                />
+                {errors.email && <p className="inputErrorMsg">{errors.email.message}</p>}
+                <div className="dataCount"
+                  style ={{
+                    color: emailCount>255 ? "red" : "#000"
+                  }}
+                >
+                  <p>{emailCount}/255</p>
+                </div>
+                <div className="settingButton">
+                  <button>メールアドレスを変更する</button>
+                </div>
+              </form>
+            </div>
+
+            <div className="horizontalLineLight"><span></span></div>
+
+
+            {/* 退会手続き */}
+            <div className="settingItems  leave">
+              <h3>退会する</h3>
+              <p>下記のボタンをクリックすると退会処理が行われます。<br/>投稿、アカウント情報を含めた全ての情報が削除され、本アカウントには今後一切アクセスできなくなります。</p>
+              <div className="settingButton">
+                <button onClick={handleDeleteAccount}>アカウントを削除して退会する</button>
+              </div>
+            </div>
+
+            <div className="horizontalLineLight"><span></span></div>
+
+            <div className="back settingBack">
+              <Link href="/">戻る</Link>
+            </div>
           </div>
         </div>
-      </div>
+      </>
     )
 
   } else {

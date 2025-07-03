@@ -5,8 +5,9 @@ import { useAuthContext } from "@/context/AuthContext"
 import Link from "next/link"
 import SinglePostLayout from "@/app/components/singlePostLayout"
 import GoogleMapComponent from "@/app/components/googleMap"
-import {Suspense} from 'react'
+import {Suspense, useState} from 'react'
 import { AllItemTypes } from "@/utils/types/post"
+import Loading from "@/app/components/loading"
 
 type Props = {
   id:string,
@@ -17,11 +18,13 @@ const DeleteItem = ({id, singleItem}:Props) => {
 
   const router = useRouter()
   const {loginUserId} = useAuthContext()
+  const [loading, setLoading] = useState(false)
 
 
   //削除formボタンが押下された時の処理
   const handleClick = async(e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
+    setLoading(true);
 
     try{
       const response = await fetch(`/api/post/delete/${id}`, {
@@ -36,15 +39,24 @@ const DeleteItem = ({id, singleItem}:Props) => {
         })
       })
       const jsonData = await response.json()
+
       alert(jsonData.message)
       router.push("/")
 
     }catch(error) {
       console.error("error message: ", error)
       alert("削除が失敗しました")
+
+    }finally {
+      setLoading(false);
     }
   }
 
+  if(loading) {
+    return(
+      <Loading/>
+    )
+  }
 
   if(Number(loginUserId) ===  singleItem.authorId) {
 

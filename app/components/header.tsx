@@ -28,8 +28,9 @@ const Header = () => {
             ):(
               <nav className="loginNav">
                 {loginUserIcon && (
-                  <div className="UserIcon-Wrapper">
+                  <div className="userIconWrapper">
                     <UserIcon/>
+                    <p>ログイン中</p>
                   </div>
                 )}
                 {loginUserName && loginUserId &&(

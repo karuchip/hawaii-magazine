@@ -4,6 +4,8 @@ import { useAuthContext } from "@/context/AuthContext"
 import {Card, TextField, Button} from "@mui/material"
 import {useForm} from "react-hook-form"
 import Link from "next/link"
+import { useState } from "react"
+import Loading from "@/app/components/loading"
 
 type FormInput = {
   email: string
@@ -17,6 +19,7 @@ const Login = () => {
   const {register, handleSubmit, formState:{errors, isValid}} = useForm<FormInput>({
     mode: "onChange"
   })
+  const [loading, setLoading] = useState(false)
 
   const onSubmit = async(data: FormInput) => {
 
@@ -26,6 +29,7 @@ const Login = () => {
     }
 
     try{
+      setLoading(true)
       const response = await fetch('/api/user/login', {
         method:"POST",
         headers:{
@@ -36,26 +40,34 @@ const Login = () => {
       })
 
       const jsonData = await response.json()
+
       localStorage.setItem("token", jsonData.token)
 
+      alert(jsonData.message)
 
       if(!jsonData.payload) {
         alert("ログイン情報の取得に失敗しました")
+        setLoading(false)
         return
       }
       setLoginUserId(jsonData.payload.id)
       setLoginUserName(jsonData.payload.name)
       setLoginUserEmail(jsonData.payload.email)
       setLoginUserIcon(jsonData.payload.userIcon)
-      alert(jsonData.message)
+
+      setLoading(false)
       router.replace("/")
 
     }catch(error){
+      setLoading(false)
       alert("ログイン失敗")
       console.error(error)
     }
   }
 
+  if(loading) {
+    return <Loading/>
+  }
   return(
     <div className="authContainer">
       <Card variant="outlined" className="authContent">
