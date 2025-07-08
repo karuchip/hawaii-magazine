@@ -6,9 +6,11 @@ import CommentCreate from "./commentCreate"
 import Loading from "./loading";
 import Link from "next/link";
 import { Avatar, Zoom } from "@mui/material"
+import DeleteIcon from '@mui/icons-material/Delete';
 
 
 type AllCommentType = {
+  commentId: string,
   comment: string,
   user:{
     id: string,
@@ -42,7 +44,6 @@ const Comment = ({postId}:{postId:number}) => {
       setCommentLoading(false)
     }
   }
-
   useEffect(()=> {
     getAllComments()
   }, [])
@@ -52,6 +53,44 @@ const Comment = ({postId}:{postId:number}) => {
     setCommentLoading(true)
     getAllComments()
   }
+
+
+  // コメント削除
+  const deleteComment = async (commentId: string) => {
+    const isConfirmed = window.confirm("コメントを削除してもよろしいですか?")
+    if(!isConfirmed) return
+
+    setCommentLoading(true)
+
+    try {
+      const deleteRes = await fetch(`/api/comment/deleteComment/${commentId}`, {
+        method: "DELETE",
+        headers:{
+          "Authorization": `Bearer ${localStorage.getItem("token")}`
+        },
+        body: JSON.stringify({
+          loginUserId: loginUserId
+        })
+      })
+
+      if(!deleteRes.ok) {
+        const error = await deleteRes.json();
+        alert(error.message)
+        return
+      }
+
+      const deleteData = await deleteRes.json()
+      alert(deleteData.message)
+
+      handleCommentCreated()
+
+    }catch(error) {
+      console.error(error)
+    }finally {
+      setCommentLoading(false)
+    }
+  }
+
 
   if (authLoading || commentLoading) {
     return <Loading/>
@@ -72,12 +111,20 @@ const Comment = ({postId}:{postId:number}) => {
       <>
         {allComments?.map(comment => (
           <div key={comment.createdAt.toString()}>
+
             <div className="commentContent">
-              <Link href={`/readmypage/${comment.user.id}`}>
+              <Link href={`/readmypage/${comment.user.id}`} className="commentUserLink">
                 <Avatar src={comment.user.userIcon} alt={comment.user.name} className="userIcon"/>
+                <p>{comment.user.name}</p>
               </Link>
-              <p className="lineBreak">{comment.comment}</p>
+              <p className="commentComment">{comment.comment}</p>
+              {(comment.user.id === loginUserId) && (
+                <div className="commentDeleteBtn">
+                  <button onClick={() => deleteComment(comment.commentId)}><DeleteIcon/></button>
+                </div>
+              )}
             </div>
+
             <div className="horizontalLineLight"><span></span></div>
           </div>
         ))}
