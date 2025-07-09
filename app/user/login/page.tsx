@@ -93,6 +93,7 @@ const Login = () => {
           <div className="userFormItem">
             <TextField
               label="パスワード"
+              type="password"
               variant="standard"
               className="userFormInput"
               {...register("password", {
