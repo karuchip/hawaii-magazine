@@ -1,13 +1,19 @@
 body {
   padding: 0;
   margin: 0;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
 }
 .en {
-  font-family: 'Playfair', serif;
+  font-family: "Playfair", serif;
   font-size: 20px;
 }
-h1, h2, p, a, ul, li, span{
+h1,
+h2,
+p,
+a,
+ul,
+li,
+span {
   padding: 0;
   margin: 0;
 }
@@ -28,9 +34,9 @@ header {
   top: 0;
   z-index: 500;
 }
-.headerLogo{
+.headerLogo {
   color: white;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
 }
 .headerContainer {
   padding: 20px 20px;
@@ -49,7 +55,7 @@ header {
   color: #fff;
   display: inline-block;
 }
-.notLoginNav a{
+.notLoginNav a {
   border-bottom: 1px solid #fff;
 }
 .notLoginNav a:hover {
@@ -63,15 +69,15 @@ header {
   position: relative;
 }
 .userIconWrapper p {
-  font-size:12px;
-  position:absolute;
+  font-size: 12px;
+  position: absolute;
   width: 60px;
   top: 37px;
   left: -10px;
 }
 
 @media screen and (max-width: 640px) {
-  .headerLogo{
+  .headerLogo {
     font-size: 28px;
     position: relative;
   }
@@ -96,9 +102,9 @@ header {
 
 /* (headerMenu.tsx) */
 .WidgetsIcon {
-  position: relative
+  position: relative;
 }
-.WidgetsIcon p{
+.WidgetsIcon p {
   position: absolute;
   font-size: 12px;
   width: 50px;
@@ -135,7 +141,6 @@ footer {
   padding-top: 20px;
 }
 
-
 /* header, footerを除くbody */
 .mainContainer {
   padding-top: 130px;
@@ -145,7 +150,6 @@ footer {
     padding-top: 100px;
   }
 }
-
 
 /* <BottomMenu /> */
 .bottomMenuContainer {
@@ -173,11 +177,11 @@ footer {
   border: 1px solid #f7f5ec;
 }
 .bottomMenuContent a {
-  color:#5a8c68;
+  color: #5a8c68;
   text-decoration: none;
 }
 .bottomMenuContent a:hover {
-  color:#6fad81;
+  color: #6fad81;
 }
 @media screen and (min-width: 640px) {
   .bottomMenuContainer {
@@ -185,32 +189,30 @@ footer {
   }
 }
 
-
-
 /* 読み込み中表示 */
-.LoadingContainer{
+.LoadingContainer {
   width: 100%;
   height: 100vh;
   padding-top: 100px;
 }
-.LadingContent{
+.LadingContent {
   width: 250px;
   height: 200px;
   background-color: #fff;
   border: 1px solid #5a8c68;
   border-radius: 20px;
   margin: 150px auto;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
 }
 .LadingContent img {
   margin: 20px auto;
-  animation: flowerRotation 3000ms linear infinite
+  animation: flowerRotation 3000ms linear infinite;
 }
 @keyframes flowerRotation {
   0% {
     transform: rotate(0);
   }
-  100%{
+  100% {
     transform: rotate(360deg);
   }
 }
@@ -238,7 +240,6 @@ footer {
   border-bottom: 1px solid #000;
 }
 
-
 /* like数表示 (/app/page.tsx)*/
 .likePosition {
   display: flex;
@@ -246,7 +247,7 @@ footer {
   margin-top: 20px;
 }
 .hasLiked {
-  color :#f06543;
+  color: #f06543;
   filter: brightness(1.4);
 }
 .hasNotLiked {
@@ -270,7 +271,7 @@ footer {
   border: 2px solid #f06543;
   filter: brightness(1.4);
 }
-.mahaloBtn:hover{
+.mahaloBtn:hover {
   opacity: 50%;
 }
 .mahaloDisBtn {
@@ -279,13 +280,12 @@ footer {
   color: #fff;
 }
 
-
 /* 一覧画面(/page.tsx) */
 .allItemsContainer {
   padding-bottom: 40px;
   min-height: 80vh;
 }
-.supInf p{
+.supInf p {
   font-size: 14px;
   color: #606060;
 }
@@ -303,7 +303,7 @@ footer {
   font-size: 12px;
 }
 
-  /* ソートボタン */
+/* ソートボタン */
 .sortBtn {
   position: fixed;
   z-index: 300;
@@ -312,7 +312,7 @@ footer {
   cursor: pointer;
 }
 @media screen and (max-width: 640px) {
-  .sortBtn{
+  .sortBtn {
     top: 80px;
   }
 }
@@ -324,17 +324,17 @@ footer {
   margin-top: 15px;
   font-size: 12px;
   font-weight: 700;
-  box-shadow: 0 4px 4px rgba(0,0,0, 0.2);
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
   cursor: pointer;
 }
 .sortBtn button:hover {
-  box-shadow: 0 4px 8px rgba(0,0,0, 0.3);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 .toolBoxContainer {
   position: fixed;
   z-index: 200;
   max-width: 350px;
-  right:10px;
+  right: 10px;
   top: 125px;
 }
 @media screen and (max-width: 640px) {
@@ -345,7 +345,7 @@ footer {
 .toolBoxContent {
   padding: 20px;
 }
-.toolBoxContent p{
+.toolBoxContent p {
   font-size: 14px;
   font-weight: 700;
   margin-bottom: 10px;
@@ -355,25 +355,25 @@ footer {
   justify-content: start;
   margin-bottom: 40px;
 }
-.toolBoxClear button{
+.toolBoxClear button {
   background-color: rgba(255, 255, 255, 0);
   border: none;
   color: #626161;
 }
-.toolBoxClear button:hover{
-  color: #000
+.toolBoxClear button:hover {
+  color: #000;
 }
 .toolBoxSearch {
   margin-bottom: 40px;
 }
-.toolBoxSearch input{
+.toolBoxSearch input {
   width: 250px;
   font-size: 16px;
 }
-.toolBoxSearch button{
+.toolBoxSearch button {
   border: none;
   background-color: rgba(255, 255, 255, 0);
-  margin-top:10px;
+  margin-top: 10px;
 }
 
 /* 検索結果が1つもない時 */
@@ -381,14 +381,14 @@ footer {
   width: fit-content;
   height: 80vh;
 }
-.noPost p{
+.noPost p {
   margin-top: 40px;
 }
 .noPost button {
   margin: 30px 40px;
-  background-color: rgba(0,0,0,0);
+  background-color: rgba(0, 0, 0, 0);
   border: none;
-  color: #A1A1A1;
+  color: #a1a1a1;
 }
 .noPost button:hover {
   color: #000;
@@ -437,7 +437,7 @@ footer {
   margin-bottom: 32px;
 }
 @media screen and (max-width: 640px) {
-  .locationName{
+  .locationName {
     margin-top: 40px;
   }
 }
@@ -455,7 +455,7 @@ footer {
   height: 350px;
 }
 /* コメント */
-.commentLabel{
+.commentLabel {
   font-size: 32px;
   font-weight: 500;
 }
@@ -474,17 +474,29 @@ footer {
 }
 
 /* コメント取得(app/components/comment.tsx) */
-.commentContent{
+.commentContent {
   display: flex;
   gap: 20px;
   padding: 20px 0;
   align-items: center;
 }
-.commentContainer p {
-  width: fit-content;
-  height: fit-content;
+.commentComment {
+  width: 80%;
 }
-.noCommentYet p{
+.commentUserLink p {
+  color: #66c7d9;
+}
+.commentUserLink p:hover {
+  color: #4a96a4;
+}
+.commentDeleteBtn button {
+  background-color: #fff;
+  border: none;
+}
+.commentDeleteBtn button:hover {
+  color: #a1a1a1;
+}
+.noCommentYet p {
   margin-top: 20px;
   margin-bottom: 20px;
 }
@@ -494,7 +506,6 @@ footer {
   display: inline-flex;
   gap: 40px;
   margin-top: 0px;
-
 }
 .commentCreateForm textarea {
   border: none;
@@ -534,7 +545,7 @@ footer {
   }
 }
 /* 記事リンクボタン */
-.singlePageLink{
+.singlePageLink {
   border: 1px solid #000;
   border-radius: 20px;
   padding: 10px 30px;
@@ -559,7 +570,7 @@ footer {
   justify-content: center;
 }
 @media screen and (max-width: 640px) {
-  .editDeleteContainer{
+  .editDeleteContainer {
     gap: 30px;
     margin: 40px auto;
   }
@@ -567,8 +578,8 @@ footer {
 
 /* 記事整形(app/components/singlePostLayout.tsx) */
 /* 記事ヘッドパート */
-.horizontalLineLight{
-  border-bottom: 1px solid #A1A1A1;
+.horizontalLineLight {
+  border-bottom: 1px solid #a1a1a1;
   width: 100%;
 }
 .headContent {
@@ -592,15 +603,15 @@ footer {
   align-items: flex-end;
   gap: 10px;
 }
-.headInfUser p{
+.headInfUser p {
   color: #000;
 }
 .headInfUser p:hover {
   color: #a1a1a1;
 }
 /* 記事セクション */
-.verticalLine{
-  border-left: 1px solid #A1A1A1;
+.verticalLine {
+  border-left: 1px solid #a1a1a1;
   width: 1px;
   height: 50px;
 }
@@ -619,7 +630,7 @@ footer {
   margin: 80px 10px 60px 0;
 }
 @media screen and (max-width: 640px) {
-  .verticalLine{
+  .verticalLine {
     margin-left: 10px;
   }
   .sectionContent h1 {
@@ -630,7 +641,7 @@ footer {
   }
 }
 /* 画像 */
-.sectionImageContainer{
+.sectionImageContainer {
   width: 600px;
   height: 350px;
   overflow: hidden;
@@ -641,17 +652,17 @@ footer {
   height: 100%;
   object-fit: cover;
 }
-.sectionImageDescription{
+.sectionImageDescription {
   margin-top: 32px;
   margin-bottom: 100px;
   font-size: 18px;
 }
 @media screen and (max-width: 640px) {
-  .sectionImageContainer{
+  .sectionImageContainer {
     width: 320px;
     height: 320px;
   }
-  .sectionImageDescription{
+  .sectionImageDescription {
     width: 320px;
     font-size: 16px;
   }
@@ -661,14 +672,13 @@ footer {
   }
 }
 
-
 /* ログイン画面(login/pages.tsx) and 新規登録画面(register/pages.tsx)　 */
 .authContainer {
   min-height: 700px;
   height: 100vh;
   margin-top: 150px;
 }
-@media screen and (max-width:640px) {
+@media screen and (max-width: 640px) {
   .authContainer {
     margin-top: 110px;
   }
@@ -678,7 +688,7 @@ footer {
   max-width: 600px;
   padding-bottom: 30px;
 }
-.authContent h2{
+.authContent h2 {
   width: fit-content;
   margin: 30px auto 10px auto;
 }
@@ -691,7 +701,7 @@ footer {
 .userFormItem p {
   width: fit-content;
   font-size: 12px;
-  color: #A1A1A1;
+  color: #a1a1a1;
   position: absolute;
   right: 0;
 }
@@ -702,7 +712,7 @@ footer {
   margin-top: 5px;
   font-size: 18px;
 }
-.userFormInput{
+.userFormInput {
   width: 100%;
 }
 .userAuthBtn {
@@ -710,7 +720,7 @@ footer {
   justify-content: center;
   width: 100%;
 }
-.userAuthBtn button{
+.userAuthBtn button {
   width: 70%;
   margin-top: 30px;
 }
@@ -749,7 +759,7 @@ footer {
   font-weight: 400;
   margin-bottom: 20px;
 }
-@media screen and (max-width:640px) {
+@media screen and (max-width: 640px) {
   .profileEditContent h2 {
     font-size: 20px;
   }
@@ -771,7 +781,7 @@ footer {
   }
 }
 .editIcon {
-  display:flex;
+  display: flex;
   justify-content: center;
 }
 .editIcon p {
@@ -781,9 +791,10 @@ footer {
   font-weight: 700;
 }
 .editIcon p:hover {
-  color: #66C7D9;
+  color: #66c7d9;
 }
-.profileEditContent input, .profileEditContent textarea {
+.profileEditContent input,
+.profileEditContent textarea {
   width: 100%;
   padding: 10px;
   font-size: 16px;
@@ -793,7 +804,7 @@ footer {
 .profileEditContent textarea {
   height: 150px;
 }
-@media screen and (max-width:640px) {
+@media screen and (max-width: 640px) {
   .profileEditContent textarea {
     height: 200px;
   }
@@ -813,14 +824,14 @@ footer {
   font-size: 20px;
   border: 1px solid #000000;
 }
-@media screen and (max-width:640px) {
+@media screen and (max-width: 640px) {
   .profileEditBtn button {
-     font-size: 16px;
-      padding: 10px 20px;
+    font-size: 16px;
+    padding: 10px 20px;
   }
 }
 .profileEditBtn button:hover {
-  background-color: #A1A1A1;
+  background-color: #a1a1a1;
   color: #fff;
 }
 /* エラーメッセージ表示 */
@@ -835,7 +846,7 @@ footer {
   padding-top: 114px;
 }
 @media screen and (max-width: 640px) {
-  .createContainer{
+  .createContainer {
     padding: 40px 15px 0 15px;
   }
 }
@@ -844,7 +855,8 @@ footer {
   max-width: 600px;
   margin: 80px auto 0 auto;
 }
-.createContent input:not(.selectImageBox), textarea{
+.createContent input:not(.selectImageBox),
+textarea {
   background-color: #f0664315;
   padding: 10px;
 }
@@ -867,9 +879,9 @@ footer {
     min-width: 300px;
     margin: 60px auto;
   }
-  .createTitle h1{
+  .createTitle h1 {
     font-size: 20px;
-    margin-bottom:20px;
+    margin-bottom: 20px;
   }
 }
 .postElement {
@@ -878,8 +890,8 @@ footer {
 }
 @media screen and (max-width: 640px) {
   .postElement {
-  margin-top: 50px;
-  margin-bottom: 10px;
+    margin-top: 50px;
+    margin-bottom: 10px;
   }
 }
 .title textarea {
@@ -896,14 +908,14 @@ footer {
     padding: 10px;
   }
 }
-.locationContent input{
+.locationContent input {
   font-size: 18px;
   border: none;
   outline: none;
   width: 100%;
 }
-.addGoogleMap summary{
-  color:#66c7d9;
+.addGoogleMap summary {
+  color: #66c7d9;
 }
 .addGoogleMap {
   margin-bottom: 105px;
@@ -913,7 +925,7 @@ footer {
   display: flex;
   justify-content: center;
 }
-.toPreviewBtn button{
+.toPreviewBtn button {
   margin: 60px auto;
   background-color: #fff;
   color: #000;
@@ -924,20 +936,20 @@ footer {
   border: 1px solid #000;
   cursor: pointer;
 }
-@media screen and (max-width:640) {
+@media screen and (max-width: 640) {
   .toPreviewBtn button {
     font-size: 16px;
     padding: 10px 20px;
   }
 }
 .toPreviewBtn button:hover {
-  background-color: #A1A1A1;
+  background-color: #a1a1a1;
   color: #fff;
-  border: 1px solid #A1A1A1;
+  border: 1px solid #a1a1a1;
 }
 
 /* cloudinary (/app/components/imgInput.tsx) */
-.hiddenInput{
+.hiddenInput {
   display: none;
 }
 .previewImageContainer {
@@ -988,10 +1000,10 @@ footer {
     left: 70px;
   }
 }
-.previewImageContainer:hover{
-  background-color:  #66c7d9;
+.previewImageContainer:hover {
+  background-color: #66c7d9;
 }
-.imgInput img{
+.imgInput img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -1000,7 +1012,7 @@ footer {
   z-index: 200;
 }
 /* (/app/components/postSectionEditor.tsx) */
-.sectionNo{
+.sectionNo {
   font-size: 20px;
   margin-bottom: 20px;
 }
@@ -1047,7 +1059,7 @@ footer {
   justify-content: center;
   margin-bottom: 120px;
 }
-.addSectionBtn button{
+.addSectionBtn button {
   color: #5a8c68;
   border: 1px solid #5a8c68;
   background-color: #fff;
@@ -1059,7 +1071,7 @@ footer {
   font-weight: 700;
   cursor: pointer;
 }
-@media screen and (max-width:640) {
+@media screen and (max-width: 640) {
   .addSectionBtn button {
     font-size: 16px;
     padding: 10px 20px;
@@ -1070,11 +1082,10 @@ footer {
   background-color: #5a8c68;
 }
 
-
 /* 投稿プレビューページ */
 /* (/post/createPreview/page.tsx) */
-.createPreviewLayout{
-  padding-top:40px;
+.createPreviewLayout {
+  padding-top: 40px;
 }
 
 /* 削除ページ */
@@ -1128,11 +1139,11 @@ footer {
 }
 .profile a {
   display: inline-flex;
-  margin: 10px
+  margin: 10px;
 }
 .toEditProfile {
   width: fit-content;
-  color: #66C7D9;
+  color: #66c7d9;
 }
 .toEditProfile:hover {
   color: #4a96a4;
@@ -1140,7 +1151,7 @@ footer {
 .profileIconBorder {
   width: 270px;
   height: 270px;
-  border: 1px solid #A1A1A1;
+  border: 1px solid #a1a1a1;
   border-radius: 50%;
   margin: 0px auto 30px auto;
 }
@@ -1207,13 +1218,13 @@ footer {
 .myPostContent {
   width: 280px;
   height: 280px;
-  border: 0.5px solid #A0A0A0;
+  border: 0.5px solid #a0a0a0;
   margin-bottom: 60px;
   border-radius: 10px;
-  box-shadow: 0 4px 4px rgba(0,0,0,0.25);
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 }
 .myPostContent:hover {
-  box-shadow: 0 8px 18px rgba(0,0,0,0.5);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.5);
   opacity: 0.8;
 }
 .myPagePostImg {
@@ -1240,21 +1251,21 @@ footer {
 
 /* (/components/placeAutocomplete.tsx) */
 .autocompletedPlace {
-  margin-top:20px;
+  margin-top: 20px;
 }
 
 .autocompletedPlace p:nth-child(1) {
   font-size: 14px;
   font-weight: 500;
-  color:#66C7D9;
+  color: #66c7d9;
 }
 .autocompletedPlace p:nth-child(2) {
-  border: 1px solid #66C7D9;
+  border: 1px solid #66c7d9;
   border-radius: 10px;
   min-height: 20px;
   padding: 20px;
   margin-top: 5px;
-  color:#66C7D9;
+  color: #66c7d9;
   width: 560px;
 }
 @media screen and (max-width: 640px) {
@@ -1272,7 +1283,7 @@ footer {
   width: 600px;
   margin: 180px 0 100px 0;
 }
-@media screen and (max-width:640px) {
+@media screen and (max-width: 640px) {
   .settingContent {
     width: 320px;
     margin: 120px 0 100px 0;
@@ -1287,7 +1298,8 @@ footer {
   justify-content: space-between;
   align-items: baseline;
 }
-.settingTitle h2, p {
+.settingTitle h2,
+p {
   width: fit-content;
 }
 .settingTitle h2 {
@@ -1297,7 +1309,7 @@ footer {
 .settingItems {
   margin: 80px 0;
 }
-@media screen and (max-width:640px) {
+@media screen and (max-width: 640px) {
   .settingTitle h2 {
     font-size: 20px;
     font-weight: 500;
@@ -1306,7 +1318,8 @@ footer {
     margin: 60px 0;
   }
 }
-.settingItems button, .settingItems a {
+.settingItems button,
+.settingItems a {
   margin-top: 50px;
   font-size: 16px;
   padding: 10px;
@@ -1315,7 +1328,7 @@ footer {
   width: 50%;
   font-weight: 700;
 }
-@media screen and (max-width:640px) {
+@media screen and (max-width: 640px) {
   .settingItems h3 {
     font-size: 16px;
   }
@@ -1328,7 +1341,7 @@ footer {
   display: flex;
   justify-content: center;
 }
-.changeProfileLink a{
+.changeProfileLink a {
   border: 1px solid #5a8c68;
   color: #fff;
   background-color: #5a8c68;
@@ -1338,7 +1351,7 @@ footer {
   margin-top: 30px;
 }
 @media screen and (max-width: 640px) {
-  .changeProfileLink a{
+  .changeProfileLink a {
     width: 100%;
   }
 }
@@ -1350,7 +1363,7 @@ footer {
 .changeEmail input {
   height: 40px;
   padding: 10px;
-  background-color: #FFEDFE;
+  background-color: #ffedfe;
   border: none;
 }
 .changeEmail button {
@@ -1404,7 +1417,7 @@ footer {
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 1.2s ease, transform 1.2s ease;
-  background-color: rgba(0,0,0, 0.3);
+  background-color: rgba(0, 0, 0, 0.3);
   height: 100%;
   padding: 300px 0 0 20px;
 }
@@ -1412,24 +1425,24 @@ footer {
   opacity: 1;
   transform: translateY(0);
 }
-@media screen and (max-width:640px) {
+@media screen and (max-width: 640px) {
   .fvContent {
     padding: 10px 0 0 0;
     height: 35%;
     right: 0;
   }
 }
-.fvContent h1{
+.fvContent h1 {
   color: #fff;
   font-size: 40px;
-  text-shadow: 0 8px 16px rgba(0,0,0, 0.6);
+  text-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
   margin-bottom: 10px;
 }
-.fvContent p{
+.fvContent p {
   font-family: "Kaushan Script";
   font-size: 30px;
   color: #fff;
-  text-shadow: 0 8px 8px rgba(0,0,0, 0.5);
+  text-shadow: 0 8px 8px rgba(0, 0, 0, 0.5);
   margin-bottom: 40px;
 }
 .aboutBtnFV {
@@ -1438,18 +1451,18 @@ footer {
   gap: 20px;
   padding-left: 30px;
 }
-.aboutBtnFV button{
+.aboutBtnFV button {
   font-size: 16px;
   font-weight: 700;
   color: #fff;
   background-color: #5a8c68;
   padding: 10px 20px;
-  box-shadow: 0px 4px 4px rgba(0,0,0, 0.5);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5);
   border: none;
   border-radius: 10px;
   cursor: pointer;
 }
-.aboutBtnFV button:hover{
+.aboutBtnFV button:hover {
   background-color: #6fad81;
 }
 @media screen and (max-width: 640px) {
@@ -1457,10 +1470,10 @@ footer {
     bottom: 0px;
     left: 20px;
   }
-  .fvContent h1{
+  .fvContent h1 {
     font-size: 24px;
   }
-  .fvContent p{
+  .fvContent p {
     font-size: 18px;
     text-align: center;
     margin-bottom: 30px;
@@ -1469,7 +1482,7 @@ footer {
     display: none;
   }
 }
-.aboutContainer{
+.aboutContainer {
   width: 100%;
   min-height: 100vh;
   display: flex;
@@ -1479,12 +1492,12 @@ footer {
   width: 770px;
   margin-top: 100px;
 }
-@media screen and (max-width:850px) {
+@media screen and (max-width: 850px) {
   .aboutContent {
     width: 600px;
   }
 }
-@media screen and (max-width:640px) {
+@media screen and (max-width: 640px) {
   .aboutContent {
     width: 320px;
     margin-top: 60px;
@@ -1492,7 +1505,7 @@ footer {
 }
 .aboutContent h2 {
   font-size: 40px;
-  color: #66C7D9;
+  color: #66c7d9;
   font-family: "Kaushan Script";
   font-weight: 500;
 }
@@ -1500,9 +1513,9 @@ footer {
   font-size: 20px;
   margin-bottom: 40px;
 }
-@media screen and (max-width:640px) {
+@media screen and (max-width: 640px) {
   .aboutContent h2 {
-  font-size: 28px;
+    font-size: 28px;
   }
   .aboutContent h3 {
     font-size: 18px;
@@ -1516,21 +1529,21 @@ footer {
 .aboutBtn {
   display: flex;
   justify-content: center;
-  gap:20px;
+  gap: 20px;
   margin-top: 40px;
 }
-.aboutBtn button{
+.aboutBtn button {
   font-size: 16px;
   font-weight: 700;
   color: #fff;
   background-color: #5a8c68;
   padding: 10px 20px;
-  box-shadow: 0px 4px 4px rgba(0,0,0, 0.5);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5);
   border: none;
   border-radius: 10px;
   cursor: pointer;
 }
-.aboutBtn button:hover{
+.aboutBtn button:hover {
   background-color: #6fad81;
 }
 .scroll {
@@ -1540,7 +1553,7 @@ footer {
   margin-top: 10px;
   font-family: "Kaushan Script";
 }
-.scroll p{
+.scroll p {
   font-size: 24px;
   color: #5a8c68;
 }
@@ -1549,7 +1562,7 @@ footer {
   height: 20px;
   width: 100px;
 }
-.sliderContainer{
+.sliderContainer {
   display: flex;
   overflow-x: auto;
   gap: 50px;
@@ -1561,24 +1574,24 @@ footer {
   min-width: 350px;
   scroll-snap-align: center;
 }
-@media screen and (max-width:640px) {
-  .card{
+@media screen and (max-width: 640px) {
+  .card {
     min-width: 320px;
   }
 }
-.featureItemContent{
+.featureItemContent {
   width: 360px;
   height: fit-content;
-  border: 0.5px solid #A1A1A1;
+  border: 0.5px solid #a1a1a1;
   border-radius: 20px;
-  box-shadow: 0 4px 8px rgba(0,0,0, 0.5);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
   padding: 10px;
 }
 .featureItemContent:hover {
-  box-shadow: 0 8px 18px rgba(0,0,0, 0.5);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.5);
 }
 .featureItemContent h4 {
-  color: #66C7D9;
+  color: #66c7d9;
   font-size: 16px;
   font-weight: 600;
 }
@@ -1589,11 +1602,11 @@ footer {
 .featurePicContainer {
   width: 330px;
   height: 280px;
-  border: 0.5px solid #A1A1A1;
+  border: 0.5px solid #a1a1a1;
   margin: 30px auto 0 auto;
 }
 @media screen and (max-width: 850px) {
-  .featureItemContent{
+  .featureItemContent {
     width: 320px;
     height: fit-content;
   }
@@ -1628,22 +1641,22 @@ footer {
   height: 260px;
   overflow: hidden;
 }
-.featurePicContent1 img{
+.featurePicContent1 img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
-.featurePicContent2 img{
+.featurePicContent2 img {
   width: 100%;
   height: 100%;
   object-fit: fill;
 }
-.featurePicContent3 img{
+.featurePicContent3 img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
-.featurePicContent4 img{
+.featurePicContent4 img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -1658,7 +1671,7 @@ footer {
 .aboutLinkContent:hover {
   top: 5px;
 }
-.aboutLinkContent img{
+.aboutLinkContent img {
   position: absolute;
   left: 10px;
   width: 90px;
@@ -1674,8 +1687,6 @@ footer {
   color: #fff;
   font-weight: 700;
 }
-
-
 
 /* /app/components/hawaiiSlider */
 .hawaiiSlideContainer {
@@ -1699,5 +1710,3 @@ footer {
 .sliderImage {
   transition: opacity 1.5s ease-in-out;
 }
-
-
