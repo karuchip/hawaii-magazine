@@ -10,10 +10,12 @@ import SinglePostLayout from "@/app/components/singlePostLayout"
 import { useAuthContext } from "@/context/AuthContext"
 import BottomMenu from "@/app/components/bottomMenu"
 
+type PostWidthDistance = AllItemTypes & {distance: number}
+
 type Props = {
   postId: number;
   singleItem: AllItemTypes;
-  nearPosts: AllItemTypes[];
+  nearPosts: PostWidthDistance[];
 }
 
 const ReadSingleItem = ({singleItem, postId, nearPosts}:Props) => {
@@ -24,7 +26,6 @@ const ReadSingleItem = ({singleItem, postId, nearPosts}:Props) => {
   }
 
   return(
-
     <>
       {/* bottomメニュー */}
       {loginUserId && loginUserIcon && (
@@ -34,10 +35,8 @@ const ReadSingleItem = ({singleItem, postId, nearPosts}:Props) => {
       )}
 
       <div className="singlePostContainer">
-        <div className="singlePostContent">
-
-          <div className="postContent">
-
+        <div className="singleNearPostContent">
+          <div className="singlePostContent">
             {/* likeボタン */}
             {loginUserId && (
               <div className="likePosition">
@@ -57,11 +56,11 @@ const ReadSingleItem = ({singleItem, postId, nearPosts}:Props) => {
               <div className="locationContent">
                 <p className="locationName">{singleItem.location}</p>
                   <Suspense fallback={<div>地図を読み込み中...</div>}>
-                    <div className="googleMapContainer">
-                      {singleItem.lat && singleItem.lon && (
+                    {singleItem.lat && singleItem.lon && (
+                      <div className="googleMapContainer">
                         <GoogleMap lat={singleItem.lat} lng={singleItem.lon}/>
-                      )}
-                    </div>
+                      </div>
+                    )}
                   </Suspense>
                 <p className="googleMapName en">{singleItem.googlePlace}</p>
               </div>
@@ -97,15 +96,15 @@ const ReadSingleItem = ({singleItem, postId, nearPosts}:Props) => {
                   </div>
                 </>
               )}
-
             </div>
           </div>
 
+
           {/* 近くの投稿 */}
-          {nearPosts && (
+          {nearPosts.length > 0 && (
             <div className="nearPost">
               <h2>近くの投稿</h2>
-                <div className="nearPostContainer">
+              <div className="nearPostContainer">
                 {nearPosts.map(nearPost => (
                   nearPost.id !== singleItem.id && (
                     <div key={nearPost.id} className='nearPostContent'>
@@ -115,7 +114,11 @@ const ReadSingleItem = ({singleItem, postId, nearPosts}:Props) => {
                             <img src={nearPost.image1} />
                           </div>
                         )}
-                        <p>{nearPost.title}</p>
+                        {nearPost.title && nearPost.title.length > 20
+                          ? <p className="nearPostTitle">{`${nearPost.title?.slice(0, 20)}...`}</p>
+                          : <p className="nearPostTitle">{nearPost.title}</p>
+                        }
+                        <p className="nearPostKm">{`この投稿から${Math.round(nearPost.distance / 100) / 10} km`}</p>
                       </Link>
                     </div>
                   )
@@ -126,7 +129,6 @@ const ReadSingleItem = ({singleItem, postId, nearPosts}:Props) => {
         </div>
       </div>
     </>
-
   )
 }
 

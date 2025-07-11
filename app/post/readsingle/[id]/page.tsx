@@ -9,9 +9,9 @@ const getSingleItem = async(id: string) => {
   return singleItem
 }
 
-//lat,lonを中心地とした、20km以内の投稿取得
-const getNearDistancePost = async(lat:number, lon:number) => {
-  const nearDistanceRes = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/post/nearDistance/?lat=${lat}&lon=${lon}`)
+//近くの投稿10件を取得（距離の昇順）
+const getNearDistancePost = async(postId:number, lat:number, lon:number) => {
+  const nearDistanceRes = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/post/getTenNearDistance/?postId=${postId}&lat=${lat}&lon=${lon}`)
   const nearDistanceData = await nearDistanceRes.json()
   const nearPosts = nearDistanceData.nearPosts
   return nearPosts
@@ -23,7 +23,7 @@ const ReadSingleItem = async({params}:any) => {
   const postId = Number(singleItem.id)
 
   const nearPosts = singleItem.lat && singleItem.lon
-  ? await getNearDistancePost(singleItem.lat, singleItem.lon)
+  ? await getNearDistancePost(singleItem.id, singleItem.lat, singleItem.lon)
   : []
 
   if(!singleItem) {
