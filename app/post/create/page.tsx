@@ -122,9 +122,9 @@ const CreateItem = () => {
       description5: sections[4]?.description ?? "",
       category: data.category,
       location: data.location,
-      googlePlace,
-      lat,
-      lon:lng,
+      googlePlace: googlePlace || null,
+      lat: lat || null,
+      lon:lng || null,
     })
     setLoading(false);
     router.push('/post/createPreview')

@@ -121,14 +121,16 @@ const PostPreview = () => {
             </div>
             <div className="locationContent">
               <p className="locationName">{postData.location}</p>
-              {postData.lat && (
-                <Suspense fallback={<div>地図を読み込み中...</div>}>
-                  <div className="googleMapContainer">
-                    <GoogleMapComponent lat={Number(postData.lat)} lng={Number(postData.lon)}/>
-                  </div>
-                </Suspense>
+              {postData.lat != null && postData.lon != null && (
+                <>
+                  <Suspense fallback={<div>地図を読み込み中...</div>}>
+                    <div className="googleMapContainer">
+                      <GoogleMapComponent lat={Number(postData.lat)} lng={Number(postData.lon)}/>
+                    </div>
+                  </Suspense>
+                  <p className="googleMapName en">{postData.googlePlace}</p>
+                </>
               )}
-              <p className="googleMapName en">{postData.googlePlace}</p>
             </div>
           </section>
 

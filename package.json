@@ -24,6 +24,7 @@
     "@vis.gl/react-google-maps": "^1.5.2",
     "bcrypt": "^6.0.0",
     "dayjs": "^1.11.13",
+    "geolib": "^3.3.4",
     "jose": "^6.0.10",
     "next": "15.3.0",
     "prisma": "^6.6.0",
@@ -50,5 +51,7 @@
     "ts-jest": "^29.4.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.3"
-  }
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true
 }
