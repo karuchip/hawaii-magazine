@@ -64,7 +64,7 @@ const CommentCreate = ({loginUserId, postId, onCommentCreated}:commentType)=>{
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="commentCreateForm">
             <textarea
-              placeholder="＋コメントを追加する"
+              placeholder="＋コメントを入力する"
               {...register("comment", {
                 required: "コメントを入力してください",
                 maxLength: {

@@ -213,7 +213,13 @@ const ReadAllItemsInner = () => {
                       avatar={
                         <Avatar alt={`${item.author && item.author.name}`} src={`${item.author && item.author.userIcon }`}  />
                       }
-                      title={item.title}
+                      title=
+                        <Typography sx={{ fontWeight: 600 }}>
+                          {item.title && item.title.length > 20
+                            ? `${item.title?.slice(0, 24)}...`
+                            : item.title
+                          }
+                        </Typography>
                     />
 
                     {item.image1 && (
@@ -227,9 +233,19 @@ const ReadAllItemsInner = () => {
 
                     <CardContent>
                       <div className="supInf">
-                        <p className="createdDay">{createdAtFormatted}</p>
-                        <p><PlaceIcon sx={{fontSize:"14px"}}/> {item.googlePlace}</p>
-                        <p className="categoryIcon">{item.category}</p>
+                        <div className="supInfCategoryDay">
+                          <p className="categoryIcon">{item.category}</p>
+                          <p className="createdDay">{createdAtFormatted}</p>
+                        </div>
+                        <p className="supInfPlace">
+                          <PlaceIcon sx={{fontSize:"14px"}}/>
+                          {
+                            item.googlePlace && item.googlePlace.length > 20
+                            ? `${item.googlePlace.slice(0, 30)}...`
+                            : item.googlePlace
+
+                          }
+                        </p>
                       </div>
 
                       <div className="likePosition">
