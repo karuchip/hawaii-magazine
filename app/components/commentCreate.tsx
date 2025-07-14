@@ -79,7 +79,7 @@ const CommentCreate = ({loginUserId, postId, onCommentCreated}:commentType)=>{
           <div className="commentValidation">
             <p
               style={{
-                color : commentCount >= 100 ? "red" : "#a1a1a1",
+                color : commentCount > 100 ? "red" : "#a1a1a1",
               }}
             >{commentCount}/100</p>
             {errors.comment &&
