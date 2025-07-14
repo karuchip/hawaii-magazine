@@ -8,6 +8,7 @@ import { useEffect } from "react"
 import Link from "next/link"
 import {logout} from "@/utils/logout"
 import BottomMenu from "@/app/components/bottomMenu"
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 type Props = {
   userInf: {
@@ -102,9 +103,19 @@ const Form = ({userInf}:Props) => {
           </div>
         )}
 
+
         {/* 設定本文 */}
         <div className="settingContainer">
           <div className="settingContent">
+
+            {/* セカンドヘッダーリンクボックス */}
+            <div className="secondHeaderLinkContainer">
+              <Link href={`/`} className="secondHeaderLink secondHeaderLink1">
+                <ArrowBackIcon/>戻る
+              </Link>
+            </div>
+
+
             <div className="settingTitle">
               <h2>設定</h2>
               <p>{loginUserName} さん</p>

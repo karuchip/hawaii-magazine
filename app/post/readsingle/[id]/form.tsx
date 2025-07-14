@@ -9,6 +9,9 @@ import GoogleMap from "@/app/components/googleMap"
 import SinglePostLayout from "@/app/components/singlePostLayout"
 import { useAuthContext } from "@/context/AuthContext"
 import BottomMenu from "@/app/components/bottomMenu"
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 type PostWidthDistance = AllItemTypes & {distance: number}
 
@@ -37,6 +40,26 @@ const ReadSingleItem = ({singleItem, postId, nearPosts}:Props) => {
       <div className="singlePostContainer">
         <div className="singleNearPostContent">
           <div className="singlePostContent">
+
+            {/* セカンドヘッダーリンクボックス */}
+            <div className="secondHeaderLinkContainer">
+              <Link href={`/`} className="secondHeaderLink secondHeaderLink1">
+                <ArrowBackIcon/>戻る
+              </Link>
+
+              {String(loginUserId) === String(singleItem.authorId) && (
+                <div className="secondHeaderEditDelete">
+                  <Link href={`/post/update/${singleItem.id}`} className="secondHeaderLink secondHeaderLink2">
+                    <EditIcon/>編集
+                  </Link>
+                  <span></span>
+                  <Link href={`/post/delete/${singleItem.id}`} className="secondHeaderLink secondHeaderLink2">
+                    <DeleteIcon/>削除
+                  </Link>
+                </div>
+              )}
+            </div>
+
             {/* likeボタン */}
             {loginUserId && (
               <div className="likePosition">
@@ -77,26 +100,6 @@ const ReadSingleItem = ({singleItem, postId, nearPosts}:Props) => {
                 <Comment postId={singleItem.id}/>
               </Suspense>
             </div>
-
-
-            {/* リンクボタン */}
-            <div className="linkContainer">
-              <Link href={`/`} className="singlePageLink back">投稿一覧に戻る</Link>
-
-              {String(loginUserId) === String(singleItem.authorId) && (
-                <>
-                  <div className="horizontalLineLight"><span></span></div>
-                  <div className="editDeleteContainer">
-                    <Link href={`/post/update/${singleItem.id}`} className="singlePageLink">
-                      編集
-                    </Link>
-                    <Link href={`/post/delete/${singleItem.id}`} className="singlePageLink">
-                      削除
-                    </Link>
-                  </div>
-                </>
-              )}
-            </div>
           </div>
 
 
@@ -127,6 +130,10 @@ const ReadSingleItem = ({singleItem, postId, nearPosts}:Props) => {
             </div>
           )}
         </div>
+      </div>
+      {/* リンクボタン */}
+      <div className="linkContainer">
+        <Link href={`/`} className="singlePageLink back">投稿一覧に戻る</Link>
       </div>
     </>
   )

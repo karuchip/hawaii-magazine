@@ -220,6 +220,7 @@ const ReadAllItemsInner = () => {
                             : item.title
                           }
                         </Typography>
+                      subheader={`by ${item.author.name}`}
                     />
 
                     {item.image1 && (

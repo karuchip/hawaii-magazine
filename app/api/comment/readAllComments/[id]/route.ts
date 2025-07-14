@@ -3,6 +3,7 @@ import prisma from "@/utils/prisma";
 
 
 export async function GET(request: NextRequest){
+  console.log("apiが呼び出されました")
   const url = new URL(request.url)
   const segments = url.pathname.split("/")
   const id = segments[segments.length - 1]
