@@ -109,25 +109,37 @@ const Comment = ({postId}:{postId:number}) => {
       </>
 
       <>
-        {allComments?.map(comment => (
-          <div key={comment.createdAt.toString()}>
+        {allComments?.map((comment:AllCommentType) => {
+          const createdAtFormatted = dayjs(comment.createdAt).format("YYYY/MM/DD")
 
-            <div className="commentContent">
-              <Link href={`/readmypage/${comment.user.id}`} className="commentUserLink">
-                <Avatar src={comment.user.userIcon} alt={comment.user.name} className="userIcon"/>
-                <p>{comment.user.name}</p>
-              </Link>
-              <p className="commentComment">{comment.comment}</p>
-              {(comment.user.id === loginUserId) && (
-                <div className="commentDeleteBtn">
-                  <button onClick={() => deleteComment(comment.commentId)}><DeleteIcon/></button>
+          return (
+            <div key={comment.commentId}>
+
+              <div className="commentContent">
+
+                <Link href={`/readmypage/${comment.user.id}`} className="commentUserLink">
+                  <Avatar src={comment.user.userIcon} alt={comment.user.name} className="userIcon"/>
+                  <p>{comment.user.name}</p>
+                </Link>
+
+                <div className="commentDescription">
+                  <p className="commentCreatedAt">{createdAtFormatted}</p>
+                  <p>{comment.comment}</p>
                 </div>
-              )}
-            </div>
 
-            <div className="horizontalLineLight"><span></span></div>
-          </div>
-        ))}
+                {(comment.user.id === loginUserId) && (
+                  <div className="commentDeleteBtn">
+                    <button onClick={() => deleteComment(comment.commentId)}><DeleteIcon/></button>
+                  </div>
+                )}
+
+              </div>
+
+              <div className="horizontalLineLight"><span></span></div>
+            </div>
+          )
+        }
+      )}
 
         {allComments.length === 0 && (
           <div className="noCommentYet">

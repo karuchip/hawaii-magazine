@@ -404,6 +404,65 @@ footer {
 .noPost button:hover {
   color: rgb(220, 0, 0);
 }
+/* 一投稿表示 */
+/* セカンドヘッダーリンク */
+.secondHeaderLinkContainer {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 60px;
+  margin-top: 0;
+}
+.secondHeaderLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: #000;
+  font-weight: 600;
+}
+.secondHeaderLink1,
+.secondHeaderLink2 {
+  padding: 10px 20px;
+  border: 0.5px solid #a1a1a1;
+  background-color: #fff;
+  border-radius: 20px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.secondHeaderLink1:hover,
+.secondHeaderLink2:hover {
+  color: #a1a1a1;
+}
+.secondHeaderEditDelete {
+  display: flex;
+  gap: 10px;
+}
+@media screen and (max-width: 640px) {
+  .secondHeaderLinkContainer {
+    margin-bottom: 40px;
+  }
+  .secondHeaderLink {
+    font-size: 12px;
+    padding: 5px 10px;
+    gap: 0;
+  }
+  .secondHeaderEditDelete {
+    padding: 0px 15px;
+    border: 0.5px solid #a1a1a1;
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
+  .secondHeaderEditDelete span {
+    background-image: linear-gradient(#a1a1a1, #a1a1a1);
+    width: 1px;
+    margin: 0;
+  }
+  .secondHeaderLink2 {
+    border: none;
+    box-shadow: none;
+    border-radius: 0;
+    padding: 0;
+  }
+}
 
 /* １投稿表示 共用*/
 /* 雑誌風記事(app/post/readsingle/page.tsx) */
@@ -449,7 +508,7 @@ footer {
 }
 /* 近くの投稿 */
 .nearPost {
-  margin-top: 100px;
+  margin-top: 180px;
   margin-bottom: 80px;
   background-color: #f8f8f8;
   border-radius: 20px;
@@ -462,6 +521,10 @@ footer {
   font-weight: 500;
 }
 @media screen and (max-width: 1100px) {
+  .nearPost {
+    margin-top: 100px;
+    margin-bottom: 20px;
+  }
   .nearPostContainer {
     width: 600px;
     display: flex;
@@ -590,8 +653,31 @@ footer {
   padding: 20px 0;
   align-items: center;
 }
+.commentDescription {
+  width: 600px;
+}
+@media screen and (max-width: 1100px) {
+  .commentDescription {
+    width: 460px;
+  }
+}
+@media screen and (max-width: 640px) {
+  .commentDescription {
+    width: 204px;
+  }
+}
+.commentCreatedAt {
+  font-size: 14px;
+  color: #a1a1a1;
+}
 .commentComment {
   width: 80%;
+}
+.commentUserLink {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 .commentUserLink p {
   color: #606060;
@@ -680,7 +766,14 @@ footer {
 .back {
   display: flex;
   justify-self: center;
-  margin: 140px auto 60px auto;
+  margin: 100px auto 100px auto;
+}
+@media screen and (max-width: 640px) {
+  .back {
+    display: flex;
+    justify-self: center;
+    margin: 60px auto 80px auto;
+  }
 }
 .editDeleteContainer {
   display: flex;
@@ -798,6 +891,7 @@ footer {
   .sectionImageDescription {
     width: 320px;
     font-size: 16px;
+    margin-bottom: 80px;
   }
   .sectionImage {
     width: 320px;
