@@ -1,5 +1,6 @@
 "use client"
 import Link from "next/link"
+import { useState, useEffect } from "react"
 import { useAuthContext } from "../../context/AuthContext"
 import {Typography, Button} from "@mui/material"
 import UserIcon from "./userIcon"
@@ -10,8 +11,29 @@ export const dynamic = "force-dynamic"
 
 const Header = () => {
   const {loginUserId, loginUserName, loginUserIcon} = useAuthContext()
+  const [showHeader, setShowHeader] = useState(true)
+  const [lastScrollY, setLastScrollY] = useState(0)
+
+  useEffect(() => {
+    const handelScroll = () => {
+      const currentScrollY = window.scrollY
+
+      if(currentScrollY > lastScrollY && currentScrollY > 100) {
+        setShowHeader(false)
+      }else {
+        setShowHeader(true)
+      }
+
+      setLastScrollY(currentScrollY);
+    }
+
+    window.addEventListener('scroll', handelScroll)
+    return () => window.removeEventListener('scroll', handelScroll)
+
+  }, [lastScrollY])
+
     return (
-      <header>
+      <header className={`header ${showHeader ? 'visible' : 'hidden'}`}>
         <div className="headerContainer">
           <div>
             <Typography variant="h1" sx={{ fontFamily: '"Kaushan Script", cursive', fontSize:50}}>
