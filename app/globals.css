@@ -26,13 +26,21 @@ a {
 }
 
 /* header */
-header {
+.header {
   background-color: #66c7d9;
   color: #ffffff;
   width: 100%;
   position: fixed;
   top: 0;
+  left: 0;
   z-index: 500;
+  transition: transform 0.3s ease-in-out;
+}
+.header.hidden {
+  transform: translateY(-100%);
+}
+.header.visible {
+  transform: translateY(0);
 }
 .headerLogo {
   color: white;
@@ -411,6 +419,11 @@ footer {
   justify-content: space-between;
   margin-bottom: 60px;
   margin-top: 0;
+}
+@media screen and (max-width: 640px) {
+  .secondHeaderLinkContainer {
+    display: none;
+  }
 }
 .secondHeaderLink {
   display: inline-flex;
