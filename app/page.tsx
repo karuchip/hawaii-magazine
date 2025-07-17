@@ -6,7 +6,6 @@ import Link from "next/link"
 import useAuth from "@/utils/useAuth"
 import Loading from "./components/loading"
 import { AllItemTypes } from "@/utils/types/post"
-import { useRouter, useSearchParams } from "next/navigation"
 import GoogleMapSearchPost from "./components/map/googleMapSearchPost"
 
 //MUI
@@ -93,13 +92,6 @@ const ReadAllItemsInner = () => {
 
         {/* 一覧表示 */}
         <div className="allItemsContainer">
-
-        {/* googlemapから投稿を探す */}
-        {allItems && (
-          <Suspense fallback={<div>地図を読み込み中...</div>}>
-            <GoogleMapSearchPost allItems={allItems}/>
-          </Suspense>
-        )}
 
           <Grid container spacing={{ mobile: 1, tablet: 1, laptop: 1 }} sx={{justifyContent:"center", alignItems:"flex-start"}}>
             {allItems
