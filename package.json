@@ -17,6 +17,7 @@
     "@fontsource/playfair": "^5.2.5",
     "@fontsource/playfair-display": "^5.2.5",
     "@fontsource/roboto": "^5.2.5",
+    "@googlemaps/markerclusterer": "^2.6.2",
     "@mui/icons-material": "^7.1.0",
     "@mui/material": "^7.0.2",
     "@prisma/client": "^6.6.0",
