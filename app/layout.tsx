@@ -16,7 +16,8 @@ import '@fontsource/inter/300.css';
 import '@fontsource/inter/400.css';
 import '@fontsource/inter/500.css';
 import '@fontsource/inter/700.css';
-import Script from "next/script"
+import Script from "next/script";
+
 
 const RootLayout = ({children}:{children:ReactNode}) => {
   useAuth(false)
