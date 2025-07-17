@@ -1,24 +1,29 @@
-import { useState } from 'react';
+import {Dispatch, SetStateAction} from 'react'
 import { AllItemTypes } from '@/utils/types/post';
 import {APIProvider, Map, MapCameraChangedEvent} from '@vis.gl/react-google-maps';
 import PoiMarkers from './poiMarkers';
 
-
 type Props = {
-  allItems: AllItemTypes[]
+  allItems: AllItemTypes[];
+  defaultZoom: number;
+  defaultCenter: {
+    lat: number;
+    lng: number;
+  };
+  currentPin: AllItemTypes | null;
+  setCurrentPin: Dispatch<SetStateAction<AllItemTypes | null>>;
 }
 
-const GoogleMapSearchPost = ({allItems}:Props) => {
+const GoogleMapSearchPost = ({allItems, defaultZoom, defaultCenter, currentPin, setCurrentPin}:Props) => {
 
-  const [currentPin, setCurrentPin] = useState<AllItemTypes | null>(null)
 
   return (
     <APIProvider apiKey={process.env.NEXT_PUBLIC_GOOGLE_API_KEY as string} onLoad={() => console.log('Maps API has loaded.')}>
       <Map
           mapId={process.env.NEXT_PUBLIC_GOOGLE_MAP_ID as string}
           style={{ width: '600px', height: '500px' }}
-          defaultZoom={12}
-          defaultCenter={ { lat: 21.2806084, lng: -157.8141057 } }
+          defaultZoom={defaultZoom}
+          defaultCenter={ defaultCenter }
           onCameraChanged={ (ev: MapCameraChangedEvent) =>
             console.log('camera changed:', ev.detail.center, 'zoom:', ev.detail.zoom)
           }>
