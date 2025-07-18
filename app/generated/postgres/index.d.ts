@@ -33,6 +33,16 @@ export type PostLikes = $Result.DefaultSelection<Prisma.$PostLikesPayload>
  * 
  */
 export type PostComments = $Result.DefaultSelection<Prisma.$PostCommentsPayload>
+/**
+ * Model PostViews
+ * 
+ */
+export type PostViews = $Result.DefaultSelection<Prisma.$PostViewsPayload>
+/**
+ * Model UserViews
+ * 
+ */
+export type UserViews = $Result.DefaultSelection<Prisma.$UserViewsPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -198,6 +208,26 @@ export class PrismaClient<
     * ```
     */
   get postComments(): Prisma.PostCommentsDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.postViews`: Exposes CRUD operations for the **PostViews** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more PostViews
+    * const postViews = await prisma.postViews.findMany()
+    * ```
+    */
+  get postViews(): Prisma.PostViewsDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.userViews`: Exposes CRUD operations for the **UserViews** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more UserViews
+    * const userViews = await prisma.userViews.findMany()
+    * ```
+    */
+  get userViews(): Prisma.UserViewsDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -641,7 +671,9 @@ export namespace Prisma {
     User: 'User',
     Post: 'Post',
     PostLikes: 'PostLikes',
-    PostComments: 'PostComments'
+    PostComments: 'PostComments',
+    PostViews: 'PostViews',
+    UserViews: 'UserViews'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -660,7 +692,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "post" | "postLikes" | "postComments"
+      modelProps: "user" | "post" | "postLikes" | "postComments" | "postViews" | "userViews"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -960,6 +992,154 @@ export namespace Prisma {
           }
         }
       }
+      PostViews: {
+        payload: Prisma.$PostViewsPayload<ExtArgs>
+        fields: Prisma.PostViewsFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.PostViewsFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PostViewsPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.PostViewsFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PostViewsPayload>
+          }
+          findFirst: {
+            args: Prisma.PostViewsFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PostViewsPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.PostViewsFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PostViewsPayload>
+          }
+          findMany: {
+            args: Prisma.PostViewsFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PostViewsPayload>[]
+          }
+          create: {
+            args: Prisma.PostViewsCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PostViewsPayload>
+          }
+          createMany: {
+            args: Prisma.PostViewsCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.PostViewsCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PostViewsPayload>[]
+          }
+          delete: {
+            args: Prisma.PostViewsDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PostViewsPayload>
+          }
+          update: {
+            args: Prisma.PostViewsUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PostViewsPayload>
+          }
+          deleteMany: {
+            args: Prisma.PostViewsDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.PostViewsUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.PostViewsUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PostViewsPayload>[]
+          }
+          upsert: {
+            args: Prisma.PostViewsUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PostViewsPayload>
+          }
+          aggregate: {
+            args: Prisma.PostViewsAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregatePostViews>
+          }
+          groupBy: {
+            args: Prisma.PostViewsGroupByArgs<ExtArgs>
+            result: $Utils.Optional<PostViewsGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.PostViewsCountArgs<ExtArgs>
+            result: $Utils.Optional<PostViewsCountAggregateOutputType> | number
+          }
+        }
+      }
+      UserViews: {
+        payload: Prisma.$UserViewsPayload<ExtArgs>
+        fields: Prisma.UserViewsFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.UserViewsFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserViewsPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.UserViewsFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserViewsPayload>
+          }
+          findFirst: {
+            args: Prisma.UserViewsFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserViewsPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.UserViewsFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserViewsPayload>
+          }
+          findMany: {
+            args: Prisma.UserViewsFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserViewsPayload>[]
+          }
+          create: {
+            args: Prisma.UserViewsCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserViewsPayload>
+          }
+          createMany: {
+            args: Prisma.UserViewsCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.UserViewsCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserViewsPayload>[]
+          }
+          delete: {
+            args: Prisma.UserViewsDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserViewsPayload>
+          }
+          update: {
+            args: Prisma.UserViewsUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserViewsPayload>
+          }
+          deleteMany: {
+            args: Prisma.UserViewsDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.UserViewsUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.UserViewsUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserViewsPayload>[]
+          }
+          upsert: {
+            args: Prisma.UserViewsUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserViewsPayload>
+          }
+          aggregate: {
+            args: Prisma.UserViewsAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateUserViews>
+          }
+          groupBy: {
+            args: Prisma.UserViewsGroupByArgs<ExtArgs>
+            result: $Utils.Optional<UserViewsGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.UserViewsCountArgs<ExtArgs>
+            result: $Utils.Optional<UserViewsCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1048,6 +1228,8 @@ export namespace Prisma {
     post?: PostOmit
     postLikes?: PostLikesOmit
     postComments?: PostCommentsOmit
+    postViews?: PostViewsOmit
+    userViews?: UserViewsOmit
   }
 
   /* Types for Logging */
@@ -1143,14 +1325,16 @@ export namespace Prisma {
 
   export type UserCountOutputType = {
     posts: number
-    postLikes: number
     postComments: number
+    postLikes: number
+    profileViews: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     posts?: boolean | UserCountOutputTypeCountPostsArgs
-    postLikes?: boolean | UserCountOutputTypeCountPostLikesArgs
     postComments?: boolean | UserCountOutputTypeCountPostCommentsArgs
+    postLikes?: boolean | UserCountOutputTypeCountPostLikesArgs
+    profileViews?: boolean | UserCountOutputTypeCountProfileViewsArgs
   }
 
   // Custom InputTypes
@@ -1174,6 +1358,13 @@ export namespace Prisma {
   /**
    * UserCountOutputType without action
    */
+  export type UserCountOutputTypeCountPostCommentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PostCommentsWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
   export type UserCountOutputTypeCountPostLikesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: PostLikesWhereInput
   }
@@ -1181,8 +1372,8 @@ export namespace Prisma {
   /**
    * UserCountOutputType without action
    */
-  export type UserCountOutputTypeCountPostCommentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: PostCommentsWhereInput
+  export type UserCountOutputTypeCountProfileViewsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: UserViewsWhereInput
   }
 
 
@@ -1191,13 +1382,15 @@ export namespace Prisma {
    */
 
   export type PostCountOutputType = {
-    likes: number
     comments: number
+    likes: number
+    views: number
   }
 
   export type PostCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    likes?: boolean | PostCountOutputTypeCountLikesArgs
     comments?: boolean | PostCountOutputTypeCountCommentsArgs
+    likes?: boolean | PostCountOutputTypeCountLikesArgs
+    views?: boolean | PostCountOutputTypeCountViewsArgs
   }
 
   // Custom InputTypes
@@ -1214,6 +1407,13 @@ export namespace Prisma {
   /**
    * PostCountOutputType without action
    */
+  export type PostCountOutputTypeCountCommentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PostCommentsWhereInput
+  }
+
+  /**
+   * PostCountOutputType without action
+   */
   export type PostCountOutputTypeCountLikesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: PostLikesWhereInput
   }
@@ -1221,8 +1421,8 @@ export namespace Prisma {
   /**
    * PostCountOutputType without action
    */
-  export type PostCountOutputTypeCountCommentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: PostCommentsWhereInput
+  export type PostCountOutputTypeCountViewsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PostViewsWhereInput
   }
 
 
@@ -1437,8 +1637,9 @@ export namespace Prisma {
     userIcon?: boolean
     userProfile?: boolean
     posts?: boolean | User$postsArgs<ExtArgs>
-    postLikes?: boolean | User$postLikesArgs<ExtArgs>
     postComments?: boolean | User$postCommentsArgs<ExtArgs>
+    postLikes?: boolean | User$postLikesArgs<ExtArgs>
+    profileViews?: boolean | User$profileViewsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -1472,8 +1673,9 @@ export namespace Prisma {
   export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "name" | "password" | "userIcon" | "userProfile", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     posts?: boolean | User$postsArgs<ExtArgs>
-    postLikes?: boolean | User$postLikesArgs<ExtArgs>
     postComments?: boolean | User$postCommentsArgs<ExtArgs>
+    postLikes?: boolean | User$postLikesArgs<ExtArgs>
+    profileViews?: boolean | User$profileViewsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -1483,8 +1685,9 @@ export namespace Prisma {
     name: "User"
     objects: {
       posts: Prisma.$PostPayload<ExtArgs>[]
-      postLikes: Prisma.$PostLikesPayload<ExtArgs>[]
       postComments: Prisma.$PostCommentsPayload<ExtArgs>[]
+      postLikes: Prisma.$PostLikesPayload<ExtArgs>[]
+      profileViews: Prisma.$UserViewsPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -1888,8 +2091,9 @@ export namespace Prisma {
   export interface Prisma__UserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     posts<T extends User$postsArgs<ExtArgs> = {}>(args?: Subset<T, User$postsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PostPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    postLikes<T extends User$postLikesArgs<ExtArgs> = {}>(args?: Subset<T, User$postLikesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PostLikesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     postComments<T extends User$postCommentsArgs<ExtArgs> = {}>(args?: Subset<T, User$postCommentsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PostCommentsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    postLikes<T extends User$postLikesArgs<ExtArgs> = {}>(args?: Subset<T, User$postLikesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PostLikesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    profileViews<T extends User$profileViewsArgs<ExtArgs> = {}>(args?: Subset<T, User$profileViewsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserViewsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2337,6 +2541,30 @@ export namespace Prisma {
   }
 
   /**
+   * User.postComments
+   */
+  export type User$postCommentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PostComments
+     */
+    select?: PostCommentsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PostComments
+     */
+    omit?: PostCommentsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PostCommentsInclude<ExtArgs> | null
+    where?: PostCommentsWhereInput
+    orderBy?: PostCommentsOrderByWithRelationInput | PostCommentsOrderByWithRelationInput[]
+    cursor?: PostCommentsWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: PostCommentsScalarFieldEnum | PostCommentsScalarFieldEnum[]
+  }
+
+  /**
    * User.postLikes
    */
   export type User$postLikesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2361,27 +2589,27 @@ export namespace Prisma {
   }
 
   /**
-   * User.postComments
+   * User.profileViews
    */
-  export type User$postCommentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type User$profileViewsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the PostComments
+     * Select specific fields to fetch from the UserViews
      */
-    select?: PostCommentsSelect<ExtArgs> | null
+    select?: UserViewsSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the PostComments
+     * Omit specific fields from the UserViews
      */
-    omit?: PostCommentsOmit<ExtArgs> | null
+    omit?: UserViewsOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: PostCommentsInclude<ExtArgs> | null
-    where?: PostCommentsWhereInput
-    orderBy?: PostCommentsOrderByWithRelationInput | PostCommentsOrderByWithRelationInput[]
-    cursor?: PostCommentsWhereUniqueInput
+    include?: UserViewsInclude<ExtArgs> | null
+    where?: UserViewsWhereInput
+    orderBy?: UserViewsOrderByWithRelationInput | UserViewsOrderByWithRelationInput[]
+    cursor?: UserViewsWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: PostCommentsScalarFieldEnum | PostCommentsScalarFieldEnum[]
+    distinct?: UserViewsScalarFieldEnum | UserViewsScalarFieldEnum[]
   }
 
   /**
@@ -2754,8 +2982,9 @@ export namespace Prisma {
     published?: boolean
     authorId?: boolean
     author?: boolean | UserDefaultArgs<ExtArgs>
-    likes?: boolean | Post$likesArgs<ExtArgs>
     comments?: boolean | Post$commentsArgs<ExtArgs>
+    likes?: boolean | Post$likesArgs<ExtArgs>
+    views?: boolean | Post$viewsArgs<ExtArgs>
     _count?: boolean | PostCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["post"]>
 
@@ -2839,8 +3068,9 @@ export namespace Prisma {
   export type PostOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "createdAt" | "updatedAt" | "title" | "image1" | "description1" | "image2" | "description2" | "image3" | "description3" | "image4" | "description4" | "image5" | "description5" | "likeCount" | "location" | "googlePlace" | "lat" | "lon" | "category" | "published" | "authorId", ExtArgs["result"]["post"]>
   export type PostInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     author?: boolean | UserDefaultArgs<ExtArgs>
-    likes?: boolean | Post$likesArgs<ExtArgs>
     comments?: boolean | Post$commentsArgs<ExtArgs>
+    likes?: boolean | Post$likesArgs<ExtArgs>
+    views?: boolean | Post$viewsArgs<ExtArgs>
     _count?: boolean | PostCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type PostIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2854,8 +3084,9 @@ export namespace Prisma {
     name: "Post"
     objects: {
       author: Prisma.$UserPayload<ExtArgs>
-      likes: Prisma.$PostLikesPayload<ExtArgs>[]
       comments: Prisma.$PostCommentsPayload<ExtArgs>[]
+      likes: Prisma.$PostLikesPayload<ExtArgs>[]
+      views: Prisma.$PostViewsPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -3275,8 +3506,9 @@ export namespace Prisma {
   export interface Prisma__PostClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     author<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    likes<T extends Post$likesArgs<ExtArgs> = {}>(args?: Subset<T, Post$likesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PostLikesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     comments<T extends Post$commentsArgs<ExtArgs> = {}>(args?: Subset<T, Post$commentsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PostCommentsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    likes<T extends Post$likesArgs<ExtArgs> = {}>(args?: Subset<T, Post$likesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PostLikesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    views<T extends Post$viewsArgs<ExtArgs> = {}>(args?: Subset<T, Post$viewsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PostViewsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3724,6 +3956,30 @@ export namespace Prisma {
   }
 
   /**
+   * Post.comments
+   */
+  export type Post$commentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PostComments
+     */
+    select?: PostCommentsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PostComments
+     */
+    omit?: PostCommentsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PostCommentsInclude<ExtArgs> | null
+    where?: PostCommentsWhereInput
+    orderBy?: PostCommentsOrderByWithRelationInput | PostCommentsOrderByWithRelationInput[]
+    cursor?: PostCommentsWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: PostCommentsScalarFieldEnum | PostCommentsScalarFieldEnum[]
+  }
+
+  /**
    * Post.likes
    */
   export type Post$likesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3748,27 +4004,27 @@ export namespace Prisma {
   }
 
   /**
-   * Post.comments
+   * Post.views
    */
-  export type Post$commentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Post$viewsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the PostComments
+     * Select specific fields to fetch from the PostViews
      */
-    select?: PostCommentsSelect<ExtArgs> | null
+    select?: PostViewsSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the PostComments
+     * Omit specific fields from the PostViews
      */
-    omit?: PostCommentsOmit<ExtArgs> | null
+    omit?: PostViewsOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: PostCommentsInclude<ExtArgs> | null
-    where?: PostCommentsWhereInput
-    orderBy?: PostCommentsOrderByWithRelationInput | PostCommentsOrderByWithRelationInput[]
-    cursor?: PostCommentsWhereUniqueInput
+    include?: PostViewsInclude<ExtArgs> | null
+    where?: PostViewsWhereInput
+    orderBy?: PostViewsOrderByWithRelationInput | PostViewsOrderByWithRelationInput[]
+    cursor?: PostViewsWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: PostCommentsScalarFieldEnum | PostCommentsScalarFieldEnum[]
+    distinct?: PostViewsScalarFieldEnum | PostViewsScalarFieldEnum[]
   }
 
   /**
@@ -5994,6 +6250,2198 @@ export namespace Prisma {
 
 
   /**
+   * Model PostViews
+   */
+
+  export type AggregatePostViews = {
+    _count: PostViewsCountAggregateOutputType | null
+    _avg: PostViewsAvgAggregateOutputType | null
+    _sum: PostViewsSumAggregateOutputType | null
+    _min: PostViewsMinAggregateOutputType | null
+    _max: PostViewsMaxAggregateOutputType | null
+  }
+
+  export type PostViewsAvgAggregateOutputType = {
+    id: number | null
+    postId: number | null
+  }
+
+  export type PostViewsSumAggregateOutputType = {
+    id: number | null
+    postId: number | null
+  }
+
+  export type PostViewsMinAggregateOutputType = {
+    id: number | null
+    postId: number | null
+    viewedAt: Date | null
+    ip: string | null
+    userAgent: string | null
+  }
+
+  export type PostViewsMaxAggregateOutputType = {
+    id: number | null
+    postId: number | null
+    viewedAt: Date | null
+    ip: string | null
+    userAgent: string | null
+  }
+
+  export type PostViewsCountAggregateOutputType = {
+    id: number
+    postId: number
+    viewedAt: number
+    ip: number
+    userAgent: number
+    _all: number
+  }
+
+
+  export type PostViewsAvgAggregateInputType = {
+    id?: true
+    postId?: true
+  }
+
+  export type PostViewsSumAggregateInputType = {
+    id?: true
+    postId?: true
+  }
+
+  export type PostViewsMinAggregateInputType = {
+    id?: true
+    postId?: true
+    viewedAt?: true
+    ip?: true
+    userAgent?: true
+  }
+
+  export type PostViewsMaxAggregateInputType = {
+    id?: true
+    postId?: true
+    viewedAt?: true
+    ip?: true
+    userAgent?: true
+  }
+
+  export type PostViewsCountAggregateInputType = {
+    id?: true
+    postId?: true
+    viewedAt?: true
+    ip?: true
+    userAgent?: true
+    _all?: true
+  }
+
+  export type PostViewsAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which PostViews to aggregate.
+     */
+    where?: PostViewsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PostViews to fetch.
+     */
+    orderBy?: PostViewsOrderByWithRelationInput | PostViewsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: PostViewsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PostViews from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PostViews.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned PostViews
+    **/
+    _count?: true | PostViewsCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: PostViewsAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: PostViewsSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: PostViewsMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: PostViewsMaxAggregateInputType
+  }
+
+  export type GetPostViewsAggregateType<T extends PostViewsAggregateArgs> = {
+        [P in keyof T & keyof AggregatePostViews]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregatePostViews[P]>
+      : GetScalarType<T[P], AggregatePostViews[P]>
+  }
+
+
+
+
+  export type PostViewsGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PostViewsWhereInput
+    orderBy?: PostViewsOrderByWithAggregationInput | PostViewsOrderByWithAggregationInput[]
+    by: PostViewsScalarFieldEnum[] | PostViewsScalarFieldEnum
+    having?: PostViewsScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: PostViewsCountAggregateInputType | true
+    _avg?: PostViewsAvgAggregateInputType
+    _sum?: PostViewsSumAggregateInputType
+    _min?: PostViewsMinAggregateInputType
+    _max?: PostViewsMaxAggregateInputType
+  }
+
+  export type PostViewsGroupByOutputType = {
+    id: number
+    postId: number
+    viewedAt: Date
+    ip: string | null
+    userAgent: string | null
+    _count: PostViewsCountAggregateOutputType | null
+    _avg: PostViewsAvgAggregateOutputType | null
+    _sum: PostViewsSumAggregateOutputType | null
+    _min: PostViewsMinAggregateOutputType | null
+    _max: PostViewsMaxAggregateOutputType | null
+  }
+
+  type GetPostViewsGroupByPayload<T extends PostViewsGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<PostViewsGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof PostViewsGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], PostViewsGroupByOutputType[P]>
+            : GetScalarType<T[P], PostViewsGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type PostViewsSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    postId?: boolean
+    viewedAt?: boolean
+    ip?: boolean
+    userAgent?: boolean
+    post?: boolean | PostDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["postViews"]>
+
+  export type PostViewsSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    postId?: boolean
+    viewedAt?: boolean
+    ip?: boolean
+    userAgent?: boolean
+    post?: boolean | PostDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["postViews"]>
+
+  export type PostViewsSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    postId?: boolean
+    viewedAt?: boolean
+    ip?: boolean
+    userAgent?: boolean
+    post?: boolean | PostDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["postViews"]>
+
+  export type PostViewsSelectScalar = {
+    id?: boolean
+    postId?: boolean
+    viewedAt?: boolean
+    ip?: boolean
+    userAgent?: boolean
+  }
+
+  export type PostViewsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "postId" | "viewedAt" | "ip" | "userAgent", ExtArgs["result"]["postViews"]>
+  export type PostViewsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    post?: boolean | PostDefaultArgs<ExtArgs>
+  }
+  export type PostViewsIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    post?: boolean | PostDefaultArgs<ExtArgs>
+  }
+  export type PostViewsIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    post?: boolean | PostDefaultArgs<ExtArgs>
+  }
+
+  export type $PostViewsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "PostViews"
+    objects: {
+      post: Prisma.$PostPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      postId: number
+      viewedAt: Date
+      ip: string | null
+      userAgent: string | null
+    }, ExtArgs["result"]["postViews"]>
+    composites: {}
+  }
+
+  type PostViewsGetPayload<S extends boolean | null | undefined | PostViewsDefaultArgs> = $Result.GetResult<Prisma.$PostViewsPayload, S>
+
+  type PostViewsCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<PostViewsFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: PostViewsCountAggregateInputType | true
+    }
+
+  export interface PostViewsDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['PostViews'], meta: { name: 'PostViews' } }
+    /**
+     * Find zero or one PostViews that matches the filter.
+     * @param {PostViewsFindUniqueArgs} args - Arguments to find a PostViews
+     * @example
+     * // Get one PostViews
+     * const postViews = await prisma.postViews.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends PostViewsFindUniqueArgs>(args: SelectSubset<T, PostViewsFindUniqueArgs<ExtArgs>>): Prisma__PostViewsClient<$Result.GetResult<Prisma.$PostViewsPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one PostViews that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {PostViewsFindUniqueOrThrowArgs} args - Arguments to find a PostViews
+     * @example
+     * // Get one PostViews
+     * const postViews = await prisma.postViews.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends PostViewsFindUniqueOrThrowArgs>(args: SelectSubset<T, PostViewsFindUniqueOrThrowArgs<ExtArgs>>): Prisma__PostViewsClient<$Result.GetResult<Prisma.$PostViewsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first PostViews that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PostViewsFindFirstArgs} args - Arguments to find a PostViews
+     * @example
+     * // Get one PostViews
+     * const postViews = await prisma.postViews.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends PostViewsFindFirstArgs>(args?: SelectSubset<T, PostViewsFindFirstArgs<ExtArgs>>): Prisma__PostViewsClient<$Result.GetResult<Prisma.$PostViewsPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first PostViews that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PostViewsFindFirstOrThrowArgs} args - Arguments to find a PostViews
+     * @example
+     * // Get one PostViews
+     * const postViews = await prisma.postViews.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends PostViewsFindFirstOrThrowArgs>(args?: SelectSubset<T, PostViewsFindFirstOrThrowArgs<ExtArgs>>): Prisma__PostViewsClient<$Result.GetResult<Prisma.$PostViewsPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more PostViews that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PostViewsFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all PostViews
+     * const postViews = await prisma.postViews.findMany()
+     * 
+     * // Get first 10 PostViews
+     * const postViews = await prisma.postViews.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const postViewsWithIdOnly = await prisma.postViews.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends PostViewsFindManyArgs>(args?: SelectSubset<T, PostViewsFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PostViewsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a PostViews.
+     * @param {PostViewsCreateArgs} args - Arguments to create a PostViews.
+     * @example
+     * // Create one PostViews
+     * const PostViews = await prisma.postViews.create({
+     *   data: {
+     *     // ... data to create a PostViews
+     *   }
+     * })
+     * 
+     */
+    create<T extends PostViewsCreateArgs>(args: SelectSubset<T, PostViewsCreateArgs<ExtArgs>>): Prisma__PostViewsClient<$Result.GetResult<Prisma.$PostViewsPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many PostViews.
+     * @param {PostViewsCreateManyArgs} args - Arguments to create many PostViews.
+     * @example
+     * // Create many PostViews
+     * const postViews = await prisma.postViews.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends PostViewsCreateManyArgs>(args?: SelectSubset<T, PostViewsCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many PostViews and returns the data saved in the database.
+     * @param {PostViewsCreateManyAndReturnArgs} args - Arguments to create many PostViews.
+     * @example
+     * // Create many PostViews
+     * const postViews = await prisma.postViews.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many PostViews and only return the `id`
+     * const postViewsWithIdOnly = await prisma.postViews.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends PostViewsCreateManyAndReturnArgs>(args?: SelectSubset<T, PostViewsCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PostViewsPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a PostViews.
+     * @param {PostViewsDeleteArgs} args - Arguments to delete one PostViews.
+     * @example
+     * // Delete one PostViews
+     * const PostViews = await prisma.postViews.delete({
+     *   where: {
+     *     // ... filter to delete one PostViews
+     *   }
+     * })
+     * 
+     */
+    delete<T extends PostViewsDeleteArgs>(args: SelectSubset<T, PostViewsDeleteArgs<ExtArgs>>): Prisma__PostViewsClient<$Result.GetResult<Prisma.$PostViewsPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one PostViews.
+     * @param {PostViewsUpdateArgs} args - Arguments to update one PostViews.
+     * @example
+     * // Update one PostViews
+     * const postViews = await prisma.postViews.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends PostViewsUpdateArgs>(args: SelectSubset<T, PostViewsUpdateArgs<ExtArgs>>): Prisma__PostViewsClient<$Result.GetResult<Prisma.$PostViewsPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more PostViews.
+     * @param {PostViewsDeleteManyArgs} args - Arguments to filter PostViews to delete.
+     * @example
+     * // Delete a few PostViews
+     * const { count } = await prisma.postViews.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends PostViewsDeleteManyArgs>(args?: SelectSubset<T, PostViewsDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more PostViews.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PostViewsUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many PostViews
+     * const postViews = await prisma.postViews.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends PostViewsUpdateManyArgs>(args: SelectSubset<T, PostViewsUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more PostViews and returns the data updated in the database.
+     * @param {PostViewsUpdateManyAndReturnArgs} args - Arguments to update many PostViews.
+     * @example
+     * // Update many PostViews
+     * const postViews = await prisma.postViews.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more PostViews and only return the `id`
+     * const postViewsWithIdOnly = await prisma.postViews.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends PostViewsUpdateManyAndReturnArgs>(args: SelectSubset<T, PostViewsUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PostViewsPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one PostViews.
+     * @param {PostViewsUpsertArgs} args - Arguments to update or create a PostViews.
+     * @example
+     * // Update or create a PostViews
+     * const postViews = await prisma.postViews.upsert({
+     *   create: {
+     *     // ... data to create a PostViews
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the PostViews we want to update
+     *   }
+     * })
+     */
+    upsert<T extends PostViewsUpsertArgs>(args: SelectSubset<T, PostViewsUpsertArgs<ExtArgs>>): Prisma__PostViewsClient<$Result.GetResult<Prisma.$PostViewsPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of PostViews.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PostViewsCountArgs} args - Arguments to filter PostViews to count.
+     * @example
+     * // Count the number of PostViews
+     * const count = await prisma.postViews.count({
+     *   where: {
+     *     // ... the filter for the PostViews we want to count
+     *   }
+     * })
+    **/
+    count<T extends PostViewsCountArgs>(
+      args?: Subset<T, PostViewsCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], PostViewsCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a PostViews.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PostViewsAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends PostViewsAggregateArgs>(args: Subset<T, PostViewsAggregateArgs>): Prisma.PrismaPromise<GetPostViewsAggregateType<T>>
+
+    /**
+     * Group by PostViews.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PostViewsGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends PostViewsGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: PostViewsGroupByArgs['orderBy'] }
+        : { orderBy?: PostViewsGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, PostViewsGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPostViewsGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the PostViews model
+   */
+  readonly fields: PostViewsFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for PostViews.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__PostViewsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    post<T extends PostDefaultArgs<ExtArgs> = {}>(args?: Subset<T, PostDefaultArgs<ExtArgs>>): Prisma__PostClient<$Result.GetResult<Prisma.$PostPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the PostViews model
+   */
+  interface PostViewsFieldRefs {
+    readonly id: FieldRef<"PostViews", 'Int'>
+    readonly postId: FieldRef<"PostViews", 'Int'>
+    readonly viewedAt: FieldRef<"PostViews", 'DateTime'>
+    readonly ip: FieldRef<"PostViews", 'String'>
+    readonly userAgent: FieldRef<"PostViews", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * PostViews findUnique
+   */
+  export type PostViewsFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PostViews
+     */
+    select?: PostViewsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PostViews
+     */
+    omit?: PostViewsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PostViewsInclude<ExtArgs> | null
+    /**
+     * Filter, which PostViews to fetch.
+     */
+    where: PostViewsWhereUniqueInput
+  }
+
+  /**
+   * PostViews findUniqueOrThrow
+   */
+  export type PostViewsFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PostViews
+     */
+    select?: PostViewsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PostViews
+     */
+    omit?: PostViewsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PostViewsInclude<ExtArgs> | null
+    /**
+     * Filter, which PostViews to fetch.
+     */
+    where: PostViewsWhereUniqueInput
+  }
+
+  /**
+   * PostViews findFirst
+   */
+  export type PostViewsFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PostViews
+     */
+    select?: PostViewsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PostViews
+     */
+    omit?: PostViewsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PostViewsInclude<ExtArgs> | null
+    /**
+     * Filter, which PostViews to fetch.
+     */
+    where?: PostViewsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PostViews to fetch.
+     */
+    orderBy?: PostViewsOrderByWithRelationInput | PostViewsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for PostViews.
+     */
+    cursor?: PostViewsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PostViews from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PostViews.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of PostViews.
+     */
+    distinct?: PostViewsScalarFieldEnum | PostViewsScalarFieldEnum[]
+  }
+
+  /**
+   * PostViews findFirstOrThrow
+   */
+  export type PostViewsFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PostViews
+     */
+    select?: PostViewsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PostViews
+     */
+    omit?: PostViewsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PostViewsInclude<ExtArgs> | null
+    /**
+     * Filter, which PostViews to fetch.
+     */
+    where?: PostViewsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PostViews to fetch.
+     */
+    orderBy?: PostViewsOrderByWithRelationInput | PostViewsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for PostViews.
+     */
+    cursor?: PostViewsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PostViews from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PostViews.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of PostViews.
+     */
+    distinct?: PostViewsScalarFieldEnum | PostViewsScalarFieldEnum[]
+  }
+
+  /**
+   * PostViews findMany
+   */
+  export type PostViewsFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PostViews
+     */
+    select?: PostViewsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PostViews
+     */
+    omit?: PostViewsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PostViewsInclude<ExtArgs> | null
+    /**
+     * Filter, which PostViews to fetch.
+     */
+    where?: PostViewsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PostViews to fetch.
+     */
+    orderBy?: PostViewsOrderByWithRelationInput | PostViewsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing PostViews.
+     */
+    cursor?: PostViewsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PostViews from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PostViews.
+     */
+    skip?: number
+    distinct?: PostViewsScalarFieldEnum | PostViewsScalarFieldEnum[]
+  }
+
+  /**
+   * PostViews create
+   */
+  export type PostViewsCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PostViews
+     */
+    select?: PostViewsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PostViews
+     */
+    omit?: PostViewsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PostViewsInclude<ExtArgs> | null
+    /**
+     * The data needed to create a PostViews.
+     */
+    data: XOR<PostViewsCreateInput, PostViewsUncheckedCreateInput>
+  }
+
+  /**
+   * PostViews createMany
+   */
+  export type PostViewsCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many PostViews.
+     */
+    data: PostViewsCreateManyInput | PostViewsCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * PostViews createManyAndReturn
+   */
+  export type PostViewsCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PostViews
+     */
+    select?: PostViewsSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the PostViews
+     */
+    omit?: PostViewsOmit<ExtArgs> | null
+    /**
+     * The data used to create many PostViews.
+     */
+    data: PostViewsCreateManyInput | PostViewsCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PostViewsIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * PostViews update
+   */
+  export type PostViewsUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PostViews
+     */
+    select?: PostViewsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PostViews
+     */
+    omit?: PostViewsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PostViewsInclude<ExtArgs> | null
+    /**
+     * The data needed to update a PostViews.
+     */
+    data: XOR<PostViewsUpdateInput, PostViewsUncheckedUpdateInput>
+    /**
+     * Choose, which PostViews to update.
+     */
+    where: PostViewsWhereUniqueInput
+  }
+
+  /**
+   * PostViews updateMany
+   */
+  export type PostViewsUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update PostViews.
+     */
+    data: XOR<PostViewsUpdateManyMutationInput, PostViewsUncheckedUpdateManyInput>
+    /**
+     * Filter which PostViews to update
+     */
+    where?: PostViewsWhereInput
+    /**
+     * Limit how many PostViews to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * PostViews updateManyAndReturn
+   */
+  export type PostViewsUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PostViews
+     */
+    select?: PostViewsSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the PostViews
+     */
+    omit?: PostViewsOmit<ExtArgs> | null
+    /**
+     * The data used to update PostViews.
+     */
+    data: XOR<PostViewsUpdateManyMutationInput, PostViewsUncheckedUpdateManyInput>
+    /**
+     * Filter which PostViews to update
+     */
+    where?: PostViewsWhereInput
+    /**
+     * Limit how many PostViews to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PostViewsIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * PostViews upsert
+   */
+  export type PostViewsUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PostViews
+     */
+    select?: PostViewsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PostViews
+     */
+    omit?: PostViewsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PostViewsInclude<ExtArgs> | null
+    /**
+     * The filter to search for the PostViews to update in case it exists.
+     */
+    where: PostViewsWhereUniqueInput
+    /**
+     * In case the PostViews found by the `where` argument doesn't exist, create a new PostViews with this data.
+     */
+    create: XOR<PostViewsCreateInput, PostViewsUncheckedCreateInput>
+    /**
+     * In case the PostViews was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<PostViewsUpdateInput, PostViewsUncheckedUpdateInput>
+  }
+
+  /**
+   * PostViews delete
+   */
+  export type PostViewsDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PostViews
+     */
+    select?: PostViewsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PostViews
+     */
+    omit?: PostViewsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PostViewsInclude<ExtArgs> | null
+    /**
+     * Filter which PostViews to delete.
+     */
+    where: PostViewsWhereUniqueInput
+  }
+
+  /**
+   * PostViews deleteMany
+   */
+  export type PostViewsDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which PostViews to delete
+     */
+    where?: PostViewsWhereInput
+    /**
+     * Limit how many PostViews to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * PostViews without action
+   */
+  export type PostViewsDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PostViews
+     */
+    select?: PostViewsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PostViews
+     */
+    omit?: PostViewsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PostViewsInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model UserViews
+   */
+
+  export type AggregateUserViews = {
+    _count: UserViewsCountAggregateOutputType | null
+    _avg: UserViewsAvgAggregateOutputType | null
+    _sum: UserViewsSumAggregateOutputType | null
+    _min: UserViewsMinAggregateOutputType | null
+    _max: UserViewsMaxAggregateOutputType | null
+  }
+
+  export type UserViewsAvgAggregateOutputType = {
+    id: number | null
+    userId: number | null
+  }
+
+  export type UserViewsSumAggregateOutputType = {
+    id: number | null
+    userId: number | null
+  }
+
+  export type UserViewsMinAggregateOutputType = {
+    id: number | null
+    userId: number | null
+    viewedAt: Date | null
+    ip: string | null
+    userAgent: string | null
+  }
+
+  export type UserViewsMaxAggregateOutputType = {
+    id: number | null
+    userId: number | null
+    viewedAt: Date | null
+    ip: string | null
+    userAgent: string | null
+  }
+
+  export type UserViewsCountAggregateOutputType = {
+    id: number
+    userId: number
+    viewedAt: number
+    ip: number
+    userAgent: number
+    _all: number
+  }
+
+
+  export type UserViewsAvgAggregateInputType = {
+    id?: true
+    userId?: true
+  }
+
+  export type UserViewsSumAggregateInputType = {
+    id?: true
+    userId?: true
+  }
+
+  export type UserViewsMinAggregateInputType = {
+    id?: true
+    userId?: true
+    viewedAt?: true
+    ip?: true
+    userAgent?: true
+  }
+
+  export type UserViewsMaxAggregateInputType = {
+    id?: true
+    userId?: true
+    viewedAt?: true
+    ip?: true
+    userAgent?: true
+  }
+
+  export type UserViewsCountAggregateInputType = {
+    id?: true
+    userId?: true
+    viewedAt?: true
+    ip?: true
+    userAgent?: true
+    _all?: true
+  }
+
+  export type UserViewsAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which UserViews to aggregate.
+     */
+    where?: UserViewsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of UserViews to fetch.
+     */
+    orderBy?: UserViewsOrderByWithRelationInput | UserViewsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: UserViewsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` UserViews from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` UserViews.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned UserViews
+    **/
+    _count?: true | UserViewsCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: UserViewsAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: UserViewsSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: UserViewsMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: UserViewsMaxAggregateInputType
+  }
+
+  export type GetUserViewsAggregateType<T extends UserViewsAggregateArgs> = {
+        [P in keyof T & keyof AggregateUserViews]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateUserViews[P]>
+      : GetScalarType<T[P], AggregateUserViews[P]>
+  }
+
+
+
+
+  export type UserViewsGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: UserViewsWhereInput
+    orderBy?: UserViewsOrderByWithAggregationInput | UserViewsOrderByWithAggregationInput[]
+    by: UserViewsScalarFieldEnum[] | UserViewsScalarFieldEnum
+    having?: UserViewsScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: UserViewsCountAggregateInputType | true
+    _avg?: UserViewsAvgAggregateInputType
+    _sum?: UserViewsSumAggregateInputType
+    _min?: UserViewsMinAggregateInputType
+    _max?: UserViewsMaxAggregateInputType
+  }
+
+  export type UserViewsGroupByOutputType = {
+    id: number
+    userId: number
+    viewedAt: Date
+    ip: string | null
+    userAgent: string | null
+    _count: UserViewsCountAggregateOutputType | null
+    _avg: UserViewsAvgAggregateOutputType | null
+    _sum: UserViewsSumAggregateOutputType | null
+    _min: UserViewsMinAggregateOutputType | null
+    _max: UserViewsMaxAggregateOutputType | null
+  }
+
+  type GetUserViewsGroupByPayload<T extends UserViewsGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<UserViewsGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof UserViewsGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], UserViewsGroupByOutputType[P]>
+            : GetScalarType<T[P], UserViewsGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type UserViewsSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    viewedAt?: boolean
+    ip?: boolean
+    userAgent?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["userViews"]>
+
+  export type UserViewsSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    viewedAt?: boolean
+    ip?: boolean
+    userAgent?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["userViews"]>
+
+  export type UserViewsSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    viewedAt?: boolean
+    ip?: boolean
+    userAgent?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["userViews"]>
+
+  export type UserViewsSelectScalar = {
+    id?: boolean
+    userId?: boolean
+    viewedAt?: boolean
+    ip?: boolean
+    userAgent?: boolean
+  }
+
+  export type UserViewsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "viewedAt" | "ip" | "userAgent", ExtArgs["result"]["userViews"]>
+  export type UserViewsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type UserViewsIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type UserViewsIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $UserViewsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "UserViews"
+    objects: {
+      user: Prisma.$UserPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      userId: number
+      viewedAt: Date
+      ip: string | null
+      userAgent: string | null
+    }, ExtArgs["result"]["userViews"]>
+    composites: {}
+  }
+
+  type UserViewsGetPayload<S extends boolean | null | undefined | UserViewsDefaultArgs> = $Result.GetResult<Prisma.$UserViewsPayload, S>
+
+  type UserViewsCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<UserViewsFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: UserViewsCountAggregateInputType | true
+    }
+
+  export interface UserViewsDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['UserViews'], meta: { name: 'UserViews' } }
+    /**
+     * Find zero or one UserViews that matches the filter.
+     * @param {UserViewsFindUniqueArgs} args - Arguments to find a UserViews
+     * @example
+     * // Get one UserViews
+     * const userViews = await prisma.userViews.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends UserViewsFindUniqueArgs>(args: SelectSubset<T, UserViewsFindUniqueArgs<ExtArgs>>): Prisma__UserViewsClient<$Result.GetResult<Prisma.$UserViewsPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one UserViews that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {UserViewsFindUniqueOrThrowArgs} args - Arguments to find a UserViews
+     * @example
+     * // Get one UserViews
+     * const userViews = await prisma.userViews.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends UserViewsFindUniqueOrThrowArgs>(args: SelectSubset<T, UserViewsFindUniqueOrThrowArgs<ExtArgs>>): Prisma__UserViewsClient<$Result.GetResult<Prisma.$UserViewsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first UserViews that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserViewsFindFirstArgs} args - Arguments to find a UserViews
+     * @example
+     * // Get one UserViews
+     * const userViews = await prisma.userViews.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends UserViewsFindFirstArgs>(args?: SelectSubset<T, UserViewsFindFirstArgs<ExtArgs>>): Prisma__UserViewsClient<$Result.GetResult<Prisma.$UserViewsPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first UserViews that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserViewsFindFirstOrThrowArgs} args - Arguments to find a UserViews
+     * @example
+     * // Get one UserViews
+     * const userViews = await prisma.userViews.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends UserViewsFindFirstOrThrowArgs>(args?: SelectSubset<T, UserViewsFindFirstOrThrowArgs<ExtArgs>>): Prisma__UserViewsClient<$Result.GetResult<Prisma.$UserViewsPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more UserViews that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserViewsFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all UserViews
+     * const userViews = await prisma.userViews.findMany()
+     * 
+     * // Get first 10 UserViews
+     * const userViews = await prisma.userViews.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const userViewsWithIdOnly = await prisma.userViews.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends UserViewsFindManyArgs>(args?: SelectSubset<T, UserViewsFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserViewsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a UserViews.
+     * @param {UserViewsCreateArgs} args - Arguments to create a UserViews.
+     * @example
+     * // Create one UserViews
+     * const UserViews = await prisma.userViews.create({
+     *   data: {
+     *     // ... data to create a UserViews
+     *   }
+     * })
+     * 
+     */
+    create<T extends UserViewsCreateArgs>(args: SelectSubset<T, UserViewsCreateArgs<ExtArgs>>): Prisma__UserViewsClient<$Result.GetResult<Prisma.$UserViewsPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many UserViews.
+     * @param {UserViewsCreateManyArgs} args - Arguments to create many UserViews.
+     * @example
+     * // Create many UserViews
+     * const userViews = await prisma.userViews.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends UserViewsCreateManyArgs>(args?: SelectSubset<T, UserViewsCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many UserViews and returns the data saved in the database.
+     * @param {UserViewsCreateManyAndReturnArgs} args - Arguments to create many UserViews.
+     * @example
+     * // Create many UserViews
+     * const userViews = await prisma.userViews.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many UserViews and only return the `id`
+     * const userViewsWithIdOnly = await prisma.userViews.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends UserViewsCreateManyAndReturnArgs>(args?: SelectSubset<T, UserViewsCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserViewsPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a UserViews.
+     * @param {UserViewsDeleteArgs} args - Arguments to delete one UserViews.
+     * @example
+     * // Delete one UserViews
+     * const UserViews = await prisma.userViews.delete({
+     *   where: {
+     *     // ... filter to delete one UserViews
+     *   }
+     * })
+     * 
+     */
+    delete<T extends UserViewsDeleteArgs>(args: SelectSubset<T, UserViewsDeleteArgs<ExtArgs>>): Prisma__UserViewsClient<$Result.GetResult<Prisma.$UserViewsPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one UserViews.
+     * @param {UserViewsUpdateArgs} args - Arguments to update one UserViews.
+     * @example
+     * // Update one UserViews
+     * const userViews = await prisma.userViews.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends UserViewsUpdateArgs>(args: SelectSubset<T, UserViewsUpdateArgs<ExtArgs>>): Prisma__UserViewsClient<$Result.GetResult<Prisma.$UserViewsPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more UserViews.
+     * @param {UserViewsDeleteManyArgs} args - Arguments to filter UserViews to delete.
+     * @example
+     * // Delete a few UserViews
+     * const { count } = await prisma.userViews.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends UserViewsDeleteManyArgs>(args?: SelectSubset<T, UserViewsDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more UserViews.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserViewsUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many UserViews
+     * const userViews = await prisma.userViews.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends UserViewsUpdateManyArgs>(args: SelectSubset<T, UserViewsUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more UserViews and returns the data updated in the database.
+     * @param {UserViewsUpdateManyAndReturnArgs} args - Arguments to update many UserViews.
+     * @example
+     * // Update many UserViews
+     * const userViews = await prisma.userViews.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more UserViews and only return the `id`
+     * const userViewsWithIdOnly = await prisma.userViews.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends UserViewsUpdateManyAndReturnArgs>(args: SelectSubset<T, UserViewsUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserViewsPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one UserViews.
+     * @param {UserViewsUpsertArgs} args - Arguments to update or create a UserViews.
+     * @example
+     * // Update or create a UserViews
+     * const userViews = await prisma.userViews.upsert({
+     *   create: {
+     *     // ... data to create a UserViews
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the UserViews we want to update
+     *   }
+     * })
+     */
+    upsert<T extends UserViewsUpsertArgs>(args: SelectSubset<T, UserViewsUpsertArgs<ExtArgs>>): Prisma__UserViewsClient<$Result.GetResult<Prisma.$UserViewsPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of UserViews.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserViewsCountArgs} args - Arguments to filter UserViews to count.
+     * @example
+     * // Count the number of UserViews
+     * const count = await prisma.userViews.count({
+     *   where: {
+     *     // ... the filter for the UserViews we want to count
+     *   }
+     * })
+    **/
+    count<T extends UserViewsCountArgs>(
+      args?: Subset<T, UserViewsCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], UserViewsCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a UserViews.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserViewsAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends UserViewsAggregateArgs>(args: Subset<T, UserViewsAggregateArgs>): Prisma.PrismaPromise<GetUserViewsAggregateType<T>>
+
+    /**
+     * Group by UserViews.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserViewsGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends UserViewsGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: UserViewsGroupByArgs['orderBy'] }
+        : { orderBy?: UserViewsGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, UserViewsGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetUserViewsGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the UserViews model
+   */
+  readonly fields: UserViewsFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for UserViews.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__UserViewsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the UserViews model
+   */
+  interface UserViewsFieldRefs {
+    readonly id: FieldRef<"UserViews", 'Int'>
+    readonly userId: FieldRef<"UserViews", 'Int'>
+    readonly viewedAt: FieldRef<"UserViews", 'DateTime'>
+    readonly ip: FieldRef<"UserViews", 'String'>
+    readonly userAgent: FieldRef<"UserViews", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * UserViews findUnique
+   */
+  export type UserViewsFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserViews
+     */
+    select?: UserViewsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserViews
+     */
+    omit?: UserViewsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserViewsInclude<ExtArgs> | null
+    /**
+     * Filter, which UserViews to fetch.
+     */
+    where: UserViewsWhereUniqueInput
+  }
+
+  /**
+   * UserViews findUniqueOrThrow
+   */
+  export type UserViewsFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserViews
+     */
+    select?: UserViewsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserViews
+     */
+    omit?: UserViewsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserViewsInclude<ExtArgs> | null
+    /**
+     * Filter, which UserViews to fetch.
+     */
+    where: UserViewsWhereUniqueInput
+  }
+
+  /**
+   * UserViews findFirst
+   */
+  export type UserViewsFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserViews
+     */
+    select?: UserViewsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserViews
+     */
+    omit?: UserViewsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserViewsInclude<ExtArgs> | null
+    /**
+     * Filter, which UserViews to fetch.
+     */
+    where?: UserViewsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of UserViews to fetch.
+     */
+    orderBy?: UserViewsOrderByWithRelationInput | UserViewsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for UserViews.
+     */
+    cursor?: UserViewsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` UserViews from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` UserViews.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of UserViews.
+     */
+    distinct?: UserViewsScalarFieldEnum | UserViewsScalarFieldEnum[]
+  }
+
+  /**
+   * UserViews findFirstOrThrow
+   */
+  export type UserViewsFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserViews
+     */
+    select?: UserViewsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserViews
+     */
+    omit?: UserViewsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserViewsInclude<ExtArgs> | null
+    /**
+     * Filter, which UserViews to fetch.
+     */
+    where?: UserViewsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of UserViews to fetch.
+     */
+    orderBy?: UserViewsOrderByWithRelationInput | UserViewsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for UserViews.
+     */
+    cursor?: UserViewsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` UserViews from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` UserViews.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of UserViews.
+     */
+    distinct?: UserViewsScalarFieldEnum | UserViewsScalarFieldEnum[]
+  }
+
+  /**
+   * UserViews findMany
+   */
+  export type UserViewsFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserViews
+     */
+    select?: UserViewsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserViews
+     */
+    omit?: UserViewsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserViewsInclude<ExtArgs> | null
+    /**
+     * Filter, which UserViews to fetch.
+     */
+    where?: UserViewsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of UserViews to fetch.
+     */
+    orderBy?: UserViewsOrderByWithRelationInput | UserViewsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing UserViews.
+     */
+    cursor?: UserViewsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` UserViews from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` UserViews.
+     */
+    skip?: number
+    distinct?: UserViewsScalarFieldEnum | UserViewsScalarFieldEnum[]
+  }
+
+  /**
+   * UserViews create
+   */
+  export type UserViewsCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserViews
+     */
+    select?: UserViewsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserViews
+     */
+    omit?: UserViewsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserViewsInclude<ExtArgs> | null
+    /**
+     * The data needed to create a UserViews.
+     */
+    data: XOR<UserViewsCreateInput, UserViewsUncheckedCreateInput>
+  }
+
+  /**
+   * UserViews createMany
+   */
+  export type UserViewsCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many UserViews.
+     */
+    data: UserViewsCreateManyInput | UserViewsCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * UserViews createManyAndReturn
+   */
+  export type UserViewsCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserViews
+     */
+    select?: UserViewsSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserViews
+     */
+    omit?: UserViewsOmit<ExtArgs> | null
+    /**
+     * The data used to create many UserViews.
+     */
+    data: UserViewsCreateManyInput | UserViewsCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserViewsIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * UserViews update
+   */
+  export type UserViewsUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserViews
+     */
+    select?: UserViewsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserViews
+     */
+    omit?: UserViewsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserViewsInclude<ExtArgs> | null
+    /**
+     * The data needed to update a UserViews.
+     */
+    data: XOR<UserViewsUpdateInput, UserViewsUncheckedUpdateInput>
+    /**
+     * Choose, which UserViews to update.
+     */
+    where: UserViewsWhereUniqueInput
+  }
+
+  /**
+   * UserViews updateMany
+   */
+  export type UserViewsUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update UserViews.
+     */
+    data: XOR<UserViewsUpdateManyMutationInput, UserViewsUncheckedUpdateManyInput>
+    /**
+     * Filter which UserViews to update
+     */
+    where?: UserViewsWhereInput
+    /**
+     * Limit how many UserViews to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * UserViews updateManyAndReturn
+   */
+  export type UserViewsUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserViews
+     */
+    select?: UserViewsSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserViews
+     */
+    omit?: UserViewsOmit<ExtArgs> | null
+    /**
+     * The data used to update UserViews.
+     */
+    data: XOR<UserViewsUpdateManyMutationInput, UserViewsUncheckedUpdateManyInput>
+    /**
+     * Filter which UserViews to update
+     */
+    where?: UserViewsWhereInput
+    /**
+     * Limit how many UserViews to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserViewsIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * UserViews upsert
+   */
+  export type UserViewsUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserViews
+     */
+    select?: UserViewsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserViews
+     */
+    omit?: UserViewsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserViewsInclude<ExtArgs> | null
+    /**
+     * The filter to search for the UserViews to update in case it exists.
+     */
+    where: UserViewsWhereUniqueInput
+    /**
+     * In case the UserViews found by the `where` argument doesn't exist, create a new UserViews with this data.
+     */
+    create: XOR<UserViewsCreateInput, UserViewsUncheckedCreateInput>
+    /**
+     * In case the UserViews was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<UserViewsUpdateInput, UserViewsUncheckedUpdateInput>
+  }
+
+  /**
+   * UserViews delete
+   */
+  export type UserViewsDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserViews
+     */
+    select?: UserViewsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserViews
+     */
+    omit?: UserViewsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserViewsInclude<ExtArgs> | null
+    /**
+     * Filter which UserViews to delete.
+     */
+    where: UserViewsWhereUniqueInput
+  }
+
+  /**
+   * UserViews deleteMany
+   */
+  export type UserViewsDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which UserViews to delete
+     */
+    where?: UserViewsWhereInput
+    /**
+     * Limit how many UserViews to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * UserViews without action
+   */
+  export type UserViewsDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserViews
+     */
+    select?: UserViewsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserViews
+     */
+    omit?: UserViewsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserViewsInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -6066,6 +8514,28 @@ export namespace Prisma {
   };
 
   export type PostCommentsScalarFieldEnum = (typeof PostCommentsScalarFieldEnum)[keyof typeof PostCommentsScalarFieldEnum]
+
+
+  export const PostViewsScalarFieldEnum: {
+    id: 'id',
+    postId: 'postId',
+    viewedAt: 'viewedAt',
+    ip: 'ip',
+    userAgent: 'userAgent'
+  };
+
+  export type PostViewsScalarFieldEnum = (typeof PostViewsScalarFieldEnum)[keyof typeof PostViewsScalarFieldEnum]
+
+
+  export const UserViewsScalarFieldEnum: {
+    id: 'id',
+    userId: 'userId',
+    viewedAt: 'viewedAt',
+    ip: 'ip',
+    userAgent: 'userAgent'
+  };
+
+  export type UserViewsScalarFieldEnum = (typeof UserViewsScalarFieldEnum)[keyof typeof UserViewsScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -6174,8 +8644,9 @@ export namespace Prisma {
     userIcon?: StringFilter<"User"> | string
     userProfile?: StringNullableFilter<"User"> | string | null
     posts?: PostListRelationFilter
-    postLikes?: PostLikesListRelationFilter
     postComments?: PostCommentsListRelationFilter
+    postLikes?: PostLikesListRelationFilter
+    profileViews?: UserViewsListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -6186,8 +8657,9 @@ export namespace Prisma {
     userIcon?: SortOrder
     userProfile?: SortOrderInput | SortOrder
     posts?: PostOrderByRelationAggregateInput
-    postLikes?: PostLikesOrderByRelationAggregateInput
     postComments?: PostCommentsOrderByRelationAggregateInput
+    postLikes?: PostLikesOrderByRelationAggregateInput
+    profileViews?: UserViewsOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -6201,8 +8673,9 @@ export namespace Prisma {
     userIcon?: StringFilter<"User"> | string
     userProfile?: StringNullableFilter<"User"> | string | null
     posts?: PostListRelationFilter
-    postLikes?: PostLikesListRelationFilter
     postComments?: PostCommentsListRelationFilter
+    postLikes?: PostLikesListRelationFilter
+    profileViews?: UserViewsListRelationFilter
   }, "id" | "email">
 
   export type UserOrderByWithAggregationInput = {
@@ -6258,8 +8731,9 @@ export namespace Prisma {
     published?: BoolFilter<"Post"> | boolean
     authorId?: IntFilter<"Post"> | number
     author?: XOR<UserScalarRelationFilter, UserWhereInput>
-    likes?: PostLikesListRelationFilter
     comments?: PostCommentsListRelationFilter
+    likes?: PostLikesListRelationFilter
+    views?: PostViewsListRelationFilter
   }
 
   export type PostOrderByWithRelationInput = {
@@ -6286,8 +8760,9 @@ export namespace Prisma {
     published?: SortOrder
     authorId?: SortOrder
     author?: UserOrderByWithRelationInput
-    likes?: PostLikesOrderByRelationAggregateInput
     comments?: PostCommentsOrderByRelationAggregateInput
+    likes?: PostLikesOrderByRelationAggregateInput
+    views?: PostViewsOrderByRelationAggregateInput
   }
 
   export type PostWhereUniqueInput = Prisma.AtLeast<{
@@ -6317,8 +8792,9 @@ export namespace Prisma {
     published?: BoolFilter<"Post"> | boolean
     authorId?: IntFilter<"Post"> | number
     author?: XOR<UserScalarRelationFilter, UserWhereInput>
-    likes?: PostLikesListRelationFilter
     comments?: PostCommentsListRelationFilter
+    likes?: PostLikesListRelationFilter
+    views?: PostViewsListRelationFilter
   }, "id">
 
   export type PostOrderByWithAggregationInput = {
@@ -6495,6 +8971,120 @@ export namespace Prisma {
     createdAt?: DateTimeWithAggregatesFilter<"PostComments"> | Date | string
   }
 
+  export type PostViewsWhereInput = {
+    AND?: PostViewsWhereInput | PostViewsWhereInput[]
+    OR?: PostViewsWhereInput[]
+    NOT?: PostViewsWhereInput | PostViewsWhereInput[]
+    id?: IntFilter<"PostViews"> | number
+    postId?: IntFilter<"PostViews"> | number
+    viewedAt?: DateTimeFilter<"PostViews"> | Date | string
+    ip?: StringNullableFilter<"PostViews"> | string | null
+    userAgent?: StringNullableFilter<"PostViews"> | string | null
+    post?: XOR<PostScalarRelationFilter, PostWhereInput>
+  }
+
+  export type PostViewsOrderByWithRelationInput = {
+    id?: SortOrder
+    postId?: SortOrder
+    viewedAt?: SortOrder
+    ip?: SortOrderInput | SortOrder
+    userAgent?: SortOrderInput | SortOrder
+    post?: PostOrderByWithRelationInput
+  }
+
+  export type PostViewsWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: PostViewsWhereInput | PostViewsWhereInput[]
+    OR?: PostViewsWhereInput[]
+    NOT?: PostViewsWhereInput | PostViewsWhereInput[]
+    postId?: IntFilter<"PostViews"> | number
+    viewedAt?: DateTimeFilter<"PostViews"> | Date | string
+    ip?: StringNullableFilter<"PostViews"> | string | null
+    userAgent?: StringNullableFilter<"PostViews"> | string | null
+    post?: XOR<PostScalarRelationFilter, PostWhereInput>
+  }, "id">
+
+  export type PostViewsOrderByWithAggregationInput = {
+    id?: SortOrder
+    postId?: SortOrder
+    viewedAt?: SortOrder
+    ip?: SortOrderInput | SortOrder
+    userAgent?: SortOrderInput | SortOrder
+    _count?: PostViewsCountOrderByAggregateInput
+    _avg?: PostViewsAvgOrderByAggregateInput
+    _max?: PostViewsMaxOrderByAggregateInput
+    _min?: PostViewsMinOrderByAggregateInput
+    _sum?: PostViewsSumOrderByAggregateInput
+  }
+
+  export type PostViewsScalarWhereWithAggregatesInput = {
+    AND?: PostViewsScalarWhereWithAggregatesInput | PostViewsScalarWhereWithAggregatesInput[]
+    OR?: PostViewsScalarWhereWithAggregatesInput[]
+    NOT?: PostViewsScalarWhereWithAggregatesInput | PostViewsScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"PostViews"> | number
+    postId?: IntWithAggregatesFilter<"PostViews"> | number
+    viewedAt?: DateTimeWithAggregatesFilter<"PostViews"> | Date | string
+    ip?: StringNullableWithAggregatesFilter<"PostViews"> | string | null
+    userAgent?: StringNullableWithAggregatesFilter<"PostViews"> | string | null
+  }
+
+  export type UserViewsWhereInput = {
+    AND?: UserViewsWhereInput | UserViewsWhereInput[]
+    OR?: UserViewsWhereInput[]
+    NOT?: UserViewsWhereInput | UserViewsWhereInput[]
+    id?: IntFilter<"UserViews"> | number
+    userId?: IntFilter<"UserViews"> | number
+    viewedAt?: DateTimeFilter<"UserViews"> | Date | string
+    ip?: StringNullableFilter<"UserViews"> | string | null
+    userAgent?: StringNullableFilter<"UserViews"> | string | null
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }
+
+  export type UserViewsOrderByWithRelationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    viewedAt?: SortOrder
+    ip?: SortOrderInput | SortOrder
+    userAgent?: SortOrderInput | SortOrder
+    user?: UserOrderByWithRelationInput
+  }
+
+  export type UserViewsWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: UserViewsWhereInput | UserViewsWhereInput[]
+    OR?: UserViewsWhereInput[]
+    NOT?: UserViewsWhereInput | UserViewsWhereInput[]
+    userId?: IntFilter<"UserViews"> | number
+    viewedAt?: DateTimeFilter<"UserViews"> | Date | string
+    ip?: StringNullableFilter<"UserViews"> | string | null
+    userAgent?: StringNullableFilter<"UserViews"> | string | null
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }, "id">
+
+  export type UserViewsOrderByWithAggregationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    viewedAt?: SortOrder
+    ip?: SortOrderInput | SortOrder
+    userAgent?: SortOrderInput | SortOrder
+    _count?: UserViewsCountOrderByAggregateInput
+    _avg?: UserViewsAvgOrderByAggregateInput
+    _max?: UserViewsMaxOrderByAggregateInput
+    _min?: UserViewsMinOrderByAggregateInput
+    _sum?: UserViewsSumOrderByAggregateInput
+  }
+
+  export type UserViewsScalarWhereWithAggregatesInput = {
+    AND?: UserViewsScalarWhereWithAggregatesInput | UserViewsScalarWhereWithAggregatesInput[]
+    OR?: UserViewsScalarWhereWithAggregatesInput[]
+    NOT?: UserViewsScalarWhereWithAggregatesInput | UserViewsScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"UserViews"> | number
+    userId?: IntWithAggregatesFilter<"UserViews"> | number
+    viewedAt?: DateTimeWithAggregatesFilter<"UserViews"> | Date | string
+    ip?: StringNullableWithAggregatesFilter<"UserViews"> | string | null
+    userAgent?: StringNullableWithAggregatesFilter<"UserViews"> | string | null
+  }
+
   export type UserCreateInput = {
     email: string
     name: string
@@ -6502,8 +9092,9 @@ export namespace Prisma {
     userIcon: string
     userProfile?: string | null
     posts?: PostCreateNestedManyWithoutAuthorInput
-    postLikes?: PostLikesCreateNestedManyWithoutUserInput
     postComments?: PostCommentsCreateNestedManyWithoutUserInput
+    postLikes?: PostLikesCreateNestedManyWithoutUserInput
+    profileViews?: UserViewsCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -6514,8 +9105,9 @@ export namespace Prisma {
     userIcon: string
     userProfile?: string | null
     posts?: PostUncheckedCreateNestedManyWithoutAuthorInput
-    postLikes?: PostLikesUncheckedCreateNestedManyWithoutUserInput
     postComments?: PostCommentsUncheckedCreateNestedManyWithoutUserInput
+    postLikes?: PostLikesUncheckedCreateNestedManyWithoutUserInput
+    profileViews?: UserViewsUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserUpdateInput = {
@@ -6525,8 +9117,9 @@ export namespace Prisma {
     userIcon?: StringFieldUpdateOperationsInput | string
     userProfile?: NullableStringFieldUpdateOperationsInput | string | null
     posts?: PostUpdateManyWithoutAuthorNestedInput
-    postLikes?: PostLikesUpdateManyWithoutUserNestedInput
     postComments?: PostCommentsUpdateManyWithoutUserNestedInput
+    postLikes?: PostLikesUpdateManyWithoutUserNestedInput
+    profileViews?: UserViewsUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -6537,8 +9130,9 @@ export namespace Prisma {
     userIcon?: StringFieldUpdateOperationsInput | string
     userProfile?: NullableStringFieldUpdateOperationsInput | string | null
     posts?: PostUncheckedUpdateManyWithoutAuthorNestedInput
-    postLikes?: PostLikesUncheckedUpdateManyWithoutUserNestedInput
     postComments?: PostCommentsUncheckedUpdateManyWithoutUserNestedInput
+    postLikes?: PostLikesUncheckedUpdateManyWithoutUserNestedInput
+    profileViews?: UserViewsUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -6589,8 +9183,9 @@ export namespace Prisma {
     category?: string
     published?: boolean
     author: UserCreateNestedOneWithoutPostsInput
-    likes?: PostLikesCreateNestedManyWithoutPostInput
     comments?: PostCommentsCreateNestedManyWithoutPostInput
+    likes?: PostLikesCreateNestedManyWithoutPostInput
+    views?: PostViewsCreateNestedManyWithoutPostInput
   }
 
   export type PostUncheckedCreateInput = {
@@ -6616,8 +9211,9 @@ export namespace Prisma {
     category?: string
     published?: boolean
     authorId: number
-    likes?: PostLikesUncheckedCreateNestedManyWithoutPostInput
     comments?: PostCommentsUncheckedCreateNestedManyWithoutPostInput
+    likes?: PostLikesUncheckedCreateNestedManyWithoutPostInput
+    views?: PostViewsUncheckedCreateNestedManyWithoutPostInput
   }
 
   export type PostUpdateInput = {
@@ -6642,8 +9238,9 @@ export namespace Prisma {
     category?: StringFieldUpdateOperationsInput | string
     published?: BoolFieldUpdateOperationsInput | boolean
     author?: UserUpdateOneRequiredWithoutPostsNestedInput
-    likes?: PostLikesUpdateManyWithoutPostNestedInput
     comments?: PostCommentsUpdateManyWithoutPostNestedInput
+    likes?: PostLikesUpdateManyWithoutPostNestedInput
+    views?: PostViewsUpdateManyWithoutPostNestedInput
   }
 
   export type PostUncheckedUpdateInput = {
@@ -6669,8 +9266,9 @@ export namespace Prisma {
     category?: StringFieldUpdateOperationsInput | string
     published?: BoolFieldUpdateOperationsInput | boolean
     authorId?: IntFieldUpdateOperationsInput | number
-    likes?: PostLikesUncheckedUpdateManyWithoutPostNestedInput
     comments?: PostCommentsUncheckedUpdateManyWithoutPostNestedInput
+    likes?: PostLikesUncheckedUpdateManyWithoutPostNestedInput
+    views?: PostViewsUncheckedUpdateManyWithoutPostNestedInput
   }
 
   export type PostCreateManyInput = {
@@ -6841,6 +9439,110 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type PostViewsCreateInput = {
+    viewedAt?: Date | string
+    ip?: string | null
+    userAgent?: string | null
+    post: PostCreateNestedOneWithoutViewsInput
+  }
+
+  export type PostViewsUncheckedCreateInput = {
+    id?: number
+    postId: number
+    viewedAt?: Date | string
+    ip?: string | null
+    userAgent?: string | null
+  }
+
+  export type PostViewsUpdateInput = {
+    viewedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    ip?: NullableStringFieldUpdateOperationsInput | string | null
+    userAgent?: NullableStringFieldUpdateOperationsInput | string | null
+    post?: PostUpdateOneRequiredWithoutViewsNestedInput
+  }
+
+  export type PostViewsUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    postId?: IntFieldUpdateOperationsInput | number
+    viewedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    ip?: NullableStringFieldUpdateOperationsInput | string | null
+    userAgent?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type PostViewsCreateManyInput = {
+    id?: number
+    postId: number
+    viewedAt?: Date | string
+    ip?: string | null
+    userAgent?: string | null
+  }
+
+  export type PostViewsUpdateManyMutationInput = {
+    viewedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    ip?: NullableStringFieldUpdateOperationsInput | string | null
+    userAgent?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type PostViewsUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    postId?: IntFieldUpdateOperationsInput | number
+    viewedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    ip?: NullableStringFieldUpdateOperationsInput | string | null
+    userAgent?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type UserViewsCreateInput = {
+    viewedAt?: Date | string
+    ip?: string | null
+    userAgent?: string | null
+    user: UserCreateNestedOneWithoutProfileViewsInput
+  }
+
+  export type UserViewsUncheckedCreateInput = {
+    id?: number
+    userId: number
+    viewedAt?: Date | string
+    ip?: string | null
+    userAgent?: string | null
+  }
+
+  export type UserViewsUpdateInput = {
+    viewedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    ip?: NullableStringFieldUpdateOperationsInput | string | null
+    userAgent?: NullableStringFieldUpdateOperationsInput | string | null
+    user?: UserUpdateOneRequiredWithoutProfileViewsNestedInput
+  }
+
+  export type UserViewsUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    viewedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    ip?: NullableStringFieldUpdateOperationsInput | string | null
+    userAgent?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type UserViewsCreateManyInput = {
+    id?: number
+    userId: number
+    viewedAt?: Date | string
+    ip?: string | null
+    userAgent?: string | null
+  }
+
+  export type UserViewsUpdateManyMutationInput = {
+    viewedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    ip?: NullableStringFieldUpdateOperationsInput | string | null
+    userAgent?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type UserViewsUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    viewedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    ip?: NullableStringFieldUpdateOperationsInput | string | null
+    userAgent?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
   export type IntFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[] | ListIntFieldRefInput<$PrismaModel>
@@ -6888,16 +9590,22 @@ export namespace Prisma {
     none?: PostWhereInput
   }
 
+  export type PostCommentsListRelationFilter = {
+    every?: PostCommentsWhereInput
+    some?: PostCommentsWhereInput
+    none?: PostCommentsWhereInput
+  }
+
   export type PostLikesListRelationFilter = {
     every?: PostLikesWhereInput
     some?: PostLikesWhereInput
     none?: PostLikesWhereInput
   }
 
-  export type PostCommentsListRelationFilter = {
-    every?: PostCommentsWhereInput
-    some?: PostCommentsWhereInput
-    none?: PostCommentsWhereInput
+  export type UserViewsListRelationFilter = {
+    every?: UserViewsWhereInput
+    some?: UserViewsWhereInput
+    none?: UserViewsWhereInput
   }
 
   export type SortOrderInput = {
@@ -6909,11 +9617,15 @@ export namespace Prisma {
     _count?: SortOrder
   }
 
+  export type PostCommentsOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
   export type PostLikesOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
-  export type PostCommentsOrderByRelationAggregateInput = {
+  export type UserViewsOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -7034,6 +9746,16 @@ export namespace Prisma {
   export type UserScalarRelationFilter = {
     is?: UserWhereInput
     isNot?: UserWhereInput
+  }
+
+  export type PostViewsListRelationFilter = {
+    every?: PostViewsWhereInput
+    some?: PostViewsWhereInput
+    none?: PostViewsWhereInput
+  }
+
+  export type PostViewsOrderByRelationAggregateInput = {
+    _count?: SortOrder
   }
 
   export type PostCountOrderByAggregateInput = {
@@ -7244,18 +9966,79 @@ export namespace Prisma {
     userId?: SortOrder
   }
 
+  export type PostViewsCountOrderByAggregateInput = {
+    id?: SortOrder
+    postId?: SortOrder
+    viewedAt?: SortOrder
+    ip?: SortOrder
+    userAgent?: SortOrder
+  }
+
+  export type PostViewsAvgOrderByAggregateInput = {
+    id?: SortOrder
+    postId?: SortOrder
+  }
+
+  export type PostViewsMaxOrderByAggregateInput = {
+    id?: SortOrder
+    postId?: SortOrder
+    viewedAt?: SortOrder
+    ip?: SortOrder
+    userAgent?: SortOrder
+  }
+
+  export type PostViewsMinOrderByAggregateInput = {
+    id?: SortOrder
+    postId?: SortOrder
+    viewedAt?: SortOrder
+    ip?: SortOrder
+    userAgent?: SortOrder
+  }
+
+  export type PostViewsSumOrderByAggregateInput = {
+    id?: SortOrder
+    postId?: SortOrder
+  }
+
+  export type UserViewsCountOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    viewedAt?: SortOrder
+    ip?: SortOrder
+    userAgent?: SortOrder
+  }
+
+  export type UserViewsAvgOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+  }
+
+  export type UserViewsMaxOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    viewedAt?: SortOrder
+    ip?: SortOrder
+    userAgent?: SortOrder
+  }
+
+  export type UserViewsMinOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    viewedAt?: SortOrder
+    ip?: SortOrder
+    userAgent?: SortOrder
+  }
+
+  export type UserViewsSumOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+  }
+
   export type PostCreateNestedManyWithoutAuthorInput = {
     create?: XOR<PostCreateWithoutAuthorInput, PostUncheckedCreateWithoutAuthorInput> | PostCreateWithoutAuthorInput[] | PostUncheckedCreateWithoutAuthorInput[]
     connectOrCreate?: PostCreateOrConnectWithoutAuthorInput | PostCreateOrConnectWithoutAuthorInput[]
     createMany?: PostCreateManyAuthorInputEnvelope
     connect?: PostWhereUniqueInput | PostWhereUniqueInput[]
-  }
-
-  export type PostLikesCreateNestedManyWithoutUserInput = {
-    create?: XOR<PostLikesCreateWithoutUserInput, PostLikesUncheckedCreateWithoutUserInput> | PostLikesCreateWithoutUserInput[] | PostLikesUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: PostLikesCreateOrConnectWithoutUserInput | PostLikesCreateOrConnectWithoutUserInput[]
-    createMany?: PostLikesCreateManyUserInputEnvelope
-    connect?: PostLikesWhereUniqueInput | PostLikesWhereUniqueInput[]
   }
 
   export type PostCommentsCreateNestedManyWithoutUserInput = {
@@ -7265,11 +10048,32 @@ export namespace Prisma {
     connect?: PostCommentsWhereUniqueInput | PostCommentsWhereUniqueInput[]
   }
 
+  export type PostLikesCreateNestedManyWithoutUserInput = {
+    create?: XOR<PostLikesCreateWithoutUserInput, PostLikesUncheckedCreateWithoutUserInput> | PostLikesCreateWithoutUserInput[] | PostLikesUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: PostLikesCreateOrConnectWithoutUserInput | PostLikesCreateOrConnectWithoutUserInput[]
+    createMany?: PostLikesCreateManyUserInputEnvelope
+    connect?: PostLikesWhereUniqueInput | PostLikesWhereUniqueInput[]
+  }
+
+  export type UserViewsCreateNestedManyWithoutUserInput = {
+    create?: XOR<UserViewsCreateWithoutUserInput, UserViewsUncheckedCreateWithoutUserInput> | UserViewsCreateWithoutUserInput[] | UserViewsUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: UserViewsCreateOrConnectWithoutUserInput | UserViewsCreateOrConnectWithoutUserInput[]
+    createMany?: UserViewsCreateManyUserInputEnvelope
+    connect?: UserViewsWhereUniqueInput | UserViewsWhereUniqueInput[]
+  }
+
   export type PostUncheckedCreateNestedManyWithoutAuthorInput = {
     create?: XOR<PostCreateWithoutAuthorInput, PostUncheckedCreateWithoutAuthorInput> | PostCreateWithoutAuthorInput[] | PostUncheckedCreateWithoutAuthorInput[]
     connectOrCreate?: PostCreateOrConnectWithoutAuthorInput | PostCreateOrConnectWithoutAuthorInput[]
     createMany?: PostCreateManyAuthorInputEnvelope
     connect?: PostWhereUniqueInput | PostWhereUniqueInput[]
+  }
+
+  export type PostCommentsUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<PostCommentsCreateWithoutUserInput, PostCommentsUncheckedCreateWithoutUserInput> | PostCommentsCreateWithoutUserInput[] | PostCommentsUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: PostCommentsCreateOrConnectWithoutUserInput | PostCommentsCreateOrConnectWithoutUserInput[]
+    createMany?: PostCommentsCreateManyUserInputEnvelope
+    connect?: PostCommentsWhereUniqueInput | PostCommentsWhereUniqueInput[]
   }
 
   export type PostLikesUncheckedCreateNestedManyWithoutUserInput = {
@@ -7279,11 +10083,11 @@ export namespace Prisma {
     connect?: PostLikesWhereUniqueInput | PostLikesWhereUniqueInput[]
   }
 
-  export type PostCommentsUncheckedCreateNestedManyWithoutUserInput = {
-    create?: XOR<PostCommentsCreateWithoutUserInput, PostCommentsUncheckedCreateWithoutUserInput> | PostCommentsCreateWithoutUserInput[] | PostCommentsUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: PostCommentsCreateOrConnectWithoutUserInput | PostCommentsCreateOrConnectWithoutUserInput[]
-    createMany?: PostCommentsCreateManyUserInputEnvelope
-    connect?: PostCommentsWhereUniqueInput | PostCommentsWhereUniqueInput[]
+  export type UserViewsUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<UserViewsCreateWithoutUserInput, UserViewsUncheckedCreateWithoutUserInput> | UserViewsCreateWithoutUserInput[] | UserViewsUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: UserViewsCreateOrConnectWithoutUserInput | UserViewsCreateOrConnectWithoutUserInput[]
+    createMany?: UserViewsCreateManyUserInputEnvelope
+    connect?: UserViewsWhereUniqueInput | UserViewsWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -7308,6 +10112,20 @@ export namespace Prisma {
     deleteMany?: PostScalarWhereInput | PostScalarWhereInput[]
   }
 
+  export type PostCommentsUpdateManyWithoutUserNestedInput = {
+    create?: XOR<PostCommentsCreateWithoutUserInput, PostCommentsUncheckedCreateWithoutUserInput> | PostCommentsCreateWithoutUserInput[] | PostCommentsUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: PostCommentsCreateOrConnectWithoutUserInput | PostCommentsCreateOrConnectWithoutUserInput[]
+    upsert?: PostCommentsUpsertWithWhereUniqueWithoutUserInput | PostCommentsUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: PostCommentsCreateManyUserInputEnvelope
+    set?: PostCommentsWhereUniqueInput | PostCommentsWhereUniqueInput[]
+    disconnect?: PostCommentsWhereUniqueInput | PostCommentsWhereUniqueInput[]
+    delete?: PostCommentsWhereUniqueInput | PostCommentsWhereUniqueInput[]
+    connect?: PostCommentsWhereUniqueInput | PostCommentsWhereUniqueInput[]
+    update?: PostCommentsUpdateWithWhereUniqueWithoutUserInput | PostCommentsUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: PostCommentsUpdateManyWithWhereWithoutUserInput | PostCommentsUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: PostCommentsScalarWhereInput | PostCommentsScalarWhereInput[]
+  }
+
   export type PostLikesUpdateManyWithoutUserNestedInput = {
     create?: XOR<PostLikesCreateWithoutUserInput, PostLikesUncheckedCreateWithoutUserInput> | PostLikesCreateWithoutUserInput[] | PostLikesUncheckedCreateWithoutUserInput[]
     connectOrCreate?: PostLikesCreateOrConnectWithoutUserInput | PostLikesCreateOrConnectWithoutUserInput[]
@@ -7322,18 +10140,18 @@ export namespace Prisma {
     deleteMany?: PostLikesScalarWhereInput | PostLikesScalarWhereInput[]
   }
 
-  export type PostCommentsUpdateManyWithoutUserNestedInput = {
-    create?: XOR<PostCommentsCreateWithoutUserInput, PostCommentsUncheckedCreateWithoutUserInput> | PostCommentsCreateWithoutUserInput[] | PostCommentsUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: PostCommentsCreateOrConnectWithoutUserInput | PostCommentsCreateOrConnectWithoutUserInput[]
-    upsert?: PostCommentsUpsertWithWhereUniqueWithoutUserInput | PostCommentsUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: PostCommentsCreateManyUserInputEnvelope
-    set?: PostCommentsWhereUniqueInput | PostCommentsWhereUniqueInput[]
-    disconnect?: PostCommentsWhereUniqueInput | PostCommentsWhereUniqueInput[]
-    delete?: PostCommentsWhereUniqueInput | PostCommentsWhereUniqueInput[]
-    connect?: PostCommentsWhereUniqueInput | PostCommentsWhereUniqueInput[]
-    update?: PostCommentsUpdateWithWhereUniqueWithoutUserInput | PostCommentsUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: PostCommentsUpdateManyWithWhereWithoutUserInput | PostCommentsUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: PostCommentsScalarWhereInput | PostCommentsScalarWhereInput[]
+  export type UserViewsUpdateManyWithoutUserNestedInput = {
+    create?: XOR<UserViewsCreateWithoutUserInput, UserViewsUncheckedCreateWithoutUserInput> | UserViewsCreateWithoutUserInput[] | UserViewsUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: UserViewsCreateOrConnectWithoutUserInput | UserViewsCreateOrConnectWithoutUserInput[]
+    upsert?: UserViewsUpsertWithWhereUniqueWithoutUserInput | UserViewsUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: UserViewsCreateManyUserInputEnvelope
+    set?: UserViewsWhereUniqueInput | UserViewsWhereUniqueInput[]
+    disconnect?: UserViewsWhereUniqueInput | UserViewsWhereUniqueInput[]
+    delete?: UserViewsWhereUniqueInput | UserViewsWhereUniqueInput[]
+    connect?: UserViewsWhereUniqueInput | UserViewsWhereUniqueInput[]
+    update?: UserViewsUpdateWithWhereUniqueWithoutUserInput | UserViewsUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: UserViewsUpdateManyWithWhereWithoutUserInput | UserViewsUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: UserViewsScalarWhereInput | UserViewsScalarWhereInput[]
   }
 
   export type IntFieldUpdateOperationsInput = {
@@ -7358,20 +10176,6 @@ export namespace Prisma {
     deleteMany?: PostScalarWhereInput | PostScalarWhereInput[]
   }
 
-  export type PostLikesUncheckedUpdateManyWithoutUserNestedInput = {
-    create?: XOR<PostLikesCreateWithoutUserInput, PostLikesUncheckedCreateWithoutUserInput> | PostLikesCreateWithoutUserInput[] | PostLikesUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: PostLikesCreateOrConnectWithoutUserInput | PostLikesCreateOrConnectWithoutUserInput[]
-    upsert?: PostLikesUpsertWithWhereUniqueWithoutUserInput | PostLikesUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: PostLikesCreateManyUserInputEnvelope
-    set?: PostLikesWhereUniqueInput | PostLikesWhereUniqueInput[]
-    disconnect?: PostLikesWhereUniqueInput | PostLikesWhereUniqueInput[]
-    delete?: PostLikesWhereUniqueInput | PostLikesWhereUniqueInput[]
-    connect?: PostLikesWhereUniqueInput | PostLikesWhereUniqueInput[]
-    update?: PostLikesUpdateWithWhereUniqueWithoutUserInput | PostLikesUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: PostLikesUpdateManyWithWhereWithoutUserInput | PostLikesUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: PostLikesScalarWhereInput | PostLikesScalarWhereInput[]
-  }
-
   export type PostCommentsUncheckedUpdateManyWithoutUserNestedInput = {
     create?: XOR<PostCommentsCreateWithoutUserInput, PostCommentsUncheckedCreateWithoutUserInput> | PostCommentsCreateWithoutUserInput[] | PostCommentsUncheckedCreateWithoutUserInput[]
     connectOrCreate?: PostCommentsCreateOrConnectWithoutUserInput | PostCommentsCreateOrConnectWithoutUserInput[]
@@ -7386,10 +10190,45 @@ export namespace Prisma {
     deleteMany?: PostCommentsScalarWhereInput | PostCommentsScalarWhereInput[]
   }
 
+  export type PostLikesUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<PostLikesCreateWithoutUserInput, PostLikesUncheckedCreateWithoutUserInput> | PostLikesCreateWithoutUserInput[] | PostLikesUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: PostLikesCreateOrConnectWithoutUserInput | PostLikesCreateOrConnectWithoutUserInput[]
+    upsert?: PostLikesUpsertWithWhereUniqueWithoutUserInput | PostLikesUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: PostLikesCreateManyUserInputEnvelope
+    set?: PostLikesWhereUniqueInput | PostLikesWhereUniqueInput[]
+    disconnect?: PostLikesWhereUniqueInput | PostLikesWhereUniqueInput[]
+    delete?: PostLikesWhereUniqueInput | PostLikesWhereUniqueInput[]
+    connect?: PostLikesWhereUniqueInput | PostLikesWhereUniqueInput[]
+    update?: PostLikesUpdateWithWhereUniqueWithoutUserInput | PostLikesUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: PostLikesUpdateManyWithWhereWithoutUserInput | PostLikesUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: PostLikesScalarWhereInput | PostLikesScalarWhereInput[]
+  }
+
+  export type UserViewsUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<UserViewsCreateWithoutUserInput, UserViewsUncheckedCreateWithoutUserInput> | UserViewsCreateWithoutUserInput[] | UserViewsUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: UserViewsCreateOrConnectWithoutUserInput | UserViewsCreateOrConnectWithoutUserInput[]
+    upsert?: UserViewsUpsertWithWhereUniqueWithoutUserInput | UserViewsUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: UserViewsCreateManyUserInputEnvelope
+    set?: UserViewsWhereUniqueInput | UserViewsWhereUniqueInput[]
+    disconnect?: UserViewsWhereUniqueInput | UserViewsWhereUniqueInput[]
+    delete?: UserViewsWhereUniqueInput | UserViewsWhereUniqueInput[]
+    connect?: UserViewsWhereUniqueInput | UserViewsWhereUniqueInput[]
+    update?: UserViewsUpdateWithWhereUniqueWithoutUserInput | UserViewsUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: UserViewsUpdateManyWithWhereWithoutUserInput | UserViewsUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: UserViewsScalarWhereInput | UserViewsScalarWhereInput[]
+  }
+
   export type UserCreateNestedOneWithoutPostsInput = {
     create?: XOR<UserCreateWithoutPostsInput, UserUncheckedCreateWithoutPostsInput>
     connectOrCreate?: UserCreateOrConnectWithoutPostsInput
     connect?: UserWhereUniqueInput
+  }
+
+  export type PostCommentsCreateNestedManyWithoutPostInput = {
+    create?: XOR<PostCommentsCreateWithoutPostInput, PostCommentsUncheckedCreateWithoutPostInput> | PostCommentsCreateWithoutPostInput[] | PostCommentsUncheckedCreateWithoutPostInput[]
+    connectOrCreate?: PostCommentsCreateOrConnectWithoutPostInput | PostCommentsCreateOrConnectWithoutPostInput[]
+    createMany?: PostCommentsCreateManyPostInputEnvelope
+    connect?: PostCommentsWhereUniqueInput | PostCommentsWhereUniqueInput[]
   }
 
   export type PostLikesCreateNestedManyWithoutPostInput = {
@@ -7399,7 +10238,14 @@ export namespace Prisma {
     connect?: PostLikesWhereUniqueInput | PostLikesWhereUniqueInput[]
   }
 
-  export type PostCommentsCreateNestedManyWithoutPostInput = {
+  export type PostViewsCreateNestedManyWithoutPostInput = {
+    create?: XOR<PostViewsCreateWithoutPostInput, PostViewsUncheckedCreateWithoutPostInput> | PostViewsCreateWithoutPostInput[] | PostViewsUncheckedCreateWithoutPostInput[]
+    connectOrCreate?: PostViewsCreateOrConnectWithoutPostInput | PostViewsCreateOrConnectWithoutPostInput[]
+    createMany?: PostViewsCreateManyPostInputEnvelope
+    connect?: PostViewsWhereUniqueInput | PostViewsWhereUniqueInput[]
+  }
+
+  export type PostCommentsUncheckedCreateNestedManyWithoutPostInput = {
     create?: XOR<PostCommentsCreateWithoutPostInput, PostCommentsUncheckedCreateWithoutPostInput> | PostCommentsCreateWithoutPostInput[] | PostCommentsUncheckedCreateWithoutPostInput[]
     connectOrCreate?: PostCommentsCreateOrConnectWithoutPostInput | PostCommentsCreateOrConnectWithoutPostInput[]
     createMany?: PostCommentsCreateManyPostInputEnvelope
@@ -7413,11 +10259,11 @@ export namespace Prisma {
     connect?: PostLikesWhereUniqueInput | PostLikesWhereUniqueInput[]
   }
 
-  export type PostCommentsUncheckedCreateNestedManyWithoutPostInput = {
-    create?: XOR<PostCommentsCreateWithoutPostInput, PostCommentsUncheckedCreateWithoutPostInput> | PostCommentsCreateWithoutPostInput[] | PostCommentsUncheckedCreateWithoutPostInput[]
-    connectOrCreate?: PostCommentsCreateOrConnectWithoutPostInput | PostCommentsCreateOrConnectWithoutPostInput[]
-    createMany?: PostCommentsCreateManyPostInputEnvelope
-    connect?: PostCommentsWhereUniqueInput | PostCommentsWhereUniqueInput[]
+  export type PostViewsUncheckedCreateNestedManyWithoutPostInput = {
+    create?: XOR<PostViewsCreateWithoutPostInput, PostViewsUncheckedCreateWithoutPostInput> | PostViewsCreateWithoutPostInput[] | PostViewsUncheckedCreateWithoutPostInput[]
+    connectOrCreate?: PostViewsCreateOrConnectWithoutPostInput | PostViewsCreateOrConnectWithoutPostInput[]
+    createMany?: PostViewsCreateManyPostInputEnvelope
+    connect?: PostViewsWhereUniqueInput | PostViewsWhereUniqueInput[]
   }
 
   export type DateTimeFieldUpdateOperationsInput = {
@@ -7444,6 +10290,20 @@ export namespace Prisma {
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutPostsInput, UserUpdateWithoutPostsInput>, UserUncheckedUpdateWithoutPostsInput>
   }
 
+  export type PostCommentsUpdateManyWithoutPostNestedInput = {
+    create?: XOR<PostCommentsCreateWithoutPostInput, PostCommentsUncheckedCreateWithoutPostInput> | PostCommentsCreateWithoutPostInput[] | PostCommentsUncheckedCreateWithoutPostInput[]
+    connectOrCreate?: PostCommentsCreateOrConnectWithoutPostInput | PostCommentsCreateOrConnectWithoutPostInput[]
+    upsert?: PostCommentsUpsertWithWhereUniqueWithoutPostInput | PostCommentsUpsertWithWhereUniqueWithoutPostInput[]
+    createMany?: PostCommentsCreateManyPostInputEnvelope
+    set?: PostCommentsWhereUniqueInput | PostCommentsWhereUniqueInput[]
+    disconnect?: PostCommentsWhereUniqueInput | PostCommentsWhereUniqueInput[]
+    delete?: PostCommentsWhereUniqueInput | PostCommentsWhereUniqueInput[]
+    connect?: PostCommentsWhereUniqueInput | PostCommentsWhereUniqueInput[]
+    update?: PostCommentsUpdateWithWhereUniqueWithoutPostInput | PostCommentsUpdateWithWhereUniqueWithoutPostInput[]
+    updateMany?: PostCommentsUpdateManyWithWhereWithoutPostInput | PostCommentsUpdateManyWithWhereWithoutPostInput[]
+    deleteMany?: PostCommentsScalarWhereInput | PostCommentsScalarWhereInput[]
+  }
+
   export type PostLikesUpdateManyWithoutPostNestedInput = {
     create?: XOR<PostLikesCreateWithoutPostInput, PostLikesUncheckedCreateWithoutPostInput> | PostLikesCreateWithoutPostInput[] | PostLikesUncheckedCreateWithoutPostInput[]
     connectOrCreate?: PostLikesCreateOrConnectWithoutPostInput | PostLikesCreateOrConnectWithoutPostInput[]
@@ -7458,7 +10318,21 @@ export namespace Prisma {
     deleteMany?: PostLikesScalarWhereInput | PostLikesScalarWhereInput[]
   }
 
-  export type PostCommentsUpdateManyWithoutPostNestedInput = {
+  export type PostViewsUpdateManyWithoutPostNestedInput = {
+    create?: XOR<PostViewsCreateWithoutPostInput, PostViewsUncheckedCreateWithoutPostInput> | PostViewsCreateWithoutPostInput[] | PostViewsUncheckedCreateWithoutPostInput[]
+    connectOrCreate?: PostViewsCreateOrConnectWithoutPostInput | PostViewsCreateOrConnectWithoutPostInput[]
+    upsert?: PostViewsUpsertWithWhereUniqueWithoutPostInput | PostViewsUpsertWithWhereUniqueWithoutPostInput[]
+    createMany?: PostViewsCreateManyPostInputEnvelope
+    set?: PostViewsWhereUniqueInput | PostViewsWhereUniqueInput[]
+    disconnect?: PostViewsWhereUniqueInput | PostViewsWhereUniqueInput[]
+    delete?: PostViewsWhereUniqueInput | PostViewsWhereUniqueInput[]
+    connect?: PostViewsWhereUniqueInput | PostViewsWhereUniqueInput[]
+    update?: PostViewsUpdateWithWhereUniqueWithoutPostInput | PostViewsUpdateWithWhereUniqueWithoutPostInput[]
+    updateMany?: PostViewsUpdateManyWithWhereWithoutPostInput | PostViewsUpdateManyWithWhereWithoutPostInput[]
+    deleteMany?: PostViewsScalarWhereInput | PostViewsScalarWhereInput[]
+  }
+
+  export type PostCommentsUncheckedUpdateManyWithoutPostNestedInput = {
     create?: XOR<PostCommentsCreateWithoutPostInput, PostCommentsUncheckedCreateWithoutPostInput> | PostCommentsCreateWithoutPostInput[] | PostCommentsUncheckedCreateWithoutPostInput[]
     connectOrCreate?: PostCommentsCreateOrConnectWithoutPostInput | PostCommentsCreateOrConnectWithoutPostInput[]
     upsert?: PostCommentsUpsertWithWhereUniqueWithoutPostInput | PostCommentsUpsertWithWhereUniqueWithoutPostInput[]
@@ -7486,18 +10360,18 @@ export namespace Prisma {
     deleteMany?: PostLikesScalarWhereInput | PostLikesScalarWhereInput[]
   }
 
-  export type PostCommentsUncheckedUpdateManyWithoutPostNestedInput = {
-    create?: XOR<PostCommentsCreateWithoutPostInput, PostCommentsUncheckedCreateWithoutPostInput> | PostCommentsCreateWithoutPostInput[] | PostCommentsUncheckedCreateWithoutPostInput[]
-    connectOrCreate?: PostCommentsCreateOrConnectWithoutPostInput | PostCommentsCreateOrConnectWithoutPostInput[]
-    upsert?: PostCommentsUpsertWithWhereUniqueWithoutPostInput | PostCommentsUpsertWithWhereUniqueWithoutPostInput[]
-    createMany?: PostCommentsCreateManyPostInputEnvelope
-    set?: PostCommentsWhereUniqueInput | PostCommentsWhereUniqueInput[]
-    disconnect?: PostCommentsWhereUniqueInput | PostCommentsWhereUniqueInput[]
-    delete?: PostCommentsWhereUniqueInput | PostCommentsWhereUniqueInput[]
-    connect?: PostCommentsWhereUniqueInput | PostCommentsWhereUniqueInput[]
-    update?: PostCommentsUpdateWithWhereUniqueWithoutPostInput | PostCommentsUpdateWithWhereUniqueWithoutPostInput[]
-    updateMany?: PostCommentsUpdateManyWithWhereWithoutPostInput | PostCommentsUpdateManyWithWhereWithoutPostInput[]
-    deleteMany?: PostCommentsScalarWhereInput | PostCommentsScalarWhereInput[]
+  export type PostViewsUncheckedUpdateManyWithoutPostNestedInput = {
+    create?: XOR<PostViewsCreateWithoutPostInput, PostViewsUncheckedCreateWithoutPostInput> | PostViewsCreateWithoutPostInput[] | PostViewsUncheckedCreateWithoutPostInput[]
+    connectOrCreate?: PostViewsCreateOrConnectWithoutPostInput | PostViewsCreateOrConnectWithoutPostInput[]
+    upsert?: PostViewsUpsertWithWhereUniqueWithoutPostInput | PostViewsUpsertWithWhereUniqueWithoutPostInput[]
+    createMany?: PostViewsCreateManyPostInputEnvelope
+    set?: PostViewsWhereUniqueInput | PostViewsWhereUniqueInput[]
+    disconnect?: PostViewsWhereUniqueInput | PostViewsWhereUniqueInput[]
+    delete?: PostViewsWhereUniqueInput | PostViewsWhereUniqueInput[]
+    connect?: PostViewsWhereUniqueInput | PostViewsWhereUniqueInput[]
+    update?: PostViewsUpdateWithWhereUniqueWithoutPostInput | PostViewsUpdateWithWhereUniqueWithoutPostInput[]
+    updateMany?: PostViewsUpdateManyWithWhereWithoutPostInput | PostViewsUpdateManyWithWhereWithoutPostInput[]
+    deleteMany?: PostViewsScalarWhereInput | PostViewsScalarWhereInput[]
   }
 
   export type PostCreateNestedOneWithoutLikesInput = {
@@ -7554,6 +10428,34 @@ export namespace Prisma {
     upsert?: UserUpsertWithoutPostCommentsInput
     connect?: UserWhereUniqueInput
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutPostCommentsInput, UserUpdateWithoutPostCommentsInput>, UserUncheckedUpdateWithoutPostCommentsInput>
+  }
+
+  export type PostCreateNestedOneWithoutViewsInput = {
+    create?: XOR<PostCreateWithoutViewsInput, PostUncheckedCreateWithoutViewsInput>
+    connectOrCreate?: PostCreateOrConnectWithoutViewsInput
+    connect?: PostWhereUniqueInput
+  }
+
+  export type PostUpdateOneRequiredWithoutViewsNestedInput = {
+    create?: XOR<PostCreateWithoutViewsInput, PostUncheckedCreateWithoutViewsInput>
+    connectOrCreate?: PostCreateOrConnectWithoutViewsInput
+    upsert?: PostUpsertWithoutViewsInput
+    connect?: PostWhereUniqueInput
+    update?: XOR<XOR<PostUpdateToOneWithWhereWithoutViewsInput, PostUpdateWithoutViewsInput>, PostUncheckedUpdateWithoutViewsInput>
+  }
+
+  export type UserCreateNestedOneWithoutProfileViewsInput = {
+    create?: XOR<UserCreateWithoutProfileViewsInput, UserUncheckedCreateWithoutProfileViewsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutProfileViewsInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type UserUpdateOneRequiredWithoutProfileViewsNestedInput = {
+    create?: XOR<UserCreateWithoutProfileViewsInput, UserUncheckedCreateWithoutProfileViewsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutProfileViewsInput
+    upsert?: UserUpsertWithoutProfileViewsInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutProfileViewsInput, UserUpdateWithoutProfileViewsInput>, UserUncheckedUpdateWithoutProfileViewsInput>
   }
 
   export type NestedIntFilter<$PrismaModel = never> = {
@@ -7753,8 +10655,9 @@ export namespace Prisma {
     lon?: number | null
     category?: string
     published?: boolean
-    likes?: PostLikesCreateNestedManyWithoutPostInput
     comments?: PostCommentsCreateNestedManyWithoutPostInput
+    likes?: PostLikesCreateNestedManyWithoutPostInput
+    views?: PostViewsCreateNestedManyWithoutPostInput
   }
 
   export type PostUncheckedCreateWithoutAuthorInput = {
@@ -7779,8 +10682,9 @@ export namespace Prisma {
     lon?: number | null
     category?: string
     published?: boolean
-    likes?: PostLikesUncheckedCreateNestedManyWithoutPostInput
     comments?: PostCommentsUncheckedCreateNestedManyWithoutPostInput
+    likes?: PostLikesUncheckedCreateNestedManyWithoutPostInput
+    views?: PostViewsUncheckedCreateNestedManyWithoutPostInput
   }
 
   export type PostCreateOrConnectWithoutAuthorInput = {
@@ -7790,6 +10694,29 @@ export namespace Prisma {
 
   export type PostCreateManyAuthorInputEnvelope = {
     data: PostCreateManyAuthorInput | PostCreateManyAuthorInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type PostCommentsCreateWithoutUserInput = {
+    comment: string
+    createdAt?: Date | string
+    post: PostCreateNestedOneWithoutCommentsInput
+  }
+
+  export type PostCommentsUncheckedCreateWithoutUserInput = {
+    commentId?: number
+    comment: string
+    postId: number
+    createdAt?: Date | string
+  }
+
+  export type PostCommentsCreateOrConnectWithoutUserInput = {
+    where: PostCommentsWhereUniqueInput
+    create: XOR<PostCommentsCreateWithoutUserInput, PostCommentsUncheckedCreateWithoutUserInput>
+  }
+
+  export type PostCommentsCreateManyUserInputEnvelope = {
+    data: PostCommentsCreateManyUserInput | PostCommentsCreateManyUserInput[]
     skipDuplicates?: boolean
   }
 
@@ -7814,26 +10741,26 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type PostCommentsCreateWithoutUserInput = {
-    comment: string
-    createdAt?: Date | string
-    post: PostCreateNestedOneWithoutCommentsInput
+  export type UserViewsCreateWithoutUserInput = {
+    viewedAt?: Date | string
+    ip?: string | null
+    userAgent?: string | null
   }
 
-  export type PostCommentsUncheckedCreateWithoutUserInput = {
-    commentId?: number
-    comment: string
-    postId: number
-    createdAt?: Date | string
+  export type UserViewsUncheckedCreateWithoutUserInput = {
+    id?: number
+    viewedAt?: Date | string
+    ip?: string | null
+    userAgent?: string | null
   }
 
-  export type PostCommentsCreateOrConnectWithoutUserInput = {
-    where: PostCommentsWhereUniqueInput
-    create: XOR<PostCommentsCreateWithoutUserInput, PostCommentsUncheckedCreateWithoutUserInput>
+  export type UserViewsCreateOrConnectWithoutUserInput = {
+    where: UserViewsWhereUniqueInput
+    create: XOR<UserViewsCreateWithoutUserInput, UserViewsUncheckedCreateWithoutUserInput>
   }
 
-  export type PostCommentsCreateManyUserInputEnvelope = {
-    data: PostCommentsCreateManyUserInput | PostCommentsCreateManyUserInput[]
+  export type UserViewsCreateManyUserInputEnvelope = {
+    data: UserViewsCreateManyUserInput | UserViewsCreateManyUserInput[]
     skipDuplicates?: boolean
   }
 
@@ -7881,32 +10808,6 @@ export namespace Prisma {
     authorId?: IntFilter<"Post"> | number
   }
 
-  export type PostLikesUpsertWithWhereUniqueWithoutUserInput = {
-    where: PostLikesWhereUniqueInput
-    update: XOR<PostLikesUpdateWithoutUserInput, PostLikesUncheckedUpdateWithoutUserInput>
-    create: XOR<PostLikesCreateWithoutUserInput, PostLikesUncheckedCreateWithoutUserInput>
-  }
-
-  export type PostLikesUpdateWithWhereUniqueWithoutUserInput = {
-    where: PostLikesWhereUniqueInput
-    data: XOR<PostLikesUpdateWithoutUserInput, PostLikesUncheckedUpdateWithoutUserInput>
-  }
-
-  export type PostLikesUpdateManyWithWhereWithoutUserInput = {
-    where: PostLikesScalarWhereInput
-    data: XOR<PostLikesUpdateManyMutationInput, PostLikesUncheckedUpdateManyWithoutUserInput>
-  }
-
-  export type PostLikesScalarWhereInput = {
-    AND?: PostLikesScalarWhereInput | PostLikesScalarWhereInput[]
-    OR?: PostLikesScalarWhereInput[]
-    NOT?: PostLikesScalarWhereInput | PostLikesScalarWhereInput[]
-    id?: IntFilter<"PostLikes"> | number
-    postId?: IntFilter<"PostLikes"> | number
-    userId?: IntFilter<"PostLikes"> | number
-    createdAt?: DateTimeFilter<"PostLikes"> | Date | string
-  }
-
   export type PostCommentsUpsertWithWhereUniqueWithoutUserInput = {
     where: PostCommentsWhereUniqueInput
     update: XOR<PostCommentsUpdateWithoutUserInput, PostCommentsUncheckedUpdateWithoutUserInput>
@@ -7934,14 +10835,68 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"PostComments"> | Date | string
   }
 
+  export type PostLikesUpsertWithWhereUniqueWithoutUserInput = {
+    where: PostLikesWhereUniqueInput
+    update: XOR<PostLikesUpdateWithoutUserInput, PostLikesUncheckedUpdateWithoutUserInput>
+    create: XOR<PostLikesCreateWithoutUserInput, PostLikesUncheckedCreateWithoutUserInput>
+  }
+
+  export type PostLikesUpdateWithWhereUniqueWithoutUserInput = {
+    where: PostLikesWhereUniqueInput
+    data: XOR<PostLikesUpdateWithoutUserInput, PostLikesUncheckedUpdateWithoutUserInput>
+  }
+
+  export type PostLikesUpdateManyWithWhereWithoutUserInput = {
+    where: PostLikesScalarWhereInput
+    data: XOR<PostLikesUpdateManyMutationInput, PostLikesUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type PostLikesScalarWhereInput = {
+    AND?: PostLikesScalarWhereInput | PostLikesScalarWhereInput[]
+    OR?: PostLikesScalarWhereInput[]
+    NOT?: PostLikesScalarWhereInput | PostLikesScalarWhereInput[]
+    id?: IntFilter<"PostLikes"> | number
+    postId?: IntFilter<"PostLikes"> | number
+    userId?: IntFilter<"PostLikes"> | number
+    createdAt?: DateTimeFilter<"PostLikes"> | Date | string
+  }
+
+  export type UserViewsUpsertWithWhereUniqueWithoutUserInput = {
+    where: UserViewsWhereUniqueInput
+    update: XOR<UserViewsUpdateWithoutUserInput, UserViewsUncheckedUpdateWithoutUserInput>
+    create: XOR<UserViewsCreateWithoutUserInput, UserViewsUncheckedCreateWithoutUserInput>
+  }
+
+  export type UserViewsUpdateWithWhereUniqueWithoutUserInput = {
+    where: UserViewsWhereUniqueInput
+    data: XOR<UserViewsUpdateWithoutUserInput, UserViewsUncheckedUpdateWithoutUserInput>
+  }
+
+  export type UserViewsUpdateManyWithWhereWithoutUserInput = {
+    where: UserViewsScalarWhereInput
+    data: XOR<UserViewsUpdateManyMutationInput, UserViewsUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type UserViewsScalarWhereInput = {
+    AND?: UserViewsScalarWhereInput | UserViewsScalarWhereInput[]
+    OR?: UserViewsScalarWhereInput[]
+    NOT?: UserViewsScalarWhereInput | UserViewsScalarWhereInput[]
+    id?: IntFilter<"UserViews"> | number
+    userId?: IntFilter<"UserViews"> | number
+    viewedAt?: DateTimeFilter<"UserViews"> | Date | string
+    ip?: StringNullableFilter<"UserViews"> | string | null
+    userAgent?: StringNullableFilter<"UserViews"> | string | null
+  }
+
   export type UserCreateWithoutPostsInput = {
     email: string
     name: string
     password: string
     userIcon: string
     userProfile?: string | null
-    postLikes?: PostLikesCreateNestedManyWithoutUserInput
     postComments?: PostCommentsCreateNestedManyWithoutUserInput
+    postLikes?: PostLikesCreateNestedManyWithoutUserInput
+    profileViews?: UserViewsCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutPostsInput = {
@@ -7951,34 +10906,14 @@ export namespace Prisma {
     password: string
     userIcon: string
     userProfile?: string | null
-    postLikes?: PostLikesUncheckedCreateNestedManyWithoutUserInput
     postComments?: PostCommentsUncheckedCreateNestedManyWithoutUserInput
+    postLikes?: PostLikesUncheckedCreateNestedManyWithoutUserInput
+    profileViews?: UserViewsUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutPostsInput = {
     where: UserWhereUniqueInput
     create: XOR<UserCreateWithoutPostsInput, UserUncheckedCreateWithoutPostsInput>
-  }
-
-  export type PostLikesCreateWithoutPostInput = {
-    createdAt?: Date | string
-    user: UserCreateNestedOneWithoutPostLikesInput
-  }
-
-  export type PostLikesUncheckedCreateWithoutPostInput = {
-    id?: number
-    userId: number
-    createdAt?: Date | string
-  }
-
-  export type PostLikesCreateOrConnectWithoutPostInput = {
-    where: PostLikesWhereUniqueInput
-    create: XOR<PostLikesCreateWithoutPostInput, PostLikesUncheckedCreateWithoutPostInput>
-  }
-
-  export type PostLikesCreateManyPostInputEnvelope = {
-    data: PostLikesCreateManyPostInput | PostLikesCreateManyPostInput[]
-    skipDuplicates?: boolean
   }
 
   export type PostCommentsCreateWithoutPostInput = {
@@ -8004,6 +10939,50 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type PostLikesCreateWithoutPostInput = {
+    createdAt?: Date | string
+    user: UserCreateNestedOneWithoutPostLikesInput
+  }
+
+  export type PostLikesUncheckedCreateWithoutPostInput = {
+    id?: number
+    userId: number
+    createdAt?: Date | string
+  }
+
+  export type PostLikesCreateOrConnectWithoutPostInput = {
+    where: PostLikesWhereUniqueInput
+    create: XOR<PostLikesCreateWithoutPostInput, PostLikesUncheckedCreateWithoutPostInput>
+  }
+
+  export type PostLikesCreateManyPostInputEnvelope = {
+    data: PostLikesCreateManyPostInput | PostLikesCreateManyPostInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type PostViewsCreateWithoutPostInput = {
+    viewedAt?: Date | string
+    ip?: string | null
+    userAgent?: string | null
+  }
+
+  export type PostViewsUncheckedCreateWithoutPostInput = {
+    id?: number
+    viewedAt?: Date | string
+    ip?: string | null
+    userAgent?: string | null
+  }
+
+  export type PostViewsCreateOrConnectWithoutPostInput = {
+    where: PostViewsWhereUniqueInput
+    create: XOR<PostViewsCreateWithoutPostInput, PostViewsUncheckedCreateWithoutPostInput>
+  }
+
+  export type PostViewsCreateManyPostInputEnvelope = {
+    data: PostViewsCreateManyPostInput | PostViewsCreateManyPostInput[]
+    skipDuplicates?: boolean
+  }
+
   export type UserUpsertWithoutPostsInput = {
     update: XOR<UserUpdateWithoutPostsInput, UserUncheckedUpdateWithoutPostsInput>
     create: XOR<UserCreateWithoutPostsInput, UserUncheckedCreateWithoutPostsInput>
@@ -8021,8 +11000,9 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     userIcon?: StringFieldUpdateOperationsInput | string
     userProfile?: NullableStringFieldUpdateOperationsInput | string | null
-    postLikes?: PostLikesUpdateManyWithoutUserNestedInput
     postComments?: PostCommentsUpdateManyWithoutUserNestedInput
+    postLikes?: PostLikesUpdateManyWithoutUserNestedInput
+    profileViews?: UserViewsUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutPostsInput = {
@@ -8032,8 +11012,25 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     userIcon?: StringFieldUpdateOperationsInput | string
     userProfile?: NullableStringFieldUpdateOperationsInput | string | null
-    postLikes?: PostLikesUncheckedUpdateManyWithoutUserNestedInput
     postComments?: PostCommentsUncheckedUpdateManyWithoutUserNestedInput
+    postLikes?: PostLikesUncheckedUpdateManyWithoutUserNestedInput
+    profileViews?: UserViewsUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type PostCommentsUpsertWithWhereUniqueWithoutPostInput = {
+    where: PostCommentsWhereUniqueInput
+    update: XOR<PostCommentsUpdateWithoutPostInput, PostCommentsUncheckedUpdateWithoutPostInput>
+    create: XOR<PostCommentsCreateWithoutPostInput, PostCommentsUncheckedCreateWithoutPostInput>
+  }
+
+  export type PostCommentsUpdateWithWhereUniqueWithoutPostInput = {
+    where: PostCommentsWhereUniqueInput
+    data: XOR<PostCommentsUpdateWithoutPostInput, PostCommentsUncheckedUpdateWithoutPostInput>
+  }
+
+  export type PostCommentsUpdateManyWithWhereWithoutPostInput = {
+    where: PostCommentsScalarWhereInput
+    data: XOR<PostCommentsUpdateManyMutationInput, PostCommentsUncheckedUpdateManyWithoutPostInput>
   }
 
   export type PostLikesUpsertWithWhereUniqueWithoutPostInput = {
@@ -8052,20 +11049,31 @@ export namespace Prisma {
     data: XOR<PostLikesUpdateManyMutationInput, PostLikesUncheckedUpdateManyWithoutPostInput>
   }
 
-  export type PostCommentsUpsertWithWhereUniqueWithoutPostInput = {
-    where: PostCommentsWhereUniqueInput
-    update: XOR<PostCommentsUpdateWithoutPostInput, PostCommentsUncheckedUpdateWithoutPostInput>
-    create: XOR<PostCommentsCreateWithoutPostInput, PostCommentsUncheckedCreateWithoutPostInput>
+  export type PostViewsUpsertWithWhereUniqueWithoutPostInput = {
+    where: PostViewsWhereUniqueInput
+    update: XOR<PostViewsUpdateWithoutPostInput, PostViewsUncheckedUpdateWithoutPostInput>
+    create: XOR<PostViewsCreateWithoutPostInput, PostViewsUncheckedCreateWithoutPostInput>
   }
 
-  export type PostCommentsUpdateWithWhereUniqueWithoutPostInput = {
-    where: PostCommentsWhereUniqueInput
-    data: XOR<PostCommentsUpdateWithoutPostInput, PostCommentsUncheckedUpdateWithoutPostInput>
+  export type PostViewsUpdateWithWhereUniqueWithoutPostInput = {
+    where: PostViewsWhereUniqueInput
+    data: XOR<PostViewsUpdateWithoutPostInput, PostViewsUncheckedUpdateWithoutPostInput>
   }
 
-  export type PostCommentsUpdateManyWithWhereWithoutPostInput = {
-    where: PostCommentsScalarWhereInput
-    data: XOR<PostCommentsUpdateManyMutationInput, PostCommentsUncheckedUpdateManyWithoutPostInput>
+  export type PostViewsUpdateManyWithWhereWithoutPostInput = {
+    where: PostViewsScalarWhereInput
+    data: XOR<PostViewsUpdateManyMutationInput, PostViewsUncheckedUpdateManyWithoutPostInput>
+  }
+
+  export type PostViewsScalarWhereInput = {
+    AND?: PostViewsScalarWhereInput | PostViewsScalarWhereInput[]
+    OR?: PostViewsScalarWhereInput[]
+    NOT?: PostViewsScalarWhereInput | PostViewsScalarWhereInput[]
+    id?: IntFilter<"PostViews"> | number
+    postId?: IntFilter<"PostViews"> | number
+    viewedAt?: DateTimeFilter<"PostViews"> | Date | string
+    ip?: StringNullableFilter<"PostViews"> | string | null
+    userAgent?: StringNullableFilter<"PostViews"> | string | null
   }
 
   export type PostCreateWithoutLikesInput = {
@@ -8091,6 +11099,7 @@ export namespace Prisma {
     published?: boolean
     author: UserCreateNestedOneWithoutPostsInput
     comments?: PostCommentsCreateNestedManyWithoutPostInput
+    views?: PostViewsCreateNestedManyWithoutPostInput
   }
 
   export type PostUncheckedCreateWithoutLikesInput = {
@@ -8117,6 +11126,7 @@ export namespace Prisma {
     published?: boolean
     authorId: number
     comments?: PostCommentsUncheckedCreateNestedManyWithoutPostInput
+    views?: PostViewsUncheckedCreateNestedManyWithoutPostInput
   }
 
   export type PostCreateOrConnectWithoutLikesInput = {
@@ -8132,6 +11142,7 @@ export namespace Prisma {
     userProfile?: string | null
     posts?: PostCreateNestedManyWithoutAuthorInput
     postComments?: PostCommentsCreateNestedManyWithoutUserInput
+    profileViews?: UserViewsCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutPostLikesInput = {
@@ -8143,6 +11154,7 @@ export namespace Prisma {
     userProfile?: string | null
     posts?: PostUncheckedCreateNestedManyWithoutAuthorInput
     postComments?: PostCommentsUncheckedCreateNestedManyWithoutUserInput
+    profileViews?: UserViewsUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutPostLikesInput = {
@@ -8184,6 +11196,7 @@ export namespace Prisma {
     published?: BoolFieldUpdateOperationsInput | boolean
     author?: UserUpdateOneRequiredWithoutPostsNestedInput
     comments?: PostCommentsUpdateManyWithoutPostNestedInput
+    views?: PostViewsUpdateManyWithoutPostNestedInput
   }
 
   export type PostUncheckedUpdateWithoutLikesInput = {
@@ -8210,6 +11223,7 @@ export namespace Prisma {
     published?: BoolFieldUpdateOperationsInput | boolean
     authorId?: IntFieldUpdateOperationsInput | number
     comments?: PostCommentsUncheckedUpdateManyWithoutPostNestedInput
+    views?: PostViewsUncheckedUpdateManyWithoutPostNestedInput
   }
 
   export type UserUpsertWithoutPostLikesInput = {
@@ -8231,6 +11245,7 @@ export namespace Prisma {
     userProfile?: NullableStringFieldUpdateOperationsInput | string | null
     posts?: PostUpdateManyWithoutAuthorNestedInput
     postComments?: PostCommentsUpdateManyWithoutUserNestedInput
+    profileViews?: UserViewsUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutPostLikesInput = {
@@ -8242,6 +11257,7 @@ export namespace Prisma {
     userProfile?: NullableStringFieldUpdateOperationsInput | string | null
     posts?: PostUncheckedUpdateManyWithoutAuthorNestedInput
     postComments?: PostCommentsUncheckedUpdateManyWithoutUserNestedInput
+    profileViews?: UserViewsUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type PostCreateWithoutCommentsInput = {
@@ -8267,6 +11283,7 @@ export namespace Prisma {
     published?: boolean
     author: UserCreateNestedOneWithoutPostsInput
     likes?: PostLikesCreateNestedManyWithoutPostInput
+    views?: PostViewsCreateNestedManyWithoutPostInput
   }
 
   export type PostUncheckedCreateWithoutCommentsInput = {
@@ -8293,6 +11310,7 @@ export namespace Prisma {
     published?: boolean
     authorId: number
     likes?: PostLikesUncheckedCreateNestedManyWithoutPostInput
+    views?: PostViewsUncheckedCreateNestedManyWithoutPostInput
   }
 
   export type PostCreateOrConnectWithoutCommentsInput = {
@@ -8308,6 +11326,7 @@ export namespace Prisma {
     userProfile?: string | null
     posts?: PostCreateNestedManyWithoutAuthorInput
     postLikes?: PostLikesCreateNestedManyWithoutUserInput
+    profileViews?: UserViewsCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutPostCommentsInput = {
@@ -8319,6 +11338,7 @@ export namespace Prisma {
     userProfile?: string | null
     posts?: PostUncheckedCreateNestedManyWithoutAuthorInput
     postLikes?: PostLikesUncheckedCreateNestedManyWithoutUserInput
+    profileViews?: UserViewsUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutPostCommentsInput = {
@@ -8360,6 +11380,7 @@ export namespace Prisma {
     published?: BoolFieldUpdateOperationsInput | boolean
     author?: UserUpdateOneRequiredWithoutPostsNestedInput
     likes?: PostLikesUpdateManyWithoutPostNestedInput
+    views?: PostViewsUpdateManyWithoutPostNestedInput
   }
 
   export type PostUncheckedUpdateWithoutCommentsInput = {
@@ -8386,6 +11407,7 @@ export namespace Prisma {
     published?: BoolFieldUpdateOperationsInput | boolean
     authorId?: IntFieldUpdateOperationsInput | number
     likes?: PostLikesUncheckedUpdateManyWithoutPostNestedInput
+    views?: PostViewsUncheckedUpdateManyWithoutPostNestedInput
   }
 
   export type UserUpsertWithoutPostCommentsInput = {
@@ -8407,6 +11429,7 @@ export namespace Prisma {
     userProfile?: NullableStringFieldUpdateOperationsInput | string | null
     posts?: PostUpdateManyWithoutAuthorNestedInput
     postLikes?: PostLikesUpdateManyWithoutUserNestedInput
+    profileViews?: UserViewsUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutPostCommentsInput = {
@@ -8417,6 +11440,191 @@ export namespace Prisma {
     userIcon?: StringFieldUpdateOperationsInput | string
     userProfile?: NullableStringFieldUpdateOperationsInput | string | null
     posts?: PostUncheckedUpdateManyWithoutAuthorNestedInput
+    postLikes?: PostLikesUncheckedUpdateManyWithoutUserNestedInput
+    profileViews?: UserViewsUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type PostCreateWithoutViewsInput = {
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    title: string
+    image1?: string | null
+    description1?: string | null
+    image2?: string | null
+    description2?: string | null
+    image3?: string | null
+    description3?: string | null
+    image4?: string | null
+    description4?: string | null
+    image5?: string | null
+    description5?: string | null
+    likeCount?: number
+    location?: string | null
+    googlePlace?: string | null
+    lat?: number | null
+    lon?: number | null
+    category?: string
+    published?: boolean
+    author: UserCreateNestedOneWithoutPostsInput
+    comments?: PostCommentsCreateNestedManyWithoutPostInput
+    likes?: PostLikesCreateNestedManyWithoutPostInput
+  }
+
+  export type PostUncheckedCreateWithoutViewsInput = {
+    id?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    title: string
+    image1?: string | null
+    description1?: string | null
+    image2?: string | null
+    description2?: string | null
+    image3?: string | null
+    description3?: string | null
+    image4?: string | null
+    description4?: string | null
+    image5?: string | null
+    description5?: string | null
+    likeCount?: number
+    location?: string | null
+    googlePlace?: string | null
+    lat?: number | null
+    lon?: number | null
+    category?: string
+    published?: boolean
+    authorId: number
+    comments?: PostCommentsUncheckedCreateNestedManyWithoutPostInput
+    likes?: PostLikesUncheckedCreateNestedManyWithoutPostInput
+  }
+
+  export type PostCreateOrConnectWithoutViewsInput = {
+    where: PostWhereUniqueInput
+    create: XOR<PostCreateWithoutViewsInput, PostUncheckedCreateWithoutViewsInput>
+  }
+
+  export type PostUpsertWithoutViewsInput = {
+    update: XOR<PostUpdateWithoutViewsInput, PostUncheckedUpdateWithoutViewsInput>
+    create: XOR<PostCreateWithoutViewsInput, PostUncheckedCreateWithoutViewsInput>
+    where?: PostWhereInput
+  }
+
+  export type PostUpdateToOneWithWhereWithoutViewsInput = {
+    where?: PostWhereInput
+    data: XOR<PostUpdateWithoutViewsInput, PostUncheckedUpdateWithoutViewsInput>
+  }
+
+  export type PostUpdateWithoutViewsInput = {
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    title?: StringFieldUpdateOperationsInput | string
+    image1?: NullableStringFieldUpdateOperationsInput | string | null
+    description1?: NullableStringFieldUpdateOperationsInput | string | null
+    image2?: NullableStringFieldUpdateOperationsInput | string | null
+    description2?: NullableStringFieldUpdateOperationsInput | string | null
+    image3?: NullableStringFieldUpdateOperationsInput | string | null
+    description3?: NullableStringFieldUpdateOperationsInput | string | null
+    image4?: NullableStringFieldUpdateOperationsInput | string | null
+    description4?: NullableStringFieldUpdateOperationsInput | string | null
+    image5?: NullableStringFieldUpdateOperationsInput | string | null
+    description5?: NullableStringFieldUpdateOperationsInput | string | null
+    likeCount?: IntFieldUpdateOperationsInput | number
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    googlePlace?: NullableStringFieldUpdateOperationsInput | string | null
+    lat?: NullableFloatFieldUpdateOperationsInput | number | null
+    lon?: NullableFloatFieldUpdateOperationsInput | number | null
+    category?: StringFieldUpdateOperationsInput | string
+    published?: BoolFieldUpdateOperationsInput | boolean
+    author?: UserUpdateOneRequiredWithoutPostsNestedInput
+    comments?: PostCommentsUpdateManyWithoutPostNestedInput
+    likes?: PostLikesUpdateManyWithoutPostNestedInput
+  }
+
+  export type PostUncheckedUpdateWithoutViewsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    title?: StringFieldUpdateOperationsInput | string
+    image1?: NullableStringFieldUpdateOperationsInput | string | null
+    description1?: NullableStringFieldUpdateOperationsInput | string | null
+    image2?: NullableStringFieldUpdateOperationsInput | string | null
+    description2?: NullableStringFieldUpdateOperationsInput | string | null
+    image3?: NullableStringFieldUpdateOperationsInput | string | null
+    description3?: NullableStringFieldUpdateOperationsInput | string | null
+    image4?: NullableStringFieldUpdateOperationsInput | string | null
+    description4?: NullableStringFieldUpdateOperationsInput | string | null
+    image5?: NullableStringFieldUpdateOperationsInput | string | null
+    description5?: NullableStringFieldUpdateOperationsInput | string | null
+    likeCount?: IntFieldUpdateOperationsInput | number
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    googlePlace?: NullableStringFieldUpdateOperationsInput | string | null
+    lat?: NullableFloatFieldUpdateOperationsInput | number | null
+    lon?: NullableFloatFieldUpdateOperationsInput | number | null
+    category?: StringFieldUpdateOperationsInput | string
+    published?: BoolFieldUpdateOperationsInput | boolean
+    authorId?: IntFieldUpdateOperationsInput | number
+    comments?: PostCommentsUncheckedUpdateManyWithoutPostNestedInput
+    likes?: PostLikesUncheckedUpdateManyWithoutPostNestedInput
+  }
+
+  export type UserCreateWithoutProfileViewsInput = {
+    email: string
+    name: string
+    password: string
+    userIcon: string
+    userProfile?: string | null
+    posts?: PostCreateNestedManyWithoutAuthorInput
+    postComments?: PostCommentsCreateNestedManyWithoutUserInput
+    postLikes?: PostLikesCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutProfileViewsInput = {
+    id?: number
+    email: string
+    name: string
+    password: string
+    userIcon: string
+    userProfile?: string | null
+    posts?: PostUncheckedCreateNestedManyWithoutAuthorInput
+    postComments?: PostCommentsUncheckedCreateNestedManyWithoutUserInput
+    postLikes?: PostLikesUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutProfileViewsInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutProfileViewsInput, UserUncheckedCreateWithoutProfileViewsInput>
+  }
+
+  export type UserUpsertWithoutProfileViewsInput = {
+    update: XOR<UserUpdateWithoutProfileViewsInput, UserUncheckedUpdateWithoutProfileViewsInput>
+    create: XOR<UserCreateWithoutProfileViewsInput, UserUncheckedCreateWithoutProfileViewsInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutProfileViewsInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutProfileViewsInput, UserUncheckedUpdateWithoutProfileViewsInput>
+  }
+
+  export type UserUpdateWithoutProfileViewsInput = {
+    email?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    userIcon?: StringFieldUpdateOperationsInput | string
+    userProfile?: NullableStringFieldUpdateOperationsInput | string | null
+    posts?: PostUpdateManyWithoutAuthorNestedInput
+    postComments?: PostCommentsUpdateManyWithoutUserNestedInput
+    postLikes?: PostLikesUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutProfileViewsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    email?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    userIcon?: StringFieldUpdateOperationsInput | string
+    userProfile?: NullableStringFieldUpdateOperationsInput | string | null
+    posts?: PostUncheckedUpdateManyWithoutAuthorNestedInput
+    postComments?: PostCommentsUncheckedUpdateManyWithoutUserNestedInput
     postLikes?: PostLikesUncheckedUpdateManyWithoutUserNestedInput
   }
 
@@ -8444,17 +11652,24 @@ export namespace Prisma {
     published?: boolean
   }
 
+  export type PostCommentsCreateManyUserInput = {
+    commentId?: number
+    comment: string
+    postId: number
+    createdAt?: Date | string
+  }
+
   export type PostLikesCreateManyUserInput = {
     id?: number
     postId: number
     createdAt?: Date | string
   }
 
-  export type PostCommentsCreateManyUserInput = {
-    commentId?: number
-    comment: string
-    postId: number
-    createdAt?: Date | string
+  export type UserViewsCreateManyUserInput = {
+    id?: number
+    viewedAt?: Date | string
+    ip?: string | null
+    userAgent?: string | null
   }
 
   export type PostUpdateWithoutAuthorInput = {
@@ -8478,8 +11693,9 @@ export namespace Prisma {
     lon?: NullableFloatFieldUpdateOperationsInput | number | null
     category?: StringFieldUpdateOperationsInput | string
     published?: BoolFieldUpdateOperationsInput | boolean
-    likes?: PostLikesUpdateManyWithoutPostNestedInput
     comments?: PostCommentsUpdateManyWithoutPostNestedInput
+    likes?: PostLikesUpdateManyWithoutPostNestedInput
+    views?: PostViewsUpdateManyWithoutPostNestedInput
   }
 
   export type PostUncheckedUpdateWithoutAuthorInput = {
@@ -8504,8 +11720,9 @@ export namespace Prisma {
     lon?: NullableFloatFieldUpdateOperationsInput | number | null
     category?: StringFieldUpdateOperationsInput | string
     published?: BoolFieldUpdateOperationsInput | boolean
-    likes?: PostLikesUncheckedUpdateManyWithoutPostNestedInput
     comments?: PostCommentsUncheckedUpdateManyWithoutPostNestedInput
+    likes?: PostLikesUncheckedUpdateManyWithoutPostNestedInput
+    views?: PostViewsUncheckedUpdateManyWithoutPostNestedInput
   }
 
   export type PostUncheckedUpdateManyWithoutAuthorInput = {
@@ -8532,23 +11749,6 @@ export namespace Prisma {
     published?: BoolFieldUpdateOperationsInput | boolean
   }
 
-  export type PostLikesUpdateWithoutUserInput = {
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    post?: PostUpdateOneRequiredWithoutLikesNestedInput
-  }
-
-  export type PostLikesUncheckedUpdateWithoutUserInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    postId?: IntFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type PostLikesUncheckedUpdateManyWithoutUserInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    postId?: IntFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
   export type PostCommentsUpdateWithoutUserInput = {
     comment?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -8569,10 +11769,41 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type PostLikesCreateManyPostInput = {
-    id?: number
-    userId: number
-    createdAt?: Date | string
+  export type PostLikesUpdateWithoutUserInput = {
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    post?: PostUpdateOneRequiredWithoutLikesNestedInput
+  }
+
+  export type PostLikesUncheckedUpdateWithoutUserInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    postId?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PostLikesUncheckedUpdateManyWithoutUserInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    postId?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UserViewsUpdateWithoutUserInput = {
+    viewedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    ip?: NullableStringFieldUpdateOperationsInput | string | null
+    userAgent?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type UserViewsUncheckedUpdateWithoutUserInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    viewedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    ip?: NullableStringFieldUpdateOperationsInput | string | null
+    userAgent?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type UserViewsUncheckedUpdateManyWithoutUserInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    viewedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    ip?: NullableStringFieldUpdateOperationsInput | string | null
+    userAgent?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type PostCommentsCreateManyPostInput = {
@@ -8582,21 +11813,17 @@ export namespace Prisma {
     createdAt?: Date | string
   }
 
-  export type PostLikesUpdateWithoutPostInput = {
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    user?: UserUpdateOneRequiredWithoutPostLikesNestedInput
+  export type PostLikesCreateManyPostInput = {
+    id?: number
+    userId: number
+    createdAt?: Date | string
   }
 
-  export type PostLikesUncheckedUpdateWithoutPostInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    userId?: IntFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type PostLikesUncheckedUpdateManyWithoutPostInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    userId?: IntFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  export type PostViewsCreateManyPostInput = {
+    id?: number
+    viewedAt?: Date | string
+    ip?: string | null
+    userAgent?: string | null
   }
 
   export type PostCommentsUpdateWithoutPostInput = {
@@ -8617,6 +11844,43 @@ export namespace Prisma {
     comment?: StringFieldUpdateOperationsInput | string
     userId?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PostLikesUpdateWithoutPostInput = {
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutPostLikesNestedInput
+  }
+
+  export type PostLikesUncheckedUpdateWithoutPostInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PostLikesUncheckedUpdateManyWithoutPostInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PostViewsUpdateWithoutPostInput = {
+    viewedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    ip?: NullableStringFieldUpdateOperationsInput | string | null
+    userAgent?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type PostViewsUncheckedUpdateWithoutPostInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    viewedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    ip?: NullableStringFieldUpdateOperationsInput | string | null
+    userAgent?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type PostViewsUncheckedUpdateManyWithoutPostInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    viewedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    ip?: NullableStringFieldUpdateOperationsInput | string | null
+    userAgent?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
 
