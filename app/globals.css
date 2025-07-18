@@ -128,8 +128,6 @@ a {
 .userIcon {
   cursor: pointer;
   border-radius: 50%;
-  width: 40px;
-  height: 40px;
 }
 .userIcon:hover {
   opacity: 80%;
@@ -259,7 +257,8 @@ footer {
   filter: brightness(1.4);
 }
 .hasNotLiked {
-  color: gray;
+  color: #f06543;
+  filter: brightness(1.4);
 }
 
 /* likeボタン (/components/likeCount.tsx) */
@@ -300,22 +299,36 @@ footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   color: #000;
   font-weight: 500;
 }
 .categoryIcon {
   width: fit-content;
-  border: 1px solid #000;
+  color: #fff;
+  border: 1px solid #66c7d9;
+  background-color: #66c7d9;
   border-radius: 2px;
   padding: 0 5px;
   font-size: 12px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 .createdDay {
   font-size: 12px;
 }
 .supInfPlace {
   color: #606060;
+}
+.allItemsBottomInf {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+}
+.allItemsUserInf {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
 }
 
 /* ソートボタン */

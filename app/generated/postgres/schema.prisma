@@ -1,9 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
   output   = "../app/generated/postgres"
@@ -22,8 +16,9 @@ model User {
   userIcon     String
   userProfile  String?        @db.VarChar(300)
   posts        Post[]
-  postLikes    PostLikes[]
   postComments PostComments[]
+  postLikes    PostLikes[]
+  profileViews UserViews[]
 }
 
 model Post {
@@ -48,19 +43,20 @@ model Post {
   lon          Float?
   category     String         @default("culture")
   published    Boolean        @default(false)
-  author       User           @relation(fields: [authorId], references: [id])
   authorId     Int
-  likes        PostLikes[]
+  author       User           @relation(fields: [authorId], references: [id])
   comments     PostComments[]
+  likes        PostLikes[]
+  views        PostViews[]
 }
 
 model PostLikes {
   id        Int      @id @default(autoincrement())
-  post      Post     @relation(fields: [postId], references: [id])
   postId    Int
-  user      User     @relation(fields: [userId], references: [id])
   userId    Int
   createdAt DateTime @default(now())
+  post      Post     @relation(fields: [postId], references: [id])
+  user      User     @relation(fields: [userId], references: [id])
 
   @@unique([postId, userId])
 }
@@ -68,9 +64,31 @@ model PostLikes {
 model PostComments {
   commentId Int      @id @default(autoincrement())
   comment   String   @db.VarChar(100)
-  post      Post     @relation(fields: [postId], references: [id])
   postId    Int
-  user      User     @relation(fields: [userId], references: [id])
   userId    Int
   createdAt DateTime @default(now())
+  post      Post     @relation(fields: [postId], references: [id])
+  user      User     @relation(fields: [userId], references: [id])
+}
+
+model PostViews {
+  id        Int      @id @default(autoincrement())
+  post      Post     @relation(fields: [postId], references: [id])
+  postId    Int
+  viewedAt  DateTime @default(now())
+  ip        String?
+  userAgent String?
+
+  @@index([postId, viewedAt])
+}
+
+model UserViews {
+  id        Int      @id @default(autoincrement())
+  user      User     @relation(fields: [userId], references: [id])
+  userId    Int
+  viewedAt  DateTime @default(now())
+  ip        String?
+  userAgent String?
+
+  @@index([userId, viewedAt])
 }

@@ -20,6 +20,8 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import SearchIcon from '@mui/icons-material/Search';
 import PlaceIcon from '@mui/icons-material/Place';
+import PostCard from "@/app/components/format/postCard"
+import FetchLikePostId from "@/utils/fetchLikePostId"
 
 
 export const dynamic = "force-dynamic"
@@ -129,17 +131,8 @@ const ReadAllItemsInner = () => {
 
   //いいね済み投稿のid取得
   useEffect(() => {
-
     if (loading || !loginUserId) return
-
-    const fetchLikePostId = async() => {
-      const id = String(loginUserId)
-      const response = await fetch(`/api/like/likePostId/${id}`)
-      const jsonData = await response.json()
-      const likePostId = jsonData.likePostIds
-      setLikePostIds(likePostId)
-    }
-    fetchLikePostId()
+    FetchLikePostId({loginUserId, setLikePostIds})
   }, [loginUserId, loading])
 
 
@@ -184,92 +177,8 @@ const ReadAllItemsInner = () => {
           </Suspense>
         )}
 
-
         {/* 一覧表示 */}
-        <div className="allItemsContainer">
-
-          <Grid container spacing={{ mobile: 1, tablet: 1, laptop: 1 }} sx={{justifyContent:"center", alignItems:"flex-start"}}>
-            { allItems.length === 0 && (
-              <div className="noPost">
-                <p>該当の投稿がありません</p>
-                <button onClick={handleClearChange}>
-                  条件をクリア
-                </button>
-              </div>
-            )}
-            {allItems
-              .map(item => {
-                const createdAtFormatted = dayjs(new Date(item.createdAt)).format("YYYY/MM/DD")
-                const isLiked = likePostIds.includes(String(item.id))
-
-                const card = (
-                  <CardActionArea component={Link} href={`/post/readsingle/${item.id}`} >
-                    <CardHeader
-                      avatar={
-                        <Avatar alt={`${item.author && item.author.name}`} src={`${item.author && item.author.userIcon }`}  />
-                      }
-                      title=
-                        <Typography sx={{ fontWeight: 600 }}>
-                          {item.title && item.title.length > 20
-                            ? `${item.title?.slice(0, 24)}...`
-                            : item.title
-                          }
-                        </Typography>
-                      subheader={`by ${item.author.name}`}
-                    />
-
-                    {item.image1 && (
-                      <CardMedia
-                        component="img"
-                        height="250"
-                        image={item.image1}
-                        alt="image"
-                      />
-                    )}
-
-                    <CardContent>
-                      <div className="supInf">
-                        <div className="supInfCategoryDay">
-                          <p className="categoryIcon">{item.category}</p>
-                          <p className="createdDay">{createdAtFormatted}</p>
-                        </div>
-                        <p className="supInfPlace">
-                          <PlaceIcon sx={{fontSize:"14px"}}/>
-                          {
-                            item.googlePlace && item.googlePlace.length > 20
-                            ? `${item.googlePlace.slice(0, 30)}...`
-                            : item.googlePlace
-
-                          }
-                        </p>
-                      </div>
-
-                      <div className="likePosition">
-                        <div className={isLiked? "hasLiked" : "hasNotLiked"}>
-                          <Typography sx={{ fontFamily: '"Kaushan Script", cursive', fontSize:14}}>
-                            {isLiked ? (
-                              <FavoriteIcon sx={{width:"16px", height:"16px"}}/>
-                            ):(
-                              <FavoriteBorderIcon sx={{width:"16px", height:"16px"}}/>
-                            )}
-                            <span>{item.likeCount}</span>
-                          </Typography>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </CardActionArea>
-                )
-
-            return(
-
-              <Grid container spacing={{mobile: 1, tablet: 2, laptop: 3}}  key={item.id}>
-                <Box sx={{width: 300, margin:2, mt:6}}>
-                  <Card variant="outlined">{card}</Card>
-                </Box>
-              </Grid>
-              )
-            })}
-          </Grid>
+        <PostCard allItems={allItems} likePostIds={likePostIds}/>
 
         {totalPageCount > 1 && (
           <Box sx={{mt: 4, mb: 4, display: "flex", justifyContent:"center"}}>
@@ -281,7 +190,6 @@ const ReadAllItemsInner = () => {
           </Box>
         )}
 
-        </div>
       </div>
     </>
   )
