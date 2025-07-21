@@ -25,6 +25,32 @@ a {
   white-space: pre-wrap;
 }
 
+/* 戻るボタン */
+.co-back {
+  padding: 5px 10px;
+  border: 1px solid #a1a1a1;
+  border-radius: 20px;
+  width: fit-content;
+  cursor: pointer;
+  margin: 0 20px;
+  background-color: #a1a1a1;
+  font-size: 14px;
+}
+@media screen and (max-width: 640px) {
+  .co-back {
+    margin: 0 10px;
+    font-size: 12px;
+  }
+}
+.co-back:hover {
+  background-color: #000;
+  border: 1px solid #000;
+}
+.co-back a {
+  color: #fff;
+  font-weight: 700;
+}
+
 /* header */
 .header {
   background-color: #66c7d9;
@@ -289,7 +315,6 @@ footer {
 
 /* 一覧画面(/page.tsx) */
 .allItemsContainer {
-  padding-bottom: 40px;
   min-height: 80vh;
 }
 .supInf p {
@@ -1962,4 +1987,130 @@ p {
 }
 .sliderImage {
   transition: opacity 1.5s ease-in-out;
+}
+
+/* Googleマップから探す(app/map/form.tsx) */
+.mapContainer {
+  margin-top: 130px;
+  padding-bottom: 30px;
+  min-height: 100vh;
+}
+@media screen and (max-width: 640px) {
+  .mapContainer {
+    margin-top: 90px;
+  }
+}
+.MapContent {
+  display: flex;
+  align-items: start;
+  max-width: 1300px;
+  min-width: 640px;
+  margin: 10px auto;
+}
+@media screen and (max-width: 640px) {
+  .MapContent {
+    max-width: 100%;
+    min-width: 300px;
+    display: block;
+  }
+}
+.MapContentSelectedContainer {
+  margin: 0 auto;
+  width: 350px;
+  /* height: 650px; */
+  position: relative;
+  z-index: 1;
+}
+.MapContentSelectedContent {
+  width: 350px;
+  background-color: #fff;
+  animation: slideInFromRight 0.5s ease-out;
+}
+@media screen and (max-width: 640px) {
+  .MapContentSelectedContent {
+    width: 100%;
+    margin-top: 10px;
+    animation: slideInFromBottom 0.5s ease-out;
+  }
+}
+/* アニメーション */
+/* PC用・タブレット */
+@keyframes slideInFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+/* スマートフォン用 */
+@keyframes slideInFromBottom {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.MapContentNotSelected {
+  content: "地図から画像を選択してみよう";
+  width: 100%;
+  height: 100px;
+  padding-top: 20px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  display: inline-flex;
+  background-color: #fff;
+  justify-content: center;
+  align-items: center;
+  color: #606060;
+}
+@media screen and (max-width: 640px) {
+  .MapContentNotSelected {
+    width: 100%;
+    align-items: start;
+  }
+}
+.MapContentSelectedPost {
+  height: 450px;
+  z-index: 1;
+}
+.MapContentSelectedPostDetail {
+  font-size: 16px;
+  z-index: 1;
+  padding: 10px 20px;
+}
+.MapContentSelectedPostDetail h3 {
+  margin: 0;
+  color: #606060;
+}
+.MapContentSelectedPostDetail p {
+  overflow: scroll;
+  height: 100px;
+  margin-top: 10px;
+  color: #606060;
+}
+@media screen and (max-width: 640px) {
+  .MapContentSelectedPostDetail {
+    width: 320px;
+    margin: 0 auto;
+  }
+}
+/* Googleマップから探す(/app/components/map/googleMapSearchPost.tsx) */
+.googleMapSearchContent {
+  width: 900px;
+  height: 600px;
+}
+@media screen and (max-width: 640px) {
+  .googleMapSearchContent {
+    width: 100%;
+    height: 400px;
+  }
 }

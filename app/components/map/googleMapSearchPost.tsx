@@ -21,7 +21,7 @@ const GoogleMapSearchPost = ({allItems, defaultZoom, defaultCenter, currentPin, 
     <APIProvider apiKey={process.env.NEXT_PUBLIC_GOOGLE_API_KEY as string} onLoad={() => console.log('Maps API has loaded.')}>
       <Map
           mapId={process.env.NEXT_PUBLIC_GOOGLE_MAP_ID as string}
-          style={{ width: '600px', height: '500px' }}
+          className='googleMapSearchContent'
           defaultZoom={defaultZoom}
           defaultCenter={ defaultCenter }
           onCameraChanged={ (ev: MapCameraChangedEvent) =>
@@ -29,9 +29,6 @@ const GoogleMapSearchPost = ({allItems, defaultZoom, defaultCenter, currentPin, 
           }>
           <PoiMarkers allItems={allItems} setCurrentPin={setCurrentPin}/>
       </Map>
-      {currentPin && (
-        <h1>{currentPin.title}</h1>
-      )}
     </APIProvider>
   )
 }
