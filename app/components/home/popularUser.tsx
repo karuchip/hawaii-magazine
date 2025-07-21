@@ -16,10 +16,8 @@ const PopularUserSection = () => {
   const [loading, setLoading] = useState(true)
 
   useEffect(()=> {
-    console.log("useEffectが走りました！")
     const GetProfileViews = async() => {
       try {
-        console.log("useEffectで関数が呼び出されました！")
         const viewedRes = await fetch ("/api/views/profileViews")
         const viewedData = await viewedRes.json()
         setUsers(viewedData.mergedProfileData)
@@ -42,19 +40,19 @@ const PopularUserSection = () => {
   }
 
   return (
-    <>
+    <div className="popularUserContainer">
     {users
       .sort((a, b) => b.viewCount - a.viewCount)
       .map(user => (
-        <div key={user.id}>
+        <div key={user.id} className="popularUserContent">
           <Link href={`/readmypage/${user.id}`}>
             <UserIcon width={200} height={200} img={user.userIcon}/>
-            <p>{user.name}</p>
-            <p>{user.viewCount}</p>
+            <p className="popularUserName">{user.name}</p>
+            <p className="popularUserViews">{user.viewCount} views</p>
           </Link>
         </div>
       ))}
-    </>
+    </div>
   )
 }
 
