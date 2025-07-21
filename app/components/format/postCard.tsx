@@ -30,9 +30,11 @@ const PostCard = ({allItems, likePostIds}:Props) => {
             const ranking = (
               <>
                 {item.viewCount !== undefined && index < 3 && (
-                    <div>
-                      <p>{index + 1}位</p>
-                      <p>{item.viewCount} views</p>
+                    <div className="rankingHeader">
+                      <p>
+                        <span className="rankingHeader1">{index + 1}位</span>
+                        <span className="rankingHeader2">{item.viewCount} views</span>
+                      </p>
                     </div>
                 )}
               </>

@@ -27,42 +27,80 @@ const ReadAllItemsInner = () => {
         </div>
       )}
 
-      {/* ページ全体 */}
-      <div className="mainContainer">
-
-        {!loginUserId && (
-          <div className="aboutLinkContainer">
-            <Link href="/hawaiiAbout/about" className="aboutLinkContent">
-              <img src="about/toAboutPage1.png" />
-              <p>このアプリ<br/>について</p>
-            </Link>
+      <div className="homeContainer">
+        {/* ファーストビュー */}
+        <div className="homeFVContent">
+          {/* <div className="homeFVImg">
+            <img src="/home/homeFV.JPG" alt="FV画像"/>
+          </div> */}
+          <div className="homeFVTitle">
+            <h1>Share your</h1>
+            <h1>Aloha memories.</h1>
           </div>
-        )}
-
-        {/* ランキングセクション */}
-        <div>
-          <h2>Ranking</h2>
-          <p>今週最も閲覧された記事をチェックする</p>
-          <RankingSection/>
-          <Link href="/post/readAll">全ての記事を見る</Link>
         </div>
 
-        {/* マップリンクセクション */}
-        <div>
-          <h2>From Map</h2>
-          <p>地図から記事を探す</p>
-          <Link href="/map">
-            <img alt="マップ画像"/>
-          </Link>
-        </div>
 
-        {/* 人気ユーザーセクション */}
-        <div>
-          <h2>From User</h2>
-          <p>人気ユーザーの記事をチェック</p>
-          <PopularUserSection/>
-        </div>
+        {/* ページ本文 */}
+        <div className="homeMainContent">
 
+          {/* Create Articleセクション */}
+          <section className="homeCreateArticle">
+            <h2 className="en co-homeH2">Create Article</h2>
+            <p className="co-homeP">雑誌風レイアウトでハワイの記事を作成する</p>
+            {loginUserId ? (
+              <Link href="/post/create" className="homeA">投稿する</Link>
+            ):(
+              <Link href="/user/login" className="homeA">ログインして投稿する</Link>
+            )}
+            <div className="homeCreateArticleImg">
+              <img src="/home/homeArticles.png"></img>
+            </div>
+          </section>
+
+
+          {/* Rankingセクション */}
+          <section className="homeRanking">
+            <h2 className="en co-homeH2">Ranking</h2>
+            <p className="co-homeP">今週最も閲覧された記事をチェックする</p>
+            <RankingSection/>
+            <Link href="/post/readAll" className="homeRankingLink">全ての記事を見る</Link>
+          </section>
+
+
+          {/* Spotlight Usersセクション */}
+          <section className="homeSpotlightUsers">
+            <h2 className="en co-homeH2">Spotlight Users</h2>
+            <p className="co-homeP">人気ユーザーのプロフィールをチェックする</p>
+            <PopularUserSection/>
+          </section>
+
+
+          {/* From Mapセクション */}
+          <section className="homeFromMap">
+            <h2 className="en co-homeH2">From Map</h2>
+            <p className="co-homeP">地図から記事を探す</p>
+            <Link href="/map">
+              <div className="homeFromMapImg">
+                <img src="/home/homeMap.png" alt="マップ画像"/>
+              </div>
+            </Link>
+          </section>
+
+
+          {/* View All Articlesセクション */}
+          <section className="homeViewAllArticles">
+            <div className="homeViewAllBackground">
+              <div className="homeViewAllFront ">
+                <h2 className="en co-homeH2">View All Articles</h2>
+                <p className="co-homeP">投稿された全てのハワイ記事を見る</p>
+                <Link href="/" className="homeA">記事はこちら</Link>
+              </div>
+            </div>
+
+          </section>
+
+
+        </div>
       </div>
     </>
   )

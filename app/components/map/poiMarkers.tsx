@@ -8,10 +8,11 @@ import type {Marker} from '@googlemaps/markerclusterer';
 
 type Props = {
   allItems: AllItemTypes[]
+  currentPin: AllItemTypes | null;
   setCurrentPin: Dispatch<SetStateAction<AllItemTypes | null>>
 }
 
-const PoiMarkers = ({allItems, setCurrentPin}:Props) => {
+const PoiMarkers = ({allItems, currentPin, setCurrentPin}:Props) => {
 
 
   // マーカークラスタリング
@@ -54,6 +55,7 @@ const PoiMarkers = ({allItems, setCurrentPin}:Props) => {
   const handleClick = (selectedPost:AllItemTypes) => {
     console.log(`クリックされました ${selectedPost.title}`)
     setCurrentPin(selectedPost)
+    console.log("選択された currentPin:", selectedPost); // ←ここ追加してみて！
   }
 
   return (
@@ -71,10 +73,11 @@ const PoiMarkers = ({allItems, setCurrentPin}:Props) => {
               <div style={{
                 backgroundImage: `url(${poi.image1})`,
                 backgroundSize: 'cover',
-                width: '50px',
-                height: '50px',
                 borderRadius: '50%',
-                border: '2px solid #fff'
+                border: currentPin?.id === poi.id ? '5px solid #5a8c68' : '5px solid #fff',
+                width: currentPin?.id === poi.id ? '80px' : '60px',
+                height: currentPin?.id === poi.id ? '80px' : '60px',
+                opacity: currentPin?.id === poi.id ? '100%' : '90%',
                 }}
               />
             ):(

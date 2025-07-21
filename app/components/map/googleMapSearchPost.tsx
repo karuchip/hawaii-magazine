@@ -27,7 +27,7 @@ const GoogleMapSearchPost = ({allItems, defaultZoom, defaultCenter, currentPin, 
           onCameraChanged={ (ev: MapCameraChangedEvent) =>
             console.log('camera changed:', ev.detail.center, 'zoom:', ev.detail.zoom)
           }>
-          <PoiMarkers allItems={allItems} setCurrentPin={setCurrentPin}/>
+          <PoiMarkers allItems={allItems} currentPin={currentPin} setCurrentPin={setCurrentPin}/>
       </Map>
     </APIProvider>
   )
