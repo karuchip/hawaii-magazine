@@ -103,7 +103,7 @@ const PostCard = ({allItems, likePostIds}:Props) => {
             return(
 
               <Grid container spacing={{mobile: 1, tablet: 2, laptop: 3}}  key={item.id}>
-                <Box sx={{width: 300, margin:2, mt:6}}>
+                <Box sx={{width: 300}}>
                   {/* ランキング機能の場合のみ */}
                   <>{ranking}</>
 

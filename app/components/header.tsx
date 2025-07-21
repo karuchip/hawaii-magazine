@@ -51,7 +51,7 @@ const Header = () => {
               <nav className="loginNav">
                 {loginUserIcon && (
                   <div className="userIconWrapper">
-                    <UserIcon/>
+                    <UserIcon width={40} height={40} img={loginUserIcon}/>
                     <p>ログイン中</p>
                   </div>
                 )}
