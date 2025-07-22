@@ -1,6 +1,6 @@
 "use client"
 import { useRouter } from "next/navigation"
-import { useAuthContext } from "../../context/AuthContext"
+import { useAuthContext } from "../../../context/AuthContext"
 
 type Props = {
   width: number;

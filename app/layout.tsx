@@ -2,8 +2,8 @@
 
 import "../app/globals.css"
 import { ReactNode } from "react"
-import Header from "./components/header"
-import Footer from "./components/footer"
+import Header from "./components/common/header"
+import Footer from "./components/common/footer"
 import { AuthProvider } from "../context/AuthContext"
 import { PostProvider } from "@/context/PostContext"
 import useAuth from "@/utils/useAuth"

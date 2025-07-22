@@ -1,25 +1,19 @@
 "use client"
 import * as React from "react"
 import { Suspense, useEffect, useState} from "react"
-import dayjs from "dayjs"
-import Link from "next/link"
 import useAuth from "@/utils/useAuth"
 import { AllItemTypes } from "@/utils/types/post"
 import { useRouter, useSearchParams } from "next/navigation"
 import { useAuthContext } from "@/context/AuthContext"
-import Loading from "@/app/components/loading"
-import ToolBox from "@/app/components/toolBox"
-import GoogleMapSearchPost from "@/app/components/map/googleMapSearchPost"
-import BottomMenu from "@/app/components/bottomMenu"
+import Loading from "@/app/components/common/loading"
+import ToolBox from "@/app/components/post/toolBox"
+import BottomMenu from "@/app/components/common/bottomMenu"
 
 //MUI
-import { CardActionArea, CardHeader, Avatar, CardMedia, CardContent, CardActions, Collapse, Box, TextField, Typography } from "@mui/material"
-import {Card, Grid, Pagination} from '@mui/material'
+import { Box } from "@mui/material"
+import {Grid, Pagination} from '@mui/material'
 import ClearIcon from '@mui/icons-material/Clear';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import SearchIcon from '@mui/icons-material/Search';
-import PlaceIcon from '@mui/icons-material/Place';
 import PostCard from "@/app/components/format/postCard"
 import FetchLikePostId from "@/utils/fetchLikePostId"
 

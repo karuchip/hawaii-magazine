@@ -1,4 +1,4 @@
-import ImgInput from "../components/imgInput"
+import ImgInput from "@/app/components/post/imgInput"
 import { Dispatch, SetStateAction } from 'react'
 
 

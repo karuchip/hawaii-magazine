@@ -6,6 +6,7 @@ type DeleteRequestBody = {
 }
 
 export async function DELETE(request: NextRequest) {
+  console.log("apiが呼び出されました")
   const url = new URL(request.url)
   const segments = url.pathname.split("/")
   const postId = segments[segments.length - 1]
@@ -27,6 +28,7 @@ export async function DELETE(request: NextRequest) {
         // 関連レコードの削除
         await prisma.postLikes.deleteMany({where: {postId:id}});
         await prisma.postComments.deleteMany({where:{postId: id}});
+        await prisma.postViews.deleteMany({where:{postId: id}})
 
         //postテーブルから該当投稿を削除
         await prisma.post.delete({

@@ -1,10 +1,10 @@
 "use client"
 import {useState, useEffect} from "react"
-import { useAuthContext } from "../../context/AuthContext"
+import { useAuthContext } from "@/context/AuthContext"
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import Typography from '@mui/material/Typography'
-import Loading from "./loading";
+import Loading from "@/app/components/common/loading";
 import {useRouter} from "next/navigation";
 
 type likeCountProps = {

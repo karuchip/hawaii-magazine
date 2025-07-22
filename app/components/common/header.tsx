@@ -1,9 +1,9 @@
 "use client"
 import Link from "next/link"
 import { useState, useEffect } from "react"
-import { useAuthContext } from "../../context/AuthContext"
+import { useAuthContext } from "../../../context/AuthContext"
 import {Typography, Button} from "@mui/material"
-import UserIcon from "./userIcon"
+import UserIcon from "../common/userIcon"
 import CustomizedMenus from "./headerMenu"
 
 //動的ファイルにて、データの更新時に直に更新する

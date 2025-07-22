@@ -1,6 +1,6 @@
 import {useState} from "react"
-import Loading from "./loading"
-import resizeImage from '@/app/components/resizeImage'
+import Loading from "@/app/components/common/loading"
+import ResizeImage from '@/utils/resizeImage'
 
 type IconInputProps = {
   icon: string | null;
@@ -15,7 +15,7 @@ const IconInput = ({icon, setIcon}: IconInputProps) => {
 
     try {
       //リサイズ関数の呼び出し
-      const resizedBlob = await resizeImage(file)
+      const resizedBlob = await ResizeImage(file)
       const data = new FormData();
       if (!file) return
 

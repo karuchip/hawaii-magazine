@@ -5,7 +5,7 @@ import Link from "next/link"
 import { AllItemTypes } from "@/utils/types/post"
 import { Typography } from '@mui/material';
 import { useAuthContext } from '@/context/AuthContext';
-import BottomMenu from "@/app/components/bottomMenu"
+import BottomMenu from "@/app/components/common/bottomMenu"
 
 type Props = {
   myPageInf: {

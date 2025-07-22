@@ -29,7 +29,7 @@ const Form = ({allItems}:Props) => {
       <>
         <div className='mapContainer'>
 
-          <div className='co-back'>
+          <div className='co-back' style={{marginLeft:"10px"}}>
             <Link href="/">↩︎ 戻る</Link>
           </div>
 

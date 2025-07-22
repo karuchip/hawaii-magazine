@@ -1,9 +1,9 @@
 "use client"
 import dayjs from "dayjs"
 import {useState, useEffect} from "react"
-import { useAuthContext } from "../../context/AuthContext";
+import { useAuthContext } from "../../../context/AuthContext";
 import CommentCreate from "./commentCreate"
-import Loading from "./loading";
+import Loading from "../common/loading";
 import Link from "next/link";
 import { Avatar, Zoom } from "@mui/material"
 import DeleteIcon from '@mui/icons-material/Delete';

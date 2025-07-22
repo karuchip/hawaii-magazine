@@ -5,15 +5,16 @@ import {useRouter} from "next/navigation"
 //ログイン状態の取得
 import { useAuthContext } from "@/context/AuthContext"
 //google map auto complete機能
-import PlaceAutocomplete from "../../components/placeAutocomplete"
+import PlaceAutocomplete from "../../components/map/placeAutocomplete"
 //MUI
 import {Button} from "@mui/material"
 //カテゴリー配列
-import {categoryList, Category} from "../../components/categoryButton"
+import {categoryList, Category} from "../../components/post/categoryButton"
 import { usePostContext } from "@/context/PostContext"
-import PostSectionEditor from "../../components/postSectionEditor"
+import PostSectionEditor from "@/app/components/post/postSectionEditor"
 import { useForm} from "react-hook-form"
-import Loading from "@/app/components/loading"
+import Loading from "@/app/components/common/loading"
+import Link from "next/link"
 
 type Section = {
   image: string | null;
@@ -145,7 +146,15 @@ const CreateItem = () => {
       <>
             {/* タイトル部分 */}
         <div className="createContainer">
-          <div className="createTitle">
+
+
+
+          <div className="createTitleContent">
+
+            <div className='co-back' style={{marginBottom:"20px"}}>
+                <Link href="/">↩︎ 戻る</Link>
+            </div>
+
             <h1>記事を作成する</h1>
           </div>
           <div className="horizontalLineLight create"><span></span></div>

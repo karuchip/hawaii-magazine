@@ -1,7 +1,7 @@
 import { useState } from "react"
-import Loading from "./loading";
+import Loading from "../common/loading";
 import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
-import resizeImage from '@/app/components/resizeImage'
+import ResizeImage from '@/utils/resizeImage'
 
 type ImageInputProps = {
   image: string | null;
@@ -15,7 +15,7 @@ const ImgInput = ({image, setImage}: ImageInputProps) => {
   const handleUpload = async(file: File) => {
     setUploading(true)
     try {
-      const resizedBlob = await resizeImage(file);
+      const resizedBlob = await ResizeImage(file);
 
       const data = new FormData();
       if (!file) return

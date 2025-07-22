@@ -5,7 +5,7 @@ import {useRouter} from "next/navigation"
 import { useAuthContext } from "@/context/AuthContext"
 import { useState } from "react"
 import Link from "next/link"
-import Loading from "@/app/components/loading"
+import Loading from "@/app/components/common/loading"
 
 
 type FormInput = {
@@ -72,7 +72,7 @@ const Register = () => {
 
           setLoading(false)
           alert("ユーザー登録が完了し、自動ログインしました。")
-          router.push("/")
+          router.push(`/readmypage/${jsonData.payload.id}`)
         } else {
           setLoading(false)
           console.error("自動ログインに失敗しました")

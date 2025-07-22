@@ -12,6 +12,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import SettingsIcon from '@mui/icons-material/Settings';
 import InfoOutlineIcon from '@mui/icons-material/InfoOutline';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import ViewCarouselIcon from '@mui/icons-material/ViewCarousel';
 
 type Props = {
   loginUserName: string,
@@ -130,6 +131,13 @@ export default function CustomizedMenus({loginUserName, loginUserId}:Props) {
         <MenuItem disableRipple>
           <Link href="/">
             <HomeIcon />
+            ホーム
+          </Link>
+        </MenuItem>
+
+        <MenuItem disableRipple>
+          <Link href="/post/readAll">
+            <ViewCarouselIcon />
             記事一覧
           </Link>
         </MenuItem>

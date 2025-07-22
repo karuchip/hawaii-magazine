@@ -2,7 +2,7 @@
 
 import {useForm} from "react-hook-form"
 import { useState } from "react";
-import Loading from "./loading";
+import Loading from "@/app/components/common/loading";
 import AddIcon from '@mui/icons-material/Add';
 
 type commentType = {
