@@ -25,5 +25,6 @@ export type AllItemTypes = {
     id: number,
     name: string | null,
     userIcon: string | null
-  }
+  },
+  viewCount?: number
 }

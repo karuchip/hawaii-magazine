@@ -2,12 +2,12 @@
 import { useAuthContext } from "@/context/AuthContext"
 import { usePostContext } from "@/context/PostContext"
 import {useRouter} from "next/navigation"
-import SinglePostLayout from "@/app/components/singlePostLayout"
+import SinglePostLayout from "@/app/components/format/singlePostLayout"
 import { Suspense, useEffect, useState } from "react"
-import GoogleMapComponent from "@/app/components/googleMap"
+import GoogleMapComponent from "@/app/components/map/googleMap"
 import Link from "next/link"
 import { useParams } from "next/navigation"
-import Loading from "@/app/components/loading"
+import Loading from "@/app/components/common/loading"
 
 
 const PostPreview = (Props: any) => {

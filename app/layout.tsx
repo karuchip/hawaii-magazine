@@ -2,8 +2,8 @@
 
 import "../app/globals.css"
 import { ReactNode } from "react"
-import Header from "./components/header"
-import Footer from "./components/footer"
+import Header from "./components/common/header"
+import Footer from "./components/common/footer"
 import { AuthProvider } from "../context/AuthContext"
 import { PostProvider } from "@/context/PostContext"
 import useAuth from "@/utils/useAuth"
@@ -16,7 +16,8 @@ import '@fontsource/inter/300.css';
 import '@fontsource/inter/400.css';
 import '@fontsource/inter/500.css';
 import '@fontsource/inter/700.css';
-import Script from "next/script"
+import Script from "next/script";
+
 
 const RootLayout = ({children}:{children:ReactNode}) => {
   useAuth(false)

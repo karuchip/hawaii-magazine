@@ -2,8 +2,8 @@
 import {useEffect, useState} from "react"
 import {useRouter} from "next/navigation"
 import { useAuthContext } from "@/context/AuthContext"
-import loading from "@/app/components/loading"
-import Loading from "@/app/components/loading"
+import loading from "@/app/components/common/loading"
+import Loading from "@/app/components/common/loading"
 
 const Logout = () => {
   const {setLoginUserId, setLoginUserName, setLoginUserEmail, setLoginUserIcon} = useAuthContext()

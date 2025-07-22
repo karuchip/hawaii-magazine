@@ -22,6 +22,21 @@ export async function GET(request:NextRequest) {
         userProfile: true,
       }
     })
+
+    if(!myInf) {
+      return NextResponse.json({error: "ユーザーが見つかりません"})
+    }
+    const ip = request.headers.get('x-forwarded-for') || request.headers.get('x-real-ip') || ''
+    const userAgent = request.headers.get('user-agent') || ''
+
+    await prisma.userViews.create({
+      data: {
+        userId: Number(userId),
+        ip,
+        userAgent
+      }
+    })
+
     return NextResponse.json({message:" ユーザー情報読み取り成功", myInf:myInf})
 
   }catch(error) {

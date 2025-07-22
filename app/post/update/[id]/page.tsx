@@ -1,6 +1,6 @@
 import { AllItemTypes } from "@/utils/types/post";
 import Form from "./form"
-import Loading from "@/app/components/loading";
+import Loading from "@/app/components/common/loading";
 
 
 const getSingleItem = async (id: string) => {

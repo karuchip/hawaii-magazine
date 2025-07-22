@@ -3,8 +3,8 @@ import { useAuthContext } from "@/context/AuthContext"
 import { useState, useEffect } from "react"
 import { useRouter }from "next/navigation"
 import { useForm} from "react-hook-form"
-import IconInput from "@/app/components/iconInput"
-import Loading from "@/app/components/loading"
+import IconInput from "@/app/components/mypage/iconInput"
+import Loading from "@/app/components/common/loading"
 
 
 type myInfProps = {
