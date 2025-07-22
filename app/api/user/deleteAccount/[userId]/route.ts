@@ -27,19 +27,20 @@ export async function DELETE(request:NextRequest) {
         await prisma.post.deleteMany({where: {authorId: user.id}})
         await prisma.postLikes.deleteMany({where: {userId: user.id}})
         await prisma.postComments.deleteMany({where: {userId: user.id}})
+        await prisma.userViews.deleteMany({where: {userId: user.id}})
 
         //userテーブルからのuser削除
         await prisma.user.delete({
           where: {id}
         })
-        return NextResponse.json({message:"ユーザー退会処理が完了しました。本サービスをご利用いただきありがとうございました。"})
+        return NextResponse.json({message:"ユーザー退会処理が完了しました。本サービスをご利用いただきありがとうございました。", success: true})
       }
     } else {
-      return NextResponse.json({message:"該当のユーザーがデータベースに存在しません"})
+      return NextResponse.json({message:"該当のユーザーがデータベースに存在しません", success: false})
     }
 
   }catch (error) {
     console.error("Prismaエラー：", error)
-    return NextResponse.json({message:"削除に失敗しました。"})
+    return NextResponse.json({message:"削除に失敗しました。", success: false})
   }
 }

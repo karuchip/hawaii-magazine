@@ -1,6 +1,6 @@
 import { Card, TextField, Box } from "@mui/material"
 import SearchIcon from '@mui/icons-material/Search';
-import CategoryButtons from "./categoryButton"
+import CategoryButtons from "@/app/components/post/categoryButton"
 import SortPost from "./sortPost"
 
 type Props = {

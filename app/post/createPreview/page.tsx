@@ -2,11 +2,11 @@
 import { useAuthContext } from "@/context/AuthContext"
 import { usePostContext } from "@/context/PostContext"
 import {useRouter} from "next/navigation"
-import SinglePostLayout from "@/app/components/singlePostLayout"
+import SinglePostLayout from "@/app/components/format/singlePostLayout"
 import { Suspense, useEffect, useState} from "react"
-import GoogleMapComponent from "@/app/components/googleMap"
+import GoogleMapComponent from "@/app/components/map/googleMap"
 import Link from "next/link"
-import Loading from "@/app/components/loading"
+import Loading from "@/app/components/common/loading"
 
 
 const PostPreview = () => {
@@ -92,7 +92,7 @@ const PostPreview = () => {
       //コンテクストを削除
       resetPostData()
 
-      router.push("/")
+      router.push("/post/readAll")
 
     } catch(error) {
       alert("アイテム作成失敗")

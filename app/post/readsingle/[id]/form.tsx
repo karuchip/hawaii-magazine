@@ -2,13 +2,13 @@
 
 import Link from "next/link"
 import { Suspense } from "react"
-import LikeCount from "../../../components/likeCount"
-import Comment from "../../../components/comment"
+import LikeCount from "@/app/components/like/likeCount"
+import Comment from "../../../components/comment/comment"
 import { AllItemTypes } from "@/utils/types/post"
-import GoogleMap from "@/app/components/googleMap"
-import SinglePostLayout from "@/app/components/singlePostLayout"
+import GoogleMap from "@/app/components/map/googleMap"
+import SinglePostLayout from "@/app/components/format/singlePostLayout"
 import { useAuthContext } from "@/context/AuthContext"
-import BottomMenu from "@/app/components/bottomMenu"
+import BottomMenu from "@/app/components/common/bottomMenu"
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
@@ -43,7 +43,7 @@ const ReadSingleItem = ({singleItem, postId, nearPosts}:Props) => {
 
             {/* セカンドヘッダーリンクボックス */}
             <div className="secondHeaderLinkContainer">
-              <Link href={`/`} className="secondHeaderLink secondHeaderLink1">
+              <Link href={`/post/readAll`} className="secondHeaderLink secondHeaderLink1">
                 <ArrowBackIcon/>戻る
               </Link>
 
@@ -133,7 +133,7 @@ const ReadSingleItem = ({singleItem, postId, nearPosts}:Props) => {
       </div>
       {/* リンクボタン */}
       <div className="linkContainer">
-        <Link href={`/`} className="singlePageLink back">投稿一覧に戻る</Link>
+        <Link href={`/post/readAll`} className="singlePageLink back">投稿一覧に戻る</Link>
       </div>
     </>
   )

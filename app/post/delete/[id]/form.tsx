@@ -3,11 +3,11 @@
 import {useRouter} from "next/navigation"
 import { useAuthContext } from "@/context/AuthContext"
 import Link from "next/link"
-import SinglePostLayout from "@/app/components/singlePostLayout"
-import GoogleMapComponent from "@/app/components/googleMap"
+import SinglePostLayout from "@/app/components/format/singlePostLayout"
+import GoogleMapComponent from "@/app/components/map/googleMap"
 import {Suspense, useState} from 'react'
 import { AllItemTypes } from "@/utils/types/post"
-import Loading from "@/app/components/loading"
+import Loading from "@/app/components/common/loading"
 
 type Props = {
   id:string,
@@ -41,7 +41,9 @@ const DeleteItem = ({id, singleItem}:Props) => {
       const jsonData = await response.json()
 
       alert(jsonData.message)
-      router.push("/")
+
+      router.push(`/readmypage/${loginUserId}`)
+
 
     }catch(error) {
       console.error("error message: ", error)

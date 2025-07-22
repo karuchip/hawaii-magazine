@@ -5,7 +5,7 @@ import {Card, TextField, Button} from "@mui/material"
 import {useForm} from "react-hook-form"
 import Link from "next/link"
 import { useState } from "react"
-import Loading from "@/app/components/loading"
+import Loading from "@/app/components/common/loading"
 
 type FormInput = {
   email: string
@@ -15,7 +15,7 @@ type FormInput = {
 const Login = () => {
 
   const router = useRouter()
-  const {setLoginUserId, setLoginUserName, setLoginUserEmail, setLoginUserIcon} = useAuthContext()
+  const {loginUserId, setLoginUserId, setLoginUserName, setLoginUserEmail, setLoginUserIcon} = useAuthContext()
   const {register, handleSubmit, formState:{errors, isValid}} = useForm<FormInput>({
     mode: "onChange"
   })
@@ -56,7 +56,7 @@ const Login = () => {
       setLoginUserIcon(jsonData.payload.userIcon)
 
       setLoading(false)
-      router.replace("/")
+      router.replace(`/readmypage/${jsonData.payload.id}`)
 
     }catch(error){
       setLoading(false)

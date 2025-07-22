@@ -1,6 +1,6 @@
 
 // 画像リサイズ処理
-const resizeImage = (file: File, maxWidth = 800, maxHeight=800):Promise<Blob> =>{
+const ResizeImage = (file: File, maxWidth = 800, maxHeight=800):Promise<Blob> =>{
   return new Promise((resolve, reject) => {
 
     // ①
@@ -67,4 +67,4 @@ const resizeImage = (file: File, maxWidth = 800, maxHeight=800):Promise<Blob> =>
   })
 }
 
-export default resizeImage
+export default ResizeImage

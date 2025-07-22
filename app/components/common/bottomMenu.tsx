@@ -3,6 +3,7 @@ import Link from "next/link"
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import HomeIcon from '@mui/icons-material/Home';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+import ViewCarouselIcon from '@mui/icons-material/ViewCarousel';
 
 type Props = {
   loginUserId: string,
@@ -13,12 +14,20 @@ const BottomMenu = ({loginUserId}:Props) => {
     <>
       <ul className="bottomMenuContent">
 
-        {/* 記事一覧 */}
+        {/* ホーム画面 */}
         <li>
           <Link href="/">
             <HomeIcon sx={{fontSize:"26px"}}/>
           </Link>
         </li>
+
+        {/* 記事一覧 */}
+        <li>
+          <Link href="/post/readAll">
+            <ViewCarouselIcon sx={{fontSize:"26px"}}/>
+          </Link>
+        </li>
+
 
         {/* 投稿する */}
         <li>

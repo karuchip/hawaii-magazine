@@ -1,6 +1,6 @@
 import { AllItemTypes } from "@/utils/types/post"
 import { useEffect, useState } from "react"
-import Loading from "../loading"
+import Loading from "../common/loading"
 import PostCard from "../format/postCard"
 import { useAuthContext } from "@/context/AuthContext"
 import FetchLikePostId from "@/utils/fetchLikePostId"

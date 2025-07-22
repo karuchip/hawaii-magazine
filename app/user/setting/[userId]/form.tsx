@@ -7,7 +7,7 @@ import { useState } from "react"
 import { useEffect } from "react"
 import Link from "next/link"
 import {logout} from "@/utils/logout"
-import BottomMenu from "@/app/components/bottomMenu"
+import BottomMenu from "@/app/components/common/bottomMenu"
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 type Props = {
@@ -85,7 +85,9 @@ const Form = ({userInf}:Props) => {
       const deleteAccountData = await deleteAccountRes.json()
       alert(deleteAccountData.message)
 
-       logout(router, setLoginUserId, setLoginUserName, setLoginUserEmail, setLoginUserIcon)
+      if (deleteAccountData.success) {
+        logout(router, setLoginUserId, setLoginUserName, setLoginUserEmail, setLoginUserIcon)
+      }
 
     } catch(error) {
       console.error(error)

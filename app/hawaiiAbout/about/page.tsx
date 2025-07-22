@@ -1,6 +1,6 @@
 "use client"
 import { useEffect, useState } from "react"
-import HawaiiSlider from "@/app/components/hawaiiSlider"
+import HawaiiSlider from "@/app/components/animation/hawaiiSlider"
 import Link from "next/link"
 
 const about = () => {

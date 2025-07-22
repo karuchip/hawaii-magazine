@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
-import Loading from "../loading"
+import Loading from "../common/loading"
 import Link from "next/link";
-import UserIcon from "../userIcon";
+import UserIcon from "../common/userIcon";
 
 type Users ={
   id: string;
@@ -47,8 +47,8 @@ const PopularUserSection = () => {
         <div key={user.id} className="popularUserContent">
           <Link href={`/readmypage/${user.id}`}>
             <UserIcon width={200} height={200} img={user.userIcon}/>
-            <p className="popularUserName">{user.name}</p>
             <p className="popularUserViews">{user.viewCount} views</p>
+            <p className="popularUserName">{user.name}</p>
           </Link>
         </div>
       ))}

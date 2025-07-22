@@ -1,16 +1,14 @@
 "use client"
 
 import Link from "next/link"
-import {useState, useEffect, Suspense} from "react"
+import {useState, useEffect} from "react"
 import {useRouter}from "next/navigation"
 import { useAuthContext } from "@/context/AuthContext"
-import PlaceAutocomplete from "../../../components/placeAutocomplete"
-import {TextField, Button} from "@mui/material"
-import { categoryList, Category } from "@/app/components/categoryButton"
-import Loading from "@/app/components/loading"
-import PostSectionEditor from "@/app/components/postSectionEditor"
+import PlaceAutocomplete from "../../../components/map/placeAutocomplete"
+import { Button} from "@mui/material"
+import { categoryList, Category } from "@/app/components/post/categoryButton"
+import PostSectionEditor from "@/app/components/post/postSectionEditor"
 import { usePostContext } from "@/context/PostContext"
-import { useParams } from 'next/navigation';
 import { AllItemTypes } from "@/utils/types/post"
 import {useForm} from "react-hook-form"
 
