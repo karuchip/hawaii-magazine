@@ -82,7 +82,10 @@ const ReadMypage = ({myPageInf, myPagePost}:Props) => {
                   )
                 ))
               :(
-                <p className='noMyPost'>投稿がありません</p>
+                <div className='noMyPost'>
+                  <p>投稿がありません</p>
+                  <Link href="/post/create">+ 投稿する</Link>
+                </div>
               )
             }
             </div>

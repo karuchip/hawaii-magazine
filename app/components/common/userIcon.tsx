@@ -19,8 +19,6 @@ const UserIcon = ({width=40, height=40, img}: Props) => {
     if(loginUserId) {
       router.push(`/readmypage/${loginUserId}`)
 
-    } else {
-      alert("ログイン情報が取得できませんでした")
     }
   }
 
