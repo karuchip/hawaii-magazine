@@ -9,6 +9,7 @@ import Link from "next/link"
 import {logout} from "@/utils/logout"
 import BottomMenu from "@/app/components/common/bottomMenu"
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import CloseIcon from '@mui/icons-material/Close';
 
 type Props = {
   userInf: {
@@ -178,10 +179,6 @@ const Form = ({userInf}:Props) => {
             </div>
 
             <div className="horizontalLineLight"><span></span></div>
-
-            <div className="back settingBack">
-              <Link href="/">戻る</Link>
-            </div>
           </div>
         </div>
       </>

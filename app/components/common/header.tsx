@@ -4,7 +4,8 @@ import { useState, useEffect } from "react"
 import { useAuthContext } from "../../../context/AuthContext"
 import {Typography, Button} from "@mui/material"
 import UserIcon from "../common/userIcon"
-import CustomizedMenus from "./headerMenu"
+import CustomizedMenus from "./headerMenuLogin"
+import CustomizedMenusNotLogin from "./headerMenuNotLogin"
 
 //動的ファイルにて、データの更新時に直に更新する
 export const dynamic = "force-dynamic"
@@ -43,10 +44,13 @@ const Header = () => {
           </div>
           <div className="headerRight">
             {!loginUserId ? (
-              <nav className="notLoginNav">
-                <Link href="/user/register">新規登録</Link>
-                <Link href="/user/login">ログイン</Link>
-              </nav>
+              <>
+                <nav className="notLoginNav">
+                  <Link href="/user/register">新規登録</Link>
+                  <Link href="/user/login">ログイン</Link>
+                  <CustomizedMenusNotLogin/>
+                </nav>
+              </>
             ):(
               <nav className="loginNav">
                 {loginUserIcon && (

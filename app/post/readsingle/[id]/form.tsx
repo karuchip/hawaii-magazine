@@ -44,7 +44,7 @@ const ReadSingleItem = ({singleItem, postId, nearPosts}:Props) => {
             {/* セカンドヘッダーリンクボックス */}
             <div className="secondHeaderLinkContainer">
               <Link href={`/post/readAll`} className="secondHeaderLink secondHeaderLink1">
-                <ArrowBackIcon/>戻る
+                <ArrowBackIcon/>記事一覧へ
               </Link>
 
               {String(loginUserId) === String(singleItem.authorId) && (
@@ -133,7 +133,7 @@ const ReadSingleItem = ({singleItem, postId, nearPosts}:Props) => {
       </div>
       {/* リンクボタン */}
       <div className="linkContainer">
-        <Link href={`/post/readAll`} className="singlePageLink back">投稿一覧に戻る</Link>
+        <Link href={`/post/readAll`} className="singlePageLink back">記事一覧へ</Link>
       </div>
     </>
   )

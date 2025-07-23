@@ -14,6 +14,20 @@ const PopularUserSection = () => {
 
   const [users, setUsers] = useState<Users[] | null>(null)
   const [loading, setLoading] = useState(true)
+  // 画面サイズ判定
+  const [iconSize, setIconSize] = useState(190)
+
+  useEffect(() => {
+    const handleResize = () => {
+      const width = window.innerWidth
+      if (width < 640) setIconSize(90)
+      else if (width < 768) setIconSize(120)
+      else setIconSize(190)
+    }
+    handleResize()
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
 
   useEffect(()=> {
     const GetProfileViews = async() => {
@@ -46,8 +60,10 @@ const PopularUserSection = () => {
       .map(user => (
         <div key={user.id} className="popularUserContent">
           <Link href={`/readmypage/${user.id}`}>
-            <UserIcon width={200} height={200} img={user.userIcon}/>
-            <p className="popularUserViews">{user.viewCount} views</p>
+            <div className="popularUserViews">
+              <p>{user.viewCount} views</p>
+            </div>
+            <UserIcon width={iconSize} height={iconSize} img={user.userIcon} />
             <p className="popularUserName">{user.name}</p>
           </Link>
         </div>
