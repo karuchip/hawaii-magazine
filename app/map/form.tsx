@@ -7,6 +7,7 @@ import PostCard from '../components/format/postCard';
 import FetchLikePostId from '@/utils/fetchLikePostId';
 import { useAuthContext } from '@/context/AuthContext';
 import Link from 'next/link';
+import CloseIcon from '@mui/icons-material/Close';
 
 
 type Props = {
@@ -30,7 +31,7 @@ const Form = ({allItems}:Props) => {
         <div className='mapContainer'>
 
           <div className='co-back' style={{marginLeft:"10px"}}>
-            <Link href="/">↩︎ 戻る</Link>
+            <Link href="/"><CloseIcon/></Link>
           </div>
 
           <div className='MapContent'>

@@ -27,9 +27,9 @@ a {
 
 /* 戻るボタン */
 .co-back {
-  padding: 5px 10px;
+  padding: 5px 5px 0 5px;
   border: 1px solid #a1a1a1;
-  border-radius: 20px;
+  border-radius: 10px;
   width: fit-content;
   cursor: pointer;
   margin: 0;
@@ -85,12 +85,25 @@ a {
   text-align: right;
 }
 .headerRight a {
-  margin-left: 20px;
+  margin: 0 10px;
   color: #fff;
   display: inline-block;
 }
+.notLoginNav {
+  display: flex;
+  align-items: flex-end;
+}
 .notLoginNav a {
   border-bottom: 1px solid #fff;
+  margin-bottom: 15px;
+}
+@media screen and (max-width: 640px) {
+  .headerRight a {
+    margin: 0 5px;
+  }
+  .notLoginNav a {
+    display: none;
+  }
 }
 .notLoginNav a:hover {
   font-weight: bold;
@@ -106,7 +119,7 @@ a {
   font-size: 12px;
   position: absolute;
   width: 60px;
-  top: 37px;
+  top: 45px;
   left: -10px;
 }
 
@@ -168,7 +181,7 @@ a {
 /* footer */
 footer {
   background-color: #f7f5ec;
-  color: #5a8c68;
+  color: #596626;
   height: 60px;
   display: flex;
   justify-content: center;
@@ -1526,8 +1539,18 @@ textarea {
   width: fit-content;
   margin: 20px auto 100px auto;
   color: #626161;
+  text-align: center;
 }
-
+.noMyPost p {
+  margin-bottom: 30px;
+}
+.noMyPost a {
+  color: #626161;
+  border-bottom: 1px solid #626161;
+}
+.noMyPost a:hover {
+  color: #000;
+}
 /* (/components/placeAutocomplete.tsx) */
 .autocompletedPlace {
   margin-top: 20px;
@@ -2176,7 +2199,7 @@ p {
 .homeFVTitle {
   opacity: 0;
   animation: fadeIn 1s ease-in forwards;
-  animation-delay: 1s;
+  animation-delay: 0.5s;
 }
 /* ページ本文 */
 .co-homeA {
@@ -2211,7 +2234,8 @@ p {
   margin: 0 auto;
 }
 .co-homeP {
-  font-size: 18px;
+  font-size: 24px;
+  font-weight: 700;
   width: fit-content;
   margin: 0 auto 30px auto;
 }
@@ -2220,10 +2244,57 @@ p {
     font-size: 16px;
   }
   .co-homeH2 {
-    font-size: 32px;
+    font-size: 40px;
   }
   .co-homeP {
-    font-size: 14px;
+    font-size: 16px;
+  }
+}
+
+/* Conceptセクション */
+.homeConcept {
+  padding: 50px 0 100px 0;
+}
+.homeConcept h3 {
+  font-size: 26px;
+  color: #f2ca95;
+  width: fit-content;
+  margin: 0px auto;
+  padding: 20px;
+}
+.homeConceptP {
+  width: 600px;
+  font-size: 18px;
+  font-weight: 500;
+}
+@media screen and (max-width: 640px) {
+  .homeConcept {
+    padding: 50px 0;
+  }
+  .homeConcept h3 {
+    font-size: 18px;
+    margin: 0px auto;
+  }
+  .homeConceptP {
+    width: 320px;
+    font-size: 16px;
+  }
+}
+
+/* Features 帯 (アニメーション2と連動)*/
+.homeFeaturesBelt {
+  width: 100%;
+  background-color: rgba(156, 153, 124, 0.13);
+}
+.homeFeaturesBelt p {
+  font-size: 96px;
+  color: #f2ca95;
+  padding: 0 10px;
+  font-weight: 700;
+}
+@media screen and (max-width: 640px) {
+  .homeFeaturesBelt p {
+    font-size: 60px;
   }
 }
 
@@ -2231,11 +2302,17 @@ p {
 .homeCreateArticle {
   padding: 50px 0 100px 0;
 }
+.homeCreateArticle h2 {
+  color: #f2ca95;
+}
 .homeCreateArticleImg {
   width: 1000px;
   margin: 0 auto;
 }
 @media screen and (max-width: 1100px) {
+  .homeCreateArticle {
+    padding: 50px 0;
+  }
   .homeCreateArticleImg {
     width: 100%;
     overflow: hidden;
@@ -2246,15 +2323,25 @@ p {
   height: auto;
   display: block;
 }
+
 /* Ranking セクション */
 .homeRanking {
   padding: 50px 0 100px 0;
   background-color: rgba(156, 153, 124, 0.13);
 }
+.homeRanking h2 {
+  color: #f2ca95;
+}
+.homeRanking p {
+  margin-bottom: 0;
+}
 .homeRankingLink {
   margin: 30px 60px 0 auto;
 }
 @media screen and (max-width: 640px) {
+  .homeRanking {
+    padding: 50px 0;
+  }
   .homeRankingLink {
     margin: 60px 30px 0 auto;
   }
@@ -2272,13 +2359,13 @@ p {
 .rankingHeader1 {
   font-size: 28px;
   font-weight: 700;
-  color: #1c2610;
+  color: #f2ca95;
   width: fit-content;
   margin: 0 auto;
   margin-top: 10px;
 }
 .rankingHeader2 {
-  background-color: #1c2610;
+  background-color: #f2ca95;
   color: #fff;
   padding: 0 5px;
   font-weight: 700;
@@ -2296,9 +2383,17 @@ p {
   }
 }
 
-/* Spotlight Users */
+/* 人気ユーザー表示　Spotlight Users */
 .homeSpotlightUsers {
   padding: 50px 0 100px 0;
+}
+.homeSpotlightUsers h2 {
+  color: #f2ca95;
+}
+@media screen and (max-width: 640px) {
+  .homeSpotlightUsers {
+    padding: 50px 0;
+  }
 }
 /* (/components/popularUser.tsx) */
 .popularUserContainer {
@@ -2323,17 +2418,24 @@ p {
 .popularUserName {
   font-size: 20px;
   font-weight: 700;
+  color: #66c7d9;
 }
 .popularUserViews {
-  background-color: #1c2610;
+  margin-bottom: 20px;
+}
+.popularUserViews p {
+  background-color: #f2ca95;
   color: #fff !important;
   padding: 0 5px;
   font-weight: 700;
   font-size: 16px;
 }
 @media screen and (max-width: 640px) {
-  .popularUserViews {
-    font-size: 14px;
+  .popularUserName {
+    font-size: 16px;
+  }
+  .popularUserViews p {
+    font-size: 12px;
   }
 }
 
@@ -2341,6 +2443,14 @@ p {
 .homeFromMap {
   padding: 50px 0 100px 0;
   background-color: rgba(156, 153, 124, 0.13);
+}
+.homeFromMap h2 {
+  color: #f2ca95;
+}
+@media screen and (max-width: 640px) {
+  .homeFromMap {
+    padding: 50px 0;
+  }
 }
 .homeFromMapImg {
   width: 100%;
@@ -2377,6 +2487,15 @@ p {
   opacity: 1;
 }
 @media screen and (max-width: 640px) {
+  .homeFromMapImg {
+    width: 100%;
+    height: 180px;
+  }
+  .homeFromMapImg img {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
   .homeFromMapImg::after {
     opacity: 1;
     font-size: 16px;
@@ -2392,11 +2511,16 @@ p {
 .homeViewAllArticles {
   padding: 50px 0 100px 0;
 }
+@media screen and (max-width: 640px) {
+  .homeViewAllArticles {
+    padding: 50px 0;
+  }
+}
 .homeViewAllBackground {
   position: relative;
   z-index: 2;
   display: block;
-  background-color: #66c7d9;
+  background-color: #f2ca95;
   width: 440px;
   height: 440px;
   border-radius: 50%;
@@ -2407,7 +2531,7 @@ p {
   cursor: pointer;
 }
 .homeViewAllBackground:hover {
-  background-color: #5a8c68;
+  background-color: #e8a348;
 }
 .homeViewAllFront {
   position: absolute;
@@ -2416,12 +2540,12 @@ p {
 }
 @media screen and (max-width: 640px) {
   .homeViewAllBackground {
-    width: 280px;
-    height: 280px;
+    width: 320px;
+    height: 320px;
   }
   .homeViewAllFront {
-    top: 90px;
-    left: 25px;
+    top: 110px;
+    left: 15px;
   }
 }
 .homeViewAllFront p,
@@ -2451,13 +2575,42 @@ p {
   }
 }
 
-/* スクロールアニメーション (app/components/FadeInSection.tsx)*/
+/* スクロールアニメーション1 (app/components/FadeInSection.tsx)*/
 .fade-in-section {
   opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 1s ease-out, transform 0.6s ease-out;
+  transform: translateY(50px);
+  transition: opacity 1s ease-out, transform 1s ease-out;
 }
 .fade-in-section.is-visible {
   opacity: 1;
   transform: translateY(0);
+  transition-delay: 0.3s;
+}
+
+/* スクロールアニメーション2 (app/components/fromLeftFadeInSection.tsx)*/
+.from-left-fade-in {
+  width: 100%;
+  height: 120px;
+  position: relative;
+  overflow: hidden;
+}
+@media screen and (max-width: 640px) {
+  .from-left-fade-in {
+    height: 90px;
+  }
+}
+.from-left-fade-in::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  transform: translateX(0%);
+  transition: transform 1s ease-in 0.3s;
+}
+.from-left-fade-in.is-visible::before {
+  transform: translateX(100%);
 }

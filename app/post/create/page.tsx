@@ -8,6 +8,7 @@ import { useAuthContext } from "@/context/AuthContext"
 import PlaceAutocomplete from "../../components/map/placeAutocomplete"
 //MUI
 import {Button} from "@mui/material"
+import CloseIcon from '@mui/icons-material/Close';
 //カテゴリー配列
 import {categoryList, Category} from "../../components/post/categoryButton"
 import { usePostContext } from "@/context/PostContext"
@@ -151,8 +152,8 @@ const CreateItem = () => {
 
           <div className="createTitleContent">
 
-            <div className='co-back' style={{marginBottom:"20px"}}>
-                <Link href="/">↩︎ 戻る</Link>
+            <div className='co-back' style={{marginLeft:"10px"}}>
+              <Link href="/"><CloseIcon/></Link>
             </div>
 
             <h1>記事を作成する</h1>

@@ -10,9 +10,9 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import Link from 'next/link';
 import MenuIcon from '@mui/icons-material/Menu';
 import SettingsIcon from '@mui/icons-material/Settings';
-import InfoOutlineIcon from '@mui/icons-material/InfoOutline';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import ViewCarouselIcon from '@mui/icons-material/ViewCarousel';
+import MapIcon from '@mui/icons-material/Map';
 
 type Props = {
   loginUserName: string,
@@ -62,7 +62,7 @@ const StyledMenu = styled((props: MenuProps) => (
   },
 }));
 
-export default function CustomizedMenus({loginUserName, loginUserId}:Props) {
+export default function CustomizedMenusNotLogin({loginUserName, loginUserId}:Props) {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -85,8 +85,7 @@ export default function CustomizedMenus({loginUserName, loginUserId}:Props) {
         sx={{backgroundColor:"transparent", mt:"10px", ml:"15px", padding:"0"}}
       >
         <label className='WidgetsIcon'>
-          <MenuIcon sx={{fontSize:"30px"}}/>
-          <p>メニュー</p>
+          <MenuIcon sx={{fontSize:"40px"}}/>
         </label>
       </Button>
       <StyledMenu
@@ -143,9 +142,9 @@ export default function CustomizedMenus({loginUserName, loginUserId}:Props) {
         </MenuItem>
 
         <MenuItem disableRipple>
-          <Link href="/hawaiiAbout/about">
-            <InfoOutlineIcon />
-            このアプリについて
+          <Link href="/map">
+            <MapIcon />
+            地図から探す
           </Link>
         </MenuItem>
 
