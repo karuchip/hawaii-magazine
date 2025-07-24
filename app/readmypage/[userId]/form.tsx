@@ -60,37 +60,36 @@ const ReadMypage = ({myPageInf, myPagePost}:Props) => {
             </div>
           </div>
 
-          <div>
-            <Typography variant="h2" sx={{ fontFamily: '"Kaushan Script", cursive', fontSize:32, color:"#626161", mb:2}}>
-              myArticles
-            </Typography>
-            <div className="horizontalLineLight"><span></span></div>
-            <div className='myPostContainer'>
-              {myPagePost.length > 0
-                ? (
-                  myPagePost.map((item) => (
-                    <div key={item.id} className='myPostContent'>
-                      <Link href={`/post/readsingle/${item.id}`}>
-                        {item.image1 && (
-                          <div className='myPagePostImg'>
-                            <img src={item.image1} />
-                          </div>
-                        )}
-                        <p>{item.title}</p>
-                      </Link>
-                    </div>
-                  )
-                ))
-              :(
-                <div className='noMyPost'>
-                  <p>投稿がありません</p>
-                  <Link href="/post/create">+ 投稿する</Link>
-                </div>
-              )
-            }
-            </div>
-          </div>
+          <div className="horizontalLineLight"><span></span></div>
         </div>
+
+
+
+          <div className='myPostContainer'>
+            {myPagePost.length > 0
+              ? (
+                myPagePost.map((item) => (
+                  <div key={item.id} className='myPostContent'>
+                    <Link href={`/post/readsingle/${item.id}`}>
+                      {item.image1 && (
+                        <div className='myPagePostImg'>
+                          <img src={item.image1} />
+                        </div>
+                      )}
+                      <p>{item.title}</p>
+                    </Link>
+                  </div>
+                )
+              ))
+            :(
+              <div className='noMyPost'>
+                <p>投稿がありません</p>
+                <Link href="/post/create">+ 投稿する</Link>
+              </div>
+            )
+          }
+          </div>
+
       </div>
     </>
   )

@@ -8,6 +8,7 @@ type Props = {
 export const SortPost = ({sortType, setSortType}: Props)=>{
   return (
     <Select
+      style={{width:"110px"}}
       value={sortType}
       onChange={(e) => setSortType(e.target.value)}
     >
