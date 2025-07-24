@@ -16,7 +16,14 @@ import ClearIcon from '@mui/icons-material/Clear';
 import SearchIcon from '@mui/icons-material/Search';
 import PostCard from "@/app/components/format/postCard"
 import FetchLikePostId from "@/utils/fetchLikePostId"
-
+// MUI アコーディオン
+import {
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
+  Typography,
+} from '@mui/material';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 export const dynamic = "force-dynamic"
 
@@ -145,43 +152,57 @@ const ReadAllItemsInner = () => {
       )}
 
       {/* ページ全体 */}
-      <div className="mainContainer">
-
-        {/* 検索ツールボックス */}
-        <div className="sortBtn">
-          <button onClick={handleSortBtnChange}>
-            {sortBtn
-              ? <><ClearIcon sx={{fontSize:"26px"}}/></>
-              : <><SearchIcon sx={{fontSize:"26px", color: "rgba(255, 255, 255, 1)", backgroundColor: "#5a8c68", borderRadius:"5px"}}/>ツール</>}
-          </button>
-        </div>
+      <div className="mainContent">
 
         {/* 検索ツールボックスの中身表示 */}
-        {sortBtn && (
-          <Suspense>
-            <ToolBox
-              keyWord = {keyWord}
-              setKeyWord = {setKeyWord}
-              handleClearChange = {handleClearChange}
-              handleSearchSubmit = {handleSearchSubmit}
-              handleSortChange = {handleSortChange}
-              handleCategoryChange = {handleCategoryChange}
-              searchParams = {searchParams}
-            />
-          </Suspense>
-        )}
+        <Accordion sx={{ my: 2 }}>
+          <AccordionSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="search-tools-content"
+            id="search-tools-header"
+            sx={{ position: 'relative' }}
+            >
+            <Typography
+              sx={{
+                color:"#596626",
+                fontWeight:"700",
+                fontSize:"14px",
+                position: 'absolute',
+                left: '50%',
+                transform: 'translateX(-50%)',
+                bottom: '30%',
+              }}>
+              検索・ソート・フィルター
+            </Typography>
+          </AccordionSummary>
+          <AccordionDetails>
+            <Suspense>
+              <ToolBox
+                keyWord = {keyWord}
+                setKeyWord = {setKeyWord}
+                handleClearChange = {handleClearChange}
+                handleSearchSubmit = {handleSearchSubmit}
+                handleSortChange = {handleSortChange}
+                handleCategoryChange = {handleCategoryChange}
+                searchParams = {searchParams}
+              />
+            </Suspense>
+          </AccordionDetails>
+        </Accordion>
 
         {/* 一覧表示 */}
-        <PostCard allItems={allItems} likePostIds={likePostIds}/>
+        <div className="postCardContainer">
+          <PostCard allItems={allItems} likePostIds={likePostIds}/>
+        </div>
 
-        {totalPageCount > 1 && (
+        {(totalPageCount > 1 && (
           <Box sx={{mt: 4, mb: 4, display: "flex", justifyContent:"center"}}>
             <Pagination
               count={totalPageCount}
               page={currentPage}
               onChange={handlePageChange}
             />
-          </Box>
+          </Box>)
         )}
 
       </div>

@@ -97,7 +97,7 @@ a {
   border-bottom: 1px solid #fff;
   margin-bottom: 15px;
 }
-@media screen and (max-width: 640px) {
+@media screen and (max-width: 710px) {
   .headerRight a {
     margin: 0 5px;
   }
@@ -333,7 +333,19 @@ footer {
   color: #fff;
 }
 
-/* 一覧画面(/page.tsx) */
+/* 一覧画面(/post/readAll/page.tsx) */
+.postCardContainer {
+  min-height: 90vh;
+}
+.mainContent {
+  margin-top: 120px;
+}
+@media screen and (max-width: 640px) {
+  .mainContent {
+    margin-top: 80px;
+  }
+}
+/* 投稿カード(/components/post/PostCard) */
 .supInf p {
   font-size: 14px;
 }
@@ -374,7 +386,7 @@ footer {
 }
 
 /* ソートボタン */
-.sortBtn {
+/* .sortBtn {
   position: fixed;
   z-index: 300;
   top: 120px;
@@ -385,7 +397,7 @@ footer {
   .sortBtn {
     top: 80px;
   }
-}
+} */
 .sortBtn button {
   border-radius: 5px;
   border: none;
@@ -400,54 +412,82 @@ footer {
 .sortBtn button:hover {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
-.toolBoxContainer {
-  position: fixed;
-  z-index: 200;
-  max-width: 350px;
-  right: 10px;
-  top: 125px;
+.toolBoxContent {
+  display: flex;
+  gap: 60px;
+  justify-content: center;
+  align-items: end;
+  margin-top: 10px;
 }
 @media screen and (max-width: 640px) {
-  .toolBoxContainer {
-    top: 85px;
+  .toolBoxContent {
+    display: block;
   }
 }
-.toolBoxContent {
-  padding: 20px;
+.toolBoxSortFilterContent {
+  display: flex;
+  gap: 60px;
+  justify-content: center;
+  height: 84px;
+}
+@media screen and (max-width: 700px) {
+  .toolBoxContent {
+    gap: 25px;
+  }
+  .toolBoxSortFilterContent {
+    gap: 25px;
+  }
+}
+@media screen and (max-width: 640px) {
+  .toolBoxSortFilterContent {
+    gap: 30px;
+  }
 }
 .toolBoxContent p {
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 700;
   margin-bottom: 10px;
+  color: #1c2610;
 }
 .toolBoxClear {
   display: flex;
-  justify-content: start;
-  margin-bottom: 40px;
+  justify-content: end;
+  margin-top: 20px;
 }
 .toolBoxClear button {
   background-color: rgba(255, 255, 255, 0);
   border: none;
-  color: #fb4f4f;
+  color: #000;
 }
 .toolBoxClear button:hover {
-  color: rgb(220, 0, 0);
+  color: #606060;
 }
 .toolBoxSearch {
-  margin-bottom: 40px;
+  width: fit-content;
+}
+@media screen and (max-width: 640px) {
+  .toolBoxSearch {
+    margin-bottom: 40px;
+    margin: 0 auto 40px auto;
+  }
 }
 .toolBoxSearch input {
-  width: 250px;
+  width: 200px;
   font-size: 16px;
 }
 .toolBoxSearch button {
-  border: none;
-  background-color: rgba(255, 255, 255, 0);
-  color: #000;
+  border: 1px solid #596626;
+  border-radius: 10px;
+  padding: 3px;
+  background-color: #596626;
+  color: #fff;
   margin-top: 10px;
+  margin-left: 5px;
 }
 .toolBoxSearch button:hover {
-  color: #a1a1a1;
+  box-shadow: none;
+  border: 1px solid #a1a1a1;
+  background-color: #a1a1a1;
 }
 
 /* 検索結果が1つもない時 */
@@ -964,6 +1004,17 @@ footer {
   }
 }
 
+/* 記事編集 update */
+.editPostContainer {
+  width: 100%;
+  padding: 140px 10px 130px 10px;
+}
+@media screen and (max-width: 640px) {
+  .editPostContainer {
+    padding: 90px 15px 0 15px;
+  }
+}
+
 /* ログイン画面(login/pages.tsx) and 新規登録画面(register/pages.tsx)　 */
 .authContainer {
   min-height: 700px;
@@ -1135,7 +1186,7 @@ footer {
 /* 投稿作成画面 create.tsx */
 .createContainer {
   width: 100%;
-  padding-top: 114px;
+  padding-top: 80px;
 }
 @media screen and (max-width: 640px) {
   .createContainer {
@@ -1164,7 +1215,7 @@ textarea {
 }
 @media screen and (max-width: 640px) {
   .createTitle {
-    margin: 80px auto 0 auto;
+    margin: 30px auto 0 auto;
   }
   .createContent {
     max-width: 350px;
@@ -1173,7 +1224,11 @@ textarea {
   }
   .createTitle h1 {
     font-size: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+  }
+  .createTitleContent h1 {
+    font-size: 20px;
+    margin-bottom: 10px;
   }
 }
 .postElement {
@@ -1481,7 +1536,7 @@ textarea {
   height: fit-content;
   width: fit-content;
   max-width: 500px;
-  margin: 10px auto 60px auto;
+  margin: 10px auto 50px auto;
   color: #626161;
   font-size: 18px;
 }
@@ -1489,19 +1544,27 @@ textarea {
   .profileComment {
     width: fit-content;
     max-width: 320px;
-    margin: 20px auto 100px auto;
+    margin: 20px auto 60px auto;
     font-size: 16px;
   }
 }
 .myPostContainer {
-  width: 600px;
+  margin: 0 auto;
+  width: 940px;
   display: flex;
-  justify-content: space-between;
+  gap: 40px;
+  justify-content: center;
   flex-wrap: wrap;
-  padding-top: 65px;
+  margin-bottom: 40px;
+}
+@media screen and (max-width: 1000px) {
+  .myPostContainer {
+    width: 600px;
+  }
 }
 @media screen and (max-width: 640px) {
   .myPostContainer {
+    gap: 20px;
     width: 350px;
     justify-content: center;
     padding-top: 30px;
@@ -1511,7 +1574,6 @@ textarea {
   width: 280px;
   height: 280px;
   border: 0.5px solid #a0a0a0;
-  margin-bottom: 60px;
   border-radius: 10px;
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 }
@@ -1530,10 +1592,26 @@ textarea {
   height: 100%;
   object-fit: cover;
 }
+@media screen and (max-width: 640px) {
+  .myPostContent {
+    width: 150px;
+    height: 205px;
+  }
+  .myPagePostImg {
+    width: 150px;
+    height: 150px;
+  }
+}
 .myPostContent p {
   font-size: 16px;
   color: #626161;
   padding: 10px;
+  font-weight: 700;
+}
+@media screen and (max-width: 640px) {
+  .myPostContent p {
+    font-size: 12px;
+  }
 }
 .noMyPost {
   width: fit-content;
@@ -2041,10 +2119,9 @@ p {
 .MapContentSelectedContainer {
   margin: 0 auto;
   width: 360px;
-  /* height: 650px; */
   position: relative;
   z-index: 1;
-  background-color: #5a8c68;
+  background-color: #596626;
   border-radius: 10px;
   padding: 5px;
 }

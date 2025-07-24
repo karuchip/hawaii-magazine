@@ -11,6 +11,7 @@ import PostSectionEditor from "@/app/components/post/postSectionEditor"
 import { usePostContext } from "@/context/PostContext"
 import { AllItemTypes } from "@/utils/types/post"
 import {useForm} from "react-hook-form"
+import CloseIcon from '@mui/icons-material/Close';
 
 type Section = {
   image: string | null;
@@ -155,7 +156,11 @@ const UpdateItem = ({singleItem} : Props) => {
     return(
       <>
           {/* タイトル部分 */}
-      <div className="createContainer">
+      <div className="editPostContainer">
+        <div className='co-back' style={{marginBottom:"20px"}}>
+          <Link href="/"><CloseIcon/>中断</Link>
+        </div>
+
         <div className="createTitle">
           <h1>記事を編集する</h1>
         </div>

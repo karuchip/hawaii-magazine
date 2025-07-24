@@ -28,7 +28,7 @@ export const categoryList: Category[] = [
 
 const CategoryButtons = ({categoryType, setCategoryType}:Props) => {
   return (
-      <Select
+      <Select style={{width: "158px"}}
       value={categoryType}
       onChange={(e) => setCategoryType(e.target.value)}
       >
