@@ -20,6 +20,14 @@ const PostCard = ({allItems, likePostIds}:Props) => {
     <div className="allItemsContainer">
 
       <Grid container spacing={{ mobile: 1, tablet: 1, laptop: 1 }} sx={{justifyContent:"center", alignItems:"flex-start"}}>
+        {allItems.length === 0 && (
+          <Box sx={{ textAlign: 'center', mt: 4 }}>
+            <Typography variant="h6" color="text.secondary">
+              投稿が見つかりませんでした
+            </Typography>
+          </Box>
+        )}
+
         {(allItems.some(item => item.viewCount !== undefined)
           ? [...allItems].sort((a, b) => (b.viewCount ?? 0) - (a.viewCount ?? 0))
           : allItems
@@ -110,6 +118,7 @@ const PostCard = ({allItems, likePostIds}:Props) => {
                   <>{ranking}</>
 
                   <Card variant="outlined">{card}</Card>
+
                 </Box>
               </Grid>
             )

@@ -148,12 +148,10 @@ const CreateItem = () => {
             {/* タイトル部分 */}
         <div className="createContainer">
 
-
-
           <div className="createTitleContent">
 
-            <div className='co-back' style={{marginLeft:"10px"}}>
-              <Link href="/"><CloseIcon/></Link>
+            <div className='co-back' style={{marginBottom:"20px"}}>
+              <Link href="/"><CloseIcon/>中断</Link>
             </div>
 
             <h1>記事を作成する</h1>

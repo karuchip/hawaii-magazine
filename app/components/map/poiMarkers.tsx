@@ -67,6 +67,7 @@ const PoiMarkers = ({allItems, currentPin, setCurrentPin}:Props) => {
             position={{lat: poi.lat, lng: poi.lon}}
             ref={marker => setMarkerRef(marker, String(poi.id))}
             clickable={true}
+            zIndex={currentPin?.id === poi.id ? 9999 : 1}
             onClick={() => handleClick(poi)}
             >
             {poi.image1 ? (
@@ -74,10 +75,10 @@ const PoiMarkers = ({allItems, currentPin, setCurrentPin}:Props) => {
                 backgroundImage: `url(${poi.image1})`,
                 backgroundSize: 'cover',
                 borderRadius: '50%',
-                border: currentPin?.id === poi.id ? '5px solid #5a8c68' : '5px solid #fff',
-                width: currentPin?.id === poi.id ? '80px' : '60px',
-                height: currentPin?.id === poi.id ? '80px' : '60px',
-                opacity: currentPin?.id === poi.id ? '100%' : '90%',
+                border: currentPin?.id === poi.id ? '3px solid #FF3434' : '5px solid #fff',
+                width: currentPin?.id === poi.id ? '90px' : '60px',
+                height: currentPin?.id === poi.id ? '90px' : '60px',
+                // opacity: currentPin?.id === poi.id ? '100%' : '90%',
                 }}
               />
             ):(

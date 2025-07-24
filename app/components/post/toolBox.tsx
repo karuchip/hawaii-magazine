@@ -25,51 +25,46 @@ const ToolBox = ({
 }:Props) => {
 
   return (
-    <Card className="toolBoxContainer"
-      sx={{
-        boxShadow: "0px 4px 8px rgba(0,0,0,0.4)",
-        backgroundColor: "rgba(255, 255, 255, 0.85)",
-        backdropFilter: "blur(6px)"
-        }}>
-      <div className="toolBoxContent">
+      <div className="toolBoxContainer">
+
+        <div className="toolBoxContent">
+          {/* 検索 */}
+          <div className="toolBoxSearch">
+            <form onSubmit={handleSearchSubmit}>
+              <TextField
+                label="キーワードを入力して検索"
+                variant="outlined"
+                value={keyWord}
+                onChange={(e) => setKeyWord(e.target.value)}
+              />
+              <button type="submit" className="toolBoxSearchBtn"><SearchIcon/>検索</button>
+            </form>
+          </div>
+
+          {/* 並び替え */}
+          <div className="toolBoxSortFilterContent">
+            <Box sx={{ width: "fit-content", mb:4}}>
+              <p style={{marginLeft:"30px"}}>並び替え</p>
+              <SortPost sortType={searchParams.get('sort') || "new"} setSortType={handleSortChange} />
+            </Box>
+
+            {/* カテゴリー */}
+            <Box sx={{ width: "fit-content", mb: 4 }}>
+              <p style={{marginLeft:"50px"}}>カテゴリー</p>
+              <CategoryButtons categoryType={searchParams.get('category') || "all"} setCategoryType={handleCategoryChange}/>
+            </Box>
+          </div>
+        </div>
 
         {/* フィルタークリア */}
-        <div  className="toolBoxClear">
+        <div className="toolBoxClear">
           <button onClick={handleClearChange}>
             条件をクリア
           </button>
         </div>
 
-        {/* 検索 */}
-        <div className="toolBoxSearch">
-          <p>検索</p>
-          <form onSubmit={handleSearchSubmit}>
-            <TextField
-              label="キーワードを入力"
-              variant="standard"
-              value={keyWord}
-              onChange={(e) => setKeyWord(e.target.value)}
-            />
-            <button type="submit" className="toolBoxSearchBtn"><SearchIcon/></button>
-          </form>
-        </div>
-
-        <div className="toolBoxSortFilter">
-          {/* 並び替え */}
-          <Box sx={{ width: "fit-content", mb:4}}>
-            <p>並び替え</p>
-            <SortPost sortType={searchParams.get('sort') || "new"} setSortType={handleSortChange} />
-          </Box>
-
-          {/* カテゴリー */}
-          <Box sx={{ width: "fit-content", mb: 4 }}>
-            <p>ソート</p>
-            <CategoryButtons categoryType={searchParams.get('category') || "all"} setCategoryType={handleCategoryChange}/>
-          </Box>
-        </div>
-
       </div>
-    </Card>
+  // </Card>
   )
 }
 
