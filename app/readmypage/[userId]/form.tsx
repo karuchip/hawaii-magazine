@@ -84,7 +84,9 @@ const ReadMypage = ({myPageInf, myPagePost}:Props) => {
             :(
               <div className='noMyPost'>
                 <p>投稿がありません</p>
-                <Link href="/post/create">+ 投稿する</Link>
+                {(loginUserId === myPageInf.id) && (
+                  <Link href="/post/create">+ 投稿する</Link>
+                )}
               </div>
             )
           }
