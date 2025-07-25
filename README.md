@@ -1,36 +1,106 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## プロジェクト名
 
-## Getting Started
+**Hawaii Magazine**
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 概要（Overview）
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- A web app that lets Hawaii lovers share their travel memories in a stylish, magazine-style layout
+- ハワイ好きのための、雑誌記事風に思い出をシェアできる写真投稿アプリです。
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## デプロイ済みリンク（Live Demo）
 
-## Learn More
+https://hawaii-magazine.vercel.app/
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 主な機能（Features）
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### ユーザー機能（User）
 
-## Deploy on Vercel
+- ユーザー登録、ログイン、退会（認証）
+- マイページ機能（プロフィールの編集）
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 投稿機能（Post）
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- 投稿の作成・編集・削除（写真、説明、撮影地情報）
+- 投稿の一覧・詳細表示
+- ページネーション（投稿の分割表示）
+
+### インタラクション（Interaction）
+
+- いいね機能
+- コメント機能
+- 投稿・プロフィールの閲覧数ランキング
+
+### マップ・検索機能（Map & Search）
+
+- 撮影地のマップ表示（Google Maps 連携）
+- 地図から投稿検索
+- フィルター（場所・カテゴリ）・ソート
+- 近くの投稿表示
+
+---
+
+## 🛠 技術スタック（Tech Stack）
+
+- **フロントエンド**：React, Next.js, TypeScript
+
+  - 状態管理：useContext, useState
+  - フォーム：react-hook-form
+  - 外部 API：Google Maps API
+
+- **バックエンド**：Next.js（App Router / Route Handlers を使用して API 実装）
+
+- **認証**：JWT
+
+- **データベース**：Neon + Prisma
+
+- **デプロイ**：Vercel
+
+---
+
+## スクリーンショット（Screenshots）
+
+### 投稿一覧
+
+![投稿一覧画面](./public/screenshots/allPosts.png)
+
+### 投稿表示
+
+![投稿表示画面](./public/screenshots/shiglePost.png)
+
+---
+
+## UI/UX のポイント（Design Highlights）
+
+ハワイ好きの人が旅の思い出を気軽にシェアし合えるよう、視覚的で直感的な UI と、心地よい色使いを心がけました。ユーザーが操作に迷わず、**「思い出＝写真」** に集中できる体験を大切にしています
+
+- **レスポンシブ対応**
+  - PC・タブレット・スマホに対応し、投稿一覧やマップなどを快適に閲覧可能
+
+- **世界観を意識した配色とフォント**
+  - 南国らしい柔らかい色味を基調に、写真が主役として引き立つようデザイン
+
+- **シンプルなナビゲーション構成と余白を活かしたレイアウト**
+  - 必要な情報だけを提示し、ユーザーがストレスなく思い出に浸れるように設計
+
+---
+
+## 今後の予定・課題（Future Plans / TODO）
+
+- 機能追加予定
+  - 通知機能（いいね・コメントが届いたとき）
+  - 投稿の保存・お気に入り機能
+  - 投稿の PDF 出力機能
+
+---
+
+## 作者について（About Me）
+
+-ひかる (Hikaru)
+-Web 開発者を目指して勉強中
+-React・Next.js と UI/UX を中心にスキルを伸ばしています
