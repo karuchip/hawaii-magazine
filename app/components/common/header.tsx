@@ -6,6 +6,7 @@ import {Typography, Button} from "@mui/material"
 import UserIcon from "../common/userIcon"
 import CustomizedMenus from "./headerMenuLogin"
 import CustomizedMenusNotLogin from "./headerMenuNotLogin"
+import Notification from "../notification/notification"
 
 //動的ファイルにて、データの更新時に直に更新する
 export const dynamic = "force-dynamic"
@@ -52,17 +53,20 @@ const Header = () => {
                 </nav>
               </>
             ):(
-              <nav className="loginNav">
-                {loginUserIcon && (
-                  <div className="userIconWrapper">
-                    <UserIcon width={40} height={40} img={loginUserIcon}/>
-                    <p>ログイン中</p>
-                  </div>
-                )}
-                {loginUserName && loginUserId &&(
-                  <CustomizedMenus loginUserName={loginUserName} loginUserId={loginUserId}></CustomizedMenus>
-                )}
+              <div className="loginNav">
+                <nav>
+                  <Notification />
+                  {loginUserIcon && (
+                    <div className="userIconWrapper">
+                      <UserIcon width={40} height={40} img={loginUserIcon}/>
+                      <p>ログイン中</p>
+                    </div>
+                  )}
+                  {loginUserName && loginUserId &&(
+                    <CustomizedMenus loginUserName={loginUserName} loginUserId={loginUserId}></CustomizedMenus>
+                  )}
               </nav>
+            </div>
             )}
           </div>
         </div>

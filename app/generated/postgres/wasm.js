@@ -185,6 +185,16 @@ exports.Prisma.UserViewsScalarFieldEnum = {
   userAgent: 'userAgent'
 };
 
+exports.Prisma.NotificationScalarFieldEnum = {
+  id: 'id',
+  postId: 'postId',
+  senderId: 'senderId',
+  receivedId: 'receivedId',
+  type: 'type',
+  hasConfirmed: 'hasConfirmed',
+  createdAt: 'createdAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -199,7 +209,10 @@ exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
 };
-
+exports.NotificationType = exports.$Enums.NotificationType = {
+  comment: 'comment',
+  like: 'like'
+};
 
 exports.Prisma.ModelName = {
   User: 'User',
@@ -207,7 +220,8 @@ exports.Prisma.ModelName = {
   PostLikes: 'PostLikes',
   PostComments: 'PostComments',
   PostViews: 'PostViews',
-  UserViews: 'UserViews'
+  UserViews: 'UserViews',
+  Notification: 'Notification'
 };
 
 /**
