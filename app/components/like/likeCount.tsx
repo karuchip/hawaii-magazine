@@ -5,22 +5,22 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import Typography from '@mui/material/Typography'
 import Loading from "@/app/components/common/loading";
-import {useRouter} from "next/navigation";
+import createNotification from "@/utils/createNotification";
 
 type likeCountProps = {
-  likeCount: number
-  id: number
+  likeCount: number;
+  id: number;
+  authorId: number;
 }
 
 export const dynamic = "force-dynamic"
 
 
-const LikeCount = ({likeCount, id}:likeCountProps) => {
+const LikeCount = ({likeCount, id, authorId}:likeCountProps) => {
   const {loginUserId, loading} = useAuthContext()
   const [count, setCount] = useState<number>(likeCount)
   const [hasLiked, setHasLiked] = useState<boolean>(false)
   const [notLikeYet, setNotLikeYet] = useState(false)
-  const router = useRouter()
 
   useEffect (() => {
     setCount(likeCount);
@@ -90,6 +90,15 @@ const LikeCount = ({likeCount, id}:likeCountProps) => {
           setNotLikeYet(false)
           alert(countUpdateData.message)
         }
+
+        // 通知の作成
+        await createNotification({
+          postId: id,
+          senderId: Number(loginUserId),
+          receivedId: Number(authorId),
+          type: 'like'
+        })
+
       } else {
         alert(addLikeData.message)
       }

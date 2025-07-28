@@ -22,7 +22,7 @@ type AllCommentType = {
 
 export const dynamic = "force-dynamic"
 
-const Comment = ({postId}:{postId:number}) => {
+const Comment = ({postId, authorId}:{postId:number, authorId:number}) => {
   const {loginUserId, loading: authLoading} = useAuthContext()
   const [allComments, setAllComments] = useState<AllCommentType[]>([])
   const [commentLoading, setCommentLoading] = useState<boolean>(true)
@@ -103,6 +103,7 @@ const Comment = ({postId}:{postId:number}) => {
           <CommentCreate
             loginUserId={loginUserId}
             postId={postId}
+            authorId={authorId}
             onCommentCreated = {handleCommentCreated}
           />
         )}

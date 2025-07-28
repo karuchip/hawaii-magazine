@@ -4,10 +4,12 @@ import {useForm} from "react-hook-form"
 import { useState } from "react";
 import Loading from "@/app/components/common/loading";
 import AddIcon from '@mui/icons-material/Add';
+import createNotification from "@/utils/createNotification";
 
 type commentType = {
   loginUserId: string,
   postId: number,
+  authorId: number,
   onCommentCreated: () => void
 }
 
@@ -15,7 +17,7 @@ type FormInput = {
   comment: string
 }
 
-const CommentCreate = ({loginUserId, postId, onCommentCreated}:commentType)=>{
+const CommentCreate = ({loginUserId, postId, authorId, onCommentCreated}:commentType)=>{
 
   const [commentCount, setCommentCount] = useState(0);
   const [loading, setLoading] = useState(false)
@@ -42,10 +44,25 @@ const CommentCreate = ({loginUserId, postId, onCommentCreated}:commentType)=>{
 
       const jsonData = await response.json()
 
+      if (!response.ok) {
+          throw new Error('コメントの作成に失敗しました');
+      }
+
+      //呼び出し元で再度コメントの全件取得
       onCommentCreated()
       setLoading(false)
       setValue("comment", "")
+
+      //　通知の作成
+      await createNotification({
+        postId: postId,
+        senderId: Number(loginUserId),
+        receivedId: authorId,
+        type: 'comment'
+      })
+
       alert(jsonData.message)
+
 
     }catch(error) {
       console.error(error)

@@ -19,6 +19,8 @@ model User {
   postComments PostComments[]
   postLikes    PostLikes[]
   profileViews  UserViews[]
+  notificationsSent     Notification[] @relation("NotificationSent")
+  notificationsReceived Notification[] @relation("NotificationReceived")
 }
 
 model Post {
@@ -48,6 +50,7 @@ model Post {
   comments     PostComments[]
   likes        PostLikes[]
   views        PostViews[]
+  NotificationSent  Notification[] @relation("PostNotification")
 }
 
 model PostLikes {
@@ -90,3 +93,24 @@ ip          String?
 userAgent   String?
 @@index([userId, viewedAt])
 }
+
+model Notification {
+  id            Int       @id @default(autoincrement())
+  postId        Int
+  post          Post      @relation("PostNotification", fields: [postId], references:[id])
+  senderId      Int
+  sender        User      @relation("NotificationSent", fields: [senderId], references: [id])
+
+  receivedId    Int
+  received      User      @relation("NotificationReceived", fields: [receivedId], references: [id])
+
+  type          NotificationType
+  hasConfirmed  Boolean   @default(false)
+  createdAt     DateTime  @default(now())
+}
+
+enum NotificationType {
+  comment
+  like
+}
+
