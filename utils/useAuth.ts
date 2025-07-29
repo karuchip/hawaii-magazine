@@ -1,5 +1,5 @@
 "use client"
-import {useState, useEffect} from "react"
+import {useEffect} from "react"
 import {useRouter} from "next/navigation"
 import {jwtVerify} from "jose"
 import { useAuthContext } from "@/context/AuthContext"
@@ -12,10 +12,12 @@ const useAuth = (shouldRedirect = true) => {
     loginUserName,
     loginUserEmail,
     loginUserIcon,
+    isLoggedIn,
     setLoginUserId,
     setLoginUserName,
     setLoginUserEmail,
-    setLoginUserIcon
+    setLoginUserIcon,
+    setIsLoggedIn
   } = useAuthContext()
   const {loading, setLoading} = useAuthContext()
 
@@ -39,6 +41,8 @@ const useAuth = (shouldRedirect = true) => {
         setLoginUserName(payload.name)
         setLoginUserId(payload.id)
         setLoginUserIcon(payload.userIcon)
+        setIsLoggedIn(true)
+
       }catch(error:any) {
         if(error.name === "JWTExpired") {
           console.warn("JWTの有効期限が切れています。ログアウト処理へ。");

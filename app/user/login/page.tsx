@@ -15,7 +15,7 @@ type FormInput = {
 const Login = () => {
 
   const router = useRouter()
-  const {loginUserId, setLoginUserId, setLoginUserName, setLoginUserEmail, setLoginUserIcon} = useAuthContext()
+  const {loginUserId, setLoginUserId, setLoginUserName, setLoginUserEmail, setLoginUserIcon, setIsLoggedIn} = useAuthContext()
   const {register, handleSubmit, formState:{errors, isValid}} = useForm<FormInput>({
     mode: "onChange"
   })
@@ -54,6 +54,7 @@ const Login = () => {
       setLoginUserName(jsonData.payload.name)
       setLoginUserEmail(jsonData.payload.email)
       setLoginUserIcon(jsonData.payload.userIcon)
+      setIsLoggedIn(true)
 
       setLoading(false)
       router.replace(`/readmypage/${jsonData.payload.id}`)
