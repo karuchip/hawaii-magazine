@@ -55,7 +55,12 @@ const Header = () => {
             ):(
               <div className="loginNav">
                 <nav>
-                  <Notification />
+
+                  <div className="notificationContainer">
+                    {/* 通知 */}
+                    <Notification />
+                  </div>
+
                   {loginUserIcon && (
                     <div className="userIconWrapper">
                       <UserIcon width={40} height={40} img={loginUserIcon}/>
