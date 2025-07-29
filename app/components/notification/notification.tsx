@@ -70,22 +70,26 @@ const Notification = () => {
   }
 
   return (
-    <div>
+    <div className="notificationContent">
       {notifications.map((notification) => {
         return (
-          <div key={notification.id}>
-            <img src={notification.post.image1}></img>
+          <div key={notification.id} className="notificationItemContainer">
             <div
-              className="notification-item"
+              className="notificationItemContent"
               onClick={()=>handleClick(notification.hasConfirmed, notification.id)}
             >
-              <p>
-                {notification.sender.name}さんが
-                投稿 「{notification.post.title}」に、
-                {notification.type === 'like' ? 'mahalo!!' : 'コメント'}
-                しました
-              </p>
-              <p>{notification.createdAt.toLocaleString()}</p>
+              <div className="notificationItemImg">
+                <img src={notification.post.image1}></img>
+              </div>
+              <div>
+                <p>
+                  {notification.sender.name}さんが
+                  投稿 「{notification.post.title}」に、
+                  {notification.type === 'like' ? 'mahalo!!' : 'コメント'}
+                  しました
+                </p>
+                <p>{notification.createdAt.toLocaleString()}</p>
+              </div>
             </div>
           </div>
       )})}
