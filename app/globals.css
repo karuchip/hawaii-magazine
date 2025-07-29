@@ -61,6 +61,12 @@ a {
   left: 0;
   z-index: 500;
   transition: transform 0.3s ease-in-out;
+  height: 120px;
+}
+@media screen and (max-width:640px) {
+  .header {
+    height: 80px;
+  }
 }
 .header.hidden {
   transform: translateY(-100%);
@@ -76,7 +82,6 @@ a {
   padding: 20px 20px;
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
 }
 .logoSub {
   font-size: 14px;
@@ -2690,4 +2695,33 @@ p {
 }
 .from-left-fade-in.is-visible::before {
   transform: translateX(100%);
+}
+
+
+/* 通知 */
+.notificationContainer {
+  position: relative;
+}
+.notificationContent {
+  width: 300px;
+  height: 600px;
+  background-color: #f7f5ec;
+  color: #1C2610;
+  padding: 20px;
+  position: absolute;
+  top: 200px;
+  right:0;
+}
+.notificationItemContent {
+  display: flex;
+}
+.notificationItemImg {
+  width: 70px;
+  height: 70px;
+  overflow: hidden;
+}
+.notificationItemImg img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
