@@ -1,6 +1,7 @@
 "use client"
+
 import Link from "next/link"
-import { useState, useEffect } from "react"
+import { useState, useEffect, Suspense } from "react"
 import { useAuthContext } from "../../../context/AuthContext"
 import {Typography, Button} from "@mui/material"
 import UserIcon from "../common/userIcon"
@@ -8,16 +9,40 @@ import CustomizedMenus from "./headerMenuLogin"
 import CustomizedMenusNotLogin from "./headerMenuNotLogin"
 import Notification from "../notification/notification"
 
+// カスタムフック
+import {useFetchNotification} from "@/hooks/useFetchNotification"
+import { useRecoilValue, useSetRecoilState } from "recoil"
+import { notificationListState, notificationLoadedState } from "@/recoil/notificationAtom"
+import Loading from "./loading"
+
 //動的ファイルにて、データの更新時に直に更新する
 export const dynamic = "force-dynamic"
 
 const Header = () => {
-  const {loginUserId, loginUserName, loginUserIcon} = useAuthContext()
   const [showHeader, setShowHeader] = useState(true)
   const [lastScrollY, setLastScrollY] = useState(0)
+  const {loginUserId, loginUserName, loginUserIcon, isLoggedIn} = useAuthContext()
+
+  console.log(loginUserId)
+  // カスタムフックの呼び出し(通知リスト取得)
+  // useFetchNotification()
+
+  try {
+    const isLoaded = useRecoilValue(notificationLoadedState)
+    console.log('isLoaded:', isLoaded)
+  } catch (e) {
+    console.error('RecoilRootが有効でないかも:', e)
+  }
+  // const isLoaded = useRecoilValue(notificationLoadedState)
+
+  // if (!isLoaded) return <p>Loading notifications...</p>;
+
+  // const notifications = useRecoilValue(notificationListState);
+
+
 
   useEffect(() => {
-    const handelScroll = () => {
+    const handleScroll = () => {
       const currentScrollY = window.scrollY
 
       if(currentScrollY > lastScrollY && currentScrollY > 100) {
@@ -29,10 +54,16 @@ const Header = () => {
       setLastScrollY(currentScrollY);
     }
 
-    window.addEventListener('scroll', handelScroll)
-    return () => window.removeEventListener('scroll', handelScroll)
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
 
   }, [lastScrollY])
+
+    // まだ通知が取得できていなければ表示しない
+    // if (!notifications) {
+    //   return <Loading/>
+    // }
+
 
     return (
       <header className={`header ${showHeader ? 'visible' : 'hidden'}`}>
@@ -55,7 +86,12 @@ const Header = () => {
             ):(
               <div className="loginNav">
                 <nav>
-                  <Notification />
+
+                  {/* 通知表示 */}
+                  {/* <Suspense fallback={<Loading/>}>
+                    <Notification />
+                  </Suspense> */}
+
                   {loginUserIcon && (
                     <div className="userIconWrapper">
                       <UserIcon width={40} height={40} img={loginUserIcon}/>

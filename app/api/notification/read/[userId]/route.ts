@@ -5,6 +5,7 @@ export async function GET(request: NextRequest) {
   const url = new URL(request.url)
   const segments = url.pathname.split("/")
   const id = segments[segments.length - 1]
+  console.log(`api側のidは${id}`)
 
   if (!id || isNaN(Number(id))) {
     return NextResponse.json({message: "userIdが正しくありません"})

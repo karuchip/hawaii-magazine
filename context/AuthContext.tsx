@@ -13,6 +13,8 @@ type AuthContextType = {
   setLoginUserIcon: (userIcon: string | null) => void,
   loading: boolean,
   setLoading: React.Dispatch<React.SetStateAction<boolean>>
+  isLoggedIn: boolean,
+  setIsLoggedIn: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 //初期値（ここでは仮の関数を入れる）
@@ -26,7 +28,9 @@ const AuthContext = createContext<AuthContextType> ({
   loginUserIcon: null,
   setLoginUserIcon: () => {},
   loading: true,
-  setLoading: () => {}
+  setLoading: () => {},
+  isLoggedIn: true,
+  setIsLoggedIn: () => {}
 })
 
 
@@ -37,6 +41,7 @@ export const AuthProvider = ({children}:{children: ReactNode}) => {
   const [loginUserEmail, setLoginUserEmail] = useState<string | null>(null)
   const [loginUserIcon, setLoginUserIcon] = useState<string | null>(null)
   const [loading, setLoading] = useState<boolean>(true)
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(true)
 
   return (
     <AuthContext.Provider value={{
@@ -49,7 +54,9 @@ export const AuthProvider = ({children}:{children: ReactNode}) => {
       loginUserIcon,
       setLoginUserIcon,
       loading,
-      setLoading }}>
+      setLoading,
+      isLoggedIn,
+      setIsLoggedIn }}>
 
       {children}
 

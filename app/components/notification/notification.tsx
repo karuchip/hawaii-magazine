@@ -1,48 +1,20 @@
-import { useEffect, useState } from "react";
+"use client"
+
 import { useRouter } from "next/navigation";
 import { useAuthContext } from "@/context/AuthContext";
+import { useRecoilValue} from "recoil";
+import { notificationListState } from "@/recoil/notificationAtom";
+import dayjs from "dayjs";
 
-type FetchedItemType = {
-  id: number;
-  type: 'comment' | 'like';
-  hasConfirmed: boolean;
-  createdAt: Date;
-  post : {
-    id: number;
-    title: string;
-    image1: string;
-  };
-  sender: {
-    id: number;
-    name: string;
-  }
-}
 
 const Notification = () => {
 
-  const [notifications, setNotifications] = useState<FetchedItemType[]>([]);
+  // const [notifications, setNotifications] = useState<FetchedItemType[]>([]);
   const router = useRouter();
-  const { loginUserId } = useAuthContext();
+  const { isLoggedIn } = useAuthContext();
 
-  // 通知の取得
-  useEffect(() => {
-    const fetchNotifications = async () => {
-      console.log(`Fetching notifications for user ID: ${loginUserId}`);
-      try {
-        const response = await fetch(`/api/notification/read/${loginUserId}`);
-        if (!response.ok) {
-          throw new Error('通知の取得に失敗しました');
-        }
-        const notificationData = await response.json();
-
-        setNotifications(notificationData.notificationResult);
-
-      } catch (error) {
-        console.error('Error fetching notifications:', error);
-      }
-    }
-    fetchNotifications();
-  },[])
+  // Atomから通知の取得(/値はheaderにてセット)
+  const notifications = useRecoilValue(notificationListState);
 
   // 通知クリック時の処理 初めて開封する時はDB更新
   const handleClick = async(hasConfirmed:boolean, notificationId: number) => {
@@ -65,7 +37,7 @@ const Notification = () => {
   if(notifications.length === 0) {
     return <p>通知はありません</p>
   }
-  if (!loginUserId) {
+  if (!notifications || !isLoggedIn) {
     return null
   }
 
@@ -74,7 +46,9 @@ const Notification = () => {
       {notifications.map((notification) => {
         return (
           <div key={notification.id}>
-            <img src={notification.post.image1}></img>
+            {notification.post.image1 && (
+              <img src={notification.post.image1}></img>
+            )}
             <div
               className="notification-item"
               onClick={()=>handleClick(notification.hasConfirmed, notification.id)}
@@ -85,7 +59,7 @@ const Notification = () => {
                 {notification.type === 'like' ? 'mahalo!!' : 'コメント'}
                 しました
               </p>
-              <p>{notification.createdAt.toLocaleString()}</p>
+              <p>{dayjs(notification.createdAt).format('YYYY/MM/DD HH:mm')}</p>
             </div>
           </div>
       )})}

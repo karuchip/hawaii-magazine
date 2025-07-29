@@ -15,7 +15,7 @@ type FormInput = {
 }
 
 const Register = () => {
-  const {setLoginUserId, setLoginUserName, setLoginUserEmail, setLoginUserIcon} = useAuthContext()
+  const {setLoginUserId, setLoginUserName, setLoginUserEmail, setLoginUserIcon, setIsLoggedIn} = useAuthContext()
   const router = useRouter()
   const {register, handleSubmit, formState:{errors, isValid}} = useForm<FormInput>({
     mode: "onChange"
@@ -69,6 +69,7 @@ const Register = () => {
           setLoginUserName(jsonData.payload.name)
           setLoginUserEmail(jsonData.payload.email)
           setLoginUserIcon(jsonData.payload.userIcon)
+          setIsLoggedIn(true)
 
           setLoading(false)
           alert("ユーザー登録が完了し、自動ログインしました。")

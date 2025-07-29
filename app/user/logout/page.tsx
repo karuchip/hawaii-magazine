@@ -2,11 +2,10 @@
 import {useEffect, useState} from "react"
 import {useRouter} from "next/navigation"
 import { useAuthContext } from "@/context/AuthContext"
-import loading from "@/app/components/common/loading"
 import Loading from "@/app/components/common/loading"
 
 const Logout = () => {
-  const {setLoginUserId, setLoginUserName, setLoginUserEmail, setLoginUserIcon} = useAuthContext()
+  const {setLoginUserId, setLoginUserName, setLoginUserEmail, setLoginUserIcon, setIsLoggedIn} = useAuthContext()
   const router = useRouter()
   const [loading, setLoading] = useState(false)
 
@@ -16,6 +15,7 @@ const Logout = () => {
     setLoginUserEmail(null)
     setLoginUserName(null)
     setLoginUserIcon(null)
+    setIsLoggedIn(false)
 
     const token = localStorage.getItem("token")
     if (token) {
