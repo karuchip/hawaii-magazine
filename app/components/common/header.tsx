@@ -1,12 +1,16 @@
 "use client"
+"use client"
 import Link from "next/link"
 import { useState, useEffect } from "react"
 import { useAuthContext } from "../../../context/AuthContext"
-import {Typography, Button} from "@mui/material"
+import {Typography} from "@mui/material"
 import UserIcon from "../common/userIcon"
 import CustomizedMenus from "./headerMenuLogin"
 import CustomizedMenusNotLogin from "./headerMenuNotLogin"
 import Notification from "../notification/notification"
+
+import { useRecoilValue } from 'recoil'
+import { notificationAtom } from "@/recoil/notificationAtom"
 
 //動的ファイルにて、データの更新時に直に更新する
 export const dynamic = "force-dynamic"
@@ -15,6 +19,8 @@ const Header = () => {
   const {loginUserId, loginUserName, loginUserIcon} = useAuthContext()
   const [showHeader, setShowHeader] = useState(true)
   const [lastScrollY, setLastScrollY] = useState(0)
+
+  const notifications = useRecoilValue(notificationAtom)
 
   useEffect(() => {
     const handelScroll = () => {
@@ -55,7 +61,10 @@ const Header = () => {
             ):(
               <div className="loginNav">
                 <nav>
+                  {/* 通知 */}
                   <Notification />
+                  {/* <div>通知数: {notifications.length}</div> */}
+
                   {loginUserIcon && (
                     <div className="userIconWrapper">
                       <UserIcon width={40} height={40} img={loginUserIcon}/>
