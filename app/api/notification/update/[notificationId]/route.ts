@@ -2,9 +2,14 @@ import {NextResponse, NextRequest} from "next/server"
 import prisma from "@/utils/prisma"
 
 export async function PUT(request:NextRequest) {
+
+  console.log("apiが呼び出されました")
+
   const url = new URL(request.url)
   const segment = url.pathname.split("/")
   const id = segment[segment.length - 1]
+
+  console.log(id)
 
   if (!id || isNaN(Number(id))) {
     return NextResponse.json({message: "notificationIdが正しくありません"})
