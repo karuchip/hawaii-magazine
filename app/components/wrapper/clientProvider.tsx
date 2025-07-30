@@ -7,21 +7,25 @@ import { AuthInitializer } from "./useAuthProvider";
 import theme from "@/utils/theme";
 import Header from "../common/header";
 import Footer from "../common/footer";
+// jotai
+import { Provider as JotaiProvider} from 'jotai'
 
 export default function ClientProviders({ children }: { children: React.ReactNode }) {
   return (
-    <AuthProvider>
-      <PostProvider>
-        <ThemeProvider theme={theme}>
-          <ScopedCssBaseline>
-            <AuthInitializer>
-              <Header />
-                {children}
-              <Footer />
-            </AuthInitializer>
-          </ScopedCssBaseline>
-        </ThemeProvider>
-      </PostProvider>
-    </AuthProvider>
+    <JotaiProvider>
+      <AuthProvider>
+        <PostProvider>
+          <ThemeProvider theme={theme}>
+            <ScopedCssBaseline>
+              <AuthInitializer>
+                <Header />
+                  {children}
+                <Footer />
+              </AuthInitializer>
+            </ScopedCssBaseline>
+          </ThemeProvider>
+        </PostProvider>
+      </AuthProvider>
+    </JotaiProvider>
   );
 }

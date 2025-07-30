@@ -2703,7 +2703,7 @@ p {
   position: relative;
 }
 .notificationContent {
-  width: 300px;
+  width: 320px;
   height: 600px;
   background-color: #f7f5ec;
   color: #1C2610;
@@ -2724,4 +2724,10 @@ p {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+.newNotification {
+  width: 20px;
+  height: 20px;
+  border-radius: 5px;
+  background-color:#7fe8ff
 }

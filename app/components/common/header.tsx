@@ -58,7 +58,7 @@ const Header = () => {
 
                   <div className="notificationContainer">
                     {/* 通知 */}
-                    <Notification />
+                    <Notification loginUserId = {loginUserId}/>
                   </div>
 
                   {loginUserIcon && (

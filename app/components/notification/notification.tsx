@@ -1,57 +1,60 @@
+'use client'
+
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { useAuthContext } from "@/context/AuthContext";
+import dayjs from "dayjs";
+import {NotificationType} from "@/utils/types/notification"
 
-type FetchedItemType = {
-  id: number;
-  type: 'comment' | 'like';
-  hasConfirmed: boolean;
-  createdAt: Date;
-  post : {
-    id: number;
-    title: string;
-    image1: string;
-  };
-  sender: {
-    id: number;
-    name: string;
-  }
-}
+// jotai
+import { useAtom } from "jotai";
+import {notificationAtom} from "@/utils/notification/notificationAtom"
+import { FetchNotifications } from "@/utils/notification/fetchNotifications";
 
-const Notification = () => {
 
-  const [notifications, setNotifications] = useState<FetchedItemType[]>([]);
+const Notification = ({loginUserId}: {loginUserId:string}) => {
+
+  // const [notifications, setNotifications] = useState<FetchedItemType[]>([]);
+  const [notifications, setNotifications] = useAtom(notificationAtom)
   const router = useRouter();
-  const { loginUserId } = useAuthContext();
 
-  // 通知の取得
+  // 通知の取得 (とりあえずポーリングで定期的にfetch)
   useEffect(() => {
-    const fetchNotifications = async () => {
-      console.log(`Fetching notifications for user ID: ${loginUserId}`);
+    const fetchNotificationsData = async () => {
       try {
-        const response = await fetch(`/api/notification/read/${loginUserId}`);
-        if (!response.ok) {
-          throw new Error('通知の取得に失敗しました');
-        }
-        const notificationData = await response.json();
-
-        setNotifications(notificationData.notificationResult);
-
+          const data:NotificationType[] = await FetchNotifications(loginUserId)
+          setNotifications(data);
+          console.log('Fetched notifications:', data);
       } catch (error) {
         console.error('Error fetching notifications:', error);
       }
     }
-    fetchNotifications();
-  },[])
+
+    if (notifications.length === 0) {
+      fetchNotificationsData();
+    }
+  },[notifications])
 
   // 通知クリック時の処理 初めて開封する時はDB更新
   const handleClick = async(hasConfirmed:boolean, notificationId: number) => {
     if (hasConfirmed === false) {
       try {
-        const updateResponse = await fetch(`/api/notification/update/${notificationId}`)
+        const updateResponse = await fetch(`/api/notification/update/${notificationId}`, {
+          method: "PUT",
+          headers: {
+            "Accept": "application/json",
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${localStorage.getItem("token")}`
+          },
+        })
         if (!updateResponse.ok) {
           console.error('通知の更新に失敗しました');
         } else {
+          // 通知状態をローカル(jotai)に反映
+          setNotifications((prev) =>
+            prev.map((n)=>
+              n.id === notificationId ? {...n, hasConfirmed: true} : n
+            )
+          )
           router.push(`/post/readsingle/${notificationId}`)
         }
       }catch (error) {
@@ -71,13 +74,18 @@ const Notification = () => {
 
   return (
     <div className="notificationContent">
-      {notifications.map((notification) => {
+      {notifications
+      .slice()
+      .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
+      .map((notification) => {
+        const createdAtFormatted = dayjs(new Date(notification.createdAt)).format("YYYY/MM/DD")
         return (
           <div key={notification.id} className="notificationItemContainer">
             <div
               className="notificationItemContent"
               onClick={()=>handleClick(notification.hasConfirmed, notification.id)}
             >
+              {!notification.hasConfirmed && <div className="newNotification"></div>}
               <div className="notificationItemImg">
                 <img src={notification.post.image1}></img>
               </div>
@@ -88,7 +96,7 @@ const Notification = () => {
                   {notification.type === 'like' ? 'mahalo!!' : 'コメント'}
                   しました
                 </p>
-                <p>{notification.createdAt.toLocaleString()}</p>
+                <p>{createdAtFormatted}</p>
               </div>
             </div>
           </div>
