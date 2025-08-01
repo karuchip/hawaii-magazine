@@ -82,25 +82,24 @@ a {
   padding: 20px 20px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 .logoSub {
   font-size: 14px;
 }
 .headerRight {
-  text-align: right;
-}
-.headerRight a {
-  margin: 0 10px;
-  color: #fff;
-  display: inline-block;
+  width: fit-content;
+  position: relative;
 }
 .notLoginNav {
   display: flex;
   align-items: flex-end;
+  gap: 20px;
 }
 .notLoginNav a {
   border-bottom: 1px solid #fff;
   margin-bottom: 15px;
+  color: #fff;
 }
 @media screen and (max-width: 710px) {
   .headerRight a {
@@ -116,17 +115,27 @@ a {
 .loginNav {
   display: flex;
   padding: 0;
+  width: fit-content;
+  gap: 20px;
+  align-items: center;
+}
+@media screen and (max-width: 640px) {
+  .loginNav {
+    gap: 10px;
+  }
 }
 .userIconWrapper {
-  position: relative;
+  width: fit-content;
 }
-.userIconWrapper p {
-  font-size: 12px;
-  position: absolute;
-  width: 60px;
-  top: 45px;
-  left: -10px;
+@media screen and (max-width: 400px) {
+  .loginNav {
+    gap: 0px;
+  }
+  .userIconWrapper {
+    display: none;
+  }
 }
+
 
 @media screen and (max-width: 640px) {
   .headerLogo {
@@ -210,18 +219,18 @@ footer {
 /* <BottomMenu /> */
 .bottomMenuContainer {
   position: fixed;
-  bottom: 0;
+  bottom: -3px;
   left: 0;
   z-index: 300;
   width: 100%;
-  height: 60px;
+  height: 80px;
 }
 /* (bottomMenu.tsx) */
 .bottomMenuContent {
   display: flex;
   justify-content: center;
   width: 100%;
-  height: 60px;
+  height: 80px;
   border-top: 0.5px solid #59662684;
 }
 .bottomMenuContent li {
@@ -2702,21 +2711,70 @@ p {
 .notificationContainer {
   position: relative;
 }
-.notificationContent {
+.notificationIcon {
+  width: 50px;
+  display: flex;
+}
+.notificationIcon:hover {
+  color: #e0dfdf;
+}
+@media screen and (max-width:400px) {
+  .notificationIcon {
+    width: 40px;
+}
+}
+.notificationBox {
   width: 320px;
   height: 600px;
   background-color: #f7f5ec;
   color: #1C2610;
-  padding: 20px;
+  padding: 20px 30px 20px 20px;
   position: absolute;
-  top: 200px;
-  right:0;
+  top: 90px;
+  left: -120px;
+  text-align: left;
+}
+@media screen and (max-width:640px) {
+  .notificationBox {
+    top: 60px;
+    left: -136px;
+  }
+}
+@media screen and (max-width:400px) {
+  .notificationBox {
+    left: -204px;
+  }
+}
+.notificationItemContainer {
+  margin-bottom: 10px;
+}
+.notificationTitleContainer {
+  display: flex;
+  justify-content: space-between;
+}
+.notificationTitleContainer h3{
+  margin: 0;
+}
+
+.noNotification {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+}
+
+.notificationContent {
+  height: 520px;
+  overflow: scroll;
 }
 .notificationItemContent {
   display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 10px 0;
 }
 .notificationItemImg {
-  width: 70px;
+  width: 50px;
   height: 70px;
   overflow: hidden;
 }
@@ -2725,9 +2783,36 @@ p {
   height: 100%;
   object-fit: cover;
 }
+.notificationItemDescription {
+  width: 220px;
+  font-size: 14px;
+}
+.notificationItemDay {
+  display: flex;
+  justify-content: end;
+  color: #606060;
+}
+.notificationItemMessage {
+  font-weight: 700;
+  font-size: 14px;
+  word-break: break-word;
+  line-height: 1.5;
+}
+.newNotificationContainer {
+  width: 15px;
+  height: 15px;
+}
 .newNotification {
-  width: 20px;
-  height: 20px;
-  border-radius: 5px;
-  background-color:#7fe8ff
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color:#01b6fd;
+  border: 2px solid #fff;
+}
+.notificationNotSeen {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color:#01b6fd;
+  border: 1px solid #fff;
 }

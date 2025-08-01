@@ -73,7 +73,7 @@ export default function CustomizedMenusNotLogin({loginUserName, loginUserId}:Pro
   };
 
   return (
-    <div>
+    <div style={{width: "70px"}}>
       <Button
         id="demo-customized-button"
         aria-controls={open ? 'demo-customized-menu' : undefined}
@@ -82,10 +82,10 @@ export default function CustomizedMenusNotLogin({loginUserName, loginUserId}:Pro
         variant="contained"
         disableElevation
         onClick={handleClick}
-        sx={{backgroundColor:"transparent", mt:"10px", ml:"15px", padding:"0"}}
+        sx={{backgroundColor:"transparent", padding:"0", width: "fitContent"}}
       >
         <label className='WidgetsIcon'>
-          <MenuIcon sx={{fontSize:"40px"}}/>
+          <MenuIcon sx={{fontSize:"40px", marginTop:"7px"}}/>
         </label>
       </Button>
       <StyledMenu
