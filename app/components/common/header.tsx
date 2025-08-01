@@ -13,8 +13,10 @@ export const dynamic = "force-dynamic"
 
 const Header = () => {
   const {loginUserId, loginUserName, loginUserIcon} = useAuthContext()
-  const [showHeader, setShowHeader] = useState(true)
-  const [lastScrollY, setLastScrollY] = useState(0)
+
+  const [showHeader, setShowHeader] = useState<boolean>(true)
+  const [lastScrollY, setLastScrollY] = useState<number>(0)
+
 
   useEffect(() => {
     const handelScroll = () => {
@@ -53,18 +55,17 @@ const Header = () => {
                 </nav>
               </>
             ):(
-              <div className="loginNav">
-                <nav>
+              <div>
+                <nav className="loginNav">
 
                   <div className="notificationContainer">
                     {/* 通知 */}
-                    <Notification loginUserId = {loginUserId}/>
+                    <Notification/>
                   </div>
 
                   {loginUserIcon && (
                     <div className="userIconWrapper">
                       <UserIcon width={40} height={40} img={loginUserIcon}/>
-                      <p>ログイン中</p>
                     </div>
                   )}
                   {loginUserName && loginUserId &&(

@@ -6,7 +6,7 @@ const config: JestConfigWithTsJest = {
   preset: 'ts-jest',
   testEnvironment: 'jsdom',
   verbose: true,
-  setupFilesAfterEnv: ['<rootDir>/jest.setup.js'], // ある場合（あとで説明）
+  setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
  moduleNameMapper: {
     ...pathsToModuleNameMapper(compilerOptions.paths, { prefix: '<rootDir>/' }),
     '\\.(css|scss)$': 'identity-obj-proxy',
@@ -15,7 +15,16 @@ const config: JestConfigWithTsJest = {
   transform: {
     '^.+\\.(ts|tsx)$': 'ts-jest',
   },
+  transformIgnorePatterns: [
+    '/node_modules/(?!(jotai)/)', // jotai を除外せずトランスパイルする
+  ],
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
+  globals: {
+    'ts-jest' : {
+      tsconfig: 'tsconfig.json',
+      useESM: false,
+    },
+  },
 }
 
 export default config

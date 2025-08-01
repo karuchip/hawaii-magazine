@@ -1,14 +1,6 @@
 
 import "../app/globals.css"
 import { ReactNode } from "react"
-import Header from "./components/common/header"
-import Footer from "./components/common/footer"
-import { AuthProvider } from "../context/AuthContext"
-import { PostProvider } from "@/context/PostContext"
-import useAuth from "@/utils/useAuth"
-import ScopedCssBaseline from "@mui/material/ScopedCssBaseline"
-import { ThemeProvider } from '@mui/material/styles'
-import theme from "@/utils/theme"
 import '@fontsource/kaushan-script';
 import '@fontsource/playfair';
 import '@fontsource/inter/300.css';

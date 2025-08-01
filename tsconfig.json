@@ -15,7 +15,7 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "module": "ESNext",
-    "target": "ESNext",
+    "target": "ES6",
     "incremental": true,
     "plugins": [
       {
@@ -31,7 +31,7 @@
       "jest",
       "@testing-library/jest-dom"
     ],
-    "baseUrl": "."
+    "baseUrl": "./"
   },
   "include": [
     "next-env.d.ts",
