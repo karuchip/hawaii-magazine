@@ -63,7 +63,7 @@ const ReadSingleItem = ({singleItem, postId, nearPosts}:Props) => {
             {/* likeボタン */}
             {loginUserId && (
               <div className="likePosition">
-                <LikeCount likeCount={singleItem.likeCount} id={postId}/>
+                <LikeCount likeCount={singleItem.likeCount} id={postId} authorId={Number(singleItem.author.id)}/>
               </div>
             )}
 
@@ -97,7 +97,7 @@ const ReadSingleItem = ({singleItem, postId, nearPosts}:Props) => {
                 <div className="horizontalLineMedium"><span></span></div>
               </div>
               <Suspense fallback={<div>コメントを読み込み中...</div>}>
-                <Comment postId={singleItem.id}/>
+                <Comment postId={singleItem.id} authorId={singleItem.author.id}/>
               </Suspense>
             </div>
           </div>

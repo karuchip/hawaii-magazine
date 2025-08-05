@@ -17,14 +17,14 @@ const BottomMenu = ({loginUserId}:Props) => {
         {/* ホーム画面 */}
         <li>
           <Link href="/">
-            <HomeIcon sx={{fontSize:"26px"}}/>
+            <HomeIcon sx={{fontSize:"32px"}}/>
           </Link>
         </li>
 
         {/* 記事一覧 */}
         <li>
           <Link href="/post/readAll">
-            <ViewCarouselIcon sx={{fontSize:"26px"}}/>
+            <ViewCarouselIcon sx={{fontSize:"32px"}}/>
           </Link>
         </li>
 
@@ -32,14 +32,14 @@ const BottomMenu = ({loginUserId}:Props) => {
         {/* 投稿する */}
         <li>
           <Link href="/post/create">
-            <AddCircleOutlineIcon sx={{fontSize:"26px"}}/>
+            <AddCircleOutlineIcon sx={{fontSize:"32px"}}/>
           </Link>
         </li>
 
         {/* マイページ */}
         <li>
           <Link href={`/readmypage/${loginUserId}`}>
-            <AccountCircleIcon sx={{fontSize:"26px"}}/>
+            <AccountCircleIcon sx={{fontSize:"32px"}}/>
           </Link>
         </li>
 

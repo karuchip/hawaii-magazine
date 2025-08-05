@@ -34,7 +34,7 @@ const ReadMypage = ({myPageInf, myPagePost}:Props) => {
       <div className='myPageContainer'>
         <div className='myPageContent'>
           <div className='profileContent'>
-            <Typography variant="h2" sx={{ fontFamily: '"Kaushan Script", cursive', fontSize:32, color:"#626161", mb:2}}>
+            <Typography variant="h3" sx={{ fontFamily: '"Kaushan Script", cursive', fontSize:32, color:"#626161", mb:2}}>
               Profile
             </Typography>
             <div className="horizontalLineLight"><span></span></div>

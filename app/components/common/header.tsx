@@ -6,14 +6,17 @@ import {Typography, Button} from "@mui/material"
 import UserIcon from "../common/userIcon"
 import CustomizedMenus from "./headerMenuLogin"
 import CustomizedMenusNotLogin from "./headerMenuNotLogin"
+import Notification from "../notification/notification"
 
 //動的ファイルにて、データの更新時に直に更新する
 export const dynamic = "force-dynamic"
 
 const Header = () => {
   const {loginUserId, loginUserName, loginUserIcon} = useAuthContext()
-  const [showHeader, setShowHeader] = useState(true)
-  const [lastScrollY, setLastScrollY] = useState(0)
+
+  const [showHeader, setShowHeader] = useState<boolean>(true)
+  const [lastScrollY, setLastScrollY] = useState<number>(0)
+
 
   useEffect(() => {
     const handelScroll = () => {
@@ -52,17 +55,24 @@ const Header = () => {
                 </nav>
               </>
             ):(
-              <nav className="loginNav">
-                {loginUserIcon && (
-                  <div className="userIconWrapper">
-                    <UserIcon width={40} height={40} img={loginUserIcon}/>
-                    <p>ログイン中</p>
+              <div>
+                <nav className="loginNav">
+
+                  <div className="notificationContainer">
+                    {/* 通知 */}
+                    <Notification/>
                   </div>
-                )}
-                {loginUserName && loginUserId &&(
-                  <CustomizedMenus loginUserName={loginUserName} loginUserId={loginUserId}></CustomizedMenus>
-                )}
+
+                  {loginUserIcon && (
+                    <div className="userIconWrapper">
+                      <UserIcon width={40} height={40} img={loginUserIcon}/>
+                    </div>
+                  )}
+                  {loginUserName && loginUserId &&(
+                    <CustomizedMenus loginUserName={loginUserName} loginUserId={loginUserId}></CustomizedMenus>
+                  )}
               </nav>
+            </div>
             )}
           </div>
         </div>
