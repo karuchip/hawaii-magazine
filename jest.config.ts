@@ -13,7 +13,7 @@ const config: JestConfigWithTsJest = {
     '\\.(jpg|jpeg|png|gif|svg)$': '<rootDir>/__mocks__/fileMock.js',
   },
   transform: {
-    '^.+\\.(ts|tsx)$': 'ts-jest',
+    '^.+\\.(js|jsx|ts|tsx)$': 'babel-jest',
   },
   transformIgnorePatterns: [
     '/node_modules/(?!(jotai)/)', // jotai を除外せずトランスパイルする

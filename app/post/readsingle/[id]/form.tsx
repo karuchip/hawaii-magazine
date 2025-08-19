@@ -12,7 +12,12 @@ import BottomMenu from "@/app/components/common/bottomMenu"
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import ShareButtons from "@/app/components/share/shareButton"
+import { GetSingleItem } from "@/utils/getSingleItem"
+import { Metadata } from "next"
 
+
+// 型定義
 type PostWidthDistance = AllItemTypes & {distance: number}
 
 type Props = {
@@ -21,6 +26,46 @@ type Props = {
   nearPosts: PostWidthDistance[];
 }
 
+
+// 動的にOPGを生成
+export async function generateMetadata({params}: any): Promise<Metadata> {
+  const singleItem = await GetSingleItem(params.id);
+
+  if(!singleItem) {
+    return {
+      title: "投稿が見つかりませんでした",
+      description: "指定された投稿は存在しません"
+    };
+  }
+
+  return {
+    title: singleItem.title,
+    description: "あの瞬間をもう一度。ハワイで出会ったとっておきの景色を集めよう",
+    openGraph: {
+      title: singleItem.title ?? "タイトル",
+      description: singleItem.description1 ?? "あの瞬間をもう一度。ハワイで出会ったとっておきの景色を集めよう",
+      url: `https://hawaii-magazine.vercel.app/post/readsingle/${singleItem.id}`,
+      type: "article",
+      images: [
+        {
+          url: singleItem.image1 ?? "画像",
+          width: 1200,
+          height: 600,
+          alt: singleItem.title ?? "タイトル",
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: singleItem.title ?? "タイトル",
+      description: singleItem.description1 ?? "あの瞬間をもう一度。ハワイで出会ったとっておきの景色を集めよう",
+      images: [singleItem.image1 ?? ""],
+    }
+  }
+}
+
+
+// 投稿表示部分
 const ReadSingleItem = ({singleItem, postId, nearPosts}:Props) => {
   const {loginUserId, loginUserIcon} = useAuthContext()
 
@@ -60,6 +105,8 @@ const ReadSingleItem = ({singleItem, postId, nearPosts}:Props) => {
               )}
             </div>
 
+
+
             {/* likeボタン */}
             {loginUserId && (
               <div className="likePosition">
@@ -91,15 +138,30 @@ const ReadSingleItem = ({singleItem, postId, nearPosts}:Props) => {
 
 
             {/* 記事コメント読み込み */}
-            <div>
-              <div className="commentContainer">
+            <section className="commentContainer">
+              <div>
                 <h2 className="commentLabel en">Comments</h2>
                 <div className="horizontalLineMedium"><span></span></div>
               </div>
               <Suspense fallback={<div>コメントを読み込み中...</div>}>
                 <Comment postId={singleItem.id} authorId={singleItem.author.id}/>
               </Suspense>
-            </div>
+            </section>
+
+            {/* シェア */}
+            <section className="shareContainer">
+              <div>
+                <h2 className="commentLabel en">Share</h2>
+                <div className="horizontalLineMedium"><span></span></div>
+              </div>
+              {singleItem.title && singleItem.author.name && (
+                <ShareButtons
+                  url={`https://hawaii-magazine.vercel.app/post/readsingle/${singleItem.id}`}
+                  title={singleItem.title}
+                  author={singleItem.author.name}
+                />
+              )}
+            </section>
           </div>
 
 
