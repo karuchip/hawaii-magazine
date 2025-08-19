@@ -526,7 +526,7 @@ footer {
 .secondHeaderLinkContainer {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 60px;
+  margin-bottom: 80px;
   margin-top: 0;
 }
 @media screen and (max-width: 640px) {
@@ -556,7 +556,7 @@ footer {
 }
 @media screen and (max-width: 640px) {
   .secondHeaderLinkContainer {
-    margin-bottom: 40px;
+    margin-bottom: 60px;
   }
   .secondHeaderLink {
     font-size: 12px;
@@ -729,6 +729,9 @@ footer {
   margin-bottom: 32px;
 }
 @media screen and (max-width: 640px) {
+  .locationContainer {
+    margin-bottom: 80px;
+  }
   .locationName {
     margin-top: 40px;
   }
@@ -742,6 +745,14 @@ footer {
   margin-top: 32px;
 }
 /* コメント */
+.commentContainer {
+ margin-bottom: 140px;
+}
+@media screen and (max-width:640px) {
+  .commentContainer {
+    margin-bottom: 80px;
+  }
+}
 .commentLabel {
   font-size: 32px;
   font-weight: 500;
@@ -769,7 +780,7 @@ footer {
 .commentContent {
   display: flex;
   gap: 20px;
-  padding: 20px 0;
+  padding: 10px 0;
   align-items: center;
 }
 .commentDescription {
@@ -868,6 +879,25 @@ footer {
     width: 100%;
   }
 }
+
+/* 記事shareボタン */
+.shareContainer {
+  margin-bottom: 40px;
+}
+@media screen and (max-width: 640px) {
+  .shareContainer {
+    margin-bottom: 80px;
+  }
+}
+/* (/components/share.shareButton.tsx) */
+.shareButtons {
+  display: flex;
+}
+.shareButton {
+  margin:30px 20px;
+}
+
+
 /* 記事リンクボタン */
 .singlePageLink {
   border: 1px solid #000;
