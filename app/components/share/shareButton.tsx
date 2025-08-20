@@ -2,7 +2,7 @@
 
 import {
   TwitterShareButton,
-  TwitterIcon,
+  XIcon,
   LineShareButton,
   LineIcon
 } from "react-share"
@@ -21,7 +21,7 @@ export default function ShareButtons({url, title,  author}: Props) {
       {/* X(Twitter) */}
       <div className="shareButton">
         <TwitterShareButton url={url} title={shareText}>
-          <TwitterIcon size={40} round />
+          <XIcon size={40} round />
         </TwitterShareButton>
       </div>
 

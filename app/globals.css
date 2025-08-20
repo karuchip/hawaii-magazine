@@ -2374,11 +2374,11 @@ p {
 
 /* Conceptセクション */
 .homeConcept {
-  padding: 50px 0 100px 0;
+  padding: 100px 0 100px 0;
 }
 .homeConcept h3 {
   font-size: 26px;
-  color: #f2ca95;
+  color: #1c2610;
   width: fit-content;
   margin: 0px auto;
   padding: 20px;
@@ -2390,7 +2390,7 @@ p {
 }
 @media screen and (max-width: 640px) {
   .homeConcept {
-    padding: 50px 0;
+    padding: 100px 100px;
   }
   .homeConcept h3 {
     font-size: 18px;
@@ -2405,11 +2405,13 @@ p {
 /* Features 帯 (アニメーション2と連動)*/
 .homeFeaturesBelt {
   width: 100%;
-  background-color: rgba(156, 153, 124, 0.13);
+  background-color: #f2ca95;
 }
 .homeFeaturesBelt p {
   font-size: 96px;
-  color: #f2ca95;
+  top: 0;
+  /* color: #f2ca95; */
+  color: #fff;
   padding: 0 10px;
   font-weight: 700;
 }
@@ -2421,10 +2423,11 @@ p {
 
 /* Create Articleセクション */
 .homeCreateArticle {
-  padding: 50px 0 100px 0;
+  padding: 50px 0 150px 0;
+  background-color: rgba(156, 153, 124, 0.13);
 }
 .homeCreateArticle h2 {
-  color: #f2ca95;
+  color: #e8a348;
 }
 .homeCreateArticleImg {
   width: 1000px;
@@ -2432,7 +2435,7 @@ p {
 }
 @media screen and (max-width: 1100px) {
   .homeCreateArticle {
-    padding: 50px 0;
+    padding: 50px 20px 80px 20px;
   }
   .homeCreateArticleImg {
     width: 100%;
@@ -2447,11 +2450,12 @@ p {
 
 /* Ranking セクション */
 .homeRanking {
-  padding: 50px 0 100px 0;
-  background-color: rgba(156, 153, 124, 0.13);
+  padding: 100px 0 150px 0;
+  /* background-color: rgba(156, 153, 124, 0.13); */
+  background-color: #fff;
 }
 .homeRanking h2 {
-  color: #f2ca95;
+  color: #e8a348;
 }
 .homeRanking p {
   margin-bottom: 0;
@@ -2461,7 +2465,7 @@ p {
 }
 @media screen and (max-width: 640px) {
   .homeRanking {
-    padding: 50px 0;
+    padding: 50px 0 80px 0;
   }
   .homeRankingLink {
     margin: 60px 30px 0 auto;
@@ -2480,13 +2484,13 @@ p {
 .rankingHeader1 {
   font-size: 28px;
   font-weight: 700;
-  color: #f2ca95;
+  color: #e8a348;
   width: fit-content;
   margin: 0 auto;
   margin-top: 10px;
 }
 .rankingHeader2 {
-  background-color: #f2ca95;
+  background-color: #e8a348;
   color: #fff;
   padding: 0 5px;
   font-weight: 700;
@@ -2506,14 +2510,15 @@ p {
 
 /* 人気ユーザー表示　Spotlight Users */
 .homeSpotlightUsers {
-  padding: 50px 0 100px 0;
+  padding: 100px 0 150px 0;
+  background-color: rgba(156, 153, 124, 0.13);
 }
 .homeSpotlightUsers h2 {
-  color: #f2ca95;
+  color: #e8a348;
 }
 @media screen and (max-width: 640px) {
   .homeSpotlightUsers {
-    padding: 50px 0;
+    padding: 50px 0 80px 0;
   }
 }
 /* (/components/popularUser.tsx) */
@@ -2545,7 +2550,7 @@ p {
   margin-bottom: 20px;
 }
 .popularUserViews p {
-  background-color: #f2ca95;
+  background-color: #e8a348;
   color: #fff !important;
   padding: 0 5px;
   font-weight: 700;
@@ -2562,15 +2567,16 @@ p {
 
 /* From Mapセクション */
 .homeFromMap {
-  padding: 50px 0 100px 0;
-  background-color: rgba(156, 153, 124, 0.13);
+  padding: 100px 0 150px 0;
+  /* background-color: rgba(156, 153, 124, 0.13); */
+  background-color: #fff;
 }
 .homeFromMap h2 {
-  color: #f2ca95;
+  color: #e8a348;
 }
 @media screen and (max-width: 640px) {
   .homeFromMap {
-    padding: 50px 0;
+    padding: 50px 0 80px 0;
   }
 }
 .homeFromMapImg {
@@ -2630,11 +2636,12 @@ p {
 
 /* View All Articlesセクション */
 .homeViewAllArticles {
-  padding: 50px 0 100px 0;
+  padding: 100px 0 150px 0;
+  background-color: rgba(156, 153, 124, 0.13);
 }
 @media screen and (max-width: 640px) {
   .homeViewAllArticles {
-    padding: 50px 0;
+    padding: 50px 0 80px 0;
   }
 }
 .homeViewAllBackground {
