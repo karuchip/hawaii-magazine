@@ -13,6 +13,7 @@ import PopularUserSection from "./components/home/popularUser"
 import FadeInSection from "./components/animation/FadeInSection"
 import KeyboardDoubleArrowDownIcon from '@mui/icons-material/KeyboardDoubleArrowDown';
 import FromLeftFadeInSection from "./components/animation/fromLeftFadeInSection"
+import FeaturesBelt from "./components/animation/HomeFeaturesBelt"
 
 
 export const dynamic = "force-dynamic"
@@ -59,6 +60,7 @@ const ReadAllItemsInner = () => {
               <p className="en text-mask">Features</p>
             </div>
           </FromLeftFadeInSection>
+
 
           {/* Create Articleセクション */}
           <section className="homeCreateArticle">
