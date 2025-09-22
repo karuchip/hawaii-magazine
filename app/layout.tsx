@@ -21,6 +21,7 @@ const RootLayout = ({children}:{children:ReactNode}) => {
               src={`https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_API_KEY}&libraries=places`}
               strategy="beforeInteractive"
               />
+        <script src="https://analytics.ahrefs.com/analytics.js" data-key="iMXjTqC5lQPIo58Hl1s4GA" async></script>
       </head>
       <body>
         <ClientProviders>
