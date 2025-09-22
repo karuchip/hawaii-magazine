@@ -15,6 +15,7 @@ model User {
   password              String         @db.VarChar(100)
   userIcon              String
   userProfile           String?        @db.VarChar(300)
+  admin                 Boolean        @default(false)
   posts                 Post[]
   postComments          PostComments[]
   postLikes             PostLikes[]

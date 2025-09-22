@@ -1592,6 +1592,7 @@ export namespace Prisma {
     password: string | null
     userIcon: string | null
     userProfile: string | null
+    admin: boolean | null
   }
 
   export type UserMaxAggregateOutputType = {
@@ -1601,6 +1602,7 @@ export namespace Prisma {
     password: string | null
     userIcon: string | null
     userProfile: string | null
+    admin: boolean | null
   }
 
   export type UserCountAggregateOutputType = {
@@ -1610,6 +1612,7 @@ export namespace Prisma {
     password: number
     userIcon: number
     userProfile: number
+    admin: number
     _all: number
   }
 
@@ -1629,6 +1632,7 @@ export namespace Prisma {
     password?: true
     userIcon?: true
     userProfile?: true
+    admin?: true
   }
 
   export type UserMaxAggregateInputType = {
@@ -1638,6 +1642,7 @@ export namespace Prisma {
     password?: true
     userIcon?: true
     userProfile?: true
+    admin?: true
   }
 
   export type UserCountAggregateInputType = {
@@ -1647,6 +1652,7 @@ export namespace Prisma {
     password?: true
     userIcon?: true
     userProfile?: true
+    admin?: true
     _all?: true
   }
 
@@ -1743,6 +1749,7 @@ export namespace Prisma {
     password: string
     userIcon: string
     userProfile: string | null
+    admin: boolean
     _count: UserCountAggregateOutputType | null
     _avg: UserAvgAggregateOutputType | null
     _sum: UserSumAggregateOutputType | null
@@ -1771,6 +1778,7 @@ export namespace Prisma {
     password?: boolean
     userIcon?: boolean
     userProfile?: boolean
+    admin?: boolean
     posts?: boolean | User$postsArgs<ExtArgs>
     postComments?: boolean | User$postCommentsArgs<ExtArgs>
     postLikes?: boolean | User$postLikesArgs<ExtArgs>
@@ -1787,6 +1795,7 @@ export namespace Prisma {
     password?: boolean
     userIcon?: boolean
     userProfile?: boolean
+    admin?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -1796,6 +1805,7 @@ export namespace Prisma {
     password?: boolean
     userIcon?: boolean
     userProfile?: boolean
+    admin?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectScalar = {
@@ -1805,9 +1815,10 @@ export namespace Prisma {
     password?: boolean
     userIcon?: boolean
     userProfile?: boolean
+    admin?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "name" | "password" | "userIcon" | "userProfile", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "name" | "password" | "userIcon" | "userProfile" | "admin", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     posts?: boolean | User$postsArgs<ExtArgs>
     postComments?: boolean | User$postCommentsArgs<ExtArgs>
@@ -1837,6 +1848,7 @@ export namespace Prisma {
       password: string
       userIcon: string
       userProfile: string | null
+      admin: boolean
     }, ExtArgs["result"]["user"]>
     composites: {}
   }
@@ -2272,6 +2284,7 @@ export namespace Prisma {
     readonly password: FieldRef<"User", 'String'>
     readonly userIcon: FieldRef<"User", 'String'>
     readonly userProfile: FieldRef<"User", 'String'>
+    readonly admin: FieldRef<"User", 'Boolean'>
   }
     
 
@@ -9826,7 +9839,8 @@ export namespace Prisma {
     name: 'name',
     password: 'password',
     userIcon: 'userIcon',
-    userProfile: 'userProfile'
+    userProfile: 'userProfile',
+    admin: 'admin'
   };
 
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -9974,6 +9988,13 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'Boolean'
+   */
+  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
+    
+
+
+  /**
    * Reference to a field of type 'DateTime'
    */
   export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
@@ -9998,13 +10019,6 @@ export namespace Prisma {
    * Reference to a field of type 'Float[]'
    */
   export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
-    
-
-
-  /**
-   * Reference to a field of type 'Boolean'
-   */
-  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
     
 
 
@@ -10035,6 +10049,7 @@ export namespace Prisma {
     password?: StringFilter<"User"> | string
     userIcon?: StringFilter<"User"> | string
     userProfile?: StringNullableFilter<"User"> | string | null
+    admin?: BoolFilter<"User"> | boolean
     posts?: PostListRelationFilter
     postComments?: PostCommentsListRelationFilter
     postLikes?: PostLikesListRelationFilter
@@ -10050,6 +10065,7 @@ export namespace Prisma {
     password?: SortOrder
     userIcon?: SortOrder
     userProfile?: SortOrderInput | SortOrder
+    admin?: SortOrder
     posts?: PostOrderByRelationAggregateInput
     postComments?: PostCommentsOrderByRelationAggregateInput
     postLikes?: PostLikesOrderByRelationAggregateInput
@@ -10068,6 +10084,7 @@ export namespace Prisma {
     password?: StringFilter<"User"> | string
     userIcon?: StringFilter<"User"> | string
     userProfile?: StringNullableFilter<"User"> | string | null
+    admin?: BoolFilter<"User"> | boolean
     posts?: PostListRelationFilter
     postComments?: PostCommentsListRelationFilter
     postLikes?: PostLikesListRelationFilter
@@ -10083,6 +10100,7 @@ export namespace Prisma {
     password?: SortOrder
     userIcon?: SortOrder
     userProfile?: SortOrderInput | SortOrder
+    admin?: SortOrder
     _count?: UserCountOrderByAggregateInput
     _avg?: UserAvgOrderByAggregateInput
     _max?: UserMaxOrderByAggregateInput
@@ -10100,6 +10118,7 @@ export namespace Prisma {
     password?: StringWithAggregatesFilter<"User"> | string
     userIcon?: StringWithAggregatesFilter<"User"> | string
     userProfile?: StringNullableWithAggregatesFilter<"User"> | string | null
+    admin?: BoolWithAggregatesFilter<"User"> | boolean
   }
 
   export type PostWhereInput = {
@@ -10565,6 +10584,7 @@ export namespace Prisma {
     password: string
     userIcon: string
     userProfile?: string | null
+    admin?: boolean
     posts?: PostCreateNestedManyWithoutAuthorInput
     postComments?: PostCommentsCreateNestedManyWithoutUserInput
     postLikes?: PostLikesCreateNestedManyWithoutUserInput
@@ -10580,6 +10600,7 @@ export namespace Prisma {
     password: string
     userIcon: string
     userProfile?: string | null
+    admin?: boolean
     posts?: PostUncheckedCreateNestedManyWithoutAuthorInput
     postComments?: PostCommentsUncheckedCreateNestedManyWithoutUserInput
     postLikes?: PostLikesUncheckedCreateNestedManyWithoutUserInput
@@ -10594,6 +10615,7 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     userIcon?: StringFieldUpdateOperationsInput | string
     userProfile?: NullableStringFieldUpdateOperationsInput | string | null
+    admin?: BoolFieldUpdateOperationsInput | boolean
     posts?: PostUpdateManyWithoutAuthorNestedInput
     postComments?: PostCommentsUpdateManyWithoutUserNestedInput
     postLikes?: PostLikesUpdateManyWithoutUserNestedInput
@@ -10609,6 +10631,7 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     userIcon?: StringFieldUpdateOperationsInput | string
     userProfile?: NullableStringFieldUpdateOperationsInput | string | null
+    admin?: BoolFieldUpdateOperationsInput | boolean
     posts?: PostUncheckedUpdateManyWithoutAuthorNestedInput
     postComments?: PostCommentsUncheckedUpdateManyWithoutUserNestedInput
     postLikes?: PostLikesUncheckedUpdateManyWithoutUserNestedInput
@@ -10624,6 +10647,7 @@ export namespace Prisma {
     password: string
     userIcon: string
     userProfile?: string | null
+    admin?: boolean
   }
 
   export type UserUpdateManyMutationInput = {
@@ -10632,6 +10656,7 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     userIcon?: StringFieldUpdateOperationsInput | string
     userProfile?: NullableStringFieldUpdateOperationsInput | string | null
+    admin?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type UserUncheckedUpdateManyInput = {
@@ -10641,6 +10666,7 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     userIcon?: StringFieldUpdateOperationsInput | string
     userProfile?: NullableStringFieldUpdateOperationsInput | string | null
+    admin?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type PostCreateInput = {
@@ -11134,6 +11160,11 @@ export namespace Prisma {
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
+  export type BoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
   export type PostListRelationFilter = {
     every?: PostWhereInput
     some?: PostWhereInput
@@ -11196,6 +11227,7 @@ export namespace Prisma {
     password?: SortOrder
     userIcon?: SortOrder
     userProfile?: SortOrder
+    admin?: SortOrder
   }
 
   export type UserAvgOrderByAggregateInput = {
@@ -11209,6 +11241,7 @@ export namespace Prisma {
     password?: SortOrder
     userIcon?: SortOrder
     userProfile?: SortOrder
+    admin?: SortOrder
   }
 
   export type UserMinOrderByAggregateInput = {
@@ -11218,6 +11251,7 @@ export namespace Prisma {
     password?: SortOrder
     userIcon?: SortOrder
     userProfile?: SortOrder
+    admin?: SortOrder
   }
 
   export type UserSumOrderByAggregateInput = {
@@ -11276,6 +11310,14 @@ export namespace Prisma {
     _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
+  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
+  }
+
   export type DateTimeFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -11296,11 +11338,6 @@ export namespace Prisma {
     gt?: number | FloatFieldRefInput<$PrismaModel>
     gte?: number | FloatFieldRefInput<$PrismaModel>
     not?: NestedFloatNullableFilter<$PrismaModel> | number | null
-  }
-
-  export type BoolFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolFilter<$PrismaModel> | boolean
   }
 
   export type UserScalarRelationFilter = {
@@ -11437,14 +11474,6 @@ export namespace Prisma {
     _sum?: NestedFloatNullableFilter<$PrismaModel>
     _min?: NestedFloatNullableFilter<$PrismaModel>
     _max?: NestedFloatNullableFilter<$PrismaModel>
-  }
-
-  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedBoolFilter<$PrismaModel>
-    _max?: NestedBoolFilter<$PrismaModel>
   }
 
   export type PostScalarRelationFilter = {
@@ -11747,6 +11776,10 @@ export namespace Prisma {
     set?: string | null
   }
 
+  export type BoolFieldUpdateOperationsInput = {
+    set?: boolean
+  }
+
   export type PostUpdateManyWithoutAuthorNestedInput = {
     create?: XOR<PostCreateWithoutAuthorInput, PostUncheckedCreateWithoutAuthorInput> | PostCreateWithoutAuthorInput[] | PostUncheckedCreateWithoutAuthorInput[]
     connectOrCreate?: PostCreateOrConnectWithoutAuthorInput | PostCreateOrConnectWithoutAuthorInput[]
@@ -11995,10 +12028,6 @@ export namespace Prisma {
     decrement?: number
     multiply?: number
     divide?: number
-  }
-
-  export type BoolFieldUpdateOperationsInput = {
-    set?: boolean
   }
 
   export type UserUpdateOneRequiredWithoutPostsNestedInput = {
@@ -12290,6 +12319,11 @@ export namespace Prisma {
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
+  export type NestedBoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
   export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[] | ListIntFieldRefInput<$PrismaModel>
@@ -12362,6 +12396,14 @@ export namespace Prisma {
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
+  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
+  }
+
   export type NestedDateTimeFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -12382,11 +12424,6 @@ export namespace Prisma {
     gt?: number | FloatFieldRefInput<$PrismaModel>
     gte?: number | FloatFieldRefInput<$PrismaModel>
     not?: NestedFloatNullableFilter<$PrismaModel> | number | null
-  }
-
-  export type NestedBoolFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolFilter<$PrismaModel> | boolean
   }
 
   export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
@@ -12417,14 +12454,6 @@ export namespace Prisma {
     _sum?: NestedFloatNullableFilter<$PrismaModel>
     _min?: NestedFloatNullableFilter<$PrismaModel>
     _max?: NestedFloatNullableFilter<$PrismaModel>
-  }
-
-  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedBoolFilter<$PrismaModel>
-    _max?: NestedBoolFilter<$PrismaModel>
   }
 
   export type NestedEnumNotificationTypeFilter<$PrismaModel = never> = {
@@ -12805,6 +12834,7 @@ export namespace Prisma {
     password: string
     userIcon: string
     userProfile?: string | null
+    admin?: boolean
     postComments?: PostCommentsCreateNestedManyWithoutUserInput
     postLikes?: PostLikesCreateNestedManyWithoutUserInput
     profileViews?: UserViewsCreateNestedManyWithoutUserInput
@@ -12819,6 +12849,7 @@ export namespace Prisma {
     password: string
     userIcon: string
     userProfile?: string | null
+    admin?: boolean
     postComments?: PostCommentsUncheckedCreateNestedManyWithoutUserInput
     postLikes?: PostLikesUncheckedCreateNestedManyWithoutUserInput
     profileViews?: UserViewsUncheckedCreateNestedManyWithoutUserInput
@@ -12942,6 +12973,7 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     userIcon?: StringFieldUpdateOperationsInput | string
     userProfile?: NullableStringFieldUpdateOperationsInput | string | null
+    admin?: BoolFieldUpdateOperationsInput | boolean
     postComments?: PostCommentsUpdateManyWithoutUserNestedInput
     postLikes?: PostLikesUpdateManyWithoutUserNestedInput
     profileViews?: UserViewsUpdateManyWithoutUserNestedInput
@@ -12956,6 +12988,7 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     userIcon?: StringFieldUpdateOperationsInput | string
     userProfile?: NullableStringFieldUpdateOperationsInput | string | null
+    admin?: BoolFieldUpdateOperationsInput | boolean
     postComments?: PostCommentsUncheckedUpdateManyWithoutUserNestedInput
     postLikes?: PostLikesUncheckedUpdateManyWithoutUserNestedInput
     profileViews?: UserViewsUncheckedUpdateManyWithoutUserNestedInput
@@ -13104,6 +13137,7 @@ export namespace Prisma {
     password: string
     userIcon: string
     userProfile?: string | null
+    admin?: boolean
     posts?: PostCreateNestedManyWithoutAuthorInput
     postComments?: PostCommentsCreateNestedManyWithoutUserInput
     profileViews?: UserViewsCreateNestedManyWithoutUserInput
@@ -13118,6 +13152,7 @@ export namespace Prisma {
     password: string
     userIcon: string
     userProfile?: string | null
+    admin?: boolean
     posts?: PostUncheckedCreateNestedManyWithoutAuthorInput
     postComments?: PostCommentsUncheckedCreateNestedManyWithoutUserInput
     profileViews?: UserViewsUncheckedCreateNestedManyWithoutUserInput
@@ -13213,6 +13248,7 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     userIcon?: StringFieldUpdateOperationsInput | string
     userProfile?: NullableStringFieldUpdateOperationsInput | string | null
+    admin?: BoolFieldUpdateOperationsInput | boolean
     posts?: PostUpdateManyWithoutAuthorNestedInput
     postComments?: PostCommentsUpdateManyWithoutUserNestedInput
     profileViews?: UserViewsUpdateManyWithoutUserNestedInput
@@ -13227,6 +13263,7 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     userIcon?: StringFieldUpdateOperationsInput | string
     userProfile?: NullableStringFieldUpdateOperationsInput | string | null
+    admin?: BoolFieldUpdateOperationsInput | boolean
     posts?: PostUncheckedUpdateManyWithoutAuthorNestedInput
     postComments?: PostCommentsUncheckedUpdateManyWithoutUserNestedInput
     profileViews?: UserViewsUncheckedUpdateManyWithoutUserNestedInput
@@ -13300,6 +13337,7 @@ export namespace Prisma {
     password: string
     userIcon: string
     userProfile?: string | null
+    admin?: boolean
     posts?: PostCreateNestedManyWithoutAuthorInput
     postLikes?: PostLikesCreateNestedManyWithoutUserInput
     profileViews?: UserViewsCreateNestedManyWithoutUserInput
@@ -13314,6 +13352,7 @@ export namespace Prisma {
     password: string
     userIcon: string
     userProfile?: string | null
+    admin?: boolean
     posts?: PostUncheckedCreateNestedManyWithoutAuthorInput
     postLikes?: PostLikesUncheckedCreateNestedManyWithoutUserInput
     profileViews?: UserViewsUncheckedCreateNestedManyWithoutUserInput
@@ -13409,6 +13448,7 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     userIcon?: StringFieldUpdateOperationsInput | string
     userProfile?: NullableStringFieldUpdateOperationsInput | string | null
+    admin?: BoolFieldUpdateOperationsInput | boolean
     posts?: PostUpdateManyWithoutAuthorNestedInput
     postLikes?: PostLikesUpdateManyWithoutUserNestedInput
     profileViews?: UserViewsUpdateManyWithoutUserNestedInput
@@ -13423,6 +13463,7 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     userIcon?: StringFieldUpdateOperationsInput | string
     userProfile?: NullableStringFieldUpdateOperationsInput | string | null
+    admin?: BoolFieldUpdateOperationsInput | boolean
     posts?: PostUncheckedUpdateManyWithoutAuthorNestedInput
     postLikes?: PostLikesUncheckedUpdateManyWithoutUserNestedInput
     profileViews?: UserViewsUncheckedUpdateManyWithoutUserNestedInput
@@ -13562,6 +13603,7 @@ export namespace Prisma {
     password: string
     userIcon: string
     userProfile?: string | null
+    admin?: boolean
     posts?: PostCreateNestedManyWithoutAuthorInput
     postComments?: PostCommentsCreateNestedManyWithoutUserInput
     postLikes?: PostLikesCreateNestedManyWithoutUserInput
@@ -13576,6 +13618,7 @@ export namespace Prisma {
     password: string
     userIcon: string
     userProfile?: string | null
+    admin?: boolean
     posts?: PostUncheckedCreateNestedManyWithoutAuthorInput
     postComments?: PostCommentsUncheckedCreateNestedManyWithoutUserInput
     postLikes?: PostLikesUncheckedCreateNestedManyWithoutUserInput
@@ -13605,6 +13648,7 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     userIcon?: StringFieldUpdateOperationsInput | string
     userProfile?: NullableStringFieldUpdateOperationsInput | string | null
+    admin?: BoolFieldUpdateOperationsInput | boolean
     posts?: PostUpdateManyWithoutAuthorNestedInput
     postComments?: PostCommentsUpdateManyWithoutUserNestedInput
     postLikes?: PostLikesUpdateManyWithoutUserNestedInput
@@ -13619,6 +13663,7 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     userIcon?: StringFieldUpdateOperationsInput | string
     userProfile?: NullableStringFieldUpdateOperationsInput | string | null
+    admin?: BoolFieldUpdateOperationsInput | boolean
     posts?: PostUncheckedUpdateManyWithoutAuthorNestedInput
     postComments?: PostCommentsUncheckedUpdateManyWithoutUserNestedInput
     postLikes?: PostLikesUncheckedUpdateManyWithoutUserNestedInput
@@ -13692,6 +13737,7 @@ export namespace Prisma {
     password: string
     userIcon: string
     userProfile?: string | null
+    admin?: boolean
     posts?: PostCreateNestedManyWithoutAuthorInput
     postComments?: PostCommentsCreateNestedManyWithoutUserInput
     postLikes?: PostLikesCreateNestedManyWithoutUserInput
@@ -13706,6 +13752,7 @@ export namespace Prisma {
     password: string
     userIcon: string
     userProfile?: string | null
+    admin?: boolean
     posts?: PostUncheckedCreateNestedManyWithoutAuthorInput
     postComments?: PostCommentsUncheckedCreateNestedManyWithoutUserInput
     postLikes?: PostLikesUncheckedCreateNestedManyWithoutUserInput
@@ -13724,6 +13771,7 @@ export namespace Prisma {
     password: string
     userIcon: string
     userProfile?: string | null
+    admin?: boolean
     posts?: PostCreateNestedManyWithoutAuthorInput
     postComments?: PostCommentsCreateNestedManyWithoutUserInput
     postLikes?: PostLikesCreateNestedManyWithoutUserInput
@@ -13738,6 +13786,7 @@ export namespace Prisma {
     password: string
     userIcon: string
     userProfile?: string | null
+    admin?: boolean
     posts?: PostUncheckedCreateNestedManyWithoutAuthorInput
     postComments?: PostCommentsUncheckedCreateNestedManyWithoutUserInput
     postLikes?: PostLikesUncheckedCreateNestedManyWithoutUserInput
@@ -13833,6 +13882,7 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     userIcon?: StringFieldUpdateOperationsInput | string
     userProfile?: NullableStringFieldUpdateOperationsInput | string | null
+    admin?: BoolFieldUpdateOperationsInput | boolean
     posts?: PostUpdateManyWithoutAuthorNestedInput
     postComments?: PostCommentsUpdateManyWithoutUserNestedInput
     postLikes?: PostLikesUpdateManyWithoutUserNestedInput
@@ -13847,6 +13897,7 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     userIcon?: StringFieldUpdateOperationsInput | string
     userProfile?: NullableStringFieldUpdateOperationsInput | string | null
+    admin?: BoolFieldUpdateOperationsInput | boolean
     posts?: PostUncheckedUpdateManyWithoutAuthorNestedInput
     postComments?: PostCommentsUncheckedUpdateManyWithoutUserNestedInput
     postLikes?: PostLikesUncheckedUpdateManyWithoutUserNestedInput
@@ -13871,6 +13922,7 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     userIcon?: StringFieldUpdateOperationsInput | string
     userProfile?: NullableStringFieldUpdateOperationsInput | string | null
+    admin?: BoolFieldUpdateOperationsInput | boolean
     posts?: PostUpdateManyWithoutAuthorNestedInput
     postComments?: PostCommentsUpdateManyWithoutUserNestedInput
     postLikes?: PostLikesUpdateManyWithoutUserNestedInput
@@ -13885,6 +13937,7 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     userIcon?: StringFieldUpdateOperationsInput | string
     userProfile?: NullableStringFieldUpdateOperationsInput | string | null
+    admin?: BoolFieldUpdateOperationsInput | boolean
     posts?: PostUncheckedUpdateManyWithoutAuthorNestedInput
     postComments?: PostCommentsUncheckedUpdateManyWithoutUserNestedInput
     postLikes?: PostLikesUncheckedUpdateManyWithoutUserNestedInput
