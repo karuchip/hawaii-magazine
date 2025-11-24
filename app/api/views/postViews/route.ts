@@ -4,7 +4,7 @@ import prisma from "@/utils/prisma";
 export async function GET() {
 
   const now = new Date()
-  const oneWeekAgo = new Date(now.getTime() - ( 7 * 24 * 60 * 60 * 1000 ))
+  const oneMonthAgo = new Date(now.getTime() - ( 30 * 7 * 24 * 60 * 60 * 1000 ))
 
   try {
     // 閲覧数上位3のpostIdと、閲覧数を取得
@@ -12,7 +12,7 @@ export async function GET() {
       by: ['postId'],
       where: {
         viewedAt: {
-          gte: oneWeekAgo,
+          gte: oneMonthAgo,
           lt:  now,
         },
       },

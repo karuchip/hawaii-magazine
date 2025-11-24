@@ -4,18 +4,11 @@ import prisma from "@/utils/prisma";
 export async function GET() {
 
   const now = new Date()
-  const oneWeekAgo = new Date(now.getTime() - ( 7 * 24 * 60 * 60 * 1000 ))
 
   try {
     // profile閲覧数上位3のuserIdと、閲覧数を取得
     const topProfileId = await prisma.userViews.groupBy({
       by: ['userId'],
-      where: {
-        viewedAt: {
-          gte: oneWeekAgo,
-          lt:  now,
-        },
-      },
       _count: {
         userId: true,
       },
