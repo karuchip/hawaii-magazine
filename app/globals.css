@@ -2390,7 +2390,7 @@ p {
 }
 @media screen and (max-width: 640px) {
   .homeConcept {
-    padding: 100px 100px;
+    padding: 80px 10px;
   }
   .homeConcept h3 {
     font-size: 18px;

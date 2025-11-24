@@ -83,7 +83,7 @@ const ReadAllItemsInner = () => {
           <section className="homeRanking">
             <FadeInSection>
               <h2 className="en co-homeH2">Ranking</h2>
-              <p className="co-homeP">今週最も閲覧された記事をチェックする</p>
+              <p className="co-homeP">過去30日間に最も閲覧された記事をチェックする</p>
               <RankingSection/>
               <Link href="/post/readAll" className="homeRankingLink co-homeA">全ての記事を見る</Link>
             </FadeInSection>
